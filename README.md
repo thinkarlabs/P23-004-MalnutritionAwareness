@@ -1,6 +1,6 @@
 # P23-004-MalnutritionAwareness
 
-The below are instructions to get started with the development of this project.
+### The below are instructions to get started with the development of this project.
 
 1. Download and install Python 3.9/3.10/3.11+ from https://www.python.org/downloads/
 2. Download an install git from https://github.com/git-for-windows/git/releases/download/v2.39.1.windows.1/Git-2.39.1-64-bit.exe
@@ -12,7 +12,7 @@ The below are instructions to get started with the development of this project.
 6. Once project is created and `venv` environment is activated, Install the required packages by running
    `pip install -r requirements.txt`
 
-Github commit rules.
+### Github commit rules.
 
 1. Take latest from ‘Main’ Branch.
 2. Create a new branch with name of ticket ID preferably. E.g: ABC-1, ABC-2 (Where ABC is project Name and 1,2 are ticket IDs)
