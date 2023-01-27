@@ -15,8 +15,8 @@
 ### Github commit rules.
 
 1. Take latest from ‘Main’ Branch.
-2. Create a new branch with name of ticket ID preferably. E.g: ABC-1, ABC-2 (Where ABC is project Name and 1,2 are ticket IDs)
-3. Once done with required changes, commit your code with a meaningful Title and ticket ID mentioned. E.g ‘ABC-1 | Home page screen UI created’.
+2. Create a new branch with name of ticket ID preferably. E.g: _ABC-1, ABC-2 (Where ABC is project Name and 1,2 are ticket IDs)_
+3. Once done with required changes, commit your code with a meaningful Title and ticket ID mentioned. E.g _‘ABC-1 | Home page screen UI created’_.
 4. Create a Pull request with source branch as 'Your working branch ID’ and target as ‘Main’ branch.
 5. Add atleast 1 reviewer to your Pull request.
 6. Sit Back, Relax and wait for reviewers approval or feedback if any change required in code.
