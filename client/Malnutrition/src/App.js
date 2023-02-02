@@ -11,6 +11,9 @@ import {
   StatusBar,
 } from 'react-native';
 import { Provider } from 'react-redux';
+import Login from './modules/login';
+import Splash from './modules/splash';
+import { AppStackNavigator } from './navigators/AppStackNavigatior';
 import {configureStore} from './redux/store';
 
 const {store} = configureStore();
@@ -24,14 +27,16 @@ function App() {
 
   return (
     <Provider store={store}>
-      <SafeAreaView
+      {/* <SafeAreaView
       // style={backgroundStyle}
-      >
+      > */}
         <StatusBar
           // barStyle={isDarkMode ? 'light-content' : 'dark-content'}
           // backgroundColor={backgroundStyle.backgroundColor}
         />
-      </SafeAreaView>
+        {/* <Splash /> */}
+        <AppStackNavigator />
+      {/* </SafeAreaView> */}
     </Provider>
   );
 }
