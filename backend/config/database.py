@@ -1,7 +1,8 @@
 from pymongo import MongoClient
 import os
+from decouple import config
 
-mongodb_uri = 'mongodb+srv://bhemids:Bhavesh123@trialme.j4gypg4.mongodb.net/?retryWrites=true&w=majority'
+mongodb_uri = config('CLUSTER_URL')
 
 cluster = MongoClient(mongodb_uri)
 db = cluster["Malnutrition"]
