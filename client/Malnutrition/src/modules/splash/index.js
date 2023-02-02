@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, ImageBackground, Image } from 'react-native';
 import { HEADING_ONE, HEADING_TWO } from '../../shared/Constants/constants';
-import styles from './style';
+import styles from './styles';
 
 const Splash = ({ }) => {
   return (
