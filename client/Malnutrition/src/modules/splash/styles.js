@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { BLACK } from "../../shared/Constants/colors";
-import { WORK_SANS_BLACK, WORK_SANS_REGULAR } from "../../shared/Constants/fontFamilyConstants";
+import { ENTYPO, WORK_SANS_BLACK, WORK_SANS_REGULAR } from "../../shared/Constants/fontFamilyConstants";
 
 const styles = StyleSheet.create({
     header: {
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         fontSize: 34,
         fontWeight: '700',
         color: BLACK,
-        // fontFamily: WORK_SANS_BLACK
+        fontFamily: ENTYPO
     },
     bodyText: {
         fontSize: 20,

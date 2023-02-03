@@ -45,6 +45,7 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Entypo.ttf</string>
 		<string>WorkSans-Black.ttf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
