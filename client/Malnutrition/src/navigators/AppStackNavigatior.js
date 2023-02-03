@@ -16,10 +16,10 @@ export function AppStackNavigator() {
     return (
         <NavigationContainer>
             <Stack.Navigator screenOptions={{ headerShown: false, }}>
-                {
+                {/* {
                     showSplashScreen ? <Stack.Screen name="Splash" component={Splash} />
                         : null
-                }
+                } */}
                 <Stack.Screen name="Onboarding" component={Onboarding} />
             </Stack.Navigator>
         </NavigationContainer>
