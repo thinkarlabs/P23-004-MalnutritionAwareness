@@ -6,10 +6,10 @@ import { styles } from './styles';
 const NextScreenArrow = ({onPress}) => {
   return (
     <TouchableOpacity
-      style={styles.circleContainer}
       onPress={onPress}>
-      <View style={styles.circle} />
+      <View style={styles.circle} >
       <Entypo name="chevron-thin-right" style={styles.arrow} />
+        </View>
     </TouchableOpacity>
   );
 };

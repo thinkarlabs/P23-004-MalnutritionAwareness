@@ -2,6 +2,9 @@ import {StyleSheet} from 'react-native';
 import {BLACK, BLUE, GREEN, PINK, WHITE, YELLOW} from '../../shared/constants/colors';
 
 export const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   pinkContainer: {
     flex: 1,
     backgroundColor: PINK,
@@ -43,7 +46,6 @@ export const styles = StyleSheet.create({
   },
   contentContainer: {
     alignItems: 'center',
-
   },
   contentTitle: {
     fontSize: 23,
@@ -66,24 +68,7 @@ export const styles = StyleSheet.create({
     paddingRight: 26,
   },
   circleContainer: {
-    paddingTop: 47,
-    flexDirection: 'column-reverse',
     alignItems: 'center',
-    paddingLeft: 158.5,
-    paddingRight: 159.5,
-  },
-  circle: {
-    height: 60,
-    width: 60,
-    backgroundColor: WHITE,
-    borderRadius: 30,
-    bottom: 40,
-  },
-  arrow: {
-    bottom: '100%',
-    fontSize: 20,
-    color: BLUE,
-    paddingLeft: 25,
-    paddingRight: 21,
+    bottom: 47,
   },
 });
