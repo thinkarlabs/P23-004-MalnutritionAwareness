@@ -25,7 +25,11 @@ async def create_account(user: UserSchema= Body(...)):
     user_dict = jsonable_encoder(user)
 
     # Update the child details schema
-    user_dict.update({'children': [{'name':user_dict['child_name'], 'gender': user_dict['gender'], 'dob': user_dict['dob']}]})
+    user_dict.update(
+        {'children': [
+            {'name':user_dict['child_name'], 'gender': user_dict['gender'], 'dob': user_dict['dob']}
+        ]}
+    )
 
     # remove redundant keys
     del user_dict['child_name']
