@@ -39,6 +39,7 @@ const OnBoardingSlider2 = ({navigation}) => {
           onPress={() => {
             navigation.navigate(ONBOARDINGSLIDER3);
           }}
+          progress={0.6}
         />
       </View>
     </SafeAreaView>

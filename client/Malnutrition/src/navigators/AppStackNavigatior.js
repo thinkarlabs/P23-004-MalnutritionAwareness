@@ -19,26 +19,6 @@ export function AppStackNavigator() {
       setShowSplashScreen(false);
     }, 3000);
   }, []);
-  //Onboarding screen logic
-//   const [isFirstLaunch, setIsFirstLaunch] = useState(null);
-//   useEffect(() => {
-//     AsyncStorage.getItem('already launched').then(value => {
-//       if (value == null) {
-//         AsyncStorage.setItem('already launched', 'true');
-//         setIsFirstLaunch(true);
-//       } else {
-//         setIsFirstLaunch(false);
-//       }
-//     });
-//   }, []);
-
-//   if (isFirstLaunch === null) {
-//     return null;
-//   } else if (isFirstLaunch === true) {
-//     return ()
-//   }else {
-//     <Login />
-//   }
 
   return (
     <NavigationContainer>

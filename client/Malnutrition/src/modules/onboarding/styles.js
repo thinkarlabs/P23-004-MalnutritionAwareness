@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {BLACK, BLUE, GREEN, PINK, WHITE, YELLOW} from '../../shared/constants/colors';
+import {BLACK, GREEN, PINK, YELLOW} from '../../shared/constants/colors';
+import { FONT_LARGE, FONT_MEDIUM, FONT_SMALL, TITLE_FONT_SIZE } from '../../shared/constants/fontSizeConstants';
 
 export const styles = StyleSheet.create({
   container: {
@@ -26,7 +27,7 @@ export const styles = StyleSheet.create({
   },
   headerText: {
     fontWeight: '600',
-    fontSize: 16,
+    fontSize: FONT_MEDIUM,
     color: BLACK,
   },
   headerImage: {
@@ -35,12 +36,12 @@ export const styles = StyleSheet.create({
   },
   languageIcon: {
     color: BLACK,
-    fontSize: 12,
+    fontSize: FONT_SMALL,
     paddingRight: '5%',
     justifyContent: 'center',
   },
   languageText: {
-    fontSize: 16,
+    fontSize: FONT_MEDIUM,
     color: BLACK,
     fontWeight: '700',
   },
@@ -48,17 +49,17 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   contentTitle: {
-    fontSize: 23,
+    fontSize: TITLE_FONT_SIZE,
     fontWeight: '700',
     color: BLACK,
     lineHeight: 28,
     paddingLeft: 50,
     paddingRight: 51,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   contentBody: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: FONT_LARGE,
     fontWeight: '400',
     color: BLACK,
     lineHeight: 24,

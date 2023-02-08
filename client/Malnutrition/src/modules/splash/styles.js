@@ -1,11 +1,12 @@
-import { StyleSheet } from "react-native";
-import { BLACK } from "../../shared/constants/colors";
-import { ENTYPO, WORK_SANS_BLACK, WORK_SANS_REGULAR } from "../../shared/constants/fontFamilyConstants";
+import { StyleSheet } from 'react-native';
+import { BLACK } from '../../shared/constants/colors';
+import { ENTYPO } from '../../shared/constants/fontFamilyConstants';
+import { SPLASH_BODY_SIZE, SPLASH_TITLE_SIZE } from '../../shared/constants/fontSizeConstants';
 
 const styles = StyleSheet.create({
     header: {
         flex: 1,
-        height: '100%', 
+        height: '100%',
         width: '100%',
     },
     title: {
@@ -14,16 +15,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     titleText: {
-        fontSize: 34,
+        fontSize: SPLASH_TITLE_SIZE,
         fontWeight: '700',
         color: BLACK,
-        fontFamily: ENTYPO
+        fontFamily: ENTYPO,
     },
     bodyText: {
-        fontSize: 20,
+        fontSize: SPLASH_BODY_SIZE,
         fontWeight: '600',
         color: BLACK,
-    }
-})
+    },
+});
 
 export default styles;
