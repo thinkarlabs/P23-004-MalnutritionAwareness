@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import OnBoardingSlider1 from '../modules/onboarding/onBoardingSlider1';
 import Splash from '../modules/splash';
+import OnBoardingSlider1 from '../modules/onboarding/onBoardingSlider1';
 import OnBoardingSlider2 from '../modules/onboarding/onBoardingSlider2';
 import OnBoardingSlider3 from '../modules/onboarding/onBoardingSlider3';
 import Login from '../modules/login';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LOGIN, ONBOARDINGSLIDER1, ONBOARDINGSLIDER2, ONBOARDINGSLIDER3, SPLASH } from '../shared/constants/navigatorConstants';
 
 const Stack = createStackNavigator();

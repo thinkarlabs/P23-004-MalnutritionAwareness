@@ -1,8 +1,8 @@
 import {View, Text, SafeAreaView, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
-import Entypo from 'react-native-vector-icons/Entypo';
 import {
+  BACK,
   ONBOARDSCREEN3_CONTENT,
   ONBOARDSCREEN3_TITLE,
 } from '../../shared/constants/constants';
@@ -19,7 +19,7 @@ const OnBoardingSlider3 = ({navigation}) => {
             onPress={() => {
               navigation.navigate(ONBOARDINGSLIDER1);
             }}>
-            <Text style={styles.headerText}>Back</Text>
+            <Text style={styles.headerText}>{BACK}</Text>
           </TouchableOpacity>
           <AppTextTranslates />
         </View>

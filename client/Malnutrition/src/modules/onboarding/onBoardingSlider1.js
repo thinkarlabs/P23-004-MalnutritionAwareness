@@ -5,6 +5,7 @@ import AppTextTranslates from '../../shared/components/appTextTranslate';
 import {
   ONBOARDSCREEN1_CONTENT,
   ONBOARDSCREEN1_TITLE,
+  SKIP,
 } from '../../shared/constants/constants';
 import NextScreenArrow from '../../shared/components/nextScreenArrow';
 import { LOGIN, ONBOARDINGSLIDER2 } from '../../shared/constants/navigatorConstants';
@@ -18,7 +19,7 @@ const OnBoardingSlider1 = ({navigation}) => {
             onPress={() => {
               navigation.navigate(LOGIN);
             }}>
-            <Text style={styles.headerText}>Skip</Text>
+            <Text style={styles.headerText}>{SKIP}</Text>
           </TouchableOpacity>
           {/* Re-use component for text translation */}
           <AppTextTranslates />
