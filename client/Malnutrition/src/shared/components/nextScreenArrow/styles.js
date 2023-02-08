@@ -8,11 +8,15 @@ export const styles = StyleSheet.create({
         backgroundColor: WHITE,
         borderRadius: 30,
         justifyContent: 'center',
-        alignItems: 'center'
-        
+        alignItems: 'center',
+        position: 'absolute',
       },
       arrow: {
         fontSize: 20,
         color: BLUE,
       },
-})
+      progressCircle: {
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+});
