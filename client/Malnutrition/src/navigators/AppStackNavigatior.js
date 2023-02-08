@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Onboarding from '../modules/onboarding';
 import Splash from '../modules/splash';
-import CreateAccount from '../modules/create-account';
+import CreateAccount from '../modules/createAccount';
 
 const Stack = createStackNavigator();
 
