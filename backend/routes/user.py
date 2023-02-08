@@ -39,10 +39,10 @@ async def create_account(user: UserSchema= Body(...)):
     user_dict.update({'is_active': False})
 
     # check if same record exists
-    if database.user_collection.find_one({'phone_number':user_dict['phone_number']}):
+    if database.user.find_one({'phone_number':user_dict['phone_number']}):
         raise HTTPException(status_code=409, detail="Phone number already exists !")
 
-    new_user = database.user_collection.insert_one(user_dict)
+    new_user = database.user.insert_one(user_dict)
 
     return {'status_code':200, 'message': 'User saved successfully'}
 
