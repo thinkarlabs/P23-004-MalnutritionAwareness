@@ -6,7 +6,8 @@ import OnBoardingSlider1 from '../modules/onboarding/onBoardingSlider1';
 import OnBoardingSlider2 from '../modules/onboarding/onBoardingSlider2';
 import OnBoardingSlider3 from '../modules/onboarding/onBoardingSlider3';
 import Login from '../modules/login';
-import { LOGIN, ONBOARDINGSLIDER1, ONBOARDINGSLIDER2, ONBOARDINGSLIDER3, SPLASH } from '../shared/constants/navigatorConstants';
+import { LOGIN, ONBOARDINGSLIDER1, ONBOARDINGSLIDER2, ONBOARDINGSLIDER3, OTPVERIFICATION, SPLASH } from '../shared/constants/navigatorConstants';
+import OTPVerification from '../modules/otpVerification';
 
 const Stack = createStackNavigator();
 
@@ -28,6 +29,7 @@ export function AppStackNavigator() {
         <Stack.Screen name={ONBOARDINGSLIDER1} component={OnBoardingSlider1} />
         <Stack.Screen name={ONBOARDINGSLIDER2} component={OnBoardingSlider2} />
         <Stack.Screen name={ONBOARDINGSLIDER3} component={OnBoardingSlider3} />
+        <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
         <Stack.Screen name={LOGIN} component={Login} />
       </Stack.Navigator>
     </NavigationContainer>
