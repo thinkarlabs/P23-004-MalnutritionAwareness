@@ -11,4 +11,5 @@ export const CREATE_ACCOUNT = {
   CATEGORY_3_TITLE: '6-24 Months',
   CATEGORY_3_DESCRIPTION:
     'A baby is born with a need to be loved and grow with caring.',
+  BENEFICIARY_INFO_TITLE: 'Fill beneficiary information to start your journey.',
 };

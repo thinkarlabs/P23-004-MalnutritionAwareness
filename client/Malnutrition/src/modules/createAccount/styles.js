@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {color} from 'react-native-reanimated';
 import {withStyleAnimation} from 'react-native-reanimated/lib/types/lib/reanimated2/animation';
 import {
   BLACK,
@@ -55,6 +56,25 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 22,
   },
+  selectedStageCard: {
+    borderRadius: 20,
+    borderColor: 'rgba(181, 255, 210, 1)',
+    borderWidth: 2,
+    paddingVertical: 12,
+    paddingRight: 18,
+    paddingLeft: 65,
+    marginBottom: 20,
+  },
+  selectedStageCardTitle: {
+    fontSize: 18,
+    lineHeight: 24,
+    color: '#111112',
+  },
+  selectedStageCardDesc: {
+    fontSize: 14,
+    lineHeight: 18,
+    color: 'rgba(97, 101, 104, 1)',
+  },
   Button: {
     backgroundColor: BUTTON.PRIMARY,
     paddingTop: 15,
@@ -69,5 +89,34 @@ export const styles = StyleSheet.create({
   },
   buttonDisabled: {
     opacity: 0.5,
+  },
+  ButtonInfo: {
+    textAlign: 'center',
+    color: 'rgba(97, 101, 104, 0.4)',
+    fontSize: 16,
+    lineHeight: 20,
+    marginBottom: 25,
+  },
+  inputContainer: {
+    marginBottom: 20,
+  },
+  formWrapper: {
+    backgroundColor: '#F2F5F7',
+    padding: 20,
+    borderRadius: 16,
+  },
+  inputField: {
+    backgroundColor: '#ffffff',
+    padding: 14,
+    borderRadius: 16,
+  },
+  checkboxContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  checkboxLabel: {
+    marginLeft: 10,
+    fontSize: 16,
+    lineHeight: 20,
   },
 });
