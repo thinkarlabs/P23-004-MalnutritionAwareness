@@ -1,6 +1,6 @@
 from enum import Enum
 import datetime
-from typing import Optional
+from typing import Optional, List
 from pydantic import BaseModel, validator, constr
 
 class UserType(str, Enum):
@@ -8,29 +8,31 @@ class UserType(str, Enum):
     LACTATING = 'LACTATING'
     CAREGIVER = 'CAREGIVER'
 
-class User(BaseModel):
-    name: str
-    email: str
-    password: str
+class GenderType(str, Enum):
+    MALE = 'MALE'
+    FEMALE = 'FEMALE'
 
-class UserSchema(BaseModel):
+class Child(BaseModel):
     name: str
-    phone_number: constr(
-        strip_whitespace=True,
-        regex=r"^(\+)[1-9][0-9\-\(\)\.]{9,15}$",
-    )
-    user_type: UserType
-    child_name: Optional[str]
-    gender: Optional[str]
-    dob: Optional[datetime.date]
-    relation_with_child: Optional[str]
-
+    gender: GenderType
+    dob: datetime.date
     @validator("dob", pre=True)
     def parse_dob(cls, value):
         return datetime.datetime.strptime(
             value,
             "%d/%m/%Y"
         ).date()
+
+class CreateUserSchema(BaseModel):
+    name: str
+    phone_number: constr(
+        strip_whitespace=True,
+        regex=r"^(\+)[1-9][0-9\-\(\)\.]{9,15}$",
+    )
+    user_type: UserType
+    child: List[Child]
+    relation_with_child: Optional[str]
+
 
 def ResponseModel(data, message):
     return {
