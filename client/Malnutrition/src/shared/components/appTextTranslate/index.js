@@ -1,8 +1,8 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import { styles } from './styles';
+import {styles} from './styles';
 import Entypo from 'react-native-vector-icons/Entypo';
-import { ENGLISH } from '../../constants/constants';
+import {ENGLISH} from '../../constants/constants';
 
 const AppTextTranslates = () => {
   return (
