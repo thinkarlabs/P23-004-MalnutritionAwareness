@@ -6,7 +6,14 @@ import OnBoardingSlider1 from '../modules/onboarding/onBoardingSlider1';
 import OnBoardingSlider2 from '../modules/onboarding/onBoardingSlider2';
 import OnBoardingSlider3 from '../modules/onboarding/onBoardingSlider3';
 import Login from '../modules/login';
-import { LOGIN, ONBOARDINGSLIDER1, ONBOARDINGSLIDER2, ONBOARDINGSLIDER3, OTPVERIFICATION, SPLASH } from '../shared/constants/navigatorConstants';
+import {
+  LOGIN,
+  ONBOARDINGSLIDER1,
+  ONBOARDINGSLIDER2,
+  ONBOARDINGSLIDER3,
+  OTPVERIFICATION,
+  SPLASH,
+} from '../shared/constants/navigatorConstants';
 import OTPVerification from '../modules/otpVerification';
 
 const Stack = createStackNavigator();
