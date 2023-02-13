@@ -8,7 +8,11 @@ import {
 } from '../../shared/constants/constants';
 import AppTextTranslates from '../../shared/components/appTextTranslate';
 import NextScreenArrow from '../../shared/components/nextScreenArrow';
-import { LOGIN, ONBOARDINGSLIDER1 } from '../../shared/constants/navigatorConstants';
+import {
+  LOGIN,
+  ONBOARDINGSLIDER1,
+  CREATE_ACCOUNT,
+} from '../../shared/constants/navigatorConstants';
 
 const OnBoardingSlider3 = ({navigation}) => {
   return (
@@ -37,7 +41,7 @@ const OnBoardingSlider3 = ({navigation}) => {
       <View style={styles.circleContainer}>
         <NextScreenArrow
           onPress={() => {
-            navigation.navigate(LOGIN);
+            navigation.navigate(CREATE_ACCOUNT);
           }}
           progress={1}
         />

@@ -8,7 +8,7 @@ import {
   LIGHT_YELLOW,
   LIGHT_ORANGE,
   BUTTON,
-} from '../../shared/Constants/colors';
+} from '../../shared/constants/colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
   screenWrapper: {
     paddingLeft: 20,
     paddingRight: 20,
+    flex: 1,
   },
   titleText: {
     fontSize: 26,
@@ -26,8 +27,9 @@ export const styles = StyleSheet.create({
   stageCard: {
     borderRadius: 20,
     borderColor: '#ffffff',
-    borderWidth: 2,
-    padding: 20,
+    borderWidth: 4,
+    paddingHorizontal: 20,
+    paddingVertical: 25,
     marginBottom: 20,
   },
   stageOne: {
@@ -47,14 +49,18 @@ export const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: 22,
-    lineHeight: 27,
+    lineHeight: 26,
     marginBottom: 5,
+    fontWeight: '400',
     color: '#111112',
+    alignSelf: 'stretch',
   },
   cardDesc: {
     color: '#616568',
     fontSize: 16,
     lineHeight: 22,
+    fontWeight: '400',
+    alignSelf: 'stretch',
   },
   selectedStageCard: {
     borderRadius: 20,
@@ -77,10 +83,13 @@ export const styles = StyleSheet.create({
   },
   Button: {
     backgroundColor: BUTTON.PRIMARY,
-    paddingTop: 15,
-    paddingBottom: 15,
+    paddingVertical: 15,
     borderRadius: 16,
     color: '#ffffff',
+    alignSelf: 'center',
+    position: 'absolute',
+    bottom: 25,
+    width: '100%',
   },
   ButtonText: {
     color: '#ffffff',
@@ -92,10 +101,13 @@ export const styles = StyleSheet.create({
   },
   ButtonInfo: {
     textAlign: 'center',
-    color: 'rgba(97, 101, 104, 0.4)',
+    color: '#616568',
     fontSize: 16,
     lineHeight: 20,
     marginBottom: 25,
+    position: 'absolute',
+    bottom: 80,
+    width: '100%',
   },
   inputContainer: {
     marginBottom: 20,
@@ -109,14 +121,29 @@ export const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     padding: 14,
     borderRadius: 16,
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#111112',
   },
   checkboxContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 20,
   },
   checkboxLabel: {
     marginLeft: 10,
     fontSize: 16,
     lineHeight: 20,
+    fontWeight: '500',
+  },
+  checkbox: {
+    backgroundColor: '#ffffff',
+    borderRadius: 4,
+  },
+  stageWrapper: {
+    flexGrow: 1,
+  },
+  dropdownWrapper: {
+    marginLeft: 40,
   },
 });

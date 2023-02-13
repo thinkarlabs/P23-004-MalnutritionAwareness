@@ -14,6 +14,7 @@ import {
   ONBOARDINGSLIDER2,
   ONBOARDINGSLIDER3,
   SPLASH,
+  CREATE_ACCOUNT,
 } from '../shared/constants/navigatorConstants';
 
 const Stack = createStackNavigator();
@@ -29,7 +30,11 @@ export function AppStackNavigator() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+          cardStyle: {backgroundColor: '#fff'},
+        }}>
         {showSplashScreen ? (
           <Stack.Screen name={SPLASH} component={Splash} />
         ) : null}
@@ -37,7 +42,7 @@ export function AppStackNavigator() {
         <Stack.Screen name={ONBOARDINGSLIDER2} component={OnBoardingSlider2} />
         <Stack.Screen name={ONBOARDINGSLIDER3} component={OnBoardingSlider3} />
         <Stack.Screen name={LOGIN} component={Login} />
-        <Stack.Screen name="CreateAccount" component={CreateAccount} />
+        <Stack.Screen name={CREATE_ACCOUNT} component={CreateAccount} />
       </Stack.Navigator>
     </NavigationContainer>
   );
