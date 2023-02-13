@@ -1,1 +1,64 @@
+from fastapi import FastAPI, Depends, Header, HTTPException
+from fastapi.security import OAuth2PasswordBearer
+import jwt
+import datetime
 
+app = FastAPI()
+
+SECRET_KEY = "secret_key"
+
+# Use OAuth2PasswordBearer for authorization
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/verify_otp")
+
+
+@app.post("/api/v1/send_otp")
+async def send_otp(phone_number: str,otp :str):
+    # Send the OTP to the given phone number
+    # ...
+
+    return {"message": "OTP sent successfully"}
+
+@app.post("/api/v1/verify_otp")
+async def verify_otp(phone_number: str, otp: str):
+    otp = otp
+
+    # logic for retriving the otp from the database
+
+    # Compare the provided OTP with the stored OTP
+
+    if otp == otp:
+
+        # Generate a JWT with necessary information as its payload
+
+        payload = {
+            "phone_number": phone_number,
+            "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=30)
+        }
+        jwt_token = jwt.encode(payload, SECRET_KEY, algorithm="HS256").decode("utf-8")
+        return {"message": "OTP verified successfully", "token": jwt_token}
+    else:
+        raise HTTPException(status_code=400, detail="OTP verification failed")
+
+@app.post("/api/v1/update_user_status")
+async def update_user_status(Authorization: str = Header(None)):
+    jwt_token = Authorization.replace("Bearer ", "")
+
+    # Verify the JWT
+    try:
+        payload = jwt.decode(jwt_token, SECRET_KEY, algorithms=["HS256"])
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=401, detail="Token has expired")
+    except jwt.InvalidTokenError:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
+    phone_number = payload.get("phone_number")
+
+    # Retrieve the user from the database based on the phone number
+    # ...
+
+    # Update the user's active status
+    user.active = True
+    # Save the updated user in the database
+    # ...
+
+    return {"message": "User status updated successfully"}
