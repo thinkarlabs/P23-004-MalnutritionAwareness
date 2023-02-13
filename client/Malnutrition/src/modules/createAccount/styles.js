@@ -146,4 +146,7 @@ export const styles = StyleSheet.create({
   dropdownWrapper: {
     marginLeft: 40,
   },
+  errorMsg: {
+    color: '#E32828',
+  },
 });

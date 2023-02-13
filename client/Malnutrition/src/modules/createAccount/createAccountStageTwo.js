@@ -14,15 +14,13 @@ const CreateAccountStageTwo = (
   setCheckboxValue,
   toggleCheckBox,
 ) => {
-  let isPhoneNumberValid = false;
-  let phoneError = '';
+  const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
+  const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const validatePhoneNumber = val => {
-    let num = val.replace('.', '');
-    if (num.length < 10) {
-      phoneError = 'Phone number must contain atleast 10 digits';
+    if (val.length === 10) {
+      setIsPhoneNumberValid(true);
     } else {
-      isPhoneNumberValid = true;
-      console.log('phone number valid');
+      setIsPhoneNumberValid(false);
     }
   };
   return (
@@ -55,7 +53,12 @@ const CreateAccountStageTwo = (
             style={styles.inputField}
             placeholder="Phone number"
             keyboardType="numeric"
-            placeholderTextColor="#616568"></TextInput>
+            placeholderTextColor="#616568"
+            onBlur={value => validatePhoneNumber(value)}
+            onFocus={() => setIsPhoneFocused(true)}></TextInput>
+          {isPhoneFocused && isPhoneNumberValid && (
+            <Text style={styles.errorMsg}>Invalid Phone Number</Text>
+          )}
         </View>
         <View style={styles.checkboxContainer}>
           <CheckBox
