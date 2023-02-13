@@ -17,7 +17,9 @@ import {
 const OTPVerification = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <AppHeader navigation canGoBack title={VERIFY_OTP} />
+      <View style={styles.headerContainer}>
+        <AppHeader navigation canGoBack title={VERIFY_OTP} />
+      </View>
       <View style={styles.innerContainer}>
         <Image
           source={require('../../../assets/images/verifyOtp.png')}
