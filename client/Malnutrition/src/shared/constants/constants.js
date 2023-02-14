@@ -21,5 +21,15 @@ export const CREATE_ACCOUNT = {
   CATEGORY_2_DESCRIPTION: `A grand and beautiful ${'\n'}adventure is about ${'\n'}to begin.`,
   CATEGORY_3_TITLE: '6-24 Months',
   CATEGORY_3_DESCRIPTION: `A baby is born with a ${'\n'}need to be loved and ${'\n'}grow with caring.`,
+  BUTTON_DESCRIPTION: 'Fill Your Details',
+  OTP_BUTTON: 'Verify OTP',
+  CHECK_BOX_LABEL: `Are you setting up this app ${'\n'}for someone else?`,
+  BUTTON_INFO: `By click on below button, you will ${'\n'} recieve one OTP code`
 };
 export const SET_APP_FOR = [{name: 'An NGO Member', code: 'ngo'}];
+
+export const USER_DETAILS = {
+  MOTHER_NAME: 'Mother Name',
+  PHONE_NUMBER: 'Phone Number',
+  MENSTURAL_DATE: 'Last menstural period date',
+};

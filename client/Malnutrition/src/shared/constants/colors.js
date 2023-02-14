@@ -8,7 +8,10 @@ export const TRANSPARENT = 'transparent';
 export const LIGHT_GREEN = '#CBEFB7';
 export const LIGHT_YELLOW = '#F1E99E';
 export const LIGHT_ORANGE = '#FFDAC5';
+export const GREY = '#EBEFF1';
 
 export const BUTTON = {
   PRIMARY: '#6667FF',
 };
+
+export const PLACEHOLDER_COLOR = '#616568';
