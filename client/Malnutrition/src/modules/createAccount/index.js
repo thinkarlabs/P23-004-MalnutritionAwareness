@@ -11,6 +11,7 @@ import Dropdown from 'react-native-input-select';
 import CreateAccountStageOne from './createAccountStageOne';
 import CreateAccountStageTwo from './createAccountStageTwo';
 
+
 const CreateAccount = () => {
   const [currentScreenSelect, setCurrentScreenSelect] = useState(1);
   const [currentStageSelect, setCurrentStageSelect] = useState(0);

@@ -16,6 +16,7 @@ import {
   SPLASH,
   CREATE_ACCOUNT,
 } from '../shared/constants/navigatorConstants';
+import { WHITE } from '../shared/constants/colors';
 
 const Stack = createStackNavigator();
 
@@ -32,16 +33,16 @@ export function AppStackNavigator() {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          headerShown: false,
-          cardStyle: {backgroundColor: '#fff'},
+          headerShown: true,
+          cardStyle: {backgroundColor: WHITE},
         }}>
-        {showSplashScreen ? (
+        {/* {showSplashScreen ? (
           <Stack.Screen name={SPLASH} component={Splash} />
         ) : null}
         <Stack.Screen name={ONBOARDINGSLIDER1} component={OnBoardingSlider1} />
         <Stack.Screen name={ONBOARDINGSLIDER2} component={OnBoardingSlider2} />
         <Stack.Screen name={ONBOARDINGSLIDER3} component={OnBoardingSlider3} />
-        <Stack.Screen name={LOGIN} component={Login} />
+        <Stack.Screen name={LOGIN} component={Login} /> */}
         <Stack.Screen name={CREATE_ACCOUNT} component={CreateAccount} />
       </Stack.Navigator>
     </NavigationContainer>
