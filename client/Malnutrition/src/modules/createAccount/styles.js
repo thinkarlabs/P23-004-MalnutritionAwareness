@@ -90,8 +90,6 @@ export const styles = StyleSheet.create({
     borderRadius: 16,
     color: WHITE,
     alignSelf: 'center',
-    position: 'absolute',
-    bottom: 25,
     width: '100%',
   },
   ButtonText: {
@@ -131,7 +129,7 @@ export const styles = StyleSheet.create({
   checkboxContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 20,
+    // marginBottom: 20,
   },
   checkboxLabel: {
     marginLeft: 10,
@@ -157,6 +155,9 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     textAlign: 'center',
-    paddingTop: 90.2,
-  }
+    paddingTop: 82,
+  },
+  buttonContainer: {
+    paddingTop: 146,
+  },
 });

@@ -1,4 +1,11 @@
-import {View, Text, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
+} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import React, {useState} from 'react';
 import {
@@ -29,73 +36,77 @@ const CreateAccountStageTwo = (
     }
   };
   return (
-    <View style={styles.stageWrapper}>
-      <LinearGradient
-        start={{x: 0, y: 0}}
-        end={{x: 0.4, y: 0}}
-        colors={[GREY, WHITE]}
-        style={[styles.selectedStageCard]}>
-        <Text style={styles.selectedStageCardDesc}>You have selected</Text>
-        <Text style={styles.selectedStageCardTitle}>
-          {CREATE_ACCOUNT.CATEGORY_3_TITLE}
-        </Text>
-      </LinearGradient>
-      <View style={styles.formWrapper}>
-        <View style={styles.inputContainer}>
-          <TextInput
-            scrollEnabled
-            style={styles.inputField}
-            placeholder={USER_DETAILS.MOTHER_NAME}
-            placeholderTextColor={PLACEHOLDER_COLOR}></TextInput>
-        </View>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.inputField}
-            placeholder={USER_DETAILS.MENSTURAL_DATE}
-            placeholderTextColor={PLACEHOLDER_COLOR}></TextInput>
-        </View>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.inputField}
-            placeholder={USER_DETAILS.PHONE_NUMBER}
-            keyboardType="numeric"
-            placeholderTextColor={PLACEHOLDER_COLOR}
-            onBlur={value => validatePhoneNumber(value)}
-            onFocus={() => setIsPhoneFocused(true)}></TextInput>
-          {isPhoneFocused && isPhoneNumberValid && (
-            <Text style={styles.errorMsg}>Invalid Phone Number</Text>
+    <ScrollView style={styles.stageWrapper}>
+      <View style={{flex: 1}}>
+        <LinearGradient
+          start={{x: 0, y: 0}}
+          end={{x: 0.4, y: 0}}
+          colors={[GREY, WHITE]}
+          style={[styles.selectedStageCard]}>
+          <Text style={styles.selectedStageCardDesc}>You have selected</Text>
+          <Text style={styles.selectedStageCardTitle}>
+            {CREATE_ACCOUNT.CATEGORY_3_TITLE}
+          </Text>
+        </LinearGradient>
+        <View style={styles.formWrapper}>
+          <View style={styles.inputContainer}>
+            <TextInput
+              scrollEnabled
+              style={styles.inputField}
+              placeholder={USER_DETAILS.MOTHER_NAME}
+              placeholderTextColor={PLACEHOLDER_COLOR}></TextInput>
+          </View>
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.inputField}
+              placeholder={USER_DETAILS.MENSTURAL_DATE}
+              placeholderTextColor={PLACEHOLDER_COLOR}></TextInput>
+          </View>
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.inputField}
+              placeholder={USER_DETAILS.PHONE_NUMBER}
+              keyboardType="numeric"
+              placeholderTextColor={PLACEHOLDER_COLOR}
+              onBlur={value => validatePhoneNumber(value)}
+              onFocus={() => setIsPhoneFocused(true)}></TextInput>
+            {isPhoneFocused && isPhoneNumberValid && (
+              <Text style={styles.errorMsg}>Invalid Phone Number</Text>
+            )}
+          </View>
+          <View style={styles.checkboxContainer}>
+            <CheckBox
+              value={toggleCheckBox}
+              style={styles.checkbox}
+              onValueChange={setCheckboxValue}
+              boxType="square"
+              tintColor="transparent"
+              onFillColor={WHITE}
+            />
+            <Text style={styles.checkboxLabel}>
+              {CREATE_ACCOUNT.CHECK_BOX_LABEL}
+            </Text>
+          </View>
+          {/* toggleCheckBox */}
+          {toggleCheckBox && (
+            <View style={styles.dropdownWrapper}>
+              <SelectDropdown dropdownOptions={SET_APP_FOR} />
+            </View>
           )}
         </View>
-        <View style={styles.checkboxContainer}>
-          <CheckBox
-            value={toggleCheckBox}
-            style={styles.checkbox}
-            onValueChange={setCheckboxValue}
-            boxType="square"
-            tintColor="transparent"
-            onFillColor={WHITE}
-          />
-          <Text style={styles.checkboxLabel}>
-            {CREATE_ACCOUNT.CHECK_BOX_LABEL}
-          </Text>
-        </View>
-        {/* toggleCheckBox */}
-        {toggleCheckBox && (
-          <View style={styles.dropdownWrapper}>
-            <SelectDropdown dropdownOptions={SET_APP_FOR} />
-          </View>
-        )}
       </View>
-      <Text style={styles.Info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
-      <Button
-        title={CREATE_ACCOUNT.OTP_BUTTON}
-        textStyle={styles.ButtonText}
-        buttonStyle={[styles.Button]}
-        onPress={() => {
-          setScreen(3);
-        }}
-      />
-    </View>
+      <View style={Platform.select({ios : styles.buttonContainer})}>
+        <Text style={styles.Info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
+        <Button
+          title={CREATE_ACCOUNT.OTP_BUTTON}
+          textStyle={styles.ButtonText}
+          buttonStyle={[styles.Button]}
+          onPress={() => {
+            setScreen(3);
+          }}
+        />
+      </View>
+    </ScrollView>
   );
 };
 
