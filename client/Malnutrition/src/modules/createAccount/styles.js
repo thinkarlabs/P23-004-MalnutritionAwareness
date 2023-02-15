@@ -8,6 +8,9 @@ import {
   LIGHT_YELLOW,
   LIGHT_ORANGE,
   BUTTON,
+  WHITE,
+  RED,
+  LIGHT_GREY,
 } from '../../shared/constants/colors';
 
 export const styles = StyleSheet.create({
@@ -26,7 +29,7 @@ export const styles = StyleSheet.create({
   },
   stageCard: {
     borderRadius: 20,
-    borderColor: '#ffffff',
+    borderColor: WHITE,
     borderWidth: 4,
     paddingHorizontal: 20,
     paddingVertical: 25,
@@ -52,11 +55,11 @@ export const styles = StyleSheet.create({
     lineHeight: 26,
     marginBottom: 5,
     fontWeight: '400',
-    color: '#111112',
+    color: BLACK,
     alignSelf: 'stretch',
   },
   cardDesc: {
-    color: '#616568',
+    color: LIGHT_GREY,
     fontSize: 16,
     lineHeight: 22,
     fontWeight: '400',
@@ -74,7 +77,7 @@ export const styles = StyleSheet.create({
   selectedStageCardTitle: {
     fontSize: 18,
     lineHeight: 24,
-    color: '#111112',
+    color: BLACK,
   },
   selectedStageCardDesc: {
     fontSize: 14,
@@ -85,14 +88,14 @@ export const styles = StyleSheet.create({
     backgroundColor: BUTTON.PRIMARY,
     paddingVertical: 15,
     borderRadius: 16,
-    color: '#ffffff',
+    color: WHITE,
     alignSelf: 'center',
     position: 'absolute',
     bottom: 25,
     width: '100%',
   },
   ButtonText: {
-    color: '#ffffff',
+    color: WHITE,
     textAlign: 'center',
     fontSize: 20,
   },
@@ -101,7 +104,7 @@ export const styles = StyleSheet.create({
   },
   ButtonInfo: {
     textAlign: 'center',
-    color: '#616568',
+    color: LIGHT_GREY,
     fontSize: 16,
     lineHeight: 20,
     marginBottom: 25,
@@ -118,12 +121,12 @@ export const styles = StyleSheet.create({
     borderRadius: 16,
   },
   inputField: {
-    backgroundColor: '#ffffff',
+    backgroundColor: WHITE,
     padding: 14,
     borderRadius: 16,
     fontSize: 16,
     fontWeight: '500',
-    color: '#111112',
+    color: BLACK,
   },
   checkboxContainer: {
     flexDirection: 'row',
@@ -137,7 +140,7 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
   },
   checkbox: {
-    backgroundColor: '#ffffff',
+    backgroundColor: WHITE,
     borderRadius: 4,
   },
   stageWrapper: {
@@ -147,6 +150,6 @@ export const styles = StyleSheet.create({
     marginLeft: 40,
   },
   errorMsg: {
-    color: '#E32828',
+    color: RED,
   },
 });
