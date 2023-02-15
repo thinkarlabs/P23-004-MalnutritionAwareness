@@ -11,7 +11,7 @@ export function AppStackNavigator() {
     useEffect(() => {
         setTimeout(() => {
             setShowSplashScreen(false);
-        },3000)
+        },300000)
     },[])
     return (
         <NavigationContainer>

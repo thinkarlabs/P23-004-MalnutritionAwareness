@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
-import { BLACK } from "../../shared/Constants/colors";
-import { WORK_SANS_BLACK, WORK_SANS_REGULAR } from "../../shared/Constants/fontFamilyConstants";
+import { BLACK } from "../../shared/constants/colors";
+import { WORK_SANS_BLACK, WORK_SANS_REGULAR } from "../../shared/constants/fontFamilyConstants";
 
 const styles = StyleSheet.create({
     header: {
