@@ -5,6 +5,7 @@ import jwt
 import datetime
 
 
+
 class User(BaseModel):
     phone_number = int(10)
     otp = int(6)
@@ -13,11 +14,7 @@ user = User()
 
 app = FastAPI()
 
-
-
 SECRET_KEY = "secret_key"
-
-
 
 # Use OAuth2PasswordBearer for authorization
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/verify_otp")
@@ -28,7 +25,6 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/verify_otp")
 async def fetch_posts(user: User):
     print(user)
     return {"data": user}
-
 
 
 @app.post("/api/v1/verify_otp")
@@ -49,6 +45,7 @@ async def verify_otp(phone_number: int, otp: int):
     else:
         return{"success fully verified"}
         #raise HTTPException(status_code=400, detail="OTP verification failed")
+
 
 @app.post("/api/v1/update_user_status")
 async def update_user_status(Authorization: str = Header(None)):
