@@ -33,7 +33,7 @@ export function AppStackNavigator() {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          headerShown: true,
+          headerShown: false,
           cardStyle: {backgroundColor: WHITE},
         }}>
         {/* {showSplashScreen ? (

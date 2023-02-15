@@ -8,14 +8,10 @@ import {
 } from '../../shared/constants/constants';
 import {styles} from './styles';
 import LinearGradient from 'react-native-linear-gradient';
-import {
-  BUTTON,
-  GREY,
-  PLACEHOLDER_COLOR,
-  WHITE,
-} from '../../shared/constants/colors';
+import {GREY, PLACEHOLDER_COLOR, WHITE} from '../../shared/constants/colors';
 import {TextInput} from 'react-native-gesture-handler';
 import SelectDropdown from '../../shared/components/dropdown';
+import {Button} from '../../shared/components/button';
 
 const CreateAccountStageTwo = (
   setScreen,
@@ -90,16 +86,16 @@ const CreateAccountStageTwo = (
           </View>
         )}
       </View>
-        <Text style={styles.ButtonInfo}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
-        <TouchableOpacity
-          style={[styles.Button]}
-          underlayColor={BUTTON.PRIMARY}
-          onPress={() => {
-            setScreen(3);
-          }}>
-          <Text style={styles.ButtonText}>{CREATE_ACCOUNT.OTP_BUTTON}</Text>
-        </TouchableOpacity>
-      </View>
+      <Text style={styles.Info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
+      <Button
+        title={CREATE_ACCOUNT.OTP_BUTTON}
+        textStyle={styles.ButtonText}
+        buttonStyle={[styles.Button]}
+        onPress={() => {
+          setScreen(3);
+        }}
+      />
+    </View>
   );
 };
 

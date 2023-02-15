@@ -152,4 +152,11 @@ export const styles = StyleSheet.create({
   errorMsg: {
     color: RED,
   },
+  Info: {
+    fontWeight: '400',
+    fontSize: 16,
+    lineHeight: 24,
+    textAlign: 'center',
+    paddingTop: 90.2,
+  }
 });
