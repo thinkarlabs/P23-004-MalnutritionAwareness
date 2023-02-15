@@ -30,10 +30,19 @@ async def create_account(user: CreateUserSchema= Body(...)):
     user_dict = jsonable_encoder(user)
 
     user_dict.update({'is_active': False})
+    # Check if the user wants to create an account for someone else
+    if user.create_for_someone_else:
+        # Get the name of the person for whom the account is being created
+        full_name = user.full_name
 
-    # check if same record exists
-    if database.user.find_one({'phone_number': user_dict['phone_number']}):
-        raise HTTPException(status_code=409, detail="Phone number already exists !")
+        # Add the new user to the database with the specified information
+        user_dict.update({
+            'full_name': full_name
+        })
+    else:
+        # check if same record exists
+        if database.user.find_one({'phone_number': user_dict['phone_number']}):
+            raise HTTPException(status_code=409, detail="Phone number already exists !")
 
     database.user.insert_one(user_dict)
 

@@ -32,7 +32,7 @@ class CreateUserSchema(BaseModel):
     user_type: UserType
     child: List[Child]
     relation_with_child: Optional[str]
-
+    is_created_for_someone_else: Optional[bool] = False
 
 def ResponseModel(data, message):
     return {
