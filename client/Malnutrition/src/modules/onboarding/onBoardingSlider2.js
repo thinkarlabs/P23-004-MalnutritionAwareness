@@ -9,6 +9,7 @@ import {
 import AppTextTranslates from '../../shared/components/appTextTranslate';
 import NextScreenArrow from '../../shared/components/nextScreenArrow';
 import { LOGIN, ONBOARDINGSLIDER3 } from '../../shared/constants/navigatorConstants';
+import OnboardingSlide2 from '../../../assets/svg/onboardingSlide2SVG';
 
 const OnBoardingSlider2 = ({navigation}) => {
   return (
@@ -24,11 +25,9 @@ const OnBoardingSlider2 = ({navigation}) => {
           {/* Re-use component for text translation */}
           <AppTextTranslates />
         </View>
-        <Image
-          source={require('../../../assets/images/onboardingScreen2.png')}
-          style={styles.headerImage}
-        />
-
+        <View style={styles.headerImage2}>
+          <OnboardingSlide2 />
+        </View>
         <View style={styles.contentContainer}>
           <Text style={styles.contentTitle}>{ONBOARDSCREEN2_TITLE}</Text>
           <Text style={styles.contentBody}>{ONBOARDSCREEN2_CONTENT}</Text>
