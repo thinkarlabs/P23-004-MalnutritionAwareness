@@ -14,7 +14,7 @@ export const ENGLISH = 'En';
 
 export const CREATE_ACCOUNT = {
   SELECT_CURRENT_STAGE_TEXT:
-    'Select your current stage by tapping on the card.',
+    "Select beneficiary's current stage to proceed",
   CATEGORY_1_TITLE: 'Pregnant Woman',
   CATEGORY_1_DESCRIPTION: `A mother understands ${'\n'}what a child does ${'\n'}not say.`,
   CATEGORY_2_TITLE: 'Lactating Mother',
@@ -24,7 +24,8 @@ export const CREATE_ACCOUNT = {
   BUTTON_DESCRIPTION: 'Fill Your Details',
   OTP_BUTTON: 'Verify OTP',
   CHECK_BOX_LABEL: `Are you setting up this app ${'\n'}for someone else?`,
-  BUTTON_INFO: `By click on below button, you will ${'\n'} recieve one OTP code`
+  BUTTON_INFO: `By click on below button, you will ${'\n'} recieve one OTP code`,
+  MOVE_FORWARD_TEXT: 'Tap to select',
 };
 export const SET_APP_FOR = [{name: 'An NGO Member', code: 'ngo'}];
 

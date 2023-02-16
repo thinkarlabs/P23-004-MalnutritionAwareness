@@ -18,3 +18,4 @@ export const BUTTON = {
 };
 
 export const PLACEHOLDER_COLOR = '#616568';
+export const PLACEHOLDER_BORDER_COLOR = '#DBDDEB';

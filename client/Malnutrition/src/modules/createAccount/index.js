@@ -12,7 +12,6 @@ import CreateAccountStageOne from './createAccountStageOne';
 import CreateAccountStageTwo from './createAccountStageTwo';
 import AppHeader from '../../shared/components/appHeader';
 
-
 const CreateAccount = () => {
   const [currentScreenSelect, setCurrentScreenSelect] = useState(1);
   const [currentStageSelect, setCurrentStageSelect] = useState(0);

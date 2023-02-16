@@ -11,6 +11,7 @@ import {
   WHITE,
   RED,
   LIGHT_GREY,
+  PLACEHOLDER_BORDER_COLOR,
 } from '../../shared/constants/colors';
 
 export const styles = StyleSheet.create({
@@ -20,20 +21,13 @@ export const styles = StyleSheet.create({
   screenWrapper: {
     paddingLeft: 20,
     paddingRight: 20,
-    flex: 1,
   },
   titleText: {
     fontSize: 26,
     lineHeight: 34,
-    marginBottom: 22,
-  },
-  stageCard: {
-    borderRadius: 20,
-    borderColor: WHITE,
-    borderWidth: 4,
-    paddingHorizontal: 20,
-    paddingVertical: 25,
-    marginBottom: 20,
+    marginBottom: 10,
+    color: BLACK,
+    fontWeight: '400',
   },
   stageOne: {
     borderColor: LIGHT_GREEN,
@@ -45,25 +39,10 @@ export const styles = StyleSheet.create({
     borderColor: LIGHT_ORANGE,
   },
   leftSpacer: {
-    paddingLeft: '40%',
+    // paddingLeft: '40%',
   },
   rightSpacer: {
     paddingRight: '40%',
-  },
-  cardTitle: {
-    fontSize: 22,
-    lineHeight: 26,
-    marginBottom: 5,
-    fontWeight: '400',
-    color: BLACK,
-    alignSelf: 'stretch',
-  },
-  cardDesc: {
-    color: LIGHT_GREY,
-    fontSize: 16,
-    lineHeight: 22,
-    fontWeight: '400',
-    alignSelf: 'stretch',
   },
   selectedStageCard: {
     borderRadius: 20,
@@ -90,7 +69,8 @@ export const styles = StyleSheet.create({
     borderRadius: 16,
     color: WHITE,
     alignSelf: 'center',
-    width: '100%',
+    width: 334,
+    height: 52,
   },
   ButtonText: {
     color: WHITE,
@@ -112,11 +92,15 @@ export const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 20,
+    borderWidth: 1,
+    borderRadius: 12,
+    borderColor: PLACEHOLDER_BORDER_COLOR,
   },
   formWrapper: {
-    backgroundColor: '#F2F5F7',
+    borderColor: PLACEHOLDER_BORDER_COLOR,
     padding: 20,
     borderRadius: 16,
+    borderWidth : 1,
   },
   inputField: {
     backgroundColor: WHITE,
@@ -140,6 +124,8 @@ export const styles = StyleSheet.create({
   checkbox: {
     backgroundColor: WHITE,
     borderRadius: 4,
+    borderWidth: 1,
+    borderColor: PLACEHOLDER_BORDER_COLOR,
   },
   stageWrapper: {
     flexGrow: 1,
@@ -155,9 +141,18 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     textAlign: 'center',
-    paddingTop: 82,
   },
   buttonContainer: {
     paddingTop: 146,
   },
+  androidButtonContainer: {
+    paddingTop: 73,
+  },
+  rowReverse: {
+    flexDirection: 'row-reverse',
+    justifyContent: 'space-around',
+  },
+  detailButtonContainer: {
+
+    },
 });

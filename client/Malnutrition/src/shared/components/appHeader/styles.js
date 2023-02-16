@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { BLACK } from '../../constants/colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -14,6 +15,7 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '700',
     paddingLeft: 8,
+    color: BLACK
   },
   secondContainer: {
     flexDirection: 'row-reverse',

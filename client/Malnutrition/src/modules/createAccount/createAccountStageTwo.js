@@ -19,6 +19,7 @@ import {GREY, PLACEHOLDER_COLOR, WHITE} from '../../shared/constants/colors';
 import {TextInput} from 'react-native-gesture-handler';
 import SelectDropdown from '../../shared/components/dropdown';
 import {Button} from '../../shared/components/button';
+import AppTextInput from '../../shared/components/appTextInput';
 
 const CreateAccountStageTwo = (
   setScreen,
@@ -50,26 +51,28 @@ const CreateAccountStageTwo = (
         </LinearGradient>
         <View style={styles.formWrapper}>
           <View style={styles.inputContainer}>
-            <TextInput
-              scrollEnabled
-              style={styles.inputField}
+            <AppTextInput
               placeholder={USER_DETAILS.MOTHER_NAME}
-              placeholderTextColor={PLACEHOLDER_COLOR}></TextInput>
+              placeholderTextColor={PLACEHOLDER_COLOR}
+              newStyles={styles.inputField}
+            />
           </View>
           <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.inputField}
+            <AppTextInput
               placeholder={USER_DETAILS.MENSTURAL_DATE}
-              placeholderTextColor={PLACEHOLDER_COLOR}></TextInput>
+              placeholderTextColor={PLACEHOLDER_COLOR}
+              newStyles={styles.inputField}
+            />
           </View>
           <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.inputField}
+            <AppTextInput
+              newStyles={styles.inputField}
               placeholder={USER_DETAILS.PHONE_NUMBER}
               keyboardType="numeric"
               placeholderTextColor={PLACEHOLDER_COLOR}
               onBlur={value => validatePhoneNumber(value)}
-              onFocus={() => setIsPhoneFocused(true)}></TextInput>
+              onFocus={() => setIsPhoneFocused(true)}
+            />
             {isPhoneFocused && isPhoneNumberValid && (
               <Text style={styles.errorMsg}>Invalid Phone Number</Text>
             )}
@@ -95,7 +98,11 @@ const CreateAccountStageTwo = (
           )}
         </View>
       </View>
-      <View style={Platform.select({ios : styles.buttonContainer})}>
+      <View
+        style={Platform.select({
+          ios: styles.buttonContainer,
+          android: styles.androidButtonContainer,
+        })}>
         <Text style={styles.Info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
         <Button
           title={CREATE_ACCOUNT.OTP_BUTTON}
