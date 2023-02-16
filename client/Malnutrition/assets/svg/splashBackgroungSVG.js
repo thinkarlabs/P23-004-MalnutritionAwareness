@@ -7,13 +7,17 @@ import Svg, {
   LinearGradient,
   Stop,
   ClipPath,
-} from "react-native-svg"
+} from "react-native-svg";
+import { Dimensions } from "react-native";
 /* SVGR has dropped some elements not supported by react-native-svg: filter */
+
+const screenHeight = Dimensions.get('screen').height;
+const screenWidth = Dimensions.get('screen').width;
 
 const SplashBackgroundSVG = (props) => (
   <Svg
-    width={'100%'}
-    height={'100%'}
+    width={screenWidth}
+    height={screenHeight}
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}

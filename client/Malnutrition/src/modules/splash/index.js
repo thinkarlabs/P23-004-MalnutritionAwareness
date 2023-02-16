@@ -6,13 +6,21 @@ import styles from './styles';
 
 const Splash = ({}) => {
   return (
-    <View style={{}}>
-      <SplashBackgroundSVG>
+    <View>
+      <View
+        style={{
+          // position: 'absolute',
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
+        }}>
+        <SplashBackgroundSVG />
+      </View>
       <View style={styles.title}>
         <Text style={styles.titleText}>{HEADING_ONE}</Text>
         <Text styles={styles.bodyText}>{HEADING_TWO}</Text>
       </View>
-        </SplashBackgroundSVG>
     </View>
   );
 };
