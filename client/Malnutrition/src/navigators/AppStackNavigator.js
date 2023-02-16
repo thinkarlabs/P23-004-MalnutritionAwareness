@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import Onboarding from '../modules/onboarding';
 import Splash from '../modules/splash';
 import CreateAccount from '../modules/createAccount';
 import OnBoardingSlider1 from '../modules/onboarding/onBoardingSlider1';
