@@ -10,6 +10,7 @@ import {TextInput} from 'react-native-gesture-handler';
 import Dropdown from 'react-native-input-select';
 import CreateAccountStageOne from './createAccountStageOne';
 import CreateAccountStageTwo from './createAccountStageTwo';
+import AppHeader from '../../shared/components/appHeader';
 
 
 const CreateAccount = () => {
@@ -33,6 +34,7 @@ const CreateAccount = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.screenWrapper}>
+        <AppHeader title={'Create Account'} />
         <Text style={styles.titleText}>
           {currentScreenSelect === 1 &&
             CREATE_ACCOUNT.SELECT_CURRENT_STAGE_TEXT}

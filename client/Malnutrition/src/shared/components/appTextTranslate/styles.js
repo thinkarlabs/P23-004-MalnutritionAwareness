@@ -14,6 +14,6 @@ export const styles = StyleSheet.create({
   languageText: {
     fontSize: 16,
     color: BLACK,
-    fontWeight: '700',
+    fontWeight: '400',
   },
 });
