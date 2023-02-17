@@ -8,7 +8,7 @@ import {
 } from '../../shared/constants/constants';
 import AppTextTranslates from '../../shared/components/appTextTranslate';
 import NextScreenArrow from '../../shared/components/nextScreenArrow';
-import { LOGIN, ONBOARDINGSLIDER3 } from '../../shared/constants/navigatorConstants';
+import { CREATEACCOUNT, LOGIN, ONBOARDINGSLIDER3 } from '../../shared/constants/navigatorConstants';
 import OnboardingSlide2 from '../../../assets/svg/onboardingSlide2SVG';
 
 const OnBoardingSlider2 = ({navigation}) => {
@@ -18,7 +18,7 @@ const OnBoardingSlider2 = ({navigation}) => {
         <View style={styles.header}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate(LOGIN);
+              navigation.navigate(CREATEACCOUNT);
             }}>
             <Text style={styles.headerText}>{SKIP}</Text>
           </TouchableOpacity>

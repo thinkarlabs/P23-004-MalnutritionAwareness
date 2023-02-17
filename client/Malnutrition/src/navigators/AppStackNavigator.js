@@ -14,6 +14,7 @@ import {
   ONBOARDINGSLIDER3,
   SPLASH,
   CREATE_ACCOUNT,
+  CREATEACCOUNT,
 } from '../shared/constants/navigatorConstants';
 import { WHITE } from '../shared/constants/colors';
 
@@ -42,7 +43,7 @@ export function AppStackNavigator() {
         <Stack.Screen name={ONBOARDINGSLIDER2} component={OnBoardingSlider2} />
         <Stack.Screen name={ONBOARDINGSLIDER3} component={OnBoardingSlider3} />
         <Stack.Screen name={LOGIN} component={Login} />
-        <Stack.Screen name={CREATE_ACCOUNT} component={CreateAccount} />
+        <Stack.Screen name={CREATEACCOUNT} component={CreateAccount} />
       </Stack.Navigator>
     </NavigationContainer>
   );

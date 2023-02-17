@@ -20,6 +20,7 @@ import {TextInput} from 'react-native-gesture-handler';
 import SelectDropdown from '../../shared/components/dropdown';
 import {Button} from '../../shared/components/button';
 import AppTextInput from '../../shared/components/appTextInput';
+import CalenderIcon from '../../../assets/svg/calenderIconSVG';
 
 const CreateAccountStageTwo = (
   setScreen,
@@ -36,6 +37,7 @@ const CreateAccountStageTwo = (
       setIsPhoneNumberValid(false);
     }
   };
+
   return (
     <ScrollView style={styles.stageWrapper}>
       <View style={{flex: 1}}>
@@ -51,6 +53,9 @@ const CreateAccountStageTwo = (
         </LinearGradient>
         <View style={styles.formWrapper}>
           <View style={styles.inputContainer}>
+            <View style={styles.iconTextInput}>
+              <CalenderIcon />
+            </View>
             <AppTextInput
               placeholder={USER_DETAILS.MOTHER_NAME}
               placeholderTextColor={PLACEHOLDER_COLOR}
@@ -58,6 +63,9 @@ const CreateAccountStageTwo = (
             />
           </View>
           <View style={styles.inputContainer}>
+            <View style={styles.iconTextInput}>
+              <CalenderIcon />
+            </View>
             <AppTextInput
               placeholder={USER_DETAILS.MENSTURAL_DATE}
               placeholderTextColor={PLACEHOLDER_COLOR}
@@ -65,6 +73,9 @@ const CreateAccountStageTwo = (
             />
           </View>
           <View style={styles.inputContainer}>
+            <View style={styles.iconTextInput}>
+              <CalenderIcon />
+            </View>
             <AppTextInput
               newStyles={styles.inputField}
               placeholder={USER_DETAILS.PHONE_NUMBER}

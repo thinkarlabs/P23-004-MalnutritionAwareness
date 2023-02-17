@@ -11,8 +11,9 @@ import Dropdown from 'react-native-input-select';
 import CreateAccountStageOne from './createAccountStageOne';
 import CreateAccountStageTwo from './createAccountStageTwo';
 import AppHeader from '../../shared/components/appHeader';
+import {CREATEACCOUNT, ONBOARDINGSLIDER1} from '../../shared/constants/navigatorConstants';
 
-const CreateAccount = () => {
+const CreateAccount = ({navigation}) => {
   const [currentScreenSelect, setCurrentScreenSelect] = useState(1);
   const [currentStageSelect, setCurrentStageSelect] = useState(0);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
@@ -33,7 +34,10 @@ const CreateAccount = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.screenWrapper}>
-        <AppHeader title={'Create Account'} />
+        <AppHeader
+          title={'Create Account'}
+          onPress={() => navigation.navigate(ONBOARDINGSLIDER1)}
+        />
         <Text style={styles.titleText}>
           {currentScreenSelect === 1 &&
             CREATE_ACCOUNT.SELECT_CURRENT_STAGE_TEXT}
