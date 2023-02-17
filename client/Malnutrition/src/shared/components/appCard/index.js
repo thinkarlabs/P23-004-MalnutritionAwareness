@@ -7,20 +7,16 @@ import { styles } from './styles';
 export const AppCard = ({onPress, newStyle, title, content, image}) => {
     return (
         <View style={styles.stageCard}>
-          <TouchableOpacity
-            // onPress={() => setStage(1)}
-            onPress={onPress}
+          <View
             style={newStyle ? newStyle : styles.row}>
-            {/* <PregnantWomenImage /> */}
             {image}
             <View style={{flexDirection: 'column'}}>
               <Text style={styles.cardTitle}>{title}
-                {/* {CREATE_ACCOUNT.CATEGORY_1_TITLE} */}
               </Text>
               <Text style={styles.cardDesc}>{content}
-                {/* {CREATE_ACCOUNT.CATEGORY_1_DESCRIPTION} */}
               </Text>
-              <View
+              <TouchableOpacity
+              onPress={onPress}
                 style={styles.cardTitleContainer}>
                 <Text style={styles.cardTitleText}>
                     {CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
@@ -28,9 +24,9 @@ export const AppCard = ({onPress, newStyle, title, content, image}) => {
                 <View style={{left: 8}}>
                   <BackArrowWithCircle />
                 </View>
-              </View>
+              </TouchableOpacity>
             </View>
-          </TouchableOpacity>
+          </View>
         </View>
     )
 }
