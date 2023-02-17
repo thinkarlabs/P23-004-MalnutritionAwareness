@@ -4,8 +4,8 @@ from typing import Optional, List
 from pydantic import BaseModel, validator, constr
 
 
-class UserRole(str, Enum):
-    ANGANVADI = 'ANGANVADI'
+class relationwithchild(str, Enum):
+    ANGANWADI = 'ANGANWADI'
     NGO_MEMBER = 'NGO_MEMBER'
     RELATIVE = 'RELATIVE'
 
@@ -41,9 +41,8 @@ class CreateUserSchema(BaseModel):
         regex=r"^(\+)[1-9][0-9\-\(\)\.]{9,15}$",
     )
     user_type: UserType
-    user_role: UserRole
+    relation_with_child: Optional[relationwithchild] = None
     child: List[Child]
-    relation_with_child: Optional[str]
     is_created_for_someone_else: Optional[bool] = False
 
 
