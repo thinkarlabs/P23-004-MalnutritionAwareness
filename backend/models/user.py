@@ -5,15 +5,15 @@ from pydantic import BaseModel, validator, constr
 
 
 class relationwithchild(str, Enum):
-    ANGANWADI = 'ANGANWADI'
-    NGO_MEMBER = 'NGO_MEMBER'
-    RELATIVE = 'RELATIVE'
+    Anganwadi_Member = 'Anganwadi Member'
+    NGO_Member = 'NGO Member'
+    Relative = 'Relative'
 
 
 class UserType(str, Enum):
-    PREGNANT = 'PREGNANT'
-    LACTATING = 'LACTATING'
-    CAREGIVER = 'CAREGIVER'
+    Pregnant_Woman = 'Pregnant Woman'
+    Lactating_Mother = 'Lactating Mother'
+    Caregiver = 'Caregiver'
 
 
 class GenderType(str, Enum):
