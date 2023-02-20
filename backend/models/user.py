@@ -4,17 +4,16 @@ from typing import Optional, List
 from pydantic import BaseModel, validator, constr
 
 
-class RelationWithChild(str, Enum):
+class UserType(str, Enum):
     PREGNANT = 'PREGNANT'
     LACTATING = 'LACTATING'
     CAREGIVER = 'CAREGIVER'
 
 
-class UserType(str, Enum):
+class RelationWithChild(str, Enum):
     NGO_MEMBER = 'NGO_MEMBER'
     RELATIVE = 'RELATIVE'
     ANGANWADI_MEMBER = 'ANGANWADI_MEMBER'
-
 
 class GenderType(str, Enum):
     MALE = 'MALE'
