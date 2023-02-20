@@ -40,3 +40,9 @@ def ResponseModel(data, message):
         "code": 200,
         "message": message,
     }
+
+SECRET_KEY = "secret_key"
+ALGORITHM = "HS256"
+class VerifyOTPResponse(BaseModel):
+    message: str
+    session_token: str | None
