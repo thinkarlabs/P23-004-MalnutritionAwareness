@@ -95,6 +95,8 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 12,
     borderColor: PLACEHOLDER_BORDER_COLOR,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   formWrapper: {
     borderColor: PLACEHOLDER_BORDER_COLOR,
@@ -106,9 +108,11 @@ export const styles = StyleSheet.create({
     backgroundColor: WHITE,
     padding: 14,
     borderRadius: 16,
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '500',
     color: BLACK,
+    width: 232,
+    left: 13,
   },
   checkboxContainer: {
     flexDirection: 'row',
@@ -143,16 +147,21 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   buttonContainer: {
-    paddingTop: 146,
+    paddingTop: 82,
   },
   androidButtonContainer: {
-    paddingTop: 73,
+    paddingTop: 52,
   },
   rowReverse: {
     flexDirection: 'row-reverse',
     justifyContent: 'space-around',
   },
-  detailButtonContainer: {
-
-    },
+  iconTextInput: {
+    backgroundColor: '#E9EAF3',
+    height: 28,
+    width: 28,
+    borderRadius: 14,
+    justifyContent: 'center',
+    left: 12,
+  }
 });

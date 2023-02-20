@@ -26,6 +26,7 @@ export const CREATE_ACCOUNT = {
   CHECK_BOX_LABEL: `Are you setting up this app ${'\n'}for someone else?`,
   BUTTON_INFO: `By click on below button, you will ${'\n'} recieve one OTP code`,
   MOVE_FORWARD_TEXT: 'Tap to select',
+  BENEFICIARY_INFO_TITLE: 'Tell us more about the Beneficiary',
 };
 export const SET_APP_FOR = [{name: 'An NGO Member', code: 'ngo'}];
 

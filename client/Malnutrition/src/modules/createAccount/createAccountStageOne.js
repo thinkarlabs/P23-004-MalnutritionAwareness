@@ -3,17 +3,13 @@ import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import React, {useState} from 'react';
 import {CREATE_ACCOUNT} from '../../shared/constants/constants';
 import {styles} from './styles';
-import LinearGradient from 'react-native-linear-gradient';
 import {BLACK, BUTTON, GREY, WHITE} from '../../shared/constants/colors';
 import PregnantWomenImage from '../../../assets/svg/pregnantWomenSVG';
-import BackArrowWithCircle from '../../../assets/svg/backArrowWithCircleSVG';
 import {AppCard} from '../../shared/components/appCard';
 import LactatingMotherImage from '../../../assets/svg/lactatingMotherSVG';
 import Child6MonthImage from '../../../assets/svg/6MonthChildSVG';
-import { SCREEN_WIDTH } from '../../shared/constants/DynamicConstant';
 
 const CreateAccountStageOne = ({currentStageSelect, setStage, setScreen}) => {
-  const row = row;
   return (
     <View style={styles.stageWrapper}>
       <ScrollView style={{paddingBottom: '2%'}}>
@@ -45,7 +41,8 @@ const CreateAccountStageOne = ({currentStageSelect, setStage, setScreen}) => {
             ]}
             underlayColor={BUTTON.PRIMARY}
             onPress={() => {
-              setScreen(2);
+              setScreen(2),
+              prop = setStage()
             }}>
             <Text style={styles.ButtonText}>
               {CREATE_ACCOUNT.BUTTON_DESCRIPTION}
