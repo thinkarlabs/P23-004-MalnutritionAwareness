@@ -2,6 +2,7 @@ from fastapi import APIRouter, Body, HTTPException
 from models.user import CreateUserSchema, ResponseModel
 from fastapi.encoders import jsonable_encoder
 from config.database import db as database
+from config.twilio_config import twilio_client, twilio_number
 from schemas.user import serializeDict, serializeList
 from bson import ObjectId
 import random
@@ -22,6 +23,7 @@ def otp_generate_save(phone_number):
     return otp
 
 def send_otp_to_phone(phone_number, otp):
+    messages = twilio_client.messages.create(to=phone_number, from_=twilio_number, body=f"Your one-time password is {otp}")
     print("Sent OTP to phone successfully !!")
 
 @router.post("/account")
