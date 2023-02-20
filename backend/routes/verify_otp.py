@@ -2,7 +2,10 @@ from pydantic import BaseModel
 from fastapi import FastAPI
 from fastapi.security import OAuth2PasswordBearer
 import jwt
+from backend.config import database
 
+
+database.db = database
 
 class User(BaseModel):
     phone_number = 8106838656
@@ -34,5 +37,5 @@ async def verify_otp(phone_number: int, otp: int):
         return response
     else:
         # Return an error message
-        response = VerifyOTPResponse(message="Invalid OTP", session_token="")
+        response = VerifyOTPResponse(message="Invalid OTP")
         return response
