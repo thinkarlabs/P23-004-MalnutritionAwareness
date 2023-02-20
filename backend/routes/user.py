@@ -1,11 +1,14 @@
 from fastapi import APIRouter, Body, HTTPException
-from models.user import CreateUserSchema, ResponseModel
+from models.user import CreateUserSchema, ResponseModel, VerifyOTPResponse
 from fastapi.encoders import jsonable_encoder
 from config.database import db as database
+from config.jwt_handler import JWT_ALGORITHM, JWT_SECRET
 from config.twilio_config import twilio_client, twilio_number
 from schemas.user import serializeDict, serializeList
 from bson import ObjectId
 import random
+from fastapi.security import OAuth2PasswordBearer
+import jwt
 
 
 router = APIRouter()
@@ -45,5 +48,28 @@ async def create_account(user: CreateUserSchema= Body(...)):
     send_otp_to_phone(user_dict['phone_number'], otp)
 
     return {'status_code':200, 'message': 'User saved successfully'}
+
+# Use OAuth2PasswordBearer for authorization
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/verify_otp")
+
+@router.post("/api/v1/verify_otp")
+async def verify_otp(vphone_number: str, votp: int, is_creation: bool):
+    # Compare the provided OTP with the stored OTP
+    if database.otp_mapping.find_one({'phone_number': vphone_number, 'otp': votp}):
+        session_token = jwt.encode({'phone_number': vphone_number}, JWT_SECRET, algorithm=JWT_ALGORITHM)
+        response = VerifyOTPResponse(message="OTP verified successfully", session_token=session_token)
+        if is_creation:
+            database.user.update_one(
+                {'phone_number': vphone_number},
+                {"$set": {'is_active': True}},
+                upsert=False
+            )
+
+
+        return response
+    else:
+        # Return an error message
+        response = VerifyOTPResponse(message="Invalid OTP", session_token="")
+        return response
 
     
