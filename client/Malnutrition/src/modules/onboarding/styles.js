@@ -33,6 +33,13 @@ export const styles = StyleSheet.create({
   headerImage: {
     height: '50%',
     width: '100%',
+    left: 50,
+    top: 37,
+  },
+  headerImage2: {
+    height: '50%',
+    width: '100%',
+    top: 37,
   },
   languageIcon: {
     color: BLACK,

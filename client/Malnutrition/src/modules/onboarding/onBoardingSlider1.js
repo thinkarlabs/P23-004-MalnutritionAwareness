@@ -8,7 +8,11 @@ import {
   SKIP,
 } from '../../shared/constants/constants';
 import NextScreenArrow from '../../shared/components/nextScreenArrow';
-import { LOGIN, ONBOARDINGSLIDER2 } from '../../shared/constants/navigatorConstants';
+import {
+  LOGIN,
+  ONBOARDINGSLIDER2,
+} from '../../shared/constants/navigatorConstants';
+import OnboardingSlide1 from '../../../assets/svg/onboardingSlide1SVG';
 
 const OnBoardingSlider1 = ({navigation}) => {
   return (
@@ -24,10 +28,9 @@ const OnBoardingSlider1 = ({navigation}) => {
           {/* Re-use component for text translation */}
           <AppTextTranslates />
         </View>
-        <Image
-          source={require('../../../assets/images/onboardingScreen.png')}
-          style={styles.headerImage}
-        />
+        <View style={styles.headerImage}>
+          <OnboardingSlide1 />
+        </View>
         <View style={styles.contentContainer}>
           <Text style={styles.contentTitle}>{ONBOARDSCREEN1_TITLE}</Text>
           <Text style={styles.contentBody}>{ONBOARDSCREEN1_CONTENT}</Text>

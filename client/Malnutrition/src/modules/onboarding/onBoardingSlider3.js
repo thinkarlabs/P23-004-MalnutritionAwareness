@@ -9,6 +9,7 @@ import {
 import AppTextTranslates from '../../shared/components/appTextTranslate';
 import NextScreenArrow from '../../shared/components/nextScreenArrow';
 import { LOGIN, ONBOARDINGSLIDER1 } from '../../shared/constants/navigatorConstants';
+import OnboardingSlide3 from '../../../assets/svg/onboardingSlide3SVG';
 
 const OnBoardingSlider3 = ({navigation}) => {
   return (
@@ -23,11 +24,9 @@ const OnBoardingSlider3 = ({navigation}) => {
           </TouchableOpacity>
           <AppTextTranslates />
         </View>
-        <Image
-          source={require('../../../assets/images/onboardingScreen3.png')}
-          style={styles.headerImage}
-        />
-
+        <View style={styles.headerImage}>
+          <OnboardingSlide3 />
+        </View>
         <View style={styles.contentContainer}>
           <Text style={styles.contentTitle}>{ONBOARDSCREEN3_TITLE}</Text>
           <Text style={styles.contentBody}>{ONBOARDSCREEN3_CONTENT}</Text>
