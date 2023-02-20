@@ -4,16 +4,16 @@ from typing import Optional, List
 from pydantic import BaseModel, validator, constr
 
 
-class relationwithchild(str, Enum):
-    Anganwadi_Member = 'Anganwadi Member'
-    NGO_Member = 'NGO Member'
-    Relative = 'Relative'
+class RelationWithChild(str, Enum):
+    PREGNANT = 'PREGNANT'
+    LACTATING = 'LACTATING'
+    CAREGIVER = 'CAREGIVER'
 
 
 class UserType(str, Enum):
-    Pregnant_Woman = 'Pregnant Woman'
-    Lactating_Mother = 'Lactating Mother'
-    Caregiver = 'Caregiver'
+    NGO_MEMBER = 'NGO_MEMBER'
+    RELATIVE = 'RELATIVE'
+    ANGANWADI_MEMBER = 'ANGANWADI_MEMBER'
 
 
 class GenderType(str, Enum):
@@ -41,7 +41,7 @@ class CreateUserSchema(BaseModel):
         regex=r"^(\+)[1-9][0-9\-\(\)\.]{9,15}$",
     )
     user_type: UserType
-    relation_with_child: Optional[relationwithchild] = None
+    relation_with_child: Optional[RelationWithChild] = None
     child: List[Child]
     is_created_for_someone_else: Optional[bool] = False
 
