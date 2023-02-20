@@ -150,7 +150,7 @@ export const styles = StyleSheet.create({
     paddingTop: 82,
   },
   androidButtonContainer: {
-    paddingTop: 73,
+    paddingTop: 52,
   },
   rowReverse: {
     flexDirection: 'row-reverse',

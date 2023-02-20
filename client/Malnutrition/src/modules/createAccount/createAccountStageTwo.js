@@ -21,6 +21,7 @@ import SelectDropdown from '../../shared/components/dropdown';
 import {Button} from '../../shared/components/button';
 import AppTextInput from '../../shared/components/appTextInput';
 import CalenderIcon from '../../../assets/svg/calenderIconSVG';
+import AppDatePicker from '../../shared/components/appDatePicker';
 
 const CreateAccountStageTwo = (
   setScreen,
@@ -66,11 +67,12 @@ const CreateAccountStageTwo = (
             <View style={styles.iconTextInput}>
               <CalenderIcon />
             </View>
-            <AppTextInput
+            {/* <AppTextInput
               placeholder={USER_DETAILS.MENSTURAL_DATE}
               placeholderTextColor={PLACEHOLDER_COLOR}
               newStyles={styles.inputField}
-            />
+            /> */}
+            <AppDatePicker />
           </View>
           <View style={styles.inputContainer}>
             <View style={styles.iconTextInput}>
