@@ -42,6 +42,7 @@ def ResponseModel(data, message):
     }
 
 SECRET_KEY = "secret_key"
+
 ALGORITHM = "HS256"
 class VerifyOTPResponse(BaseModel):
     message: str
