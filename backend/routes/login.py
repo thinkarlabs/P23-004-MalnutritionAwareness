@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Body, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 #from backend.models import user as user_
-from models.user import LoginUserSchema,VerifyOTPResponse,SECRET_KEY,ALGORITHM
+from models.user import LoginUserSchema,VerifyOTPResponse
 from fastapi.encoders import jsonable_encoder
 from config.database import db as database
 from config.twilio_config import twilio_client, twilio_number
@@ -43,7 +43,9 @@ async def login_account(user:LoginUserSchema= Body(...)):
 
     # check if same record exists
     if database.user.find_one({'phone_number': user_dict['phone_number']}):
-    # # generate and save otp for user
+
+
+             # # generate and save otp for user
         otp = otp_generate_save(user_dict['phone_number'])
     # # send otp to users phone number
         send_otp_to_phone(user_dict['phone_number'], otp)
@@ -52,24 +54,22 @@ async def login_account(user:LoginUserSchema= Body(...)):
     else:
         raise HTTPException(status_code=409, detail="Phone number not exists !")
 @router.post("/api/v1/verify_otp")
-async def verify_otp(vphone_number: str, votp: int, is_creation: bool):
+async def verify_otp(votp: int, is_creation: bool):
     # Compare the provided OTP with the stored OTP
-    if database.otp_mapping.find_one({'phone_number': vphone_number, 'otp': votp})
+    if database.otp_mapping.find_one({'otp': votp}):
         if datetime.timedelta < database.otp_mapping.timestamp:
-
-            session_token = jwt.encode({'phone_number': vphone_number}, SECRET_KEY, algorithm=ALGORITHM)
-            response = VerifyOTPResponse(message="OTP verified successfully", session_token=session_token)
+            response = VerifyOTPResponse(message="OTP verified successfully")
             if is_creation:
                 database.user.update_one(
-                    {'phone_number': vphone_number},
+                    {'phone_number': database.otp_mapping.phone_number},
                     {"$set": {'is_active': True}},
                     upsert=False
                     )
             return response
         else:
-            raise HTTPException(status_code=400,detail="otp was expired 120 seconds back")
+            raise HTTPException(status_code=400, detail="otp was expired 120 seconds back")
 
     else:
         # Return an error message
-        response = VerifyOTPResponse(message="Invalid OTP", session_token="")
+        response = VerifyOTPResponse(message="Invalid OTP")
         return response
