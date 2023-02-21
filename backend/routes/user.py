@@ -1,5 +1,4 @@
 import datetime
-
 from fastapi import APIRouter, Body, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from models.user import CreateUserSchema, ResponseModel,VerifyOTPResponse,SECRET_KEY,ALGORITHM

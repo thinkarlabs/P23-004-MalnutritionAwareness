@@ -1,5 +1,6 @@
 from pydantic import BaseModel
-from config.database import db as database
+#from config.database import db as database
+from backend.config import database as
 from fastapi import FastAPI,HTTPException
 from fastapi.security import OAuth2PasswordBearer
 import jwt

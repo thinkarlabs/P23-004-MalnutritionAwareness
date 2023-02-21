@@ -10,7 +10,7 @@ from bson import ObjectId
 import random
 
 
-router = APIRouter()
+#router = APIRouter()
 def otp_generate_save(phone_number):
     # Generate 4 digit random OTP
     otp = random.randint(1000, 9999)
