@@ -7,6 +7,7 @@ from schemas.user import serializeDict, serializeList
 from bson import ObjectId
 import random
 import time
+import datetime
 
 
 router = APIRouter()
@@ -15,8 +16,7 @@ router = APIRouter()
 def otp_generate_save(phone_number):
     # Generate 4 digit random OTP and timestamp
     otp = random.randint(1000, 9999)
-    curr_time = time.localtime()
-    timestamp = time.strftime("%H:%M:%S", curr_time)
+    timestamp = datetime.datetime.now()
 
     # Upsert the phone_number:otp mapping
     database.otp_mapping.update_one(
