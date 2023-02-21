@@ -5,12 +5,14 @@ import {CREATEACCOUNT} from '../../constants/navigatorConstants';
 import AppTextTranslates from '../appTextTranslate';
 import {styles} from './styles';
 
-const AppHeader = ({onPress, canGoBack, title}) => {
+const AppHeader = ({onPress, canGoBack, title, backArrowValue}) => {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={onPress} >
-          <BackArrow />
+        <TouchableOpacity onPress={onPress} backArrowValue={backArrowValue}>
+          {
+          backArrowValue == true ? ( <BackArrow />) : null
+          }
         </TouchableOpacity>
         <Text style={styles.headerText}>{title}</Text>
         </View>

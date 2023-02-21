@@ -1,13 +1,13 @@
 import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 
 import React, {useState} from 'react';
-import {CREATE_ACCOUNT} from '../../shared/constants/constants';
+import {CREATE_ACCOUNT} from '../../../shared/constants/constants';
 import {styles} from './styles';
-import {BLACK, BUTTON, GREY, WHITE} from '../../shared/constants/colors';
-import PregnantWomenImage from '../../../assets/svg/pregnantWomenSVG';
-import {AppCard} from '../../shared/components/appCard';
-import LactatingMotherImage from '../../../assets/svg/lactatingMotherSVG';
-import Child6MonthImage from '../../../assets/svg/6MonthChildSVG';
+import {BLACK, BUTTON, GREY, WHITE} from '../../../shared/constants/colors';
+import PregnantWomenImage from '../../../../assets/svg/pregnantWomenSVG';
+import {AppCard} from '../../../shared/components/appCard';
+import LactatingMotherImage from '../../../../assets/svg/lactatingMotherSVG';
+import Child6MonthImage from '../../../../assets/svg/6MonthChildSVG';
 
 const CreateAccountStageOne = ({currentStageSelect, setStage, setScreen}) => {
   return (

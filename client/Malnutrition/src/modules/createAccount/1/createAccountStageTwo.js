@@ -12,16 +12,16 @@ import {
   CREATE_ACCOUNT,
   SET_APP_FOR,
   USER_DETAILS,
-} from '../../shared/constants/constants';
+} from '../../../shared/constants/constants';
 import {styles} from './styles';
 import LinearGradient from 'react-native-linear-gradient';
-import {GREY, PLACEHOLDER_COLOR, WHITE} from '../../shared/constants/colors';
+import {GREY, PLACEHOLDER_COLOR, WHITE} from '../../../shared/constants/colors';
 import {TextInput} from 'react-native-gesture-handler';
-import SelectDropdown from '../../shared/components/dropdown';
-import {Button} from '../../shared/components/button';
-import AppTextInput from '../../shared/components/appTextInput';
-import CalenderIcon from '../../../assets/svg/calenderIconSVG';
-import AppDatePicker from '../../shared/components/appDatePicker';
+import SelectDropdown from '../../../shared/components/dropdown';
+import {Button} from '../../../shared/components/button';
+import AppTextInput from '../../../shared/components/appTextInput';
+import CalenderIcon from '../../../../assets/svg/calenderIconSVG';
+import AppDatePicker from '../../../shared/components/appDatePicker';
 
 const CreateAccountStageTwo = (
   setScreen,

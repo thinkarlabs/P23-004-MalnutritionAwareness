@@ -8,7 +8,7 @@ import {
 
 export const styles = StyleSheet.create({
   inputField: {
-    backgroundColor: '#ffffff',
+    backgroundColor: 'red',
     padding: 14,
     borderRadius: 16,
     fontSize: 16,

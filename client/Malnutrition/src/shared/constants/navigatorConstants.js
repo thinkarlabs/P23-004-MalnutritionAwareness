@@ -4,3 +4,6 @@ export const ONBOARDINGSLIDER2 = 'OnboardingSlider2';
 export const ONBOARDINGSLIDER3 = 'OnboardingSlider3';
 export const LOGIN = 'Login';
 export const CREATEACCOUNT = 'CreateAccount';
+export const PREGNANTWOMAN_SCREEN = 'pregnantWoman';
+export const LACTATINGMOTHER_SCREEN = 'lactatingMother';
+export const CHILDINFO_SCREEN = 'childInfo';

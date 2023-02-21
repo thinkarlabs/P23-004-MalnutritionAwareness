@@ -8,8 +8,12 @@ const SelectDropdown = dropdownOptions => {
   return (
     <Dropdown
       style={styles.inputField}
-      placeholder="Select an option..."
-      options={[{name: 'An NGO Member', code: 'ngo'}]}
+      placeholder="Select your role"
+      options={[
+        {name: 'A Relative', code: 'rel'},
+        {name: 'An NGO Member', code: 'ngo'},
+        {name: 'An Anganwadi Member', code: 'angw'},
+      ]}
       optionLabel={'name'}
       optionValue={'code'}
       selectedValue={selectedOption}

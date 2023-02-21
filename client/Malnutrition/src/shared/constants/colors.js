@@ -12,6 +12,8 @@ export const GREY = '#EBEFF1';
 export const RED = '#E32828';
 export const LIGHT_GREY = '#616568';
 export const PURPLE = '#512DA8';
+export const LIGHT_BLUE = '#E9EAF3';
+
 
 export const BUTTON = {
   PRIMARY: '#6667FF',

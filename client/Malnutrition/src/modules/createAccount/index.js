@@ -1,67 +1,59 @@
-import {View, Text, SafeAreaView, Button, TouchableOpacity} from 'react-native';
-import CheckBox from '@react-native-community/checkbox';
-
-import React, {useState} from 'react';
-import {CREATE_ACCOUNT} from '../../shared/constants/constants';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  ScrollView,
+  TouchableOpacity,
+  Platform,
+} from 'react-native';
+import React from 'react';
 import {styles} from './styles';
-import LinearGradient from 'react-native-linear-gradient';
-import {BUTTON, PINK} from '../../shared/constants/colors';
-import {TextInput} from 'react-native-gesture-handler';
-import Dropdown from 'react-native-input-select';
-import CreateAccountStageOne from './createAccountStageOne';
-import CreateAccountStageTwo from './createAccountStageTwo';
 import AppHeader from '../../shared/components/appHeader';
-import {CREATEACCOUNT, ONBOARDINGSLIDER1} from '../../shared/constants/navigatorConstants';
+import {CREATE_ACCOUNT} from '../../shared/constants/constants';
+import {AppCard} from '../../shared/components/appCard';
+import PregnantWomenImage from '../../../assets/svg/pregnantWomenSVG';
+import LactatingMotherImage from '../../../assets/svg/lactatingMotherSVG';
+import Child6MonthImage from '../../../assets/svg/6MonthChildSVG';
+import {BUTTON} from '../../shared/constants/colors';
+import { CHILDINFO_SCREEN, LACTATINGMOTHER_SCREEN, PREGNANTWOMAN_SCREEN } from '../../shared/constants/navigatorConstants';
 
 const CreateAccount = ({navigation}) => {
-  const [currentScreenSelect, setCurrentScreenSelect] = useState(1);
-  const [currentStageSelect, setCurrentStageSelect] = useState(0);
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
-  const [appFor, setAppFor] = useState('');
-
-  const setStage = stage => {
-    setCurrentStageSelect(stage);
-    console.log('stage:' + stage);
-  };
-
-  const setScreen = screen => {
-    setCurrentScreenSelect(screen);
-  };
-  const setCheckbox = val => {
-    setToggleCheckBox(val);
-  };
-
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.screenWrapper}>
-        <AppHeader
-          title={'Create Account'}
-          onPress={() => currentScreenSelect === 2 ? setScreen(1) : navigation.navigate(ONBOARDINGSLIDER1)}
-        />
-        <Text style={styles.titleText}>
-          {currentScreenSelect === 1 &&
-            CREATE_ACCOUNT.SELECT_CURRENT_STAGE_TEXT}
-          {currentScreenSelect === 2 && CREATE_ACCOUNT.BENEFICIARY_INFO_TITLE}
-        </Text>
-
-        {currentScreenSelect === 1 && (
-          <CreateAccountStageOne
-            currentStageSelect={currentStageSelect}
-            setStage={setStage}
-            setScreen={setScreen}
+      <AppHeader title={CREATE_ACCOUNT.TITLE_SCREEN} />
+      <ScrollView
+        contentContainerStyle={Platform.select({
+          ios: styles.scrollContainerIOS,
+          android: styles.scrollContainer,
+        })}>
+        <View style={styles.screenWrapper}>
+          <Text style={styles.titleText}>
+            {CREATE_ACCOUNT.SELECT_CURRENT_STAGE_TEXT}
+          </Text>
+          <AppCard
+            onPress={() => {navigation.navigate(PREGNANTWOMAN_SCREEN, {
+              title: CREATE_ACCOUNT.CATEGORY_1_TITLE,
+              image : <PregnantWomenImage/>
+            })}}
+            title={CREATE_ACCOUNT.CATEGORY_1_TITLE}
+            content={CREATE_ACCOUNT.CATEGORY_1_DESCRIPTION}
+            image={<PregnantWomenImage />}
           />
-        )}
-        {currentScreenSelect === 2 && (
-          <CreateAccountStageTwo
-            setScreen={setScreen}
-            setCheckboxValue={setCheckbox}
-            setAppFor={setAppFor}
-            currentScreenSelect={currentScreenSelect}
-            toggleCheckBox={toggleCheckBox}
-            appFor={appFor}
+          <AppCard
+            onPress={() => {navigation.navigate(LACTATINGMOTHER_SCREEN)}}
+            title={CREATE_ACCOUNT.CATEGORY_2_TITLE}
+            content={CREATE_ACCOUNT.CATEGORY_2_DESCRIPTION}
+            image={<LactatingMotherImage />}
+            newStyle={styles.rowReverse}
           />
-        )}
-      </View>
+          <AppCard
+            onPress={() => {navigation.navigate(CHILDINFO_SCREEN)}}
+            title={CREATE_ACCOUNT.CATEGORY_3_TITLE}
+            content={CREATE_ACCOUNT.CATEGORY_3_DESCRIPTION}
+            image={<Child6MonthImage />}
+          />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
