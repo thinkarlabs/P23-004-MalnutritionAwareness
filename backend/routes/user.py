@@ -15,7 +15,8 @@ router = APIRouter()
 def otp_generate_save(phone_number):
     # Generate 4 digit random OTP and timestamp
     otp = random.randint(1000, 9999)
-    timestamp = time.time()
+    curr_time = time.localtime()
+    timestamp = time.strftime("%H:%M:%S", curr_time)
 
     # Upsert the phone_number:otp mapping
     database.otp_mapping.update_one(
