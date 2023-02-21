@@ -33,6 +33,11 @@ class CreateUserSchema(BaseModel):
     child: List[Child]
     relation_with_child: Optional[str]
 
+def LoginUserSchema(BaseModel):
+    phone_number: constr(
+        strip_whitespace=True,
+        regex=r"^(\+)[1-9][0-9\-\(\)\.]{9,15}$",
+    )
 
 def ResponseModel(data, message):
     return {
@@ -47,3 +52,4 @@ ALGORITHM = "HS256"
 class VerifyOTPResponse(BaseModel):
     message: str
     session_token: str | None
+

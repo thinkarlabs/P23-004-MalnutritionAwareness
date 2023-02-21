@@ -1,5 +1,3 @@
-import datetime
-
 from fastapi import APIRouter, Body, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from models.user import CreateUserSchema, ResponseModel,VerifyOTPResponse,SECRET_KEY,ALGORITHM
@@ -30,8 +28,8 @@ def send_otp_to_phone(phone_number, otp):
     messages = twilio_client.messages.create(to=phone_number, from_=twilio_number, body=f"Your one-time password is {otp}")
     print("Sent OTP to phone successfully !!")
 
-@router.post("/account")
-async def create_account(user:CreateUserSchema= Body(...)):
+@router.post("/login")
+async def login_account(user:LoginUserSchema= Body(...)):
     user_dict = jsonable_encoder(user)
 
     user_dict.update({'is_active': False})
@@ -39,19 +37,14 @@ async def create_account(user:CreateUserSchema= Body(...)):
     # check if same record exists
     if database.user.find_one({'phone_number': user_dict['phone_number']}):
         raise HTTPException(status_code=409, detail="Phone number already exists !")
-
-    database.user.insert_one(user_dict)
-
     # # generate and save otp for user
-    otp = otp_generate_save(user_dict['phone_number'])
+        otp = otp_generate_save(user_dict['phone_number'])
     # # send otp to users phone number
-    send_otp_to_phone(user_dict['phone_number'], otp)
+        send_otp_to_phone(user_dict['phone_number'], otp)
 
-    return {'status_code':200, 'message': 'User saved successfully'}
-
-
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/verify_otp")
-
+        return {'status_code':200, 'message': 'User saved successfully'}
+    else :
+        raise HTTPException(status_code=409, detail="Phone number already exists !")
 @router.post("/api/v1/verify_otp")
 async def verify_otp(vphone_number: str, votp: int, is_creation: True):
     # Compare the provided OTP with the stored OTP
