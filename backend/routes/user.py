@@ -1,17 +1,19 @@
-import datetime
 from fastapi import APIRouter, Body, HTTPException
-from fastapi.security import OAuth2PasswordBearer
-from models.user import CreateUserSchema, ResponseModel,VerifyOTPResponse,SECRET_KEY,ALGORITHM
+
+from backend.models import users as user_
+#from models.user import CreateUserSchema, ResponseModel, VerifyOTPResponse,ALGORITHM,SECRET
 from fastapi.encoders import jsonable_encoder
 from config.database import db as database
 from config.twilio_config import twilio_client, twilio_number
-import jwt
 from schemas.user import serializeDict, serializeList
 from bson import ObjectId
 import random
+from fastapi.security import OAuth2PasswordBearer
+import jwt
 
 
 router = APIRouter()
+
 def otp_generate_save(phone_number):
     # Generate 4 digit random OTP
     otp = random.randint(1000, 9999)
@@ -30,7 +32,7 @@ def send_otp_to_phone(phone_number, otp):
     print("Sent OTP to phone successfully !!")
 
 @router.post("/account")
-async def create_account(user:CreateUserSchema= Body(...)):
+async def create_account(user: user_.CreateUserSchema= Body(...)):
     user_dict = jsonable_encoder(user)
 
     user_dict.update({'is_active': False})
@@ -48,23 +50,25 @@ async def create_account(user:CreateUserSchema= Body(...)):
 
     return {'status_code':200, 'message': 'User saved successfully'}
 
-
+# Use OAuth2PasswordBearer for authorization
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/verify_otp")
 
 @router.post("/api/v1/verify_otp")
-async def verify_otp(vphone_number: str, votp: int, is_creation: True):
+async def verify_otp(vphone_number: str, votp: int, is_creation: bool):
     # Compare the provided OTP with the stored OTP
     if database.otp_mapping.find_one({'phone_number': vphone_number, 'otp': votp}):
-        session_token = jwt.encode({'phone_number': vphone_number}, SECRET_KEY, algorithm=ALGORITHM)
-        response = VerifyOTPResponse(message="OTP verified successfully", session_token=session_token)
+        session_token = jwt.encode({'phone_number': vphone_number}, user_.SECRET, algorithm=user_.ALGORITHM)
+        response = user_.VerifyOTPResponse(message="OTP verified successfully", session_token=session_token)
         if is_creation:
             database.user.update_one(
                 {'phone_number': vphone_number},
                 {"$set": {'is_active': True}},
                 upsert=False
             )
+
+
         return response
     else:
         # Return an error message
-        response = VerifyOTPResponse(message="Invalid OTP", session_token="")
+        response = user_.VerifyOTPResponse(message="Invalid OTP", session_token="")
         return response
