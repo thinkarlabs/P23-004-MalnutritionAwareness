@@ -57,7 +57,7 @@ async def login_account(user:LoginUserSchema= Body(...)):
 async def verify_otp(votp: int, is_creation: bool):
     # Compare the provided OTP with the stored OTP
     if database.otp_mapping.find_one({'otp': votp}):
-        if datetime.timedelta < database.otp_mapping.timestamp:
+        if database.otp_mapping.
             response = VerifyOTPResponse(message="OTP verified successfully")
             if is_creation:
                 database.user.update_one(

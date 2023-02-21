@@ -31,9 +31,8 @@ async def verify_otp(phone_number: str, verify_otp : str,is_creation:True):
     if phone_number == database.otp_mapping.phone_number and verify_otp == database.otp_mapping :
         session_token = jwt.encode({"phone_number": user.phone_number}, SECRET_KEY, algorithm=ALGORITHM)
         response = VerifyOTPResponse(message="OTP verified successfully", session_token=session_token)
-        #if is_creation == True:
-         #   user_dict.update({'is_active': True})
         return response
+
 
 
     # Compare the provided OTP with the stored OTP
@@ -53,3 +52,8 @@ async def verify_otp(phone_number: str, verify_otp : str,is_creation:True):
         #users_collection.update_one({"_id": user["_id"]}, {"$set": {"is_creation": False}})
      #   response = VerifyOTPResponse(message="Invalid OTP OR PHONE NUMBER",)
       #  return response
+    else:
+        # Return an error message
+        response = VerifyOTPResponse(message="Invalid OTP", session_token="")
+        return response
+
