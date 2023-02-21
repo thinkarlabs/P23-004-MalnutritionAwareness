@@ -50,7 +50,7 @@ async def create_account(user:CreateUserSchema= Body(...)):
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/verify_otp")
 
-@router.post(oauth2_scheme)
+@router.post("/api/v1/verify_otp")
 async def verify_otp(vphone_number: str, votp: int, is_creation: True):
     # Compare the provided OTP with the stored OTP
     if database.otp_mapping.find_one({'phone_number': vphone_number, 'otp': votp}):
