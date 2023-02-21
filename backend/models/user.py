@@ -33,11 +33,15 @@ class CreateUserSchema(BaseModel):
     child: List[Child]
     relation_with_child: Optional[str]
 
-def LoginUserSchema(BaseModel):
+class LoginUserSchema(BaseModel):
     phone_number: constr(
         strip_whitespace=True,
         regex=r"^(\+)[1-9][0-9\-\(\)\.]{9,15}$",
     )
+
+class VerifyData(BaseModel):
+    otp: str
+    is_creation :bool
 
 def ResponseModel(data, message):
     return {

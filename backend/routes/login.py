@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Body, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 #from backend.models import user as user_
-from models.user import LoginUserSchema,VerifyOTPResponse
+from models.user import LoginUserSchema,VerifyOTPResponse,VerifyData
 from fastapi.encoders import jsonable_encoder
 from config.database import db as database
 from config.twilio_config import twilio_client, twilio_number
@@ -54,12 +54,14 @@ async def login_account(user:LoginUserSchema= Body(...)):
     else:
         raise HTTPException(status_code=409, detail="Phone number not exists !")
 @router.post("/api/v1/verify_otp")
-async def verify_otp(votp: int, is_creation: bool):
+async def verify_otp(vData: VerifyData ):
     # Compare the provided OTP with the stored OTP
-    if database.otp_mapping.find_one({'otp': votp}):
-        if database.otp_mapping.
+    if database.otp_mapping.find_one({'otp': vData.otp}):
+        current_timestamp = int(time.time())
+        if database.otp_mapping.find_one({'timestamp': current_timestamp - database.otp_mapping.timestamp <= 120}):
+        #if current_timestamp - database.otp_mapping.timestamp < = 120:
             response = VerifyOTPResponse(message="OTP verified successfully")
-            if is_creation:
+            if vData.is_creation:
                 database.user.update_one(
                     {'phone_number': database.otp_mapping.phone_number},
                     {"$set": {'is_active': True}},
@@ -67,9 +69,9 @@ async def verify_otp(votp: int, is_creation: bool):
                     )
             return response
         else:
-            raise HTTPException(status_code=400, detail="otp was expired 120 seconds back")
-
+            raise HTTPException(status_code=400, detail= "otp expired ")
     else:
         # Return an error message
         response = VerifyOTPResponse(message="Invalid OTP")
         return response
+
