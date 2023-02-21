@@ -36,7 +36,7 @@ const CreateAccount = ({navigation}) => {
       <View style={styles.screenWrapper}>
         <AppHeader
           title={'Create Account'}
-          onPress={() => navigation.navigate(ONBOARDINGSLIDER1)}
+          onPress={() => currentScreenSelect === 2 ? setScreen(1) : navigation.navigate(ONBOARDINGSLIDER1)}
         />
         <Text style={styles.titleText}>
           {currentScreenSelect === 1 &&

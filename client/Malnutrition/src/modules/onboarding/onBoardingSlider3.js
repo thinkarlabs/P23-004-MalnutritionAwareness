@@ -11,7 +11,7 @@ import NextScreenArrow from '../../shared/components/nextScreenArrow';
 import {
   LOGIN,
   ONBOARDINGSLIDER1,
-  CREATE_ACCOUNT,
+  CREATEACCOUNT,
 } from '../../shared/constants/navigatorConstants';
 import OnboardingSlide3 from '../../../assets/svg/onboardingSlide3SVG';
 
@@ -40,7 +40,7 @@ const OnBoardingSlider3 = ({navigation}) => {
       <View style={styles.circleContainer}>
         <NextScreenArrow
           onPress={() => {
-            navigation.navigate(CREATE_ACCOUNT);
+            navigation.navigate(CREATEACCOUNT);
           }}
           progress={1}
         />

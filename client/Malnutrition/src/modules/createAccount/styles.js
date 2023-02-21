@@ -69,7 +69,7 @@ export const styles = StyleSheet.create({
     borderRadius: 16,
     color: WHITE,
     alignSelf: 'center',
-    width: 334,
+    width: '100%',
     height: 52,
   },
   ButtonText: {
@@ -163,5 +163,5 @@ export const styles = StyleSheet.create({
     borderRadius: 14,
     justifyContent: 'center',
     left: 12,
-  }
+  },
 });

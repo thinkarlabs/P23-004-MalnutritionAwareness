@@ -40,9 +40,10 @@ const CreateAccountStageOne = ({currentStageSelect, setStage, setScreen}) => {
               currentStageSelect === 0 ? styles.buttonDisabled : '',
             ]}
             underlayColor={BUTTON.PRIMARY}
+            disabled={currentStageSelect === 0 ? true : false}
             onPress={() => {
               setScreen(2),
-              prop = setStage()
+              setStage()
             }}>
             <Text style={styles.ButtonText}>
               {CREATE_ACCOUNT.BUTTON_DESCRIPTION}
