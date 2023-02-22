@@ -45,6 +45,12 @@ class CreateUserSchema(BaseModel):
     lmp: Optional[datetime.date] = None
     is_created_for_someone_else: Optional[bool] = False
 
+    @validator("lmp", pre=True)
+    def parse_lmp(cls, value):
+        return datetime.datetime.strptime(
+            value,
+            "%d/%m/%Y"
+        ).date()
 
 def ResponseModel(data, message):
     return {
