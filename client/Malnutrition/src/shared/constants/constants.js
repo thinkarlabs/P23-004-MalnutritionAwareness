@@ -38,5 +38,15 @@ export const USER_DETAILS = {
   CHILD_NAME: 'Child Name',
   CHILD_DOB: 'Child date of birth',
   MOTHER_NAME: 'Mother name',
-
 };
+
+export const PLACEHOLDER_DETAILS = {
+  SELECT_YOUR_ROLE : 'Select your role',
+  PHONE_NUMBER : 'Phone number',
+};
+
+export const DROPDOWN_BOX = {
+  A_RELATIVE : 'A Relative',
+  AN_NGO_MEMBER : 'An NGO Member',
+  AN_ANGANWADI_MEMBER : 'An Anganwadi Member',
+}

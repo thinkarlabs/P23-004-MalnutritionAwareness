@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React, {useState} from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {
@@ -15,6 +15,7 @@ import AppDatePicker from '../../../shared/components/appDatePicker';
 import CheckBox from '@react-native-community/checkbox';
 import SelectDropdown from '../../../shared/components/dropdown';
 import {Button} from '../../../shared/components/button';
+import AppDropdown from '../../../shared/components/appDropdown';
 
 const pregnantWomanInfo = ({route, navigation}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
@@ -40,6 +41,7 @@ const pregnantWomanInfo = ({route, navigation}) => {
         backArrowValue={true}
         onPress={() => navigation.navigate(CREATEACCOUNT)}
       />
+      <ScrollView contentContainerStyle={{paddingBottom: '20%'}}>
       <View style={styles.screenWrapper}>
         <Text style={styles.titleText}>
           {CREATE_ACCOUNT.BENEFICIARY_INFO_TITLE}
@@ -106,10 +108,10 @@ const pregnantWomanInfo = ({route, navigation}) => {
             </Text>
           </View>
           {toggleCheckBox && (
-            <View style={styles.dropdownWrapper}>
-              <SelectDropdown dropdownOptions={SET_APP_FOR} />
-            </View>
-          )}
+              <View style={styles.dropdownWrapper}>
+                <AppDropdown />
+              </View>
+            )}
         </View>
         <View
           style={Platform.select({
@@ -125,6 +127,7 @@ const pregnantWomanInfo = ({route, navigation}) => {
           />
         </View>
       </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

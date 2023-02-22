@@ -1,5 +1,11 @@
 import {StyleSheet} from 'react-native';
-import {BLACK, LIGHT_BLUE, LIGHT_GREY, PLACEHOLDER_BORDER_COLOR, WHITE} from '../../../shared/constants/colors';
+import {
+  BLACK,
+  LIGHT_BLUE,
+  LIGHT_GREY,
+  PLACEHOLDER_BORDER_COLOR,
+  WHITE,
+} from '../../../shared/constants/colors';
 
 export const styles = StyleSheet.create({
   screenWrapper: {
@@ -41,7 +47,7 @@ export const styles = StyleSheet.create({
     borderColor: PLACEHOLDER_BORDER_COLOR,
     padding: 20,
     borderRadius: 16,
-    borderWidth : 1,
+    borderWidth: 1,
     top: 12,
   },
   inputContainer: {
@@ -85,14 +91,15 @@ export const styles = StyleSheet.create({
     borderColor: PLACEHOLDER_BORDER_COLOR,
   },
   dropdownWrapper: {
-    marginLeft: 40,
     top: 8,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
   },
   buttonContainer: {
     paddingTop: 72,
     screen_2: {
       paddingTop: 15,
-    }
+    },
   },
   androidButtonContainer: {
     paddingTop: 32,
@@ -109,5 +116,8 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     fontWeight: '500',
+  },
+  iconContainer: {
+    justifyContent: 'center',
   },
 });
