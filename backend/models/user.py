@@ -58,3 +58,7 @@ def ResponseModel(data, message):
         "code": 200,
         "message": message,
     }
+
+class VerifyOTPResponse(BaseModel):
+    message: str
+    session_token: str
