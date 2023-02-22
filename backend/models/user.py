@@ -41,7 +41,7 @@ class LoginUserSchema(BaseModel):
 
 class VerifyData(BaseModel):
     otp: str
-    is_creation :bool
+    is_creation:bool
 
 def ResponseModel(data, message):
     return {
@@ -55,5 +55,6 @@ SECRET_KEY = "secret_key"
 ALGORITHM = "HS256"
 class VerifyOTPResponse(BaseModel):
     message: str
-    session_token: str | None
 
+class SessionToken(BaseModel):
+    session_token : str | None

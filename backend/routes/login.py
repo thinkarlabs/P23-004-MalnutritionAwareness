@@ -14,10 +14,15 @@ import time
 #app = FastAPI()
 router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/verify_otp")
+
+def check_user(phone_number):
+    database.otp_mapping.find_one({'phone_number': phone_number})
 def otp_generate_save(phone_number):
     # Generate 4 digit random OTP and timestamp
     otp = random.randint(1000, 9999)
     timestamp = datetime.datetime.now()
+    check_timestamp = int(timestamp)
+    print(check_timestamp)
 
     # Upsert the phone_number:otp mapping
     database.otp_mapping.update_one(
@@ -27,7 +32,6 @@ def otp_generate_save(phone_number):
     )
 
     return otp
-
 
 def send_otp_to_phone(phone_number, otp):
     messages = twilio_client.messages.create(to=phone_number, from_=twilio_number, body=f"Your one-time password is {otp}")
@@ -42,7 +46,7 @@ async def login_account(user:LoginUserSchema= Body(...)):
     user_dict.update({'is_active': False})
 
     # check if same record exists
-    if database.user.find_one({'phone_number': user_dict['phone_number']}):
+    if check_user(user_dict['phone_number']):
 
 
              # # generate and save otp for user
@@ -57,7 +61,7 @@ async def login_account(user:LoginUserSchema= Body(...)):
 async def verify_otp(vData: VerifyData ):
     # Compare the provided OTP with the stored OTP
     if database.otp_mapping.find_one({'otp': vData.otp}):
-        current_timestamp = int(time.time())
+        current_timestamp = datetime.datetime.now()
         if database.otp_mapping.find_one({'timestamp': current_timestamp - database.otp_mapping.timestamp <= 120}):
         #if current_timestamp - database.otp_mapping.timestamp < = 120:
             response = VerifyOTPResponse(message="OTP verified successfully")
