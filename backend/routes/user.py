@@ -65,7 +65,7 @@ async def verify_otp(vphone_number: str, votp: int, is_creation: bool):
                                                      {'timestamp': 1, '_id': 0})
         valid_time = otp_gen_time['timestamp'] + datetime.timedelta(seconds=60)
         if curr_time > valid_time:
-            return ("OTP expired")
+            return {'status_code':400, 'message': 'otp expired'}
         session_token = jwt.encode({'phone_number': vphone_number}, JWT_SECRET, algorithm=JWT_ALGORITHM)
         response = VerifyOTPResponse(message= "OTP verified successfully", session_token=session_token)
         if is_creation:
