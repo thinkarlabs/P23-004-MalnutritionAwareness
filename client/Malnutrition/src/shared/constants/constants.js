@@ -32,7 +32,11 @@ export const CREATE_ACCOUNT = {
 export const SET_APP_FOR = [{name: 'An NGO Member', code: 'ngo'}];
 
 export const USER_DETAILS = {
-  MOTHER_NAME: 'Name',
+  NAME: 'Name',
   PHONE_NUMBER: 'Phone Number',
   MENSTURAL_DATE: 'Last menstural period date',
+  CHILD_NAME: 'Child Name',
+  CHILD_DOB: 'Child date of birth',
+  MOTHER_NAME: 'Mother name',
+
 };

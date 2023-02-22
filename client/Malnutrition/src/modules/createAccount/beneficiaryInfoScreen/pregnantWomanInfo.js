@@ -10,7 +10,6 @@ import {CREATEACCOUNT} from '../../../shared/constants/navigatorConstants';
 import {styles} from './styles';
 import {GREY, PLACEHOLDER_COLOR, WHITE} from '../../../shared/constants/colors';
 import PregnantWomenImage from '../../../../assets/svg/pregnantWomenSVG';
-import CalenderIcon from '../../../../assets/svg/calenderIconSVG';
 import AppTextInput from '../../../shared/components/appTextInput';
 import AppDatePicker from '../../../shared/components/appDatePicker';
 import CheckBox from '@react-native-community/checkbox';
@@ -62,25 +61,25 @@ const pregnantWomanInfo = ({route, navigation}) => {
         </View>
         <View style={styles.formWrapper}>
           <View style={styles.inputContainer}>
-            <View style={styles.iconTextInput}>
+            {/* <View style={styles.iconTextInput}>
               <CalenderIcon />
-            </View>
+            </View> */}
             <AppTextInput
-              placeholder={USER_DETAILS.MOTHER_NAME}
+              placeholder={USER_DETAILS.NAME}
               placeholderTextColor={PLACEHOLDER_COLOR}
               newStyles={styles.inputField}
             />
           </View>
           <View style={styles.inputContainer}>
-            <View style={styles.iconTextInput}>
+            {/* <View style={styles.iconTextInput}>
               <CalenderIcon />
-            </View>
-            <AppDatePicker />
+            </View> */}
+            <AppDatePicker titleName={USER_DETAILS.MENSTURAL_DATE}/>
           </View>
           <View style={styles.inputContainer}>
-            <View style={styles.iconTextInput}>
+            {/* <View style={styles.iconTextInput}>
               <CalenderIcon />
-            </View>
+            </View> */}
             <AppTextInput
               newStyles={styles.inputField}
               placeholder={USER_DETAILS.PHONE_NUMBER}
