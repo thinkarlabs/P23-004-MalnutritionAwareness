@@ -29,8 +29,11 @@ def otp_generate_save(phone_number):
 
 
 def send_otp_to_phone(phone_number, otp):
-    messages = twilio_client.messages.create(to=phone_number, from_=twilio_number, body=f"Your one-time password is {otp}")
-    print("Sent OTP to phone successfully !!")
+    try:
+        messages = twilio_client.messages.create(to=phone_number, from_=twilio_number, body=f"Your one-time password is {otp}")
+        print("Sent OTP to phone successfully !!")
+    except Exception as e:
+        print(e)
 
 
 @router.post("/account")

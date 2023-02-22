@@ -42,6 +42,7 @@ class CreateUserSchema(BaseModel):
     user_type: UserType
     relation_with_child: Optional[RelationWithChild] = None
     child: List[Child]
+    lmp: Optional[datetime.date] = None
     is_created_for_someone_else: Optional[bool] = False
 
 
