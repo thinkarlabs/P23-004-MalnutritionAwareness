@@ -5,7 +5,6 @@ from models.user import LoginUserSchema,VerifyOTPResponse,VerifyData
 from fastapi.encoders import jsonable_encoder
 from config.database import db as database
 from config.twilio_config import twilio_client, twilio_number
-import jwt
 from schemas.user import serializeDict, serializeList
 from bson import ObjectId
 import random
@@ -14,6 +13,7 @@ import time
 
 #app = FastAPI()
 router = APIRouter()
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/verify_otp")
 def otp_generate_save(phone_number):
     # Generate 4 digit random OTP and timestamp
     otp = random.randint(1000, 9999)
@@ -34,7 +34,7 @@ def send_otp_to_phone(phone_number, otp):
     print("Sent OTP to phone successfully !!")
 
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/verify_otp")
+
 @router.post("/login")
 async def login_account(user:LoginUserSchema= Body(...)):
     user_dict = jsonable_encoder(user)
