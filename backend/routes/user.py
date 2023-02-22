@@ -7,7 +7,6 @@ from config.twilio_config import twilio_client, twilio_number
 from schemas.user import serializeDict, serializeList
 from bson import ObjectId
 import random
-from fastapi.security import OAuth2PasswordBearer
 import jwt
 import datetime
 
@@ -51,8 +50,6 @@ async def create_account(user: CreateUserSchema= Body(...)):
 
     return {'status_code':200, 'message': 'User saved successfully'}
 
-# Use OAuth2PasswordBearer for authorization
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/verify_otp")
 
 @router.post("/api/v1/verify_otp")
 async def verify_otp(vphone_number: str, votp: int, is_creation: bool):
