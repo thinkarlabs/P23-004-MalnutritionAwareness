@@ -11,14 +11,14 @@ import CalendarIcon from '../../../../assets/svg/icons/calendarIcon';
 import AppTextInput from '../../../shared/components/appTextInput';
 import AppDatePicker from '../../../shared/components/appDatePicker';
 import CheckBox from '@react-native-community/checkbox';
-import SelectDropdown from '../../../shared/components/dropdown';
 import {PLACEHOLDER_COLOR, WHITE} from '../../../shared/constants/colors';
 import PhoneIcon from '../../../../assets/svg/icons/phoneIcon';
 import ChildIcon from '../../../../assets/svg/icons/childIcon';
 import MotherIcon from '../../../../assets/svg/icons/motherIcon';
 import { Button } from '../../../shared/components/button';
+import AppDropdown from '../../../shared/components/appDropdown';
 
-const ChildInfo = ({route}) => {
+const ChildInfo = ({route, navigation}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
@@ -120,7 +120,7 @@ const ChildInfo = ({route}) => {
           </View>
           {toggleCheckBox && (
             <View style={styles.dropdownWrapper}>
-              <SelectDropdown dropdownOptions={SET_APP_FOR} />
+              <AppDropdown />
             </View>
           )}
         </View>
