@@ -30,7 +30,9 @@ const pregnantWomanInfo = ({route, navigation}) => {
     relation_with_child: null,
   });
 
-  useEffect(() => {}, [formValues]);
+  useEffect(() => {
+    console.log(formValues);
+  }, [formValues]);
 
   const updatename = newVal => {
     setFormValues({...formValues, name: newVal});
@@ -50,12 +52,12 @@ const pregnantWomanInfo = ({route, navigation}) => {
       ...formValues,
       is_created_for_someone_else: val,
     });
-    if (!val) {
-      setFormValues({
-        ...formValues,
-        relation_with_child: null,
-      });
-    }
+    // if (!val) {
+    //   setFormValues({
+    //     ...formValues,
+    //     relation_with_child: null,
+    //   });
+    // }
   };
 
   const updateRelationWithChild = val => {
