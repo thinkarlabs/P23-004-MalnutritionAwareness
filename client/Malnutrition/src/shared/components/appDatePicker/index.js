@@ -5,7 +5,7 @@ import {styles} from './styles';
 import {USER_DETAILS} from '../../constants/constants';
 import {BLACK, PURPLE} from '../../constants/colors';
 
-const AppDatePicker = ({updatedDate}) => {
+const AppDatePicker = ({titleName, updatedDate}) => {
   const [showDate, setShowDate] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -15,7 +15,7 @@ const AppDatePicker = ({updatedDate}) => {
         onPress={() => setShowModal(true)}
         style={styles.inputField}>
         <Text style={styles.titleText}>
-          {showDate == null ? USER_DETAILS.MENSTURAL_DATE : showDate.dateString}
+          {showDate == null ? titleName : showDate.dateString}
           {/* {USER_DETAILS.MENSTURAL_DATE} */}
         </Text>
       </TouchableOpacity>

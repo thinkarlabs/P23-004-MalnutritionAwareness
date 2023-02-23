@@ -40,14 +40,18 @@ const CreateAccount = ({navigation}) => {
             image={<PregnantWomenImage />}
           />
           <AppCard
-            onPress={() => {navigation.navigate(LACTATINGMOTHER_SCREEN)}}
+            onPress={() => {navigation.navigate(LACTATINGMOTHER_SCREEN, {
+              title: CREATE_ACCOUNT.CATEGORY_2_TITLE,
+            })}}
             title={CREATE_ACCOUNT.CATEGORY_2_TITLE}
             content={CREATE_ACCOUNT.CATEGORY_2_DESCRIPTION}
             image={<LactatingMotherImage />}
             newStyle={styles.rowReverse}
           />
           <AppCard
-            onPress={() => {navigation.navigate(CHILDINFO_SCREEN)}}
+            onPress={() => {navigation.navigate(CHILDINFO_SCREEN, {
+              title: CREATE_ACCOUNT.CATEGORY_3_TITLE,
+            })}}
             title={CREATE_ACCOUNT.CATEGORY_3_TITLE}
             content={CREATE_ACCOUNT.CATEGORY_3_DESCRIPTION}
             image={<Child6MonthImage />}
