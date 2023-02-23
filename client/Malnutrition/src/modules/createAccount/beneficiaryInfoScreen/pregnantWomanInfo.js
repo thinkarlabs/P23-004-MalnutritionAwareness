@@ -21,6 +21,7 @@ const pregnantWomanInfo = ({route, navigation}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  const [todaysDate, setTodaysDate] = useState('');
   const [formValues, setFormValues] = useState({
     user_type: 'PREGNANT',
     name: '',
@@ -32,6 +33,9 @@ const pregnantWomanInfo = ({route, navigation}) => {
 
   useEffect(() => {
     console.log(formValues);
+    if (todaysDate == '') {
+      getTodaysDate();
+    }
   }, [formValues]);
 
   const updatename = newVal => {
@@ -63,11 +67,20 @@ const pregnantWomanInfo = ({route, navigation}) => {
   };
 
   const validatePhoneNumber = val => {
-    if (val.length === 10) {
+    setIsPhoneFocused(true);
+    if (val.nativeEvent.text.length === 10) {
       setIsPhoneNumberValid(true);
     } else {
       setIsPhoneNumberValid(false);
     }
+  };
+
+  const getTodaysDate = () => {
+    let today = new Date();
+    let date = today.getDate();
+    let month = today.getMonth() + 1;
+    let year = today.getFullYear();
+    setTodaysDate((year + '-' + month + '-' + date).toString());
   };
 
   return (
@@ -116,6 +129,7 @@ const pregnantWomanInfo = ({route, navigation}) => {
             </View> */}
               <AppDatePicker
                 updatedDate={updateLMP}
+                maximumDate={todaysDate}
                 titleName={USER_DETAILS.MENSTURAL_DATE}
               />
             </View>
@@ -131,11 +145,14 @@ const pregnantWomanInfo = ({route, navigation}) => {
                 placeholderTextColor={PLACEHOLDER_COLOR}
                 name="phone_number"
                 changeText={updatePhoneNumber}
+                onBlur={validatePhoneNumber}
               />
-              {isPhoneFocused && isPhoneNumberValid && (
-                <Text style={styles.errorMsg}>Invalid Phone Number</Text>
-              )}
             </View>
+            {isPhoneFocused && !isPhoneNumberValid && (
+              <Text style={[styles.errorMsg, styles.shiftUp]}>
+                Invalid Phone Number
+              </Text>
+            )}
             <View style={styles.checkboxContainer}>
               <CheckBox
                 value={formValues.is_created_for_someone_else}

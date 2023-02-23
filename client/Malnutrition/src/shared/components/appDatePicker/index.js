@@ -5,7 +5,7 @@ import {styles} from './styles';
 import {USER_DETAILS} from '../../constants/constants';
 import {BLACK, PURPLE} from '../../constants/colors';
 
-const AppDatePicker = ({titleName, updatedDate}) => {
+const AppDatePicker = ({titleName, updatedDate, maximumDate}) => {
   const [showDate, setShowDate] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -23,6 +23,7 @@ const AppDatePicker = ({titleName, updatedDate}) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Calendar
+              maxDate={maximumDate ? maximumDate : undefined}
               onDayPress={date => {
                 setShowModal(false);
                 setShowDate(date);

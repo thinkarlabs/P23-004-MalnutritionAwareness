@@ -120,4 +120,11 @@ export const styles = StyleSheet.create({
   iconContainer: {
     justifyContent: 'center',
   },
+  errorMsg: {
+    color: '#E32828',
+  },
+  shiftUp: {
+    position: 'relative',
+    top: -15,
+  },
 });
