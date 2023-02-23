@@ -3,7 +3,7 @@ import {
   StatusBar,
 } from 'react-native';
 import { Provider } from 'react-redux';
-import { AppStackNavigator } from './navigators/AppStackNavigator';
+import { AppStackNavigator } from './navigators/AppStackNavigatior';
 import {configureStore} from './redux/store';
 
 const {store} = configureStore();
