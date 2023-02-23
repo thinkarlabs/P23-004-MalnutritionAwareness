@@ -11,8 +11,8 @@ const AppHeader = ({onPress, canGoBack, title, backArrowValue}) => {
         <TouchableOpacity
           onPress={onPress}
           backArrowValue={backArrowValue}
-          style={{paddingLeft: 5}}>
-          {backArrowValue == true ? <BackArrow /> : null}
+          style={{paddingLeft: 20}}>
+          {backArrowValue === true ? <BackArrow /> : null}
         </TouchableOpacity>
         <Text style={styles.headerText}>{title}</Text>
       </View>
