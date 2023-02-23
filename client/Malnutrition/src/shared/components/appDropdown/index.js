@@ -16,7 +16,7 @@ const data = [
   {label: DROPDOWN_BOX.AN_ANGANWADI_MEMBER, value: '3'},
 ];
 
-const AppDropdown = () => {
+const AppDropdown = ({dropdownValue}) => {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
 
@@ -51,6 +51,7 @@ const AppDropdown = () => {
         onChange={item => {
           setValue(item.value);
           setIsFocus(false);
+          dropdownValue(item.value);
         }}
         renderLeftIcon={() => (
           <View style={{paddingRight: 10}}>
