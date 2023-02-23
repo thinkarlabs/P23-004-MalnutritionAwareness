@@ -20,6 +20,7 @@ import CreateAccount from '../modules/createAccount';
 import pregnantWomanInfo from '../modules/createAccount/beneficiaryInfoScreen/pregnantWomanInfo';
 import lactatingMotherInfo from '../modules/createAccount/beneficiaryInfoScreen/lactatingMotherInfo';
 import childInfo from '../modules/createAccount/beneficiaryInfoScreen/childInfo';
+import OTPVerification from '../modules/otpVerification';
 
 const Stack = createStackNavigator();
 
@@ -55,6 +56,7 @@ export function AppStackNavigator() {
           component={lactatingMotherInfo}
         />
         <Stack.Screen name={CHILDINFO_SCREEN} component={childInfo} />
+        <Stack.Screen name='otp' component={OTPVerification} />
       </Stack.Navigator>
     </NavigationContainer>
   );

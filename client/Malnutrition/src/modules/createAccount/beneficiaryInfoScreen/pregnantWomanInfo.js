@@ -34,6 +34,7 @@ const pregnantWomanInfo = ({route, navigation}) => {
     setToggleCheckBox(val);
   };
 
+
   return (
     <SafeAreaView>
       <AppHeader
@@ -123,7 +124,7 @@ const pregnantWomanInfo = ({route, navigation}) => {
             title={CREATE_ACCOUNT.OTP_BUTTON}
             textStyle={styles.ButtonText}
             buttonStyle={[styles.Button]}
-            onPress={() => {}}
+            onPress={() => {navigation.navigate('otp')}}
           />
         </View>
       </View>

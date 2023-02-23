@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     flex: 1,
+    paddingTop: 52
   },
   phoneImage: {
     height: 119,
@@ -22,19 +23,19 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   otpHeadingText: {
-    fontWeight: 400,
+    fontWeight: '400',
     fontSize: 24,
     lineHeight: 28,
     textAlign: 'center',
   },
   enterOtpText: {
-    fontWeight: 400,
+    fontWeight: '400',
     fontSize: 16,
     lineHeight: 24,
     textAlign: 'center',
   },
   phoneNumberText: {
-    fontWeight: 600,
+    fontWeight: '600',
     fontSize: 16,
     lineHeight: 24,
     textAlign: 'center',
@@ -66,17 +67,18 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   otpNotReceivedText: {
-    fontWeight: 400,
+    fontWeight: '400',
     fontSize: 16,
     lineHeight: 24,
     color: '#616568',
   },
   resendText: {
-    fontWeight: 400,
+    fontWeight: '400',
     fontSize: 16,
     lineHeight: 24,
     color: '#1066EC',
   },
+  
 });
 
 export default styles;

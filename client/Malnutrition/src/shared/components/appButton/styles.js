@@ -4,7 +4,7 @@ import {BLUE, WHITE} from '../../constants/colors';
 export const styles = StyleSheet.create({
   buttonText: {
     fontSize: 20,
-    fontWeight: 500,
+    fontWeight: '500',
     color: WHITE,
     textAlign: 'center',
   },
