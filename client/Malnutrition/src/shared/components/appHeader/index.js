@@ -9,7 +9,7 @@ const AppHeader = ({onPress, canGoBack, title, backArrowValue}) => {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={onPress} backArrowValue={backArrowValue} style={{paddingLeft: 5}}>
+        <TouchableOpacity onPress={onPress} backArrowValue={backArrowValue} style={{paddingLeft: 20}}>
           {
           backArrowValue == true ? ( <BackArrow />) : null
           }

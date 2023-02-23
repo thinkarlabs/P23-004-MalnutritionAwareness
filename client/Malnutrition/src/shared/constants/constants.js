@@ -32,9 +32,12 @@ export const CREATE_ACCOUNT = {
 export const SET_APP_FOR = [{name: 'An NGO Member', code: 'ngo'}];
 
 export const USER_DETAILS = {
-  MOTHER_NAME: 'Name',
+  NAME: 'Name',
   PHONE_NUMBER: 'Phone Number',
   MENSTURAL_DATE: 'Last menstural period date',
+  CHILD_NAME: 'Child Name',
+  CHILD_DOB: 'Child date of birth',
+  MOTHER_NAME: 'Mother name',
 };
 
 export const TOAST_MESSAGE = {
@@ -43,4 +46,14 @@ export const TOAST_MESSAGE = {
   NO_INTERNET: 'No Internet Connection',
   UNAUTHORIZED: 'Invalid email or password.',
   INTERNAL_ERROR: 'Internal server error.',
+};
+export const PLACEHOLDER_DETAILS = {
+  SELECT_YOUR_ROLE : 'Select your role',
+  PHONE_NUMBER : 'Phone number',
+};
+
+export const DROPDOWN_BOX = {
+  A_RELATIVE : 'A Relative',
+  AN_NGO_MEMBER : 'An NGO Member',
+  AN_ANGANWADI_MEMBER : 'An Anganwadi Member',
 };
