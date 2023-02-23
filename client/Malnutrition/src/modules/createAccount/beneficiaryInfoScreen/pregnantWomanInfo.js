@@ -68,15 +68,8 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   };
 
   const createAccount = () => {
-    const data = {
-      user_type: 'PREGNANT',
-      name: 'tony',
-      lmp: '20/01/2022',
-      phone_number: '+919234567800',
-      is_created_for_someone_else: false,
-      relation_with_child: null,
-    };
-    createPregnantWomenAccount({data});
+    console.log(formValues);
+    createPregnantWomenAccount(formValues);
   };
 
   return (
@@ -175,22 +168,9 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
               title={CREATE_ACCOUNT.OTP_BUTTON}
               textStyle={styles.ButtonText}
               buttonStyle={[styles.Button]}
-              onPress={() => {}}
+              onPress={createAccount}
             />
           </View>
-        </View>
-        <View
-          style={Platform.select({
-            ios: styles.buttonContainer,
-            android: styles.androidButtonContainer,
-          })}>
-          <Text style={styles.Info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
-          <Button
-            title={CREATE_ACCOUNT.OTP_BUTTON}
-            textStyle={styles.ButtonText}
-            buttonStyle={[styles.Button]}
-            onPress={createAccount}
-          />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -198,8 +178,8 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  createPregnantWomenAccount: ({data}) =>
-    dispatch(createAccountAction({data})),
+  createPregnantWomenAccount: (formValues) =>
+    dispatch(createAccountAction(formValues)),
 });
 
 export default connect(null, mapDispatchToProps)(pregnantWomanInfo);

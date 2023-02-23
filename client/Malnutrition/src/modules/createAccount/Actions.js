@@ -16,26 +16,25 @@ import { postCall } from '../../shared/apis/HttpCall';
 //       });
 //   };
 
-export const createPregnantWomenAccount = ({data}) => (
+export const createPregnantWomenAccount = (data) => (
   dispatch,
 ) => {
   console.log(data);
   fetch(URL_CREATE_ACCOUNT, {
     method: 'POST',
     headers: {
-      'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
     body: data,
   })
-  .then((response) => {
-    console.log(response, 'response');
-    dispatch(createPregnantWomenAccountSuccess(response));
-  })
-  // .then(responseData => {
-  //   console.log(responseData, 'responseData');
-  //   dispatch(createPregnantWomenAccountSuccess(responseData));
+  // .then((response) => {
+  //   console.log(response, 'response');
+  //   dispatch(createPregnantWomenAccountSuccess(response));
   // })
+  .then(responseData => {
+    console.log(responseData, 'responseData');
+    dispatch(createPregnantWomenAccountSuccess(responseData));
+  })
   .catch((error) => {
     //display error message
     console.log(error, 'error');
