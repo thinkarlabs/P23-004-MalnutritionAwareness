@@ -18,3 +18,27 @@ export const MOBILE_NUMBER = '+91 - 1234562330';
 export const DID_NOT_RECEIVE_OTP = 'Didn’t Recieve OTP? ';
 export const RESEND = 'Resend';
 export const CONFIRM = 'Confirm';
+
+export const CREATE_ACCOUNT = {
+  SELECT_CURRENT_STAGE_TEXT: "Select beneficiary's current stage to proceed",
+  CATEGORY_1_TITLE: 'Pregnant Woman',
+  CATEGORY_1_DESCRIPTION: `A mother understands ${'\n'}what a child does ${'\n'}not say.`,
+  CATEGORY_2_TITLE: 'Lactating Mother',
+  CATEGORY_2_DESCRIPTION: `A grand and beautiful ${'\n'}adventure is about ${'\n'}to begin.`,
+  CATEGORY_3_TITLE: '6-24 Months',
+  CATEGORY_3_DESCRIPTION: `A baby is born with a ${'\n'}need to be loved and ${'\n'}grow with caring.`,
+  BUTTON_DESCRIPTION: 'Fill Your Details',
+  OTP_BUTTON: 'Send OTP',
+  CHECK_BOX_LABEL: `Are you setting up this app ${'\n'}for someone else?`,
+  BUTTON_INFO: `By clicking below, you will receive an ${'\n'} OTP on the above phone number`,
+  MOVE_FORWARD_TEXT: 'Tap to select',
+  BENEFICIARY_INFO_TITLE: 'Tell us more about the Beneficiary',
+  TITLE_SCREEN: 'Create an Account',
+};
+export const SET_APP_FOR = [{name: 'An NGO Member', code: 'ngo'}];
+
+export const USER_DETAILS = {
+  MOTHER_NAME: 'Name',
+  PHONE_NUMBER: 'Phone Number',
+  MENSTURAL_DATE: 'Last menstural period date',
+};
