@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView} from 'react-native';
+import {View, Text, SafeAreaView, Platform} from 'react-native';
 import React, {useState} from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {
@@ -16,8 +16,10 @@ import AppDatePicker from '../../../shared/components/appDatePicker';
 import CheckBox from '@react-native-community/checkbox';
 import SelectDropdown from '../../../shared/components/dropdown';
 import {Button} from '../../../shared/components/button';
+import { createPregnantWomenAccount as createAccountAction } from '../Actions';
+import { connect } from 'react-redux';
 
-const pregnantWomanInfo = ({route, navigation}) => {
+const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
@@ -32,6 +34,18 @@ const pregnantWomanInfo = ({route, navigation}) => {
 
   const setCheckbox = val => {
     setToggleCheckBox(val);
+  };
+
+  const createAccount = () => {
+    const data = {
+      user_type: 'PREGNANT',
+      name: 'tony',
+      lmp: '20/01/2022',
+      phone_number: '+919234567800',
+      is_created_for_someone_else: false,
+      relation_with_child: null,
+    };
+    createPregnantWomenAccount({data});
   };
 
   return (
@@ -122,7 +136,7 @@ const pregnantWomanInfo = ({route, navigation}) => {
             title={CREATE_ACCOUNT.OTP_BUTTON}
             textStyle={styles.ButtonText}
             buttonStyle={[styles.Button]}
-            onPress={() => {}}
+            onPress={createAccount}
           />
         </View>
       </View>
@@ -130,4 +144,9 @@ const pregnantWomanInfo = ({route, navigation}) => {
   );
 };
 
-export default pregnantWomanInfo;
+const mapDispatchToProps = (dispatch) => ({
+  createPregnantWomenAccount: ({data}) =>
+    dispatch(createAccountAction({data})),
+});
+
+export default connect(null, mapDispatchToProps)(pregnantWomanInfo);

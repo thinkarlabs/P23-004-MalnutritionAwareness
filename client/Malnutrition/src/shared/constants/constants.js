@@ -36,3 +36,11 @@ export const USER_DETAILS = {
   PHONE_NUMBER: 'Phone Number',
   MENSTURAL_DATE: 'Last menstural period date',
 };
+
+export const TOAST_MESSAGE = {
+  UNEXPECTED: 'Some unexpected error occurred.',
+  UNKNOWN_ERROR: 'Something went wrong. Please try again.',
+  NO_INTERNET: 'No Internet Connection',
+  UNAUTHORIZED: 'Invalid email or password.',
+  INTERNAL_ERROR: 'Internal server error.',
+};
