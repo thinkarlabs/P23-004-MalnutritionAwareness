@@ -47,17 +47,11 @@ const pregnantWomanInfo = ({route, navigation}) => {
   };
 
   const updateIsCreateForSomeoneElse = val => {
-    //console.log(val);
     setFormValues({
       ...formValues,
       is_created_for_someone_else: val,
+      relation_with_child: !val ? null : formValues.relation_with_child,
     });
-    // if (!val) {
-    //   setFormValues({
-    //     ...formValues,
-    //     relation_with_child: null,
-    //   });
-    // }
   };
 
   const updateRelationWithChild = val => {
