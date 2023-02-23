@@ -13,8 +13,6 @@ import { Dimensions } from "react-native";
 
 const screenHeight = Dimensions.get('screen').height;
 const screenWidth = Dimensions.get('screen').width;
-console.log(screenHeight);
-console.log(screenWidth)
 
 const SplashBackgroundSVG = (props) => (
   <Svg
