@@ -43,7 +43,7 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   };
 
   const updateLMP = newVal => {
-    setFormValues({...formValues, lmp: '20/01/1991'});
+    setFormValues({...formValues, lmp: newVal.timestamp});
   };
 
   const updateIsCreateForSomeoneElse = val => {

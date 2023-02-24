@@ -1,2 +1,3 @@
-export const REQUEST_TIMEOUT = 45000; // 45 secs
-export const URL_CREATE_ACCOUNT = 'http://13.71.69.219/account/';
+const BASE_URL = 'http://13.71.69.219/';
+
+export const URL_CREATE_ACCOUNT = BASE_URL + 'account/';
