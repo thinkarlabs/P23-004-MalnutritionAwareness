@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     top: 10,
     paddingRight: 20,
     paddingLeft: 20,
+    paddingBottom: 40,
   },
   titleText: {
     fontSize: 26,
@@ -92,30 +93,22 @@ export const styles = StyleSheet.create({
   },
   dropdownWrapper: {
     top: 8,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
   },
   buttonContainer: {
-    paddingTop: 72,
-    screen_2: {
-      paddingTop: 15,
-    },
+    alignSelf: 'center',
+    width: '100%',
+    paddingHorizontal: 20,
   },
   androidButtonContainer: {
     paddingTop: 32,
   },
-  Info: {
+  info: {
     fontWeight: '400',
     fontSize: 16,
     lineHeight: 20,
     textAlign: 'center',
     color: LIGHT_GREY,
-  },
-  ButtonText: {
-    color: WHITE,
-    textAlign: 'center',
-    fontSize: 18,
-    fontWeight: '500',
+    paddingTop: 10,
   },
   iconContainer: {
     justifyContent: 'center',

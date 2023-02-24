@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, Image, TouchableOpacity} from 'react-native';
+import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
 import AppTextTranslates from '../../shared/components/appTextTranslate';
@@ -10,7 +10,7 @@ import {
 import NextScreenArrow from '../../shared/components/nextScreenArrow';
 import {
   ONBOARDINGSLIDER2,
-  CREATEACCOUNT
+  CREATEACCOUNT,
 } from '../../shared/constants/navigatorConstants';
 import OnboardingSlide1 from '../../../assets/svg/onboardingSlide1SVG';
 

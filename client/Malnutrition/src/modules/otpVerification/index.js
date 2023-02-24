@@ -1,6 +1,5 @@
 import React from 'react';
-import {Image, SafeAreaView, Text, View} from 'react-native';
-import AppButton from '../../shared/components/appButton';
+import {Image, Platform, SafeAreaView, Text, View} from 'react-native';
 import AppHeader from '../../shared/components/appHeader';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import styles from './styles';
@@ -21,6 +20,8 @@ import {
   PREGNANTWOMAN_SCREEN,
 } from '../../shared/constants/navigatorConstants';
 import {LIGHT_GREY, PURPLE} from '../../shared/constants/colors';
+import {Button} from '../../shared/components/button';
+import {buttonStyles} from '../../shared/components/button/styles';
 
 const OTPVerification = ({navigation}) => {
   return (
@@ -58,17 +59,8 @@ const OTPVerification = ({navigation}) => {
             }}
           />
         </View>
-        {/* <View style={styles.otpNotReceivedContainer}>
-          <Text>
-            <Text style={styles.otpNotReceivedText}>{DID_NOT_RECEIVE_OTP}</Text>
-            <Text style={styles.resendText}>{RESEND}</Text>
-            ;
-          </Text>
-        </View> */}
-        <View style={{position: 'absolute', bottom: 334, left: 165}}>
-          <Text style={{fontSize: 16, fontWeight: '500', color: LIGHT_GREY}}>
-            Resend OTP in  -
-          </Text>
+        <View style={styles.otpNotReceivedContainer}>
+          <Text style={styles.otpNotReceivedText}>{'Resend OTP in - '}</Text>
         </View>
         <RnOtpTimer
           minutes={0}
@@ -92,8 +84,19 @@ const OTPVerification = ({navigation}) => {
             console.log('otp resent!');
           }}
         />
+        <View
+          style={Platform.select({
+            ios: buttonStyles.buttonContainer.screen_2,
+            android: buttonStyles.androidButtonContainer,
+          })}>
+          <Button
+            title={'Verify OTP'}
+            textStyle={buttonStyles.buttonText}
+            buttonStyle={[buttonStyles.button]}
+            onPress={() => {}}
+          />
+        </View>
       </View>
-      <AppButton title={CONFIRM} />
     </View>
   );
 };

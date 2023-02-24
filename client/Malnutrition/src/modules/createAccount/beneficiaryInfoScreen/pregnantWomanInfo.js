@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, Platform, ScrollView} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {
@@ -15,8 +15,9 @@ import {Button} from '../../../shared/components/button';
 import {createPregnantWomenAccount as createAccountAction} from '../Actions';
 import {connect} from 'react-redux';
 import AppDropdown from '../../../shared/components/appDropdown';
+import {buttonStyles} from '../../../shared/components/button/styles';
 
-const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
+const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
@@ -80,7 +81,7 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
         backArrowValue={true}
         onPress={() => navigation.navigate(CREATEACCOUNT)}
       />
-      <ScrollView contentContainerStyle={{paddingBottom: '20%'}}>
+      <ScrollView style={{height: '80%'}}>
         <View style={styles.screenWrapper}>
           <Text style={styles.titleText}>
             {CREATE_ACCOUNT.BENEFICIARY_INFO_TITLE}
@@ -94,7 +95,7 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
                     You have selected
                   </Text>
                   <Text style={styles.selectedStageCardTitle}>
-                    {route.params.title}
+                    {route?.params?.title}
                   </Text>
                 </View>
               </View>
@@ -159,21 +160,16 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
               </View>
             )}
           </View>
-          <View
-            style={Platform.select({
-              ios: styles.buttonContainer,
-              android: styles.androidButtonContainer,
-            })}>
-            <Text style={styles.Info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
-            <Button
-              title={CREATE_ACCOUNT.OTP_BUTTON}
-              textStyle={styles.ButtonText}
-              buttonStyle={[styles.Button]}
-              onPress={createAccount}
-            />
-          </View>
         </View>
       </ScrollView>
+      <View style={styles.buttonContainer}>
+        <Text style={styles.info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
+        <Button
+          title={CREATE_ACCOUNT.OTP_BUTTON}
+          textStyle={buttonStyles.buttonText}
+          onPress={createAccount}
+        />
+      </View>
     </SafeAreaView>
   );
 };
@@ -187,4 +183,4 @@ const mapStateToProps = state => ({
   pregnantWomanData: state.createAccount.pregnantWomanData,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(pregnantWomanInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(PregnantWomanInfo);

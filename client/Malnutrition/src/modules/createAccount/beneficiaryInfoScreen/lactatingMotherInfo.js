@@ -1,9 +1,8 @@
-import {View, Text, SafeAreaView, Platform, ScrollView} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React, {useState} from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {
   CREATE_ACCOUNT,
-  SET_APP_FOR,
   USER_DETAILS,
 } from '../../../shared/constants/constants';
 import {CREATEACCOUNT} from '../../../shared/constants/navigatorConstants';
@@ -12,16 +11,15 @@ import CalendarIcon from '../../../../assets/svg/icons/calendarIcon';
 import AppTextInput from '../../../shared/components/appTextInput';
 import AppDatePicker from '../../../shared/components/appDatePicker';
 import CheckBox from '@react-native-community/checkbox';
-import SelectDropdown from '../../../shared/components/dropdown';
 import {PLACEHOLDER_COLOR, WHITE} from '../../../shared/constants/colors';
 import PhoneIcon from '../../../../assets/svg/icons/phoneIcon';
 import ChildIcon from '../../../../assets/svg/icons/childIcon';
 import MotherIcon from '../../../../assets/svg/icons/motherIcon';
 import {Button} from '../../../shared/components/button';
 import AppDropdown from '../../../shared/components/appDropdown';
-import GroupIcon from '../../../../assets/svg/icons/groupIcon';
+import {buttonStyles} from '../../../shared/components/button/styles';
 
-const lactatingMotherInfo = ({route, navigation}) => {
+const LactatingMotherInfo = ({route, navigation}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
@@ -45,7 +43,7 @@ const lactatingMotherInfo = ({route, navigation}) => {
         backArrowValue={true}
         onPress={() => navigation.navigate(CREATEACCOUNT)}
       />
-      <ScrollView contentContainerStyle={{paddingBottom: '20%'}}>
+      <ScrollView style={{height: '80%'}}>
         <View style={styles.screenWrapper}>
           <Text style={styles.titleText}>
             {CREATE_ACCOUNT.BENEFICIARY_INFO_TITLE}
@@ -127,23 +125,18 @@ const lactatingMotherInfo = ({route, navigation}) => {
               </View>
             )}
           </View>
-          <View
-            style={Platform.select({
-              ios: styles.buttonContainer.screen_2,
-              android: styles.androidButtonContainer,
-            })}>
-            <Text style={styles.Info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
-            <Button
-              title={CREATE_ACCOUNT.OTP_BUTTON}
-              textStyle={styles.ButtonText}
-              buttonStyle={[styles.Button]}
-              onPress={() => {}}
-            />
-          </View>
         </View>
       </ScrollView>
+      <View style={styles.buttonContainer}>
+        <Text style={styles.info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
+        <Button
+          title={CREATE_ACCOUNT.OTP_BUTTON}
+          textStyle={buttonStyles.buttonText}
+          onPress={() => {}}
+        />
+      </View>
     </SafeAreaView>
   );
 };
 
-export default lactatingMotherInfo;
+export default LactatingMotherInfo;

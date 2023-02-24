@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     flex: 1,
-    paddingTop: 52
+    paddingTop: 52,
   },
   phoneImage: {
     height: 119,
@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     color: '#1066EC',
   },
-  
 });
 
 export default styles;

@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, Image, TouchableOpacity} from 'react-native';
+import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
 import {
@@ -8,7 +8,10 @@ import {
 } from '../../shared/constants/constants';
 import AppTextTranslates from '../../shared/components/appTextTranslate';
 import NextScreenArrow from '../../shared/components/nextScreenArrow';
-import { CREATEACCOUNT, LOGIN, ONBOARDINGSLIDER3 } from '../../shared/constants/navigatorConstants';
+import {
+  CREATEACCOUNT,
+  ONBOARDINGSLIDER3,
+} from '../../shared/constants/navigatorConstants';
 import OnboardingSlide2 from '../../../assets/svg/onboardingSlide2SVG';
 
 const OnBoardingSlider2 = ({navigation}) => {

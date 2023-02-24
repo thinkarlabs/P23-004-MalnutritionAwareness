@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, Image, TouchableOpacity} from 'react-native';
+import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
 import {
@@ -9,7 +9,6 @@ import {
 import AppTextTranslates from '../../shared/components/appTextTranslate';
 import NextScreenArrow from '../../shared/components/nextScreenArrow';
 import {
-  LOGIN,
   ONBOARDINGSLIDER1,
   CREATEACCOUNT,
 } from '../../shared/constants/navigatorConstants';

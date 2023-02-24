@@ -1,34 +1,23 @@
 import React from 'react';
-import {
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
-import { PURPLE, WHITE } from '../../constants/colors';
-import { styles } from './styles';
+import {Text, TouchableOpacity} from 'react-native';
+import {WHITE} from '../../constants/colors';
+import {buttonStyles} from './styles';
 
-
-export const Button = ({
-  title,
-  onPress,
-  buttonColor,
-  titleColor,
-  buttonStyle,
-  textStyle,
-}) => {
+export const Button = ({onPress, title, buttonStyle, textStyle}) => {
   return (
     <TouchableOpacity
       style={{
-        ...styles.container,
+        ...buttonStyles.container,
         ...buttonStyle,
-        backgroundColor: buttonColor || PURPLE,
       }}
       onPress={onPress}>
       <Text
-        style={{...styles.title, ...textStyle, color: titleColor || '#fff'}}>
+        style={{
+          ...textStyle,
+          color: WHITE,
+        }}>
         {title}
       </Text>
     </TouchableOpacity>
   );
 };
-
