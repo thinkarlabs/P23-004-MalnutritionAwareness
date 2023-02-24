@@ -1,36 +1,21 @@
 import { CREATE_PREGNANT_WOMEN_ACCOUNT_ERROR, CREATE_PREGNANT_WOMEN_ACCOUNT_SUCCESS } from '../../redux/types';
 import { URL_CREATE_ACCOUNT } from '../../shared/apis/APIConstants';
-import { postCall } from '../../shared/apis/HttpCall';
 
-// export const createPregnantWomenAccount = ({data}) => (
-//     dispatch,
-//   ) => {
-//     postCall(URL_CREATE_ACCOUNT, data)
-//       .then((response) => {
-//         console.log(response, 'response');
-//         dispatch(createPregnantWomenAccountSuccess(response));
-//       })
-//       .catch((error) => {
-//         console.log(error, 'error');
-//         dispatch(createPregnantWomenAccountError(error));
-//       });
-//   };
-
-export const createPregnantWomenAccount = (data) => (
+export const createPregnantWomenAccount = (data, navigation) => (
   dispatch,
 ) => {
-  console.log(data);
-  fetch(URL_CREATE_ACCOUNT, {
+  const reqBody = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: data,
-  })
-  // .then((response) => {
-  //   console.log(response, 'response');
-  //   dispatch(createPregnantWomenAccountSuccess(response));
-  // })
+    body: JSON.stringify(data),
+  };
+
+  console.log(reqBody, 'reqBody');
+
+  fetch(URL_CREATE_ACCOUNT, reqBody)
+  .then(response => response.json())
   .then(responseData => {
     console.log(responseData, 'responseData');
     dispatch(createPregnantWomenAccountSuccess(responseData));

@@ -27,6 +27,7 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
     phone_number: '',
     is_created_for_someone_else: false,
     relation_with_child: null,
+    child: [],
   });
 
   useEffect(() => {
@@ -38,11 +39,11 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   };
 
   const updatePhoneNumber = newVal => {
-    setFormValues({...formValues, phone_number: newVal});
+    setFormValues({...formValues, phone_number: '+91' + newVal});
   };
 
   const updateLMP = newVal => {
-    setFormValues({...formValues, lmp: newVal.timestamp});
+    setFormValues({...formValues, lmp: '20/01/1991'});
   };
 
   const updateIsCreateForSomeoneElse = val => {
@@ -69,7 +70,7 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
 
   const createAccount = () => {
     console.log(formValues);
-    createPregnantWomenAccount(formValues);
+    createPregnantWomenAccount(formValues, navigation);
   };
 
   return (
@@ -178,8 +179,12 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  createPregnantWomenAccount: (formValues) =>
-    dispatch(createAccountAction(formValues)),
+  createPregnantWomenAccount: (formValues, navigation) =>
+    dispatch(createAccountAction(formValues, navigation)),
 });
 
-export default connect(null, mapDispatchToProps)(pregnantWomanInfo);
+const mapStateToProps = (state) => ({
+  pregnantWomanData: state.createAccount.pregnantWomanData,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(pregnantWomanInfo);
