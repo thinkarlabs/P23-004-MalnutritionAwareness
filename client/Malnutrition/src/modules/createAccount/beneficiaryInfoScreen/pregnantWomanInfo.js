@@ -176,6 +176,12 @@ const pregnantWomanInfo = ({route, navigation}) => {
                 <AppDropdown dropdownValue={updateRelationWithChild} />
               </View>
             )}
+            {formValues.is_created_for_someone_else &&
+              formValues.relation_with_child == null && (
+                <Text style={[styles.errorMsg, styles.shiftDown]}>
+                  Select any one option from the dropdown.
+                </Text>
+              )}
           </View>
           <View
             style={Platform.select({
