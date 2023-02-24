@@ -16,6 +16,7 @@ import CheckBox from '@react-native-community/checkbox';
 import SelectDropdown from '../../../shared/components/dropdown';
 import {Button} from '../../../shared/components/button';
 import AppDropdown from '../../../shared/components/appDropdown';
+import moment from 'moment';
 
 const pregnantWomanInfo = ({route, navigation}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
@@ -47,7 +48,11 @@ const pregnantWomanInfo = ({route, navigation}) => {
   };
 
   const updateLMP = newVal => {
-    setFormValues({...formValues, lmp: newVal.timestamp});
+    setFormValues({
+      ...formValues,
+      lmp: moment(newVal.timestamp).format('YYYY-DD-MM'),
+    });
+    console.log(formValues);
   };
 
   const updateIsCreateForSomeoneElse = val => {
@@ -59,7 +64,6 @@ const pregnantWomanInfo = ({route, navigation}) => {
   };
 
   const updateRelationWithChild = val => {
-    //console.log(val);
     setFormValues({
       ...formValues,
       relation_with_child: val,
