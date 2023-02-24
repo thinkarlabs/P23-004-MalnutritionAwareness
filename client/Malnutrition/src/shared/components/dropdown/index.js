@@ -3,7 +3,7 @@ import Dropdown from 'react-native-input-select';
 // import {styles} from '../../../modules/onboarding/styles';
 import {styles} from './styles';
 
-const SelectDropdown = dropdownOptions => {
+const SelectDropdown = ({dropdownOptions, dropdownValue}) => {
   const [selectedOption, setSelectedOption] = useState('');
   return (
     <Dropdown
@@ -17,7 +17,10 @@ const SelectDropdown = dropdownOptions => {
       optionLabel={'name'}
       optionValue={'code'}
       selectedValue={selectedOption}
-      onValueChange={value => setSelectedOption(value)}
+      onValueChange={value => {
+        setSelectedOption(value);
+        dropdownValue(value);
+      }}
       primaryColor={'green'}
     />
   );

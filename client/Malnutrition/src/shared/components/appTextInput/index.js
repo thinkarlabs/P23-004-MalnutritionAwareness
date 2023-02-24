@@ -23,21 +23,25 @@ const AppTextInput = ({
   placeholderTextColor,
   numberOfLines,
   onBlur,
+  name,
 }) => {
   const {textInput, errorStyle} = InputFieldStyles;
   return (
     <View>
       <View>
         <TextInput
+          onChangeText={changeText}
+          onSubmitEditing={onSubmitEditing}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          name={name}
           ref={rel}
           returnKeyType={returnKeyType}
           keyboardType={keyboardType}
           secureTextEntry={secureTextEntry}
-          onSubmitEditing={onSubmitEditing}
           placeholder={placeholder}
           autoCorrect={false}
           value={value}
-          onChangeText={changeText}
           underlineColorAndroid={underlineColorAndroid}
           blurOnSubmit={true}
           autoCapitalize={autoCapitalize ? autoCapitalize : 'none'}
@@ -53,10 +57,8 @@ const AppTextInput = ({
           autoFocus={autoFocus}
           multiline={multiline}
           maxLength={maxLength}
-          onFocus={onFocus}
           placeholderTextColor={placeholderTextColor}
           numberOfLines={numberOfLines}
-          onBlur={onBlur}
         />
       </View>
     </View>
