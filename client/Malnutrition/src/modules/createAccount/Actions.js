@@ -12,8 +12,6 @@ export const createPregnantWomenAccount = (data, navigation) => (
     body: JSON.stringify(data),
   };
 
-  console.log(reqBody, 'reqBody');
-
   fetch(URL_CREATE_ACCOUNT, reqBody)
   .then(response => response.json())
   .then(responseData => {
