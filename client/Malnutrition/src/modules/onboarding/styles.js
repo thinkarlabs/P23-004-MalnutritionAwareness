@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import {BLACK, GREEN, PINK, YELLOW} from '../../shared/constants/colors';
 import { FONT_LARGE, FONT_MEDIUM, FONT_SMALL, TITLE_FONT_SIZE } from '../../shared/constants/fontSizeConstants';
 
-export const styles = StyleSheet.create({
+export const onBoardingScreenStyles = StyleSheet.create({
   container: {
     flex: 1
   },

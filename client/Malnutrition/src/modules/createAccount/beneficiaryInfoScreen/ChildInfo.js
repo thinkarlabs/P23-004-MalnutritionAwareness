@@ -6,7 +6,7 @@ import {
   USER_DETAILS,
 } from '../../../shared/constants/constants';
 import {CREATEACCOUNT} from '../../../shared/constants/navigatorConstants';
-import {styles} from './styles';
+import {beneficiaryInfoStyles} from './styles';
 import CalendarIcon from '../../../../assets/svg/icons/calendarIcon';
 import AppTextInput from '../../../shared/components/appTextInput';
 import AppDatePicker from '../../../shared/components/appDatePicker';
@@ -44,58 +44,58 @@ const ChildInfo = ({route, navigation}) => {
         onPress={() => navigation.navigate(CREATEACCOUNT)}
       />
       <ScrollView style={{height: '80%'}}>
-        <View style={styles.screenWrapper}>
-          <Text style={styles.titleText}>
+        <View style={beneficiaryInfoStyles.screenWrapper}>
+          <Text style={beneficiaryInfoStyles.titleText}>
             {CREATE_ACCOUNT.BENEFICIARY_INFO_TITLE}
           </Text>
-          <View style={styles.boxContainer}>
-            <View style={[styles.selectedStageCard]}>
+          <View style={beneficiaryInfoStyles.boxContainer}>
+            <View style={[beneficiaryInfoStyles.selectedStageCard]}>
               <View style={{flexDirection: 'row'}}>
                 <View>
-                  <Text style={styles.selectedStageCardDesc}>
+                  <Text style={beneficiaryInfoStyles.selectedStageCardDesc}>
                     You have selected
                   </Text>
-                  <Text style={styles.selectedStageCardTitle}>
+                  <Text style={beneficiaryInfoStyles.selectedStageCardTitle}>
                     {route.params.title}
                   </Text>
                 </View>
               </View>
             </View>
           </View>
-          <View style={styles.formWrapper}>
-            <View style={styles.inputContainer}>
-              <View style={styles.iconTextInput}>
+          <View style={beneficiaryInfoStyles.formWrapper}>
+            <View style={beneficiaryInfoStyles.inputContainer}>
+              <View style={beneficiaryInfoStyles.iconTextInput}>
                 <ChildIcon />
               </View>
               <AppTextInput
                 placeholder={USER_DETAILS.CHILD_NAME}
                 placeholderTextColor={PLACEHOLDER_COLOR}
-                newStyles={styles.inputField}
+                newStyles={beneficiaryInfoStyles.inputField}
                 label={USER_DETAILS.CHILD_NAME}
               />
             </View>
-            <View style={styles.inputContainer}>
-              <View style={styles.iconTextInput}>
+            <View style={beneficiaryInfoStyles.inputContainer}>
+              <View style={beneficiaryInfoStyles.iconTextInput}>
                 <CalendarIcon />
               </View>
               <AppDatePicker titleName={USER_DETAILS.CHILD_DOB} />
             </View>
-            <View style={styles.inputContainer}>
-              <View style={styles.iconTextInput}>
+            <View style={beneficiaryInfoStyles.inputContainer}>
+              <View style={beneficiaryInfoStyles.iconTextInput}>
                 <MotherIcon />
               </View>
               <AppTextInput
                 placeholder={USER_DETAILS.MOTHER_NAME}
                 placeholderTextColor={PLACEHOLDER_COLOR}
-                newStyles={styles.inputField}
+                newStyles={beneficiaryInfoStyles.inputField}
               />
             </View>
-            <View style={styles.inputContainer}>
-              <View style={styles.iconTextInput}>
+            <View style={beneficiaryInfoStyles.inputContainer}>
+              <View style={beneficiaryInfoStyles.iconTextInput}>
                 <PhoneIcon />
               </View>
               <AppTextInput
-                newStyles={styles.inputField}
+                newStyles={beneficiaryInfoStyles.inputField}
                 placeholder={USER_DETAILS.PHONE_NUMBER}
                 keyboardType="numeric"
                 placeholderTextColor={PLACEHOLDER_COLOR}
@@ -103,19 +103,19 @@ const ChildInfo = ({route, navigation}) => {
                 onFocus={() => setIsPhoneFocused(true)}
               />
               {isPhoneFocused && isPhoneNumberValid && (
-                <Text style={styles.errorMsg}>Invalid Phone Number</Text>
+                <Text style={beneficiaryInfoStyles.errorMsg}>Invalid Phone Number</Text>
               )}
             </View>
-            <View style={styles.checkboxContainer}>
+            <View style={beneficiaryInfoStyles.checkboxContainer}>
               <CheckBox
                 value={toggleCheckBox}
-                style={styles.checkbox}
+                style={beneficiaryInfoStyles.checkbox}
                 onValueChange={setCheckbox}
                 boxType="square"
                 tintColor="transparent"
                 onFillColor={WHITE}
               />
-              <Text style={styles.checkboxLabel}>
+              <Text style={beneficiaryInfoStyles.checkboxLabel}>
                 {CREATE_ACCOUNT.CHECK_BOX_LABEL}
               </Text>
             </View>
@@ -127,8 +127,8 @@ const ChildInfo = ({route, navigation}) => {
           </View>
         </View>
       </ScrollView>
-      <View style={styles.buttonContainer}>
-        <Text style={styles.info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
+      <View style={beneficiaryInfoStyles.buttonContainer}>
+        <Text style={beneficiaryInfoStyles.info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
         <Button
           title={CREATE_ACCOUNT.OTP_BUTTON}
           textStyle={buttonStyles.buttonText}

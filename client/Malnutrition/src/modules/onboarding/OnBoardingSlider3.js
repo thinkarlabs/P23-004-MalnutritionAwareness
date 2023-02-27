@@ -1,6 +1,6 @@
 import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {styles} from './styles';
+import {onBoardingScreenStyles} from './styles';
 import {
   BACK,
   ONBOARDSCREEN3_CONTENT,
@@ -16,27 +16,27 @@ import OnboardingSlide3 from '../../../assets/svg/onboardingSlide3SVG';
 
 const OnBoardingSlider3 = ({navigation}) => {
   return (
-    <SafeAreaView style={styles.yellowContainer}>
-      <View style={styles.container}>
-        <View style={styles.header}>
+    <SafeAreaView style={onBoardingScreenStyles.yellowContainer}>
+      <View style={onBoardingScreenStyles.container}>
+        <View style={onBoardingScreenStyles.header}>
           <TouchableOpacity
             onPress={() => {
               navigation.navigate(ONBOARDINGSLIDER1);
             }}>
-            <Text style={styles.headerText}>{BACK}</Text>
+            <Text style={onBoardingScreenStyles.headerText}>{BACK}</Text>
           </TouchableOpacity>
           <AppTextTranslates />
         </View>
-        <View style={styles.headerImage}>
+        <View style={onBoardingScreenStyles.headerImage}>
           <OnboardingSlide3 />
         </View>
-        <View style={styles.contentContainer}>
-          <Text style={styles.contentTitle}>{ONBOARDSCREEN3_TITLE}</Text>
-          <Text style={styles.contentBody}>{ONBOARDSCREEN3_CONTENT}</Text>
+        <View style={onBoardingScreenStyles.contentContainer}>
+          <Text style={onBoardingScreenStyles.contentTitle}>{ONBOARDSCREEN3_TITLE}</Text>
+          <Text style={onBoardingScreenStyles.contentBody}>{ONBOARDSCREEN3_CONTENT}</Text>
         </View>
       </View>
       {/* Re-use component of next screen button */}
-      <View style={styles.circleContainer}>
+      <View style={onBoardingScreenStyles.circleContainer}>
         <NextScreenArrow
           onPress={() => {
             navigation.navigate(CREATEACCOUNT);

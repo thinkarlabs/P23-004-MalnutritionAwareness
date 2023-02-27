@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {BLACK, BLUE, WHITE} from '../../shared/constants/colors';
 
-export const styles = StyleSheet.create({
+export const createAccountStyles = StyleSheet.create({
   container: {
     flex: 1,
   },

@@ -6,7 +6,7 @@ import {
   USER_DETAILS,
 } from '../../../shared/constants/constants';
 import {CREATEACCOUNT} from '../../../shared/constants/navigatorConstants';
-import {styles} from './styles';
+import {beneficiaryInfoStyles} from './styles';
 import {PLACEHOLDER_COLOR, WHITE} from '../../../shared/constants/colors';
 import AppTextInput from '../../../shared/components/appTextInput';
 import AppDatePicker from '../../../shared/components/appDatePicker';
@@ -82,39 +82,39 @@ const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
         onPress={() => navigation.navigate(CREATEACCOUNT)}
       />
       <ScrollView style={{height: '80%'}}>
-        <View style={styles.screenWrapper}>
-          <Text style={styles.titleText}>
+        <View style={beneficiaryInfoStyles.screenWrapper}>
+          <Text style={beneficiaryInfoStyles.titleText}>
             {CREATE_ACCOUNT.BENEFICIARY_INFO_TITLE}
           </Text>
-          <View style={styles.boxContainer}>
-            <View style={[styles.selectedStageCard]}>
+          <View style={beneficiaryInfoStyles.boxContainer}>
+            <View style={[beneficiaryInfoStyles.selectedStageCard]}>
               <View style={{flexDirection: 'row'}}>
                 {/* <PregnantWomenImage height={56} width={46}/> */}
                 <View>
-                  <Text style={styles.selectedStageCardDesc}>
+                  <Text style={beneficiaryInfoStyles.selectedStageCardDesc}>
                     You have selected
                   </Text>
-                  <Text style={styles.selectedStageCardTitle}>
+                  <Text style={beneficiaryInfoStyles.selectedStageCardTitle}>
                     {route?.params?.title}
                   </Text>
                 </View>
               </View>
             </View>
           </View>
-          <View style={styles.formWrapper}>
-            <View style={styles.inputContainer}>
+          <View style={beneficiaryInfoStyles.formWrapper}>
+            <View style={beneficiaryInfoStyles.inputContainer}>
               {/* <View style={styles.iconTextInput}>
               <CalenderIcon />
             </View> */}
               <AppTextInput
                 placeholder={USER_DETAILS.NAME}
                 placeholderTextColor={PLACEHOLDER_COLOR}
-                newStyles={styles.inputField}
+                newStyles={beneficiaryInfoStyles.inputField}
                 name="name"
                 changeText={updatename}
               />
             </View>
-            <View style={styles.inputContainer}>
+            <View style={beneficiaryInfoStyles.inputContainer}>
               {/* <View style={styles.iconTextInput}>
               <CalenderIcon />
             </View> */}
@@ -123,12 +123,12 @@ const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
                 titleName={USER_DETAILS.MENSTURAL_DATE}
               />
             </View>
-            <View style={styles.inputContainer}>
+            <View style={beneficiaryInfoStyles.inputContainer}>
               {/* <View style={styles.iconTextInput}>
               <CalenderIcon />
             </View> */}
               <AppTextInput
-                newStyles={styles.inputField}
+                newStyles={beneficiaryInfoStyles.inputField}
                 placeholder={USER_DETAILS.PHONE_NUMBER}
                 keyboardType="numeric"
                 maxLength={10}
@@ -137,33 +137,33 @@ const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
                 changeText={updatePhoneNumber}
               />
               {isPhoneFocused && isPhoneNumberValid && (
-                <Text style={styles.errorMsg}>Invalid Phone Number</Text>
+                <Text style={beneficiaryInfoStyles.errorMsg}>Invalid Phone Number</Text>
               )}
             </View>
-            <View style={styles.checkboxContainer}>
+            <View style={beneficiaryInfoStyles.checkboxContainer}>
               <CheckBox
                 value={formValues.is_created_for_someone_else}
-                style={styles.checkbox}
+                style={beneficiaryInfoStyles.checkbox}
                 onValueChange={updateIsCreateForSomeoneElse}
                 boxType="square"
                 tintColor="transparent"
                 onFillColor={WHITE}
                 name="is_created_for_someone_else"
               />
-              <Text style={styles.checkboxLabel}>
+              <Text style={beneficiaryInfoStyles.checkboxLabel}>
                 {CREATE_ACCOUNT.CHECK_BOX_LABEL}
               </Text>
             </View>
             {formValues.is_created_for_someone_else && (
-              <View style={styles.dropdownWrapper}>
+              <View style={beneficiaryInfoStyles.dropdownWrapper}>
                 <AppDropdown dropdownValue={updateRelationWithChild} />
               </View>
             )}
           </View>
         </View>
       </ScrollView>
-      <View style={styles.buttonContainer}>
-        <Text style={styles.info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
+      <View style={beneficiaryInfoStyles.buttonContainer}>
+        <Text style={beneficiaryInfoStyles.info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
         <Button
           title={CREATE_ACCOUNT.OTP_BUTTON}
           textStyle={buttonStyles.buttonText}

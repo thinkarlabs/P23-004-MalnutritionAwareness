@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import { LIGHT_GREY } from '../../constants/colors';
 
-export const styles = StyleSheet.create({
+export const appTextTranslateStyles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row-reverse',
   },

@@ -1,6 +1,6 @@
 import {View, Text, SafeAreaView, ScrollView, Platform} from 'react-native';
 import React from 'react';
-import {styles} from './styles';
+import {createAccountStyles} from './styles';
 import AppHeader from '../../shared/components/appHeader';
 import {CREATE_ACCOUNT} from '../../shared/constants/constants';
 import {AppCard} from '../../shared/components/appCard';
@@ -15,15 +15,15 @@ import {
 
 const CreateAccount = ({navigation}) => {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={createAccountStyles.container}>
       <AppHeader title={CREATE_ACCOUNT.TITLE_SCREEN} />
       <ScrollView
         style={Platform.select({
-          ios: styles.scrollContainerIOS,
-          android: styles.scrollContainer,
+          ios: createAccountStyles.scrollContainerIOS,
+          android: createAccountStyles.scrollContainer,
         })}>
-        <View style={styles.screenWrapper}>
-          <Text style={styles.titleText}>
+        <View style={createAccountStyles.screenWrapper}>
+          <Text style={createAccountStyles.titleText}>
             {CREATE_ACCOUNT.SELECT_CURRENT_STAGE_TEXT}
           </Text>
           <AppCard
@@ -46,7 +46,7 @@ const CreateAccount = ({navigation}) => {
             title={CREATE_ACCOUNT.CATEGORY_2_TITLE}
             content={CREATE_ACCOUNT.CATEGORY_2_DESCRIPTION}
             image={<LactatingMotherImage />}
-            newStyle={styles.rowReverse}
+            newStyle={createAccountStyles.rowReverse}
           />
           <AppCard
             onPress={() => {

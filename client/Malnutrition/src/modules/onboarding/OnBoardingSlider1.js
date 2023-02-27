@@ -1,6 +1,6 @@
 import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {styles} from './styles';
+import {onBoardingScreenStyles} from './styles';
 import AppTextTranslates from '../../shared/components/appTextTranslate';
 import {
   ONBOARDSCREEN1_CONTENT,
@@ -16,28 +16,28 @@ import OnboardingSlide1 from '../../../assets/svg/onboardingSlide1SVG';
 
 const OnBoardingSlider1 = ({navigation}) => {
   return (
-    <SafeAreaView style={styles.pinkContainer}>
-      <View style={styles.container}>
-        <View style={styles.header}>
+    <SafeAreaView style={onBoardingScreenStyles.pinkContainer}>
+      <View style={onBoardingScreenStyles.container}>
+        <View style={onBoardingScreenStyles.header}>
           <TouchableOpacity
             onPress={() => {
               navigation.navigate(CREATEACCOUNT);
             }}>
-            <Text style={styles.headerText}>{SKIP}</Text>
+            <Text style={onBoardingScreenStyles.headerText}>{SKIP}</Text>
           </TouchableOpacity>
           {/* Re-use component for text translation */}
           <AppTextTranslates />
         </View>
-        <View style={styles.headerImage}>
+        <View style={onBoardingScreenStyles.headerImage}>
           <OnboardingSlide1 />
         </View>
-        <View style={styles.contentContainer}>
-          <Text style={styles.contentTitle}>{ONBOARDSCREEN1_TITLE}</Text>
-          <Text style={styles.contentBody}>{ONBOARDSCREEN1_CONTENT}</Text>
+        <View style={onBoardingScreenStyles.contentContainer}>
+          <Text style={onBoardingScreenStyles.contentTitle}>{ONBOARDSCREEN1_TITLE}</Text>
+          <Text style={onBoardingScreenStyles.contentBody}>{ONBOARDSCREEN1_CONTENT}</Text>
         </View>
       </View>
       {/* Re-use component of next screen button */}
-      <View style={styles.circleContainer}>
+      <View style={onBoardingScreenStyles.circleContainer}>
         <NextScreenArrow
           onPress={() => {
             navigation.navigate(ONBOARDINGSLIDER2);
