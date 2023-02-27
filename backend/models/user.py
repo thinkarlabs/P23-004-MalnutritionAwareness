@@ -62,3 +62,14 @@ def ResponseModel(data, message):
 class VerifyOTPResponse(BaseModel):
     message: str
     session_token: str
+
+
+
+class LoginUserSchema(BaseModel):
+    phone_number: constr(
+        strip_whitespace=True,
+        regex=r"^(\+)[1-9][0-9\-\(\)\.]{9,15}$",
+    )
+
+class SessionToken(BaseModel):
+    session_token: str|None
