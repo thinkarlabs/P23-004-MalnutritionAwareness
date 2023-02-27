@@ -14,7 +14,7 @@ async def login_account(user:LoginUserSchema= Body(...)):
     # check if same record exists
     if database.user.find_one({'phone_number': user.phone_number}):
         active_status = database.user.find_one({'phone_number': user.phone_number})['is_active']
-        if active_status== True:
+        if active_status:
             # # generate and save otp for user
             otp = otp_generate_save(user_dict['phone_number'])
             # # send otp to users phone number
