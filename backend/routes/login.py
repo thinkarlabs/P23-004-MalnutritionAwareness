@@ -21,7 +21,7 @@ async def login_account(user:LoginUserSchema= Body(...)):
             send_otp_to_phone(user_dict['phone_number'], otp)
             return {'status_code':200, 'message': 'otp send successfully'}
         else:
-            raise HTTPException(status_code=409, detail="is_creation is not set as true !")
+            raise HTTPException(status_code=404, detail="Account not found !")
 
     else:
         raise HTTPException(status_code=409, detail="Phone number not exists !")
