@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Body
-from models.user import CreateUserSchema, ResponseModel, VerifyOTPResponse, VerifyOTPSchema
+from models.user import CreateUserSchema, ResponseModel, VerifyOTPResponse, VerifyOTPSchema,LoginUserSchema
 from fastapi.encoders import jsonable_encoder
 from config.database import db as database
 from config.jwt_handler import JWT_ALGORITHM, JWT_SECRET
@@ -54,6 +54,23 @@ async def create_account(user: CreateUserSchema = Body(...)):
     send_otp_to_phone(user_dict['phone_number'], otp)
 
     return JSONResponse(status_code=200, content={"message": "User saved successfully"})
+@router.post("/login")
+async def login_account(user:LoginUserSchema= Body(...)):
+    user_dict = jsonable_encoder(user)
+    # check if same record exists
+    if database.user.find_one({'phone_number': user.phone_number}):
+        active_status = database.user.find_one({'phone_number': user.phone_number})['is_active']
+        if active_status:
+            # # generate and save otp for user
+            otp = otp_generate_save(user_dict['phone_number'])
+            # # send otp to users phone number
+            send_otp_to_phone(user_dict['phone_number'], otp)
+            return {'status_code':200, 'message': 'otp send successfully'}
+        else:
+            return JSONResponse(status_code=404, content={"error":"Account not found !"})
+
+    else:
+        return JSONResponse(status_code=409, content={"error":"Phone number not exists !"})
 
 @router.post("/api/v1/verify_otp")
 async def verify_otp(user: VerifyOTPSchema = Body(...)):

@@ -3,6 +3,7 @@ from fastapi.encoders import jsonable_encoder
 from models.user import LoginUserSchema
 from routes.user import otp_generate_save,send_otp_to_phone
 from config.database import db as database
+from fastapi.responses import JSONResponse
 
 
 router = APIRouter()
@@ -21,10 +22,10 @@ async def login_account(user:LoginUserSchema= Body(...)):
             send_otp_to_phone(user_dict['phone_number'], otp)
             return {'status_code':200, 'message': 'otp send successfully'}
         else:
-            raise HTTPException(status_code=404, detail="Account not found !")
+            return JSONResponse(status_code=404, content={"error":"Account not found !"})
 
     else:
-        raise HTTPException(status_code=409, detail="Phone number not exists !")
+        return JSONResponse(status_code=409, content={"error":"Phone number not exists !"})
 
 
 

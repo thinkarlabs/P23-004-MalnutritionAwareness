@@ -88,6 +88,6 @@ class VerifyOTPResponse(BaseModel):
 class LoginUserSchema(BaseModel):
     phone_number: constr(
         strip_whitespace=True,
-        regex=r"^(\+)[1-9][0-9\-\(\)\.]{9,15}$",
+        regex=r"^\+91[0-9]{10}$",
     )
 
