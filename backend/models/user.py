@@ -56,7 +56,7 @@ class CreateUserSchema(BaseModel):
 class VerifyOTPSchema(BaseModel):
     phone_number: constr(
         strip_whitespace=True,
-        regex=r"^[0-9]{10}$",
+        regex=r"^\+91[0-9]{10}$",
     )
     otp: int
     is_creation: Optional[bool] = False
