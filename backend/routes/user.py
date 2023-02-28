@@ -65,7 +65,7 @@ async def login_account(user:LoginUserSchema= Body(...)):
             otp = otp_generate_save(user_dict['phone_number'])
             # # send otp to users phone number
             send_otp_to_phone(user_dict['phone_number'], otp)
-            return {'status_code':200, 'message': 'otp send successfully'}
+            return JSONResponse(status_code=200, content={"success": "otp send successfully"})
         else:
             return JSONResponse(status_code=404, content={"error":"Account not found !"})
 
