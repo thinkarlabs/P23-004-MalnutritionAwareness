@@ -64,10 +64,6 @@ class VerifyOTPSchema(BaseModel):
 class SessionToken(BaseModel):
     session_token : str | None
 
-class VerifyOTPResponse(BaseModel):
-    message: str
-    session_token: str
-
 
 class LoginUserSchema(BaseModel):
     phone_number: constr(
