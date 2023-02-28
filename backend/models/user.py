@@ -52,13 +52,6 @@ class CreateUserSchema(BaseModel):
             "%d/%m/%Y"
         ).date()
 
-class LoginUserSchema(BaseModel):
-    phone_number: constr(
-        strip_whitespace=True,
-        regex=r"^(\+)[1-9][0-9\-\(\)\.]{9,15}$",
-    )
-
-
 class VerifyOTPSchema(BaseModel):
     phone_number: constr(
         strip_whitespace=True,
@@ -66,15 +59,6 @@ class VerifyOTPSchema(BaseModel):
     )
     otp: int
     is_creation: Optional[bool] = False
-
-
-
-def ResponseModel(data, message):
-    return {
-        "data": [data],
-        "code": 200,
-        "message": message,
-    }
 
 
 class SessionToken(BaseModel):

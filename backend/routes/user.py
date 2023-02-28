@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Body
-from models.user import CreateUserSchema, ResponseModel, VerifyOTPResponse, VerifyOTPSchema,LoginUserSchema
+from models.user import CreateUserSchema,VerifyOTPSchema,LoginUserSchema
 from fastapi.encoders import jsonable_encoder
 from config.database import db as database
-from config.jwt_handler import JWT_ALGORITHM, JWT_SECRET
-from config.twilio_config import twilio_client, twilio_number
+from config.jwt_handler import JWT_ALGORITHM,JWT_SECRET
+from config.twilio_config import twilio_client,twilio_number
 from fastapi.responses import JSONResponse
 from schemas.user import serializeDict, serializeList
 from bson import ObjectId
