@@ -131,4 +131,7 @@ export const styles = StyleSheet.create({
     position: 'relative',
     top: 10,
   },
+  buttonDisabled: {
+    opacity: 0.5,
+  },
 });

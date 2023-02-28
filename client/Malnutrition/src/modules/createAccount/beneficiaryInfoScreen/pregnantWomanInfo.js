@@ -31,13 +31,14 @@ const pregnantWomanInfo = ({route, navigation}) => {
     is_created_for_someone_else: false,
     relation_with_child: null,
   });
+  const [isValidForm, setIsValidForm] = useState(false);
 
   useEffect(() => {
     console.log(formValues);
     if (todaysDate == '') {
       getTodaysDate();
     }
-  }, [formValues]);
+  }, [formValues, isValidForm]);
 
   const updatename = newVal => {
     setFormValues({...formValues, name: newVal});
@@ -52,7 +53,6 @@ const pregnantWomanInfo = ({route, navigation}) => {
       ...formValues,
       lmp: moment(newVal.timestamp).format('YYYY-DD-MM'),
     });
-    console.log(formValues);
   };
 
   const updateIsCreateForSomeoneElse = val => {
@@ -85,6 +85,25 @@ const pregnantWomanInfo = ({route, navigation}) => {
     let month = today.getMonth() + 1;
     let year = today.getFullYear();
     setTodaysDate((year + '-' + month + '-' + date).toString());
+  };
+
+  const isFormValid = () => {
+    if (
+      formValues.user_type &&
+      formValues.name &&
+      formValues.lmp &&
+      formValues.phone_number &&
+      isPhoneNumberValid
+    ) {
+      if (formValues.is_created_for_someone_else) {
+        if (formValues.relation_with_child) {
+          setIsValidForm(true);
+        }
+      }
+      setIsValidForm(true);
+    } else {
+      setIsValidForm(false);
+    }
   };
 
   return (
@@ -189,11 +208,13 @@ const pregnantWomanInfo = ({route, navigation}) => {
               android: styles.androidButtonContainer,
             })}>
             <Text style={styles.Info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
+            <Text>is valid: {isValidForm}</Text>
             <Button
               title={CREATE_ACCOUNT.OTP_BUTTON}
               textStyle={styles.ButtonText}
               buttonStyle={[styles.Button]}
               onPress={() => {}}
+              // style={isFormValid() == 0 ? styles.buttonDisabled : ''}
             />
           </View>
         </View>
