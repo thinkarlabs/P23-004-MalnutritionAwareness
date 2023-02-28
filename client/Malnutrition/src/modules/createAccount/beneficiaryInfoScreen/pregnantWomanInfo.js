@@ -1,24 +1,23 @@
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import {View, Text, SafeAreaView, Platform, ScrollView} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {
   CREATE_ACCOUNT,
-  SET_APP_FOR,
   USER_DETAILS,
 } from '../../../shared/constants/constants';
 import {CREATEACCOUNT} from '../../../shared/constants/navigatorConstants';
 import {styles} from './styles';
-import {GREY, PLACEHOLDER_COLOR, WHITE} from '../../../shared/constants/colors';
-import PregnantWomenImage from '../../../../assets/svg/pregnantWomenSVG';
+import {PLACEHOLDER_COLOR, WHITE} from '../../../shared/constants/colors';
 import AppTextInput from '../../../shared/components/appTextInput';
 import AppDatePicker from '../../../shared/components/appDatePicker';
 import CheckBox from '@react-native-community/checkbox';
-import SelectDropdown from '../../../shared/components/dropdown';
 import {Button} from '../../../shared/components/button';
+import {createPregnantWomenAccount as createAccountAction} from '../Actions';
+import {connect} from 'react-redux';
 import AppDropdown from '../../../shared/components/appDropdown';
 import moment from 'moment';
 
-const pregnantWomanInfo = ({route, navigation}) => {
+const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
@@ -30,6 +29,7 @@ const pregnantWomanInfo = ({route, navigation}) => {
     phone_number: '',
     is_created_for_someone_else: false,
     relation_with_child: null,
+    child: [],
   });
   const [isValidForm, setIsValidForm] = useState(false);
 
@@ -45,7 +45,7 @@ const pregnantWomanInfo = ({route, navigation}) => {
   };
 
   const updatePhoneNumber = newVal => {
-    setFormValues({...formValues, phone_number: newVal});
+    setFormValues({...formValues, phone_number: '+91' + newVal});
   };
 
   const updateLMP = newVal => {
@@ -77,6 +77,10 @@ const pregnantWomanInfo = ({route, navigation}) => {
     } else {
       setIsPhoneNumberValid(false);
     }
+  };
+  const createAccount = () => {
+    console.log(formValues);
+    createPregnantWomenAccount(formValues, navigation);
   };
 
   const getTodaysDate = () => {
@@ -213,8 +217,7 @@ const pregnantWomanInfo = ({route, navigation}) => {
               title={CREATE_ACCOUNT.OTP_BUTTON}
               textStyle={styles.ButtonText}
               buttonStyle={[styles.Button]}
-              onPress={() => {}}
-              // style={isFormValid() == 0 ? styles.buttonDisabled : ''}
+              onPress={createAccount}
             />
           </View>
         </View>
@@ -223,4 +226,13 @@ const pregnantWomanInfo = ({route, navigation}) => {
   );
 };
 
-export default pregnantWomanInfo;
+const mapDispatchToProps = dispatch => ({
+  createPregnantWomenAccount: (formValues, navigation) =>
+    dispatch(createAccountAction(formValues, navigation)),
+});
+
+const mapStateToProps = state => ({
+  pregnantWomanData: state.createAccount.pregnantWomanData,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(pregnantWomanInfo);

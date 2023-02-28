@@ -14,8 +14,7 @@ export const styles = StyleSheet.create({
   headerText: {
     fontSize: 18,
     fontWeight: '700',
-    paddingLeft: 8,
-    color: BLACK
+    color: BLACK,
   },
   secondContainer: {
     flexDirection: 'row-reverse',
@@ -24,7 +23,6 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
     width: 57,
     height: 32,
-    left: 298,
     right: 20,
     position: 'absolute',
   },

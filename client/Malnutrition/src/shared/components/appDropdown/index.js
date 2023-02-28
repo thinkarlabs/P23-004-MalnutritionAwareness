@@ -11,9 +11,9 @@ import {
 import {DROPDOWN_BOX, PLACEHOLDER_DETAILS} from '../../constants/constants';
 
 const data = [
-  {label: DROPDOWN_BOX.A_RELATIVE, value: '1'},
-  {label: DROPDOWN_BOX.AN_NGO_MEMBER, value: '2'},
-  {label: DROPDOWN_BOX.AN_ANGANWADI_MEMBER, value: '3'},
+  {label: DROPDOWN_BOX.A_RELATIVE, value: 'RELATIVE'},
+  {label: DROPDOWN_BOX.AN_NGO_MEMBER, value: 'NGO_MEMBER'},
+  {label: DROPDOWN_BOX.AN_ANGANWADI_MEMBER, value: 'ANGANWADI_MEMBER'},
 ];
 
 const AppDropdown = ({dropdownValue}) => {
