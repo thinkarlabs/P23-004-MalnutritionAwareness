@@ -68,7 +68,7 @@ async def verify_otp(user: VerifyOTPSchema = Body(...)):
         if curr_time > valid_time:
             return JSONResponse(status_code=400, content={'error': 'OTP expired !'})
         session_token = jwt.encode({'phone_number': user_dict['phone_number']}, JWT_SECRET, algorithm=JWT_ALGORITHM)
-        response = VerifyOTPResponse(message= "OTP verified successfully", session_token=session_token)
+        response = VerifyOTPResponse(message="OTP verified successfully", session_token=session_token)
         if user_dict['is_creation']:
             database.user.update_one(
                 {'phone_number': user_dict['phone_number']},
@@ -77,7 +77,7 @@ async def verify_otp(user: VerifyOTPSchema = Body(...)):
             )
 
 
-        return response
+        return JSONResponse(status_code=200,content={"success": "OTP verifed successfully"})
     else:
         # Return an error message
         return JSONResponse(status_code=400,content={"error": "Invalid OTP"})
