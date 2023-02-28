@@ -37,7 +37,7 @@ class CreateUserSchema(BaseModel):
     name: str
     phone_number: constr(
         strip_whitespace=True,
-        regex=r"^[0-9]{10}$",
+        regex=r"^\+91[0-9]{10}$",
     )
     user_type: UserType
     relation_with_child: Optional[RelationWithChild] = None
@@ -51,6 +51,16 @@ class CreateUserSchema(BaseModel):
             value,
             "%d/%m/%Y"
         ).date()
+
+
+class VerifyOTPSchema(BaseModel):
+    phone_number: constr(
+        strip_whitespace=True,
+        regex=r"^[0-9]{10}$",
+    )
+    otp: int
+    is_creation: Optional[bool] = False
+
 
 def ResponseModel(data, message):
     return {
