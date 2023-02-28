@@ -53,7 +53,7 @@ async def create_account(user: CreateUserSchema = Body(...)):
     # send otp to users phone number
     send_otp_to_phone(user_dict['phone_number'], otp)
 
-    return JSONResponse(status_code=200, content={'message': 'User saved successfully'})
+    return JSONResponse(status_code=200, content={"message": "User saved successfully"})
 
 @router.post("/api/v1/verify_otp")
 async def verify_otp(user: VerifyOTPSchema = Body(...)):
