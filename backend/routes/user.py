@@ -65,12 +65,12 @@ async def login_account(user:LoginUserSchema= Body(...)):
             otp = otp_generate_save(user_dict['phone_number'])
             # # send otp to users phone number
             send_otp_to_phone(user_dict['phone_number'], otp)
-            return JSONResponse(status_code=200, content={"success": "otp send successfully"})
+            return JSONResponse(status_code=200, content={"message": "otp sent successfully"})
         else:
             return JSONResponse(status_code=404, content={"error":"Account not found !"})
 
     else:
-        return JSONResponse(status_code=409, content={"error":"Phone number not exists !"})
+        return JSONResponse(status_code=409, content={"error":"Phone number does not exists !"})
 
 @router.post("/api/v1/verify_otp")
 async def verify_otp(user: VerifyOTPSchema = Body(...)):
@@ -85,14 +85,14 @@ async def verify_otp(user: VerifyOTPSchema = Body(...)):
         if curr_time > valid_time:
             return JSONResponse(status_code=400, content={'error': 'OTP expired !'})
         session_token = jwt.encode({'phone_number': user_dict['phone_number']}, JWT_SECRET, algorithm=JWT_ALGORITHM)
-        response = VerifyOTPResponse(message="OTP verified successfully", session_token=session_token)
         if user_dict['is_creation']:
             database.user.update_one(
                 {'phone_number': user_dict['phone_number']},
                 {"$set": {'is_active': True}},
                 upsert=False
             )
-        return JSONResponse(status_code=200,content={"success": "OTP verifed successfully"})
+        return JSONResponse(status_code=200,content={"message": "OTP verified successfully",
+                                                     "session_token":session_token})
     else:
         # Return an error message
         return JSONResponse(status_code=400,content={"error": "Invalid OTP"})
