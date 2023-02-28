@@ -37,7 +37,7 @@ class CreateUserSchema(BaseModel):
     name: str
     phone_number: constr(
         strip_whitespace=True,
-        regex=r"^(\+)[1-9][0-9\-\(\)\.]{9,15}$",
+        regex=r"^[0-9]{10}$",
     )
     user_type: UserType
     relation_with_child: Optional[RelationWithChild] = None
