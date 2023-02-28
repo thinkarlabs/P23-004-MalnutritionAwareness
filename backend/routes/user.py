@@ -92,8 +92,6 @@ async def verify_otp(user: VerifyOTPSchema = Body(...)):
                 {"$set": {'is_active': True}},
                 upsert=False
             )
-
-
         return JSONResponse(status_code=200,content={"success": "OTP verifed successfully"})
     else:
         # Return an error message
