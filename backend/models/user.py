@@ -37,7 +37,7 @@ class CreateUserSchema(BaseModel):
     name: str
     phone_number: constr(
         strip_whitespace=True,
-        regex=r"^(\+)[1-9][0-9\-\(\)\.]{9,15}$",
+        regex=r"^\+91[0-9]{10}$",
     )
     user_type: UserType
     relation_with_child: Optional[RelationWithChild] = None
@@ -58,9 +58,15 @@ class LoginUserSchema(BaseModel):
         regex=r"^(\+)[1-9][0-9\-\(\)\.]{9,15}$",
     )
 
-class VerifyData(BaseModel):
-    otp: str
-    is_creation:bool
+
+class VerifyOTPSchema(BaseModel):
+    phone_number: constr(
+        strip_whitespace=True,
+        regex=r"^\+91[0-9]{10}$",
+    )
+    otp: int
+    is_creation: Optional[bool] = False
+
 
 
 def ResponseModel(data, message):
@@ -77,4 +83,11 @@ class SessionToken(BaseModel):
 class VerifyOTPResponse(BaseModel):
     message: str
     session_token: str
+
+
+class LoginUserSchema(BaseModel):
+    phone_number: constr(
+        strip_whitespace=True,
+        regex=r"^(\+)[1-9][0-9\-\(\)\.]{9,15}$",
+    )
 

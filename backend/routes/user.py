@@ -1,18 +1,14 @@
-from fastapi import APIRouter, Body, HTTPException
-<<<<<<< HEAD
-
-#from backend.models import users as user_
-from models.user import CreateUserSchema, ResponseModel, VerifyOTPResponse,SessionToken
+from fastapi import APIRouter, Body
+from models.user import CreateUserSchema, ResponseModel, VerifyOTPResponse, VerifyOTPSchema
 from fastapi.encoders import jsonable_encoder
 from config.database import db as database
 from config.jwt_handler import JWT_ALGORITHM, JWT_SECRET
 from config.twilio_config import twilio_client, twilio_number
+from fastapi.responses import JSONResponse
 from schemas.user import serializeDict, serializeList
 from bson import ObjectId
 import random
 import datetime
-import time
-
 import jwt
 
 
@@ -48,7 +44,7 @@ async def create_account(user: CreateUserSchema = Body(...)):
 
     # check if same record exists
     if database.user.find_one({'phone_number': user_dict['phone_number']}):
-        raise HTTPException(status_code=409, detail="Phone number already exists !")
+        return JSONResponse(status_code=409, content={'error': 'Phone number already exists !'})
 
     database.user.insert_one(user_dict)
 
@@ -57,25 +53,25 @@ async def create_account(user: CreateUserSchema = Body(...)):
     # send otp to users phone number
     send_otp_to_phone(user_dict['phone_number'], otp)
 
-    return {'status_code': 200, 'message': 'User saved successfully'}
+    return JSONResponse(status_code=200, content={'message': 'User saved successfully'})
 
 @router.post("/api/v1/verify_otp")
-async def verify_otp(vphone_number: str, votp: int, is_creation: bool):
-
+async def verify_otp(user: VerifyOTPSchema = Body(...)):
+    user_dict = jsonable_encoder(user)
     # Compare the provided OTP with the stored OTP
-    if database.otp_mapping.find_one({'phone_number': vphone_number, 'otp': votp}):
+    if database.otp_mapping.find_one({'phone_number': user_dict['phone_number'], 'otp': user_dict['otp']}):
         # check expiration of entered OTP
         curr_time = datetime.datetime.now()
-        otp_gen_time = database.otp_mapping.find_one({'phone_number': vphone_number, 'otp': votp},
+        otp_gen_time = database.otp_mapping.find_one({'phone_number': user_dict['phone_number'], 'otp': user_dict['otp']},
                                                      {'timestamp': 1, '_id': 0})
         valid_time = otp_gen_time['timestamp'] + datetime.timedelta(seconds=60)
         if curr_time > valid_time:
-            return {'status_code':400, 'message': 'otp expired'}
-        session_token = jwt.encode({'phone_number': vphone_number}, JWT_SECRET, algorithm=JWT_ALGORITHM)
+            return JSONResponse(status_code=400, content={'error': 'OTP expired !'})
+        session_token = jwt.encode({'phone_number': user_dict['phone_number']}, JWT_SECRET, algorithm=JWT_ALGORITHM)
         response = VerifyOTPResponse(message= "OTP verified successfully", session_token=session_token)
-        if is_creation:
+        if user_dict['is_creation']:
             database.user.update_one(
-                {'phone_number': vphone_number},
+                {'phone_number': user_dict['phone_number']},
                 {"$set": {'is_active': True}},
                 upsert=False
             )
@@ -84,7 +80,8 @@ async def verify_otp(vphone_number: str, votp: int, is_creation: bool):
         return response
     else:
         # Return an error message
-        response = VerifyOTPResponse(message="Invalid OTP", session_token="")
-        return response
+        return JSONResponse(status_code=400,content={"error": "Invalid OTP"})
+
+
 
 
