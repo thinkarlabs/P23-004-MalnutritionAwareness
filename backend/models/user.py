@@ -62,7 +62,7 @@ class VerifyOTPSchema(BaseModel):
 
 
 class SessionToken(BaseModel):
-    session_token : str | None
+    session_token : str = None
 
 
 class LoginUserSchema(BaseModel):
