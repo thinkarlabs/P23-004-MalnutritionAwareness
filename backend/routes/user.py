@@ -88,7 +88,7 @@ async def verify_otp(user: VerifyOTPSchema = Body(...)):
 
         #setting the token expirition time for 1 year
 
-        expires_delta = datetime.timedelta(seconds=160)
+        expires_delta = datetime.timedelta(days=365)
         to_encode = {'phone_number': user_dict['phone_number'], 'exp': datetime.datetime.utcnow() + expires_delta}
         encoded_jwt = jwt.encode(to_encode, JWT_SECRET, algorithm=JWT_ALGORITHM)
         if user_dict['is_creation']:
