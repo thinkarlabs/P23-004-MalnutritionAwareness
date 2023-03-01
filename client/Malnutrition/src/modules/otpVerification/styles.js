@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {BLACK, WHITE} from '../../shared/constants/colors';
 
-const styles = StyleSheet.create({
+const verifyOTPStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: WHITE,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   otpNotReceivedContainer: {
     marginTop: 8,
-    marginRight: 20,
+    marginRight: 87,
     alignItems: 'flex-end',
   },
   otpNotReceivedText: {
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     color: '#1066EC',
   },
+  button: {width: '90%', left: 20, right: 20, top: 236},
 });
 
-export default styles;
+export default verifyOTPStyles;

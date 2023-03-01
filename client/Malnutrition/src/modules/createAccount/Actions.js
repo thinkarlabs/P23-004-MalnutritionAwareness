@@ -19,7 +19,10 @@ export const createPregnantWomenAccount = (data, navigation) => dispatch => {
     .then(responseData => {
       console.log(responseData, 'responseData');
       dispatch(createPregnantWomenAccountSuccess(responseData));
-      navigation.navigate(OTPVERIFICATION);
+      navigation.navigate(OTPVERIFICATION,{
+        phone_number: phone_number,
+        
+      });
     })
     .catch(error => {
       //display error message

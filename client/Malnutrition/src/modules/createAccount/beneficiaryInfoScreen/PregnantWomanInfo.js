@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView, Platform} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {
@@ -81,7 +81,7 @@ const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
         backArrowValue={true}
         onPress={() => navigation.navigate(CREATEACCOUNT)}
       />
-      <ScrollView style={{height: '80%'}}>
+      <ScrollView style={{height: '100%'}}>
         <View style={beneficiaryInfoStyles.screenWrapper}>
           <Text style={beneficiaryInfoStyles.titleText}>
             {CREATE_ACCOUNT.BENEFICIARY_INFO_TITLE}
@@ -161,8 +161,11 @@ const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
             )}
           </View>
         </View>
-      </ScrollView>
-      <View style={beneficiaryInfoStyles.buttonContainer}>
+     
+      <View style={Platform.select({
+        android: beneficiaryInfoStyles.androidButtonContainer,
+        ios: beneficiaryInfoStyles.buttonContainer
+      })}>
         <Text style={beneficiaryInfoStyles.info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
         <Button
           title={CREATE_ACCOUNT.OTP_BUTTON}
@@ -170,6 +173,7 @@ const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
           onPress={createAccount}
         />
       </View>
+       </ScrollView>
     </SafeAreaView>
   );
 };
