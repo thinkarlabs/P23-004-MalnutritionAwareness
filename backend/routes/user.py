@@ -65,6 +65,7 @@ async def login_account(user:LoginUserSchema= Body(...)):
             otp = otp_generate_save(user_dict['phone_number'])
             # # send otp to users phone number
             send_otp_to_phone(user_dict['phone_number'], otp)
+
             return JSONResponse(status_code=200, content={"message": "otp sent successfully"})
         else:
             return JSONResponse(status_code=404, content={"error":"Account not found !"})
@@ -84,7 +85,12 @@ async def verify_otp(user: VerifyOTPSchema = Body(...)):
         valid_time = otp_gen_time['timestamp'] + datetime.timedelta(seconds=60)
         if curr_time > valid_time:
             return JSONResponse(status_code=400, content={'error': 'OTP expired !'})
-        session_token = jwt.encode({'phone_number': user_dict['phone_number']}, JWT_SECRET, algorithm=JWT_ALGORITHM)
+
+        #setting the token expirition time for 1 year
+
+        expires_delta = datetime.timedelta(seconds=160)
+        to_encode = {'phone_number': user_dict['phone_number'], 'exp': datetime.datetime.utcnow() + expires_delta}
+        encoded_jwt = jwt.encode(to_encode, JWT_SECRET, algorithm=JWT_ALGORITHM)
         if user_dict['is_creation']:
             database.user.update_one(
                 {'phone_number': user_dict['phone_number']},
@@ -92,7 +98,7 @@ async def verify_otp(user: VerifyOTPSchema = Body(...)):
                 upsert=False
             )
         return JSONResponse(status_code=200,content={"message": "OTP verified successfully",
-                                                     "session_token":session_token})
+                                                     "access_token": encoded_jwt})
     else:
         # Return an error message
         return JSONResponse(status_code=400,content={"error": "Invalid OTP"})
