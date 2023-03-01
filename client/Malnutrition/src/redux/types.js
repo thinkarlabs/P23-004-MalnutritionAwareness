@@ -1,0 +1,2 @@
+export const CREATE_PREGNANT_WOMEN_ACCOUNT_SUCCESS = 'create_pregnant_women_account_success';
+export const CREATE_PREGNANT_WOMEN_ACCOUNT_ERROR = 'create_pregnant_women_account_error';
