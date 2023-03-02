@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, Platform, ScrollView} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React, {useState, useEffect, useMemo} from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {
@@ -6,7 +6,7 @@ import {
   USER_DETAILS,
 } from '../../../shared/constants/constants';
 import {CREATEACCOUNT} from '../../../shared/constants/navigatorConstants';
-import {styles} from './styles';
+import {beneficiaryInfoStyles} from './styles';
 import {
   PLACEHOLDER_COLOR,
   WHITE,
@@ -20,6 +20,7 @@ import {createPregnantWomenAccount as createAccountAction} from '../Actions';
 import {connect} from 'react-redux';
 import AppDropdown from '../../../shared/components/appDropdown';
 import moment from 'moment';
+import {buttonStyles} from '../../../shared/components/button/styles';
 
 const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
@@ -37,14 +38,10 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   });
 
   useEffect(() => {
-    if (todaysDate == '') {
+    if (todaysDate === '') {
       getTodaysDate();
     }
-    //console.log(formValues);
-    //isFormValid();
-    // console.log('form Valid:' + isValidForm);
-    // console.log('phone valid:' + isPhoneNumberValid);
-  }, [formValues, isPhoneNumberValid, isPhoneFocused, isValidForm]);
+  }, [formValues, isPhoneNumberValid, isPhoneFocused, isValidForm, todaysDate]);
 
   const updatename = newVal => {
     setFormValues({...formValues, name: newVal});
@@ -141,39 +138,39 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
         onPress={() => navigation.navigate(CREATEACCOUNT)}
       />
       <ScrollView contentContainerStyle={{paddingBottom: '20%'}}>
-        <View style={styles.screenWrapper}>
-          <Text style={styles.titleText}>
+        <View style={beneficiaryInfoStyles.screenWrapper}>
+          <Text style={beneficiaryInfoStyles.titleText}>
             {CREATE_ACCOUNT.BENEFICIARY_INFO_TITLE}
           </Text>
-          <View style={styles.boxContainer}>
-            <View style={[styles.selectedStageCard]}>
+          <View style={beneficiaryInfoStyles.boxContainer}>
+            <View style={[beneficiaryInfoStyles.selectedStageCard]}>
               <View style={{flexDirection: 'row'}}>
                 {/* <PregnantWomenImage height={56} width={46}/> */}
                 <View>
-                  <Text style={styles.selectedStageCardDesc}>
+                  <Text style={beneficiaryInfoStyles.selectedStageCardDesc}>
                     You have selected
                   </Text>
-                  <Text style={styles.selectedStageCardTitle}>
+                  <Text style={beneficiaryInfoStyles.selectedStageCardTitle}>
                     {route.params.title}
                   </Text>
                 </View>
               </View>
             </View>
           </View>
-          <View style={styles.formWrapper}>
-            <View style={styles.inputContainer}>
+          <View style={beneficiaryInfoStyles.formWrapper}>
+            <View style={beneficiaryInfoStyles.inputContainer}>
               {/* <View style={styles.iconTextInput}>
               <CalenderIcon />
             </View> */}
               <AppTextInput
                 placeholder={USER_DETAILS.NAME}
                 placeholderTextColor={PLACEHOLDER_COLOR}
-                newStyles={styles.inputField}
+                newStyles={beneficiaryInfoStyles.inputField}
                 name="name"
                 changeText={updatename}
               />
             </View>
-            <View style={styles.inputContainer}>
+            <View style={beneficiaryInfoStyles.inputContainer}>
               {/* <View style={styles.iconTextInput}>
               <CalenderIcon />
             </View> */}
@@ -183,12 +180,12 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
                 titleName={USER_DETAILS.MENSTURAL_DATE}
               />
             </View>
-            <View style={styles.inputContainer}>
+            <View style={beneficiaryInfoStyles.inputContainer}>
               {/* <View style={styles.iconTextInput}>
               <CalenderIcon />
             </View> */}
               <AppTextInput
-                newStyles={styles.inputField}
+                newStyles={beneficiaryInfoStyles.inputField}
                 placeholder={USER_DETAILS.PHONE_NUMBER}
                 keyboardType="numeric"
                 maxLength={10}
@@ -199,52 +196,58 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
               />
             </View>
             {isPhoneFocused && !isPhoneNumberValid && (
-              <Text style={[styles.errorMsg, styles.shiftUp]}>
+              <Text
+                style={[
+                  beneficiaryInfoStyles.errorMsg,
+                  beneficiaryInfoStyles.shiftUp,
+                ]}>
                 Invalid Phone Number
               </Text>
             )}
-            <View style={styles.checkboxContainer}>
+            <View style={beneficiaryInfoStyles.checkboxContainer}>
               <CheckBox
                 value={formValues.is_created_for_someone_else}
-                style={styles.checkbox}
+                style={beneficiaryInfoStyles.checkbox}
                 onValueChange={updateIsCreateForSomeoneElse}
                 boxType="square"
                 tintColor="transparent"
                 onFillColor={WHITE}
                 name="is_created_for_someone_else"
               />
-              <Text style={styles.checkboxLabel}>
+              <Text style={beneficiaryInfoStyles.checkboxLabel}>
                 {CREATE_ACCOUNT.CHECK_BOX_LABEL}
               </Text>
             </View>
             {formValues.is_created_for_someone_else && (
-              <View style={styles.dropdownWrapper}>
+              <View style={beneficiaryInfoStyles.dropdownWrapper}>
                 <AppDropdown dropdownValue={updateRelationWithChild} />
               </View>
             )}
             {formValues.is_created_for_someone_else &&
               formValues.relation_with_child == null && (
-                <Text style={[styles.errorMsg, styles.shiftDown]}>
+                <Text
+                  style={[
+                    beneficiaryInfoStyles.errorMsg,
+                    beneficiaryInfoStyles.shiftDown,
+                  ]}>
                   Select any one option from the dropdown.
                 </Text>
               )}
           </View>
-          <View
-            style={Platform.select({
-              ios: styles.buttonContainer,
-              android: styles.androidButtonContainer,
-            })}>
-            <Text style={styles.Info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
-            <Button
-              title={CREATE_ACCOUNT.OTP_BUTTON}
-              textStyle={styles.ButtonText}
-              buttonStyle={[styles.Button]}
-              buttonColor={!isValidForm && BUTTON.PRIMARY_DISABLED}
-              onPress={createAccount}
-            />
-          </View>
         </View>
       </ScrollView>
+      <View style={beneficiaryInfoStyles.buttonContainer}>
+        <Text style={beneficiaryInfoStyles.info}>
+          {CREATE_ACCOUNT.BUTTON_INFO}
+        </Text>
+        <Button
+          title={CREATE_ACCOUNT.OTP_BUTTON}
+          textStyle={buttonStyles.buttonText}
+          buttonStyle={[buttonStyles.Button]}
+          buttonColor={!isValidForm && BUTTON.PRIMARY_DISABLED}
+          onPress={createAccount}
+        />
+      </View>
     </SafeAreaView>
   );
 };
@@ -256,6 +259,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   pregnantWomanData: state.createAccount.pregnantWomanData,
+  errorText: state.createAccount.errorText,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(pregnantWomanInfo);

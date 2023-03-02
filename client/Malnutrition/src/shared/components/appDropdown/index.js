@@ -9,6 +9,7 @@ import {
   PURPLE,
 } from '../../constants/colors';
 import {DROPDOWN_BOX, PLACEHOLDER_DETAILS} from '../../constants/constants';
+import { appDropdownStyles } from './styles';
 
 const data = [
   {label: DROPDOWN_BOX.A_RELATIVE, value: 'RELATIVE'},
@@ -23,7 +24,7 @@ const AppDropdown = ({dropdownValue}) => {
   const renderLabel = () => {
     if (value || isFocus) {
       return (
-        <Text style={[styles.label, isFocus && {color: LIGHT_GREY}]}>
+        <Text style={[appDropdownStyles.label, isFocus && {color: LIGHT_GREY}]}>
           {PLACEHOLDER_DETAILS.SELECT_YOUR_ROLE}
         </Text>
       );
@@ -32,18 +33,18 @@ const AppDropdown = ({dropdownValue}) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={appDropdownStyles.container}>
       {renderLabel()}
       <Dropdown
-        style={[styles.dropdown, isFocus && {borderColor: 'blue'}]}
-        placeholderStyle={styles.placeholderStyle}
+        style={[appDropdownStyles.dropdown, isFocus && {borderColor: 'blue'}]}
+        placeholderStyle={appDropdownStyles.placeholderStyle}
         data={data}
-        itemTextStyle={styles.itemTextStyle}
-        containerStyle={styles.itemContainer}
+        itemTextStyle={appDropdownStyles.itemTextStyle}
+        containerStyle={appDropdownStyles.itemContainer}
         maxHeight={300}
         labelField="label"
         valueField="value"
-        selectedTextStyle={styles.selectedTextStyle}
+        selectedTextStyle={appDropdownStyles.selectedTextStyle}
         placeholder={!isFocus ? 'Select your role' : 'I am '}
         value={value}
         onFocus={() => setIsFocus(true)}
@@ -65,48 +66,4 @@ const AppDropdown = ({dropdownValue}) => {
 
 export default AppDropdown;
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-    justifyContent: 'center',
-    width: '100%',
-    borderColor: PLACEHOLDER_BORDER_COLOR,
-    borderWidth: 1,
-    borderRadius: 12,
-  },
-  dropdown: {
-    height: 40,
-    borderColor: 'gray',
-    //   borderWidth: 0.5,
-    borderRadius: 8,
-    paddingHorizontal: 8,
-  },
-  label: {
-    position: 'absolute',
-    backgroundColor: 'white',
-    left: 50,
-    top: 8,
-    fontSize: 14,
-    fontWeight: '400',
-    color: BLACK,
-  },
-  placeholderStyle: {
-    fontSize: 18,
-    color: LIGHT_GREY,
-    fontWeight: '400',
-  },
-  selectedTextStyle: {
-    fontSize: 16,
-    color: BLACK,
-  },
-  itemTextStyle: {
-    fontSize: 18,
-    fontWeight: '400',
-    color: LIGHT_GREY,
-  },
-  itemContainer: {
-    borderWidth: 1,
-    borderColor: PLACEHOLDER_BORDER_COLOR,
-    borderRadius: 12,
-  },
-});
+

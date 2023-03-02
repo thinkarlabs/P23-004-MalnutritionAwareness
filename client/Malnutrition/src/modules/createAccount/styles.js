@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
-import {BLACK, BUTTON, WHITE} from '../../shared/constants/colors';
+import {BLACK, BLUE, WHITE} from '../../shared/constants/colors';
 
-export const styles = StyleSheet.create({
+export const createAccountStyles = StyleSheet.create({
   container: {
     flex: 1,
   },
@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   Button: {
-    backgroundColor: BUTTON.PRIMARY,
+    backgroundColor: BLUE,
     paddingVertical: 15,
     borderRadius: 16,
     color: WHITE,

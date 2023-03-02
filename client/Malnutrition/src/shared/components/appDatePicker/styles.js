@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {BLACK, LIGHT_GREY, WHITE} from '../../constants/colors';
 
-export const styles = StyleSheet.create({
+export const appDatePickerStyles = StyleSheet.create({
   titleText: {
     fontWeight: '400',
     fontSize: 18,
