@@ -9,8 +9,8 @@ import {
 } from '../../shared/constants/constants';
 import NextScreenArrow from '../../shared/components/nextScreenArrow';
 import {
-  LOGIN,
   ONBOARDINGSLIDER2,
+  CREATEACCOUNT
 } from '../../shared/constants/navigatorConstants';
 import OnboardingSlide1 from '../../../assets/svg/onboardingSlide1SVG';
 
@@ -21,7 +21,7 @@ const OnBoardingSlider1 = ({navigation}) => {
         <View style={styles.header}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate(LOGIN);
+              navigation.navigate(CREATEACCOUNT);
             }}>
             <Text style={styles.headerText}>{SKIP}</Text>
           </TouchableOpacity>
