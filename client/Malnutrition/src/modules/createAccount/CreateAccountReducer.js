@@ -3,7 +3,7 @@ import { CREATE_PREGNANT_WOMEN_ACCOUNT_ERROR, CREATE_PREGNANT_WOMEN_ACCOUNT_SUCC
   const INITIAL_STATE = {
     loading: false,
     errorText: '',
-    pregnantWomanData: {},
+    pregnantWomanData: '',
   };
 
   export default (state = INITIAL_STATE, action = {}) => {

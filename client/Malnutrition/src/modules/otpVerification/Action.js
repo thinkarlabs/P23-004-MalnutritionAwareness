@@ -1,4 +1,5 @@
 import { OTP_VERIFICATION_SUCCESS, OTP_VERIFICATION_ERROR } from "../../redux/types";
+import { URL_OTP_VERIFICATION } from "../../shared/apis/APIConstants";
 import { HOME } from "../../shared/constants/navigatorConstants";
 
 export const otpVerification = (data, navigation) => dispatch => {
@@ -9,13 +10,19 @@ export const otpVerification = (data, navigation) => dispatch => {
       },
       body: JSON.stringify(data),
     };
-
-    fetch(URL_CREATE_ACCOUNT, reqBody)
+    console.log(reqBody, 'data');
+    fetch(URL_OTP_VERIFICATION, reqBody)
     .then(response => response.json())
     .then(responseData => {
       console.log(responseData, 'responseData');
-      dispatch(otpVerificationSuccess(responseData));
-      navigation.navigate(HOME);
+      if (responseData?.message){
+        dispatch(otpVerificationSuccess(responseData?.message));
+        navigation.navigate(HOME);
+      }
+      else{
+        dispatch(otpVerificationError(responseData?.error))
+      }
+      
     })
     .catch(error => {
       //display error message

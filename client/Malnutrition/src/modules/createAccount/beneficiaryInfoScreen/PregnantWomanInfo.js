@@ -17,7 +17,7 @@ import {connect} from 'react-redux';
 import AppDropdown from '../../../shared/components/appDropdown';
 import {buttonStyles} from '../../../shared/components/button/styles';
 
-const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
+const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount, errorText, pregnantWomanData}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
@@ -33,6 +33,8 @@ const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
 
   useEffect(() => {
     console.log(formValues);
+    console.log('error', errorText);
+    console.log('data', pregnantWomanData);
   }, [formValues]);
 
   const updatename = newVal => {
@@ -44,7 +46,7 @@ const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   };
 
   const updateLMP = newVal => {
-    setFormValues({...formValues, lmp: newVal.timestamp});
+    setFormValues({...formValues, lmp: "23/01/2022"});
   };
 
   const updateIsCreateForSomeoneElse = val => {
@@ -73,6 +75,7 @@ const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
     console.log(formValues);
     createPregnantWomenAccount(formValues, navigation);
   };
+
 
   return (
     <SafeAreaView>
@@ -185,6 +188,9 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   pregnantWomanData: state.createAccount.pregnantWomanData,
+  errorText: state.createAccount.errorText,
 });
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(PregnantWomanInfo);

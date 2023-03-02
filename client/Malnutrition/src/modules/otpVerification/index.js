@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Image, Platform, SafeAreaView, Text, View} from 'react-native';
 import AppHeader from '../../shared/components/appHeader';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import verifyOTPStyles from './styles';
 import RnOtpTimer from 'rn-otp-timer';
-
 import {
   CONFIRM,
   DID_NOT_RECEIVE_OTP,
@@ -23,8 +22,26 @@ import {LIGHT_GREY, PURPLE} from '../../shared/constants/colors';
 import {Button} from '../../shared/components/button';
 import {buttonStyles} from '../../shared/components/button/styles';
 import { styles } from 'react-native-floating-label-input/src/styles';
+import { otpVerification } from './Action';
+import { connect } from 'react-redux';
 
-const OTPVerification = ({navigation}) => {
+const OTPVerification = ({navigation, route}) => {
+  const [otpValues, setOtpValues] = useState('');
+  const [formValues, setFormValues] = useState({
+    phone_number: route.params.phone_number,
+    otp: '',
+    is_creation: route.params.is_creation,
+  });
+
+  const updateOtpNumber = newVal => {
+    setFormValues({...formValues, otp: newVal});
+  };
+
+  const verifyOtp = () => {
+    // console.log(formValues);
+    otpVerification(formValues, navigation);
+  }
+  
   return (
     <View style={verifyOTPStyles.container}>
       <View style={verifyOTPStyles.headerContainer}>
@@ -44,7 +61,7 @@ const OTPVerification = ({navigation}) => {
         </View>
         <Text>
           <Text style={verifyOTPStyles.enterOtpText}>{ENTER_MOBILE_NUMBER}</Text>
-          {/* <Text style={styles.phoneNumberText}>{route.params.phone}</Text> */}
+          <Text style={styles.phoneNumberText}>{route.params.phone_number}</Text>
         </Text>
         <View style={verifyOTPStyles.otpInputContainer}>
           <OTPInputView
@@ -58,6 +75,7 @@ const OTPVerification = ({navigation}) => {
             onCodeFilled={code => {
               console.log(`Code is ${code}, you are good to go!`);
             }}
+            onCodeChanged={updateOtpNumber}
           />
         </View>
         {/* <View style={verifyOTPStyles.otpNotReceivedContainer}>
@@ -90,7 +108,7 @@ const OTPVerification = ({navigation}) => {
             title={'Verify OTP'}
             textStyle={buttonStyles.buttonText}
             buttonStyle={[verifyOTPStyles.buttonContainer]}
-            onPress={() => {}}
+            onPress={verifyOtp}
           />
         </View>
       </View>
@@ -98,4 +116,9 @@ const OTPVerification = ({navigation}) => {
   );
 };
 
-export default OTPVerification;
+const mapDispatchToProps = dispatch => ({
+  otpVerification: (formValues, navigation) =>
+    dispatch(otpVerification(formValues, navigation)),
+});
+
+export default connect(null, mapDispatchToProps) (OTPVerification);
