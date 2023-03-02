@@ -47,7 +47,4 @@ export const createAccountStyles = StyleSheet.create({
   buttonContainer: {
     bottom: 18,
   },
-  buttonContainerIOS: {
-    // bottom: 10,
-  },
 });

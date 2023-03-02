@@ -7,14 +7,7 @@ import splashStyle from './styles';
 const Splash = ({}) => {
   return (
     <View>
-      <View
-        style={{
-          // position: 'absolute',
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-        }}>
+      <View style={splashStyle.svgBackground}>
         <SplashBackgroundSVG />
       </View>
       <View style={splashStyle.title}>

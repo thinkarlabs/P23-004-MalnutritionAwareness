@@ -34,6 +34,12 @@ const splashStyles = StyleSheet.create({
     fontWeight: '600',
     color: BLACK,
   },
+  svgBackground: {
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
 });
 
 export default splashStyles;

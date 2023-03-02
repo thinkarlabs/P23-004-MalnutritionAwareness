@@ -1,27 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import {Image, Platform, SafeAreaView, Text, View} from 'react-native';
+import {Image, Text, View} from 'react-native';
 import AppHeader from '../../shared/components/appHeader';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import verifyOTPStyles from './styles';
 import {
-  CONFIRM,
-  DID_NOT_RECEIVE_OTP,
   ENTER_MOBILE_NUMBER,
-  MOBILE_NUMBER,
   OTP_VERIFICATION,
-  RESEND,
-  VERIFY_OTP,
   CREATE_ACCOUNT,
 } from '../../shared/constants/constants';
-import {
-  CREATEACCOUNT,
-  PREGNANTWOMAN_SCREEN,
-} from '../../shared/constants/navigatorConstants';
-import {LIGHT_GREY, PURPLE} from '../../shared/constants/colors';
+import {CREATEACCOUNT} from '../../shared/constants/navigatorConstants';
 import {Button} from '../../shared/components/button';
 import {buttonStyles} from '../../shared/components/button/styles';
-import {styles} from 'react-native-floating-label-input/src/styles';
-import {otpVerification} from './Action';
+import {otpVerification as otpVerificationAction} from './Actions';
 import {connect} from 'react-redux';
 
 const OTPVerification = ({navigation, route, otpVerification}) => {
@@ -94,7 +84,11 @@ const OTPVerification = ({navigation, route, otpVerification}) => {
         </View>
         <View style={verifyOTPStyles.resendContainer}>
           {count == 0 ? (
-            <Text style={verifyOTPStyles.resendTextBold} onPress={() => setCount(30)}>Resend OTP</Text>
+            <Text
+              style={verifyOTPStyles.resendTextBold}
+              onPress={() => setCount(30)}>
+              Resend OTP
+            </Text>
           ) : (
             <Text style={verifyOTPStyles.resendText}>Resend OTP in -</Text>
           )}
@@ -117,7 +111,7 @@ const OTPVerification = ({navigation, route, otpVerification}) => {
 
 const mapDispatchToProps = dispatch => ({
   otpVerification: (formValues, navigation) =>
-    dispatch(otpVerification(formValues, navigation)),
+    dispatch(otpVerificationAction(formValues, navigation)),
 });
 
 export default connect(null, mapDispatchToProps)(OTPVerification);
