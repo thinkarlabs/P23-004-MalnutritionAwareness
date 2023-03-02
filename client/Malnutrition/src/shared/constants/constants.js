@@ -11,3 +11,49 @@ export const ONBOARDSCREEN3_CONTENT = `Measuring child can help to detect${'\n'}
 export const SKIP = 'Skip';
 export const BACK = 'Back';
 export const ENGLISH = 'En';
+
+export const CREATE_ACCOUNT = {
+  SELECT_CURRENT_STAGE_TEXT:
+    "Select beneficiary's current stage to proceed",
+  CATEGORY_1_TITLE: 'Pregnant Woman',
+  CATEGORY_1_DESCRIPTION: `A mother understands ${'\n'}what a child does ${'\n'}not say.`,
+  CATEGORY_2_TITLE: 'Lactating Mother',
+  CATEGORY_2_DESCRIPTION: `A grand and beautiful ${'\n'}adventure is about ${'\n'}to begin.`,
+  CATEGORY_3_TITLE: '6-24 Months',
+  CATEGORY_3_DESCRIPTION: `A baby is born with a ${'\n'}need to be loved and ${'\n'}grow with caring.`,
+  BUTTON_DESCRIPTION: 'Fill Your Details',
+  OTP_BUTTON: 'Send OTP',
+  CHECK_BOX_LABEL: `Are you setting up this app ${'\n'}for someone else?`,
+  BUTTON_INFO: `By clicking below, you will receive an ${'\n'} OTP on the above phone number`,
+  MOVE_FORWARD_TEXT: 'Tap to select',
+  BENEFICIARY_INFO_TITLE: 'Tell us more about the Beneficiary',
+  TITLE_SCREEN: 'Create an Account',
+};
+export const SET_APP_FOR = [{name: 'An NGO Member', code: 'ngo'}];
+
+export const USER_DETAILS = {
+  NAME: 'Name',
+  PHONE_NUMBER: 'Phone Number',
+  MENSTURAL_DATE: 'Last menstural period date',
+  CHILD_NAME: 'Child Name',
+  CHILD_DOB: 'Child date of birth',
+  MOTHER_NAME: 'Mother name',
+};
+
+export const TOAST_MESSAGE = {
+  UNEXPECTED: 'Some unexpected error occurred.',
+  UNKNOWN_ERROR: 'Something went wrong. Please try again.',
+  NO_INTERNET: 'No Internet Connection',
+  UNAUTHORIZED: 'Invalid email or password.',
+  INTERNAL_ERROR: 'Internal server error.',
+};
+export const PLACEHOLDER_DETAILS = {
+  SELECT_YOUR_ROLE : 'Select your role',
+  PHONE_NUMBER : 'Phone number',
+};
+
+export const DROPDOWN_BOX = {
+  A_RELATIVE : 'A Relative',
+  AN_NGO_MEMBER : 'An NGO Member',
+  AN_ANGANWADI_MEMBER : 'An Anganwadi Member',
+};
