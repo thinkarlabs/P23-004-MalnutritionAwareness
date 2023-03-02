@@ -103,7 +103,9 @@ const ChildInfo = ({route, navigation}) => {
                 onFocus={() => setIsPhoneFocused(true)}
               />
               {isPhoneFocused && isPhoneNumberValid && (
-                <Text style={beneficiaryInfoStyles.errorMsg}>Invalid Phone Number</Text>
+                <Text style={beneficiaryInfoStyles.errorMsg}>
+                  Invalid Phone Number
+                </Text>
               )}
             </View>
             <View style={beneficiaryInfoStyles.checkboxContainer}>
@@ -120,7 +122,7 @@ const ChildInfo = ({route, navigation}) => {
               </Text>
             </View>
             {toggleCheckBox && (
-              <View style={styles.dropdownWrapper}>
+              <View style={beneficiaryInfoStyles.dropdownWrapper}>
                 <AppDropdown />
               </View>
             )}
@@ -128,7 +130,9 @@ const ChildInfo = ({route, navigation}) => {
         </View>
       </ScrollView>
       <View style={beneficiaryInfoStyles.buttonContainer}>
-        <Text style={beneficiaryInfoStyles.info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
+        <Text style={beneficiaryInfoStyles.info}>
+          {CREATE_ACCOUNT.BUTTON_INFO}
+        </Text>
         <Button
           title={CREATE_ACCOUNT.OTP_BUTTON}
           textStyle={buttonStyles.buttonText}

@@ -113,4 +113,15 @@ export const beneficiaryInfoStyles = StyleSheet.create({
   iconContainer: {
     justifyContent: 'center',
   },
+  errorMsg: {
+    color: '#E32828',
+  },
+  shiftUp: {
+    position: 'relative',
+    top: -15,
+  },
+  shiftDown: {
+    position: 'relative',
+    top: 10,
+  },
 });
