@@ -16,11 +16,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'absolute',
+    top: 349,
+    left: 91,
+    right: 91,
   },
   titleText: {
     fontSize: SPLASH_TITLE_SIZE,
     fontWeight: '700',
     color: BLACK,
+    textAlign: 'center',
+    // fontFamily: WORK_SANS_BLACK
     fontFamily: ENTYPO,
   },
   bodyText: {

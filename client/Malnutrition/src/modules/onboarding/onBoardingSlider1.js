@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, Image, TouchableOpacity} from 'react-native';
+import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
 import AppTextTranslates from '../../shared/components/appTextTranslate';
@@ -9,10 +9,10 @@ import {
 } from '../../shared/constants/constants';
 import NextScreenArrow from '../../shared/components/nextScreenArrow';
 import {
-  LOGIN,
   ONBOARDINGSLIDER2,
+  CREATEACCOUNT,
 } from '../../shared/constants/navigatorConstants';
-import {ONBOARDING_SLIDER1} from '../../shared/constants/imageConstants';
+import OnboardingSlide1 from '../../../assets/svg/onboardingSlide1SVG';
 
 const OnBoardingSlider1 = ({navigation}) => {
   return (
@@ -21,14 +21,16 @@ const OnBoardingSlider1 = ({navigation}) => {
         <View style={styles.header}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate(LOGIN);
+              navigation.navigate(CREATEACCOUNT);
             }}>
             <Text style={styles.headerText}>{SKIP}</Text>
           </TouchableOpacity>
           {/* Re-use component for text translation */}
           <AppTextTranslates />
         </View>
-        <Image source={ONBOARDING_SLIDER1} style={styles.headerImage} />
+        <View style={styles.headerImage}>
+          <OnboardingSlide1 />
+        </View>
         <View style={styles.contentContainer}>
           <Text style={styles.contentTitle}>{ONBOARDSCREEN1_TITLE}</Text>
           <Text style={styles.contentBody}>{ONBOARDSCREEN1_CONTENT}</Text>
