@@ -1,32 +1,29 @@
 import React from 'react';
-import { View, TouchableOpacity,Text } from 'react-native';
+import {View, TouchableOpacity, Text} from 'react-native';
 import BackArrowWithCircle from '../../../../assets/svg/backArrowWithCircleSVG';
-import { CREATE_ACCOUNT } from '../../constants/constants';
-import { styles } from './styles';
+import {CREATE_ACCOUNT} from '../../constants/constants';
+import {appCardStyles} from './styles';
 
 export const AppCard = ({onPress, newStyle, title, content, image}) => {
-    return (
-        <View style={styles.stageCard}>
-          <View
-            style={newStyle ? newStyle : styles.row}>
-            {image}
-            <View style={{flexDirection: 'column'}}>
-              <Text style={styles.cardTitle}>{title}
-              </Text>
-              <Text style={styles.cardDesc}>{content}
-              </Text>
-              <TouchableOpacity
-              onPress={onPress}
-                style={styles.cardTitleContainer}>
-                <Text style={styles.cardTitleText}>
-                    {CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
-                    </Text>
-                <View style={{left: 8}}>
-                  <BackArrowWithCircle />
-                </View>
-              </TouchableOpacity>
+  return (
+    <View style={appCardStyles.stageCard}>
+      <View style={newStyle ? newStyle : appCardStyles.row}>
+        {image}
+        <View style={{flexDirection: 'column'}}>
+          <Text style={appCardStyles.cardTitle}>{title}</Text>
+          <Text style={appCardStyles.cardDesc}>{content}</Text>
+          <TouchableOpacity
+            onPress={onPress}
+            style={appCardStyles.cardTitleContainer}>
+            <Text style={appCardStyles.cardTitleText}>
+              {CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
+            </Text>
+            <View style={{left: 8}}>
+              <BackArrowWithCircle />
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
-    )
-}
+      </View>
+    </View>
+  );
+};

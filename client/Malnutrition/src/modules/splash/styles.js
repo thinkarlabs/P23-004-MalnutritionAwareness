@@ -6,7 +6,7 @@ import {
   SPLASH_TITLE_SIZE,
 } from '../../shared/constants/fontSizeConstants';
 
-const styles = StyleSheet.create({
+const splashStyles = StyleSheet.create({
   header: {
     flex: 1,
     height: '100%',
@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default styles;
+export default splashStyles;

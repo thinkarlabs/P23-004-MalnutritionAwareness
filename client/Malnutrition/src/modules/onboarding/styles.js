@@ -7,7 +7,7 @@ import {
   TITLE_FONT_SIZE,
 } from '../../shared/constants/fontSizeConstants';
 
-export const styles = StyleSheet.create({
+export const onBoardingScreenStyles = StyleSheet.create({
   container: {
     flex: 1,
   },

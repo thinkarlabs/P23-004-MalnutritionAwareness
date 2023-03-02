@@ -11,6 +11,13 @@ export const ONBOARDSCREEN3_CONTENT = `Measuring child can help to detect${'\n'}
 export const SKIP = 'Skip';
 export const BACK = 'Back';
 export const ENGLISH = 'En';
+export const VERIFY_OTP = 'Verify OTP';
+export const OTP_VERIFICATION = 'OTP Verification';
+export const ENTER_MOBILE_NUMBER = `Enter the OTP sent on your registered ${'\n'} mobile number `;
+export const MOBILE_NUMBER = '+91 - 1234562330';
+export const DID_NOT_RECEIVE_OTP = "Didn't Recieve OTP? ";
+export const RESEND = 'Resend';
+export const CONFIRM = 'Confirm';
 
 export const CREATE_ACCOUNT = {
   SELECT_CURRENT_STAGE_TEXT: "Select beneficiary's current stage to proceed",

@@ -2,24 +2,28 @@ import React, {useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Splash from '../modules/splash';
-import OnBoardingSlider1 from '../modules/onboarding/onBoardingSlider1';
-import OnBoardingSlider2 from '../modules/onboarding/onBoardingSlider2';
-import OnBoardingSlider3 from '../modules/onboarding/onBoardingSlider3';
 import {
   CHILDINFO_SCREEN,
   CREATEACCOUNT,
+  HOME,
   LACTATINGMOTHER_SCREEN,
   ONBOARDINGSLIDER1,
   ONBOARDINGSLIDER2,
   ONBOARDINGSLIDER3,
+  OTPVERIFICATION,
   PREGNANTWOMAN_SCREEN,
   SPLASH,
 } from '../shared/constants/navigatorConstants';
 import {WHITE} from '../shared/constants/colors';
 import CreateAccount from '../modules/createAccount';
-import pregnantWomanInfo from '../modules/createAccount/beneficiaryInfoScreen/pregnantWomanInfo';
-import lactatingMotherInfo from '../modules/createAccount/beneficiaryInfoScreen/lactatingMotherInfo';
-import childInfo from '../modules/createAccount/beneficiaryInfoScreen/childInfo';
+import OTPVerification from '../modules/otpVerification';
+import ChildInfo from '../modules/createAccount/beneficiaryInfoScreen/ChildInfo';
+import LactatingMotherInfo from '../modules/createAccount/beneficiaryInfoScreen/LactatingMotherInfo';
+import PregnantWomanInfo from '../modules/createAccount/beneficiaryInfoScreen/PregnantWomanInfo';
+import OnBoardingSlider1 from '../modules/onboarding/OnBoardingSlider1';
+import OnBoardingSlider2 from '../modules/onboarding/OnBoardingSlider2';
+import OnBoardingSlider3 from '../modules/onboarding/OnBoardingSlider3';
+import HomeScreen from '../modules/homeScreen';
 
 const Stack = createStackNavigator();
 
@@ -48,13 +52,15 @@ export function AppStackNavigator() {
         <Stack.Screen name={CREATEACCOUNT} component={CreateAccount} />
         <Stack.Screen
           name={PREGNANTWOMAN_SCREEN}
-          component={pregnantWomanInfo}
+          component={PregnantWomanInfo}
         />
         <Stack.Screen
           name={LACTATINGMOTHER_SCREEN}
-          component={lactatingMotherInfo}
+          component={LactatingMotherInfo}
         />
-        <Stack.Screen name={CHILDINFO_SCREEN} component={childInfo} />
+        <Stack.Screen name={CHILDINFO_SCREEN} component={ChildInfo} />
+        <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
+        <Stack.Screen name={HOME} component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

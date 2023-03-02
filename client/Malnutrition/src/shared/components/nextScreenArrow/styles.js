@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { BLUE, WHITE } from '../../constants/colors';
 
-export const styles = StyleSheet.create({
+export const nextScreenArrowStyles = StyleSheet.create({
       circle: {
         height: 60,
         width: 60,

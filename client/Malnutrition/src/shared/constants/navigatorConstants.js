@@ -8,3 +8,4 @@ export const CREATEACCOUNT = 'CreateAccount';
 export const PREGNANTWOMAN_SCREEN = 'pregnantWoman';
 export const LACTATINGMOTHER_SCREEN = 'lactatingMother';
 export const CHILDINFO_SCREEN = 'childInfo';
+export const HOME = 'Home';

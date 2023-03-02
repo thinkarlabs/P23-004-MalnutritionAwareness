@@ -1,27 +1,25 @@
-import {View, Text, SafeAreaView, Platform, ScrollView} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React, {useState} from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {
   CREATE_ACCOUNT,
-  SET_APP_FOR,
   USER_DETAILS,
 } from '../../../shared/constants/constants';
 import {CREATEACCOUNT} from '../../../shared/constants/navigatorConstants';
-import {styles} from './styles';
+import {beneficiaryInfoStyles} from './styles';
 import CalendarIcon from '../../../../assets/svg/icons/calendarIcon';
 import AppTextInput from '../../../shared/components/appTextInput';
 import AppDatePicker from '../../../shared/components/appDatePicker';
 import CheckBox from '@react-native-community/checkbox';
-import SelectDropdown from '../../../shared/components/dropdown';
 import {PLACEHOLDER_COLOR, WHITE} from '../../../shared/constants/colors';
 import PhoneIcon from '../../../../assets/svg/icons/phoneIcon';
 import ChildIcon from '../../../../assets/svg/icons/childIcon';
 import MotherIcon from '../../../../assets/svg/icons/motherIcon';
 import {Button} from '../../../shared/components/button';
 import AppDropdown from '../../../shared/components/appDropdown';
-import GroupIcon from '../../../../assets/svg/icons/groupIcon';
+import {buttonStyles} from '../../../shared/components/button/styles';
 
-const lactatingMotherInfo = ({route, navigation}) => {
+const LactatingMotherInfo = ({route, navigation}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
@@ -45,59 +43,59 @@ const lactatingMotherInfo = ({route, navigation}) => {
         backArrowValue={true}
         onPress={() => navigation.navigate(CREATEACCOUNT)}
       />
-      <ScrollView contentContainerStyle={{paddingBottom: '20%'}}>
-        <View style={styles.screenWrapper}>
-          <Text style={styles.titleText}>
+      <ScrollView style={{height: '80%'}}>
+        <View style={beneficiaryInfoStyles.screenWrapper}>
+          <Text style={beneficiaryInfoStyles.titleText}>
             {CREATE_ACCOUNT.BENEFICIARY_INFO_TITLE}
           </Text>
-          <View style={styles.boxContainer}>
-            <View style={[styles.selectedStageCard]}>
+          <View style={beneficiaryInfoStyles.boxContainer}>
+            <View style={[beneficiaryInfoStyles.selectedStageCard]}>
               <View style={{flexDirection: 'row'}}>
                 <View>
-                  <Text style={styles.selectedStageCardDesc}>
+                  <Text style={beneficiaryInfoStyles.selectedStageCardDesc}>
                     You have selected
                   </Text>
-                  <Text style={styles.selectedStageCardTitle}>
+                  <Text style={beneficiaryInfoStyles.selectedStageCardTitle}>
                     {route.params.title}
                   </Text>
                 </View>
               </View>
             </View>
           </View>
-          <View style={styles.formWrapper}>
-            <View style={styles.inputContainer}>
-              <View style={styles.iconTextInput}>
+          <View style={beneficiaryInfoStyles.formWrapper}>
+            <View style={beneficiaryInfoStyles.inputContainer}>
+              <View style={beneficiaryInfoStyles.iconTextInput}>
                 <ChildIcon />
               </View>
               <AppTextInput
                 placeholder={USER_DETAILS.CHILD_NAME}
                 placeholderTextColor={PLACEHOLDER_COLOR}
-                newStyles={styles.inputField}
+                newStyles={beneficiaryInfoStyles.inputField}
                 label={USER_DETAILS.CHILD_NAME}
               />
             </View>
-            <View style={styles.inputContainer}>
-              <View style={styles.iconTextInput}>
+            <View style={beneficiaryInfoStyles.inputContainer}>
+              <View style={beneficiaryInfoStyles.iconTextInput}>
                 <CalendarIcon />
               </View>
               <AppDatePicker titleName={USER_DETAILS.CHILD_DOB} />
             </View>
-            <View style={styles.inputContainer}>
-              <View style={styles.iconTextInput}>
+            <View style={beneficiaryInfoStyles.inputContainer}>
+              <View style={beneficiaryInfoStyles.iconTextInput}>
                 <MotherIcon />
               </View>
               <AppTextInput
                 placeholder={USER_DETAILS.MOTHER_NAME}
                 placeholderTextColor={PLACEHOLDER_COLOR}
-                newStyles={styles.inputField}
+                newStyles={beneficiaryInfoStyles.inputField}
               />
             </View>
-            <View style={styles.inputContainer}>
-              <View style={styles.iconTextInput}>
+            <View style={beneficiaryInfoStyles.inputContainer}>
+              <View style={beneficiaryInfoStyles.iconTextInput}>
                 <PhoneIcon />
               </View>
               <AppTextInput
-                newStyles={styles.inputField}
+                newStyles={beneficiaryInfoStyles.inputField}
                 placeholder={USER_DETAILS.PHONE_NUMBER}
                 keyboardType="numeric"
                 placeholderTextColor={PLACEHOLDER_COLOR}
@@ -105,45 +103,44 @@ const lactatingMotherInfo = ({route, navigation}) => {
                 onFocus={() => setIsPhoneFocused(true)}
               />
               {isPhoneFocused && isPhoneNumberValid && (
-                <Text style={styles.errorMsg}>Invalid Phone Number</Text>
+                <Text style={beneficiaryInfoStyles.errorMsg}>
+                  Invalid Phone Number
+                </Text>
               )}
             </View>
-            <View style={styles.checkboxContainer}>
+            <View style={beneficiaryInfoStyles.checkboxContainer}>
               <CheckBox
                 value={toggleCheckBox}
-                style={styles.checkbox}
+                style={beneficiaryInfoStyles.checkbox}
                 onValueChange={setCheckbox}
                 boxType="square"
                 tintColor="transparent"
                 onFillColor={WHITE}
               />
-              <Text style={styles.checkboxLabel}>
+              <Text style={beneficiaryInfoStyles.checkboxLabel}>
                 {CREATE_ACCOUNT.CHECK_BOX_LABEL}
               </Text>
             </View>
             {toggleCheckBox && (
-              <View style={styles.dropdownWrapper}>
+              <View style={beneficiaryInfoStyles.dropdownWrapper}>
                 <AppDropdown />
               </View>
             )}
           </View>
-          <View
-            style={Platform.select({
-              ios: styles.buttonContainer.screen_2,
-              android: styles.androidButtonContainer,
-            })}>
-            <Text style={styles.Info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
-            <Button
-              title={CREATE_ACCOUNT.OTP_BUTTON}
-              textStyle={styles.ButtonText}
-              buttonStyle={[styles.Button]}
-              onPress={() => {}}
-            />
-          </View>
         </View>
       </ScrollView>
+      <View style={beneficiaryInfoStyles.buttonContainer}>
+        <Text style={beneficiaryInfoStyles.info}>
+          {CREATE_ACCOUNT.BUTTON_INFO}
+        </Text>
+        <Button
+          title={CREATE_ACCOUNT.OTP_BUTTON}
+          textStyle={buttonStyles.buttonText}
+          onPress={() => {}}
+        />
+      </View>
     </SafeAreaView>
   );
 };
 
-export default lactatingMotherInfo;
+export default LactatingMotherInfo;
