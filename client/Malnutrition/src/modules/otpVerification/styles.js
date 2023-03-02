@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {BLACK, WHITE} from '../../shared/constants/colors';
+import {BLACK, LIGHT_GREY, WHITE} from '../../shared/constants/colors';
 
 const verifyOTPStyles = StyleSheet.create({
   container: {
@@ -33,12 +33,14 @@ const verifyOTPStyles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     textAlign: 'center',
+    color: LIGHT_GREY,
   },
   phoneNumberText: {
     fontWeight: '600',
     fontSize: 16,
     lineHeight: 24,
     textAlign: 'center',
+    color: LIGHT_GREY,
   },
   otpInputContainer: {
     backgroundColor: '#F2F5F7',
@@ -72,13 +74,25 @@ const verifyOTPStyles = StyleSheet.create({
     lineHeight: 24,
     color: '#616568',
   },
+  button: {width: '90%', left: 20, right: 20, top: 231},
+  resendContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    right: 67,
+    paddingTop: 12,
+  },
+  resendTextBold: {
+    fontWeight: '500',
+    fontSize: 16,
+    lineHeight: 24,
+    color: '#6667FF',
+  },
   resendText: {
     fontWeight: '400',
     fontSize: 16,
     lineHeight: 24,
-    color: '#1066EC',
-  },
-  button: {width: '90%', left: 20, right: 20, top: 236},
+    color: '#616568',
+  }
 });
 
 export default verifyOTPStyles;
