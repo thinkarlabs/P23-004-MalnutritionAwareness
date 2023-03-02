@@ -5,6 +5,7 @@ import {
   LIGHT_GREY,
   PLACEHOLDER_BORDER_COLOR,
   WHITE,
+  BUTTON,
 } from '../../../shared/constants/colors';
 
 export const styles = StyleSheet.create({
@@ -130,8 +131,5 @@ export const styles = StyleSheet.create({
   shiftDown: {
     position: 'relative',
     top: 10,
-  },
-  buttonDisabled: {
-    opacity: 0.5,
   },
 });

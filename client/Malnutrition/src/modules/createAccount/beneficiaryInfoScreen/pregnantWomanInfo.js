@@ -1,5 +1,5 @@
 import {View, Text, SafeAreaView, Platform, ScrollView} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {
   CREATE_ACCOUNT,
@@ -7,7 +7,11 @@ import {
 } from '../../../shared/constants/constants';
 import {CREATEACCOUNT} from '../../../shared/constants/navigatorConstants';
 import {styles} from './styles';
-import {PLACEHOLDER_COLOR, WHITE} from '../../../shared/constants/colors';
+import {
+  PLACEHOLDER_COLOR,
+  WHITE,
+  BUTTON,
+} from '../../../shared/constants/colors';
 import AppTextInput from '../../../shared/components/appTextInput';
 import AppDatePicker from '../../../shared/components/appDatePicker';
 import CheckBox from '@react-native-community/checkbox';
@@ -20,8 +24,8 @@ import moment from 'moment';
 const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
   const [todaysDate, setTodaysDate] = useState('');
+  const [isValidForm, setIsValidForm] = useState(false);
   const [formValues, setFormValues] = useState({
     user_type: 'PREGNANT',
     name: '',
@@ -31,20 +35,23 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
     relation_with_child: null,
     child: [],
   });
-  const [isValidForm, setIsValidForm] = useState(false);
 
   useEffect(() => {
-    console.log(formValues);
     if (todaysDate == '') {
       getTodaysDate();
     }
-  }, [formValues, isValidForm]);
+    //console.log(formValues);
+    //isFormValid();
+    // console.log('form Valid:' + isValidForm);
+    // console.log('phone valid:' + isPhoneNumberValid);
+  }, [formValues, isPhoneNumberValid, isPhoneFocused, isValidForm]);
 
   const updatename = newVal => {
     setFormValues({...formValues, name: newVal});
   };
 
   const updatePhoneNumber = newVal => {
+    validatePhoneNumber(newVal);
     setFormValues({...formValues, phone_number: '+91' + newVal});
   };
 
@@ -71,15 +78,19 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   };
 
   const validatePhoneNumber = val => {
+    //console.log('phone:' + val.nativeEvent.text);
+
     setIsPhoneFocused(true);
-    if (val.nativeEvent.text.length === 10) {
+    if (val.length === 10) {
       setIsPhoneNumberValid(true);
     } else {
       setIsPhoneNumberValid(false);
     }
   };
   const createAccount = () => {
-    console.log(formValues);
+    if (!isValidForm) {
+      return false;
+    }
     createPregnantWomenAccount(formValues, navigation);
   };
 
@@ -91,7 +102,7 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
     setTodaysDate((year + '-' + month + '-' + date).toString());
   };
 
-  const isFormValid = () => {
+  const isFormValid = useMemo(() => {
     if (
       formValues.user_type &&
       formValues.name &&
@@ -99,16 +110,28 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
       formValues.phone_number &&
       isPhoneNumberValid
     ) {
-      if (formValues.is_created_for_someone_else) {
-        if (formValues.relation_with_child) {
-          setIsValidForm(true);
-        }
-      }
       setIsValidForm(true);
+
+      if (formValues.is_created_for_someone_else) {
+        setIsValidForm(Boolean(formValues.relation_with_child));
+      }
+      console.log('is Form Valid : ' + isValidForm);
     } else {
       setIsValidForm(false);
+      console.log('is Form Valid : ' + isValidForm);
     }
-  };
+  }, [
+    formValues.user_type,
+    formValues.name,
+    formValues.lmp,
+    formValues.phone_number,
+    formValues.relation_with_child,
+    formValues.is_created_for_someone_else,
+    isPhoneNumberValid,
+    isValidForm,
+  ]);
+
+  //isFormValid();
 
   return (
     <SafeAreaView>
@@ -172,7 +195,7 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
                 placeholderTextColor={PLACEHOLDER_COLOR}
                 name="phone_number"
                 changeText={updatePhoneNumber}
-                onBlur={validatePhoneNumber}
+                // onBlur={validatePhoneNumber}
               />
             </View>
             {isPhoneFocused && !isPhoneNumberValid && (
@@ -212,11 +235,11 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
               android: styles.androidButtonContainer,
             })}>
             <Text style={styles.Info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
-            <Text>is valid: {isValidForm}</Text>
             <Button
               title={CREATE_ACCOUNT.OTP_BUTTON}
               textStyle={styles.ButtonText}
               buttonStyle={[styles.Button]}
+              buttonColor={!isValidForm && BUTTON.PRIMARY_DISABLED}
               onPress={createAccount}
             />
           </View>
