@@ -4,8 +4,14 @@ import {Calendar} from 'react-native-calendars';
 import {styles} from './styles';
 import {USER_DETAILS} from '../../constants/constants';
 import {BLACK, PURPLE} from '../../constants/colors';
+import moment from 'moment';
 
-const AppDatePicker = ({titleName, updatedDate}) => {
+const AppDatePicker = ({
+  titleName,
+  updatedDate,
+  maximumDate,
+  arrowRightDisabled,
+}) => {
   const [showDate, setShowDate] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -15,7 +21,9 @@ const AppDatePicker = ({titleName, updatedDate}) => {
         onPress={() => setShowModal(true)}
         style={styles.inputField}>
         <Text style={styles.titleText}>
-          {showDate == null ? titleName : showDate.dateString}
+          {showDate == null
+            ? titleName
+            : moment(showDate.dateString).format('DD MMM YYYY')}
           {/* {USER_DETAILS.MENSTURAL_DATE} */}
         </Text>
       </TouchableOpacity>
@@ -23,6 +31,10 @@ const AppDatePicker = ({titleName, updatedDate}) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Calendar
+              maxDate={maximumDate ? maximumDate : undefined}
+              disableArrowRight={
+                arrowRightDisabled ? arrowRightDisabled : false
+              }
               onDayPress={date => {
                 setShowModal(false);
                 setShowDate(date);

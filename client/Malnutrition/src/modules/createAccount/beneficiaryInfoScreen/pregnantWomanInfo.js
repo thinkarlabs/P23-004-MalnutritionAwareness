@@ -1,5 +1,5 @@
 import {View, Text, SafeAreaView, Platform, ScrollView} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {
   CREATE_ACCOUNT,
@@ -7,19 +7,25 @@ import {
 } from '../../../shared/constants/constants';
 import {CREATEACCOUNT} from '../../../shared/constants/navigatorConstants';
 import {styles} from './styles';
-import {PLACEHOLDER_COLOR, WHITE} from '../../../shared/constants/colors';
+import {
+  PLACEHOLDER_COLOR,
+  WHITE,
+  BUTTON,
+} from '../../../shared/constants/colors';
 import AppTextInput from '../../../shared/components/appTextInput';
 import AppDatePicker from '../../../shared/components/appDatePicker';
 import CheckBox from '@react-native-community/checkbox';
 import {Button} from '../../../shared/components/button';
-import { createPregnantWomenAccount as createAccountAction } from '../Actions';
-import { connect } from 'react-redux';
+import {createPregnantWomenAccount as createAccountAction} from '../Actions';
+import {connect} from 'react-redux';
 import AppDropdown from '../../../shared/components/appDropdown';
+import moment from 'moment';
 
 const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  const [todaysDate, setTodaysDate] = useState('');
+  const [isValidForm, setIsValidForm] = useState(false);
   const [formValues, setFormValues] = useState({
     user_type: 'PREGNANT',
     name: '',
@@ -31,47 +37,101 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   });
 
   useEffect(() => {
-    console.log(formValues);
-  }, [formValues]);
+    if (todaysDate == '') {
+      getTodaysDate();
+    }
+    //console.log(formValues);
+    //isFormValid();
+    // console.log('form Valid:' + isValidForm);
+    // console.log('phone valid:' + isPhoneNumberValid);
+  }, [formValues, isPhoneNumberValid, isPhoneFocused, isValidForm]);
 
   const updatename = newVal => {
     setFormValues({...formValues, name: newVal});
   };
 
   const updatePhoneNumber = newVal => {
+    validatePhoneNumber(newVal);
     setFormValues({...formValues, phone_number: '+91' + newVal});
   };
 
   const updateLMP = newVal => {
-    setFormValues({...formValues, lmp: newVal.timestamp});
+    setFormValues({
+      ...formValues,
+      lmp: moment(newVal.timestamp).format('YYYY-DD-MM'),
+    });
   };
 
   const updateIsCreateForSomeoneElse = val => {
-    //console.log(val);
     setFormValues({
       ...formValues,
       is_created_for_someone_else: val,
+      relation_with_child: !val ? null : formValues.relation_with_child,
     });
-    // if (!val) {
-    //   setFormValues({
-    //     ...formValues,
-    //     relation_with_child: null,
-    //   });
-    // }
   };
 
   const updateRelationWithChild = val => {
-    //console.log(val);
     setFormValues({
       ...formValues,
       relation_with_child: val,
     });
   };
 
+  const validatePhoneNumber = val => {
+    //console.log('phone:' + val.nativeEvent.text);
+
+    setIsPhoneFocused(true);
+    if (val.length === 10) {
+      setIsPhoneNumberValid(true);
+    } else {
+      setIsPhoneNumberValid(false);
+    }
+  };
   const createAccount = () => {
-    console.log(formValues);
+    if (!isValidForm) {
+      return false;
+    }
     createPregnantWomenAccount(formValues, navigation);
   };
+
+  const getTodaysDate = () => {
+    let today = new Date();
+    let date = today.getDate();
+    let month = today.getMonth() + 1;
+    let year = today.getFullYear();
+    setTodaysDate((year + '-' + month + '-' + date).toString());
+  };
+
+  const isFormValid = useMemo(() => {
+    if (
+      formValues.user_type &&
+      formValues.name &&
+      formValues.lmp &&
+      formValues.phone_number &&
+      isPhoneNumberValid
+    ) {
+      setIsValidForm(true);
+
+      if (formValues.is_created_for_someone_else) {
+        setIsValidForm(Boolean(formValues.relation_with_child));
+      }
+      console.log('is Form Valid : ' + isValidForm);
+    } else {
+      setIsValidForm(false);
+      console.log('is Form Valid : ' + isValidForm);
+    }
+  }, [
+    formValues.user_type,
+    formValues.name,
+    formValues.lmp,
+    formValues.phone_number,
+    formValues.relation_with_child,
+    formValues.is_created_for_someone_else,
+    isPhoneNumberValid,
+    isValidForm,
+  ]);
+
+  //isFormValid();
 
   return (
     <SafeAreaView>
@@ -119,6 +179,7 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
             </View> */}
               <AppDatePicker
                 updatedDate={updateLMP}
+                maximumDate={todaysDate}
                 titleName={USER_DETAILS.MENSTURAL_DATE}
               />
             </View>
@@ -134,11 +195,14 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
                 placeholderTextColor={PLACEHOLDER_COLOR}
                 name="phone_number"
                 changeText={updatePhoneNumber}
+                // onBlur={validatePhoneNumber}
               />
-              {isPhoneFocused && isPhoneNumberValid && (
-                <Text style={styles.errorMsg}>Invalid Phone Number</Text>
-              )}
             </View>
+            {isPhoneFocused && !isPhoneNumberValid && (
+              <Text style={[styles.errorMsg, styles.shiftUp]}>
+                Invalid Phone Number
+              </Text>
+            )}
             <View style={styles.checkboxContainer}>
               <CheckBox
                 value={formValues.is_created_for_someone_else}
@@ -158,6 +222,12 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
                 <AppDropdown dropdownValue={updateRelationWithChild} />
               </View>
             )}
+            {formValues.is_created_for_someone_else &&
+              formValues.relation_with_child == null && (
+                <Text style={[styles.errorMsg, styles.shiftDown]}>
+                  Select any one option from the dropdown.
+                </Text>
+              )}
           </View>
           <View
             style={Platform.select({
@@ -169,6 +239,7 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
               title={CREATE_ACCOUNT.OTP_BUTTON}
               textStyle={styles.ButtonText}
               buttonStyle={[styles.Button]}
+              buttonColor={!isValidForm && BUTTON.PRIMARY_DISABLED}
               onPress={createAccount}
             />
           </View>
@@ -178,12 +249,12 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   createPregnantWomenAccount: (formValues, navigation) =>
     dispatch(createAccountAction(formValues, navigation)),
 });
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   pregnantWomanData: state.createAccount.pregnantWomanData,
 });
 

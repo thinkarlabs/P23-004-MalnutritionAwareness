@@ -5,6 +5,7 @@ import {
   LIGHT_GREY,
   PLACEHOLDER_BORDER_COLOR,
   WHITE,
+  BUTTON,
 } from '../../../shared/constants/colors';
 
 export const styles = StyleSheet.create({
@@ -119,5 +120,16 @@ export const styles = StyleSheet.create({
   },
   iconContainer: {
     justifyContent: 'center',
+  },
+  errorMsg: {
+    color: '#E32828',
+  },
+  shiftUp: {
+    position: 'relative',
+    top: -15,
+  },
+  shiftDown: {
+    position: 'relative',
+    top: 10,
   },
 });
