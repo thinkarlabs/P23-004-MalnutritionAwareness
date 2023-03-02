@@ -1,99 +1,107 @@
-import React from 'react';
-import {Image, Platform, SafeAreaView, Text, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Image, Text, View} from 'react-native';
 import AppHeader from '../../shared/components/appHeader';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
-import styles from './styles';
-import RnOtpTimer from 'rn-otp-timer';
-
+import verifyOTPStyles from './styles';
 import {
-  CONFIRM,
-  DID_NOT_RECEIVE_OTP,
   ENTER_MOBILE_NUMBER,
-  MOBILE_NUMBER,
   OTP_VERIFICATION,
-  RESEND,
-  VERIFY_OTP,
   CREATE_ACCOUNT,
 } from '../../shared/constants/constants';
-import {
-  CREATEACCOUNT,
-  PREGNANTWOMAN_SCREEN,
-} from '../../shared/constants/navigatorConstants';
-import {LIGHT_GREY, PURPLE} from '../../shared/constants/colors';
+import {CREATEACCOUNT} from '../../shared/constants/navigatorConstants';
 import {Button} from '../../shared/components/button';
 import {buttonStyles} from '../../shared/components/button/styles';
+import {otpVerification as otpVerificationAction} from './Actions';
+import {connect} from 'react-redux';
 
-const OTPVerification = ({navigation}) => {
+const OTPVerification = ({navigation, route, otpVerification}) => {
+  const [otpValues, setOtpValues] = useState('');
+  const [count, setCount] = useState(30);
+
+  const [formValues, setFormValues] = useState({
+    phone_number: route.params.phone_number,
+    otp: '',
+    is_creation: route.params.is_creation,
+  });
+
+  const updateOtpNumber = newVal => {
+    setFormValues({...formValues, otp: newVal});
+  };
+
+  const verifyOtp = () => {
+    otpVerification(formValues, navigation);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (count == 0) {
+        clearInterval(interval);
+      } else {
+        setCount(count - 1);
+      }
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [count]);
+
   return (
-    <View style={styles.container}>
-      <View style={styles.headerContainer}>
+    <View style={verifyOTPStyles.container}>
+      <View style={verifyOTPStyles.headerContainer}>
         <AppHeader
           title={CREATE_ACCOUNT.TITLE_SCREEN}
           backArrowValue={true}
           onPress={() => navigation.navigate(CREATEACCOUNT)}
         />
       </View>
-      <View style={styles.innerContainer}>
+      <View style={verifyOTPStyles.innerContainer}>
         <Image
           source={require('../../../assets/images/verifyOtp.png')}
-          style={styles.phoneImage}
+          style={verifyOTPStyles.phoneImage}
         />
-        <View style={styles.otpHeadingContainer}>
-          <Text style={styles.otpHeadingText}>{OTP_VERIFICATION}</Text>
+        <View style={verifyOTPStyles.otpHeadingContainer}>
+          <Text style={verifyOTPStyles.otpHeadingText}>{OTP_VERIFICATION}</Text>
         </View>
         <Text>
-          <Text style={styles.enterOtpText}>{ENTER_MOBILE_NUMBER}</Text>
-          {/* <Text style={styles.phoneNumberText}>{route.params.phone}</Text> */}
+          <Text style={verifyOTPStyles.enterOtpText}>
+            {ENTER_MOBILE_NUMBER}
+          </Text>
+          <Text style={verifyOTPStyles.phoneNumberText}>
+            {route.params.phone_number}
+          </Text>
         </Text>
-        <View style={styles.otpInputContainer}>
+        <View style={verifyOTPStyles.otpInputContainer}>
           <OTPInputView
             pinCount={4}
-            // code={this.state.code} //You can supply this prop or not. The component will be used as a controlled / uncontrolled component respectively.
-            // onCodeChanged = {code => { this.setState({code})}}
             autoFocusOnLoad={false}
-            codeInputFieldStyle={styles.codeInputField}
-            style={styles.otpText}
-            // codeInputHighlightStyle={styles.underlineStyleHighLighted}
+            codeInputFieldStyle={verifyOTPStyles.codeInputField}
+            style={verifyOTPStyles.otpText}
             onCodeFilled={code => {
               console.log(`Code is ${code}, you are good to go!`);
             }}
+            onCodeChanged={updateOtpNumber}
           />
         </View>
-        <View style={styles.otpNotReceivedContainer}>
-          <Text style={styles.otpNotReceivedText}>{'Resend OTP in - '}</Text>
+        <View style={verifyOTPStyles.resendContainer}>
+          {count == 0 ? (
+            <Text
+              style={verifyOTPStyles.resendTextBold}
+              onPress={() => setCount(30)}>
+              Resend OTP
+            </Text>
+          ) : (
+            <Text style={verifyOTPStyles.resendText}>Resend OTP in -</Text>
+          )}
+          {count !== 0 && (
+            <Text style={verifyOTPStyles.resendText}> {count}</Text>
+          )}
         </View>
-        <RnOtpTimer
-          minutes={0}
-          seconds={30}
-          resendButtonText="RESEND"
-          resendButtonStyle={{position: 'absolute', bottom: 334, left: 300}}
-          resendButtonTextStyle={{
-            fontSize: 16,
-            fontWeight: '500',
-            color: PURPLE,
-          }}
-          timerStyle={{
-            position: 'absolute',
-            bottom: 334,
-            left: 300,
-            fontSize: 16,
-            color: LIGHT_GREY,
-            fontWeight: '400',
-          }}
-          resendButtonAction={() => {
-            console.log('otp resent!');
-          }}
-        />
-        <View
-          style={Platform.select({
-            ios: buttonStyles.buttonContainer.screen_2,
-            android: buttonStyles.androidButtonContainer,
-          })}>
+        <View style={verifyOTPStyles.button}>
           <Button
             title={'Verify OTP'}
             textStyle={buttonStyles.buttonText}
-            buttonStyle={[buttonStyles.button]}
-            onPress={() => {}}
+            buttonStyle={[verifyOTPStyles.buttonContainer]}
+            onPress={verifyOtp}
           />
         </View>
       </View>
@@ -101,4 +109,9 @@ const OTPVerification = ({navigation}) => {
   );
 };
 
-export default OTPVerification;
+const mapDispatchToProps = dispatch => ({
+  otpVerification: (formValues, navigation) =>
+    dispatch(otpVerificationAction(formValues, navigation)),
+});
+
+export default connect(null, mapDispatchToProps)(OTPVerification);

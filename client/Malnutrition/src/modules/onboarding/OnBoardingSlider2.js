@@ -32,8 +32,12 @@ const OnBoardingSlider2 = ({navigation}) => {
           <OnboardingSlide2 />
         </View>
         <View style={onBoardingScreenStyles.contentContainer}>
-          <Text style={onBoardingScreenStyles.contentTitle}>{ONBOARDSCREEN2_TITLE}</Text>
-          <Text style={onBoardingScreenStyles.contentBody}>{ONBOARDSCREEN2_CONTENT}</Text>
+          <Text style={onBoardingScreenStyles.contentTitle}>
+            {ONBOARDSCREEN2_TITLE}
+          </Text>
+          <Text style={onBoardingScreenStyles.contentBody}>
+            {ONBOARDSCREEN2_CONTENT}
+          </Text>
         </View>
       </View>
       {/* Re-use component of next screen button */}

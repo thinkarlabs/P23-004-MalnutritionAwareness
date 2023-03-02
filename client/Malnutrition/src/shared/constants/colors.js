@@ -15,7 +15,8 @@ export const PURPLE = '#512DA8';
 export const LIGHT_BLUE = '#E9EAF3';
 
 export const BUTTON = {
-  PRIMARY: '#705EEB',
+  PRIMARY: '#6667FF',
+  PRIMARY_DISABLED: 'rgba(112, 94, 235, 0.4);',
 };
 
 export const PLACEHOLDER_COLOR = '#616568';

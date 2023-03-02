@@ -5,6 +5,7 @@ import Splash from '../modules/splash';
 import {
   CHILDINFO_SCREEN,
   CREATEACCOUNT,
+  HOME,
   LACTATINGMOTHER_SCREEN,
   LOGIN,
   ONBOARDINGSLIDER1,
@@ -24,6 +25,7 @@ import OnBoardingSlider1 from '../modules/onboarding/OnBoardingSlider1';
 import OnBoardingSlider2 from '../modules/onboarding/OnBoardingSlider2';
 import OnBoardingSlider3 from '../modules/onboarding/OnBoardingSlider3';
 import Login from '../modules/login';
+import HomeScreen from '../modules/homeScreen';
 
 const Stack = createStackNavigator();
 
@@ -61,6 +63,7 @@ export function AppStackNavigator() {
         <Stack.Screen name={CHILDINFO_SCREEN} component={ChildInfo} /> */}
         <Stack.Screen name={LOGIN} component={Login} />
         <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
+        <Stack.Screen name={HOME} component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
