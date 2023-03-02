@@ -100,7 +100,7 @@ export const beneficiaryInfoStyles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   androidButtonContainer: {
-    paddingTop: 32,
+    paddingTop: 12,
   },
   info: {
     fontWeight: '400',

@@ -18,13 +18,19 @@ export const createPregnantWomenAccount = (data, navigation) => dispatch => {
     .then(response => response.json())
     .then(responseData => {
       console.log(responseData, 'responseData');
-      dispatch(createPregnantWomenAccountSuccess(responseData));
-      navigation.navigate(OTPVERIFICATION);
+      if (responseData?.message) {
+        dispatch(createPregnantWomenAccountSuccess(responseData?.message));
+        navigation.navigate(OTPVERIFICATION, {
+          phone_number: data.phone_number,
+          is_creation: false,
+        });
+      } else {
+        dispatch(createPregnantWomenAccountError(responseData?.error));
+      }
     })
     .catch(error => {
       //display error message
       console.log(error, 'error');
-      dispatch(createPregnantWomenAccountError(error));
     });
 };
 

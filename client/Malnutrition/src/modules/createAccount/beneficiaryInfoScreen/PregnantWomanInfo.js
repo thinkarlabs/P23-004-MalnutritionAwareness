@@ -7,7 +7,11 @@ import {
 } from '../../../shared/constants/constants';
 import {CREATEACCOUNT} from '../../../shared/constants/navigatorConstants';
 import {beneficiaryInfoStyles} from './styles';
-import {PLACEHOLDER_COLOR, WHITE} from '../../../shared/constants/colors';
+import {
+  PLACEHOLDER_COLOR,
+  WHITE,
+  BUTTON,
+} from '../../../shared/constants/colors';
 import AppTextInput from '../../../shared/components/appTextInput';
 import AppDatePicker from '../../../shared/components/appDatePicker';
 import CheckBox from '@react-native-community/checkbox';
@@ -15,10 +19,10 @@ import {Button} from '../../../shared/components/button';
 import {createPregnantWomenAccount as createAccountAction} from '../Actions';
 import {connect} from 'react-redux';
 import AppDropdown from '../../../shared/components/appDropdown';
-import {buttonStyles} from '../../../shared/components/button/styles';
 import moment from 'moment';
+import {buttonStyles} from '../../../shared/components/button/styles';
 
-const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
+const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [todaysDate, setTodaysDate] = useState('');
@@ -133,7 +137,7 @@ const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
         backArrowValue={true}
         onPress={() => navigation.navigate(CREATEACCOUNT)}
       />
-      <ScrollView style={{height: '80%'}}>
+      <ScrollView contentContainerStyle={{paddingBottom: '20%'}}>
         <View style={beneficiaryInfoStyles.screenWrapper}>
           <Text style={beneficiaryInfoStyles.titleText}>
             {CREATE_ACCOUNT.BENEFICIARY_INFO_TITLE}
@@ -147,7 +151,7 @@ const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
                     You have selected
                   </Text>
                   <Text style={beneficiaryInfoStyles.selectedStageCardTitle}>
-                    {route?.params?.title}
+                    {route.params.title}
                   </Text>
                 </View>
               </View>
@@ -239,6 +243,8 @@ const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
         <Button
           title={CREATE_ACCOUNT.OTP_BUTTON}
           textStyle={buttonStyles.buttonText}
+          buttonStyle={[buttonStyles.Button]}
+          buttonColor={!isValidForm && BUTTON.PRIMARY_DISABLED}
           onPress={createAccount}
         />
       </View>
@@ -253,6 +259,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   pregnantWomanData: state.createAccount.pregnantWomanData,
+  errorText: state.createAccount.errorText,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PregnantWomanInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(pregnantWomanInfo);
