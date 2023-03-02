@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { LIGHT_GREY } from '../../constants/colors';
+import {LIGHT_GREY} from '../../constants/colors';
 
 export const appTextTranslateStyles = StyleSheet.create({
   headerContainer: {

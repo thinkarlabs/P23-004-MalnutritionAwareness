@@ -1,16 +1,21 @@
 import {StyleSheet} from 'react-native';
 import {BLACK, GREEN, PINK, YELLOW} from '../../shared/constants/colors';
-import { FONT_LARGE, FONT_MEDIUM, FONT_SMALL, TITLE_FONT_SIZE } from '../../shared/constants/fontSizeConstants';
+import {
+  FONT_LARGE,
+  FONT_MEDIUM,
+  FONT_SMALL,
+  TITLE_FONT_SIZE,
+} from '../../shared/constants/fontSizeConstants';
 
 export const onBoardingScreenStyles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   pinkContainer: {
     flex: 1,
     backgroundColor: PINK,
   },
-  greenContainer:{
+  greenContainer: {
     flex: 1,
     backgroundColor: GREEN,
   },

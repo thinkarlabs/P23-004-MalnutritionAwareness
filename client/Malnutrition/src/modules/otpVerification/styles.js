@@ -92,7 +92,7 @@ const verifyOTPStyles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     color: '#616568',
-  }
+  },
 });
 
 export default verifyOTPStyles;
