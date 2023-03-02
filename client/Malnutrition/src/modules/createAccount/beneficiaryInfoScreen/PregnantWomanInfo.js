@@ -1,5 +1,5 @@
 import {View, Text, SafeAreaView, ScrollView} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {
   CREATE_ACCOUNT,
@@ -16,11 +16,13 @@ import {createPregnantWomenAccount as createAccountAction} from '../Actions';
 import {connect} from 'react-redux';
 import AppDropdown from '../../../shared/components/appDropdown';
 import {buttonStyles} from '../../../shared/components/button/styles';
+import moment from 'moment';
 
 const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  const [todaysDate, setTodaysDate] = useState('');
+  const [isValidForm, setIsValidForm] = useState(false);
   const [formValues, setFormValues] = useState({
     user_type: 'PREGNANT',
     name: '',
@@ -32,47 +34,97 @@ const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   });
 
   useEffect(() => {
-    console.log(formValues);
-  }, [formValues]);
+    if (todaysDate === '') {
+      getTodaysDate();
+    }
+  }, [formValues, isPhoneNumberValid, isPhoneFocused, isValidForm, todaysDate]);
 
   const updatename = newVal => {
     setFormValues({...formValues, name: newVal});
   };
 
   const updatePhoneNumber = newVal => {
+    validatePhoneNumber(newVal);
     setFormValues({...formValues, phone_number: '+91' + newVal});
   };
 
   const updateLMP = newVal => {
-    setFormValues({...formValues, lmp: newVal.timestamp});
+    setFormValues({
+      ...formValues,
+      lmp: moment(newVal.timestamp).format('YYYY-DD-MM'),
+    });
   };
 
   const updateIsCreateForSomeoneElse = val => {
-    //console.log(val);
     setFormValues({
       ...formValues,
       is_created_for_someone_else: val,
+      relation_with_child: !val ? null : formValues.relation_with_child,
     });
-    // if (!val) {
-    //   setFormValues({
-    //     ...formValues,
-    //     relation_with_child: null,
-    //   });
-    // }
   };
 
   const updateRelationWithChild = val => {
-    //console.log(val);
     setFormValues({
       ...formValues,
       relation_with_child: val,
     });
   };
 
+  const validatePhoneNumber = val => {
+    //console.log('phone:' + val.nativeEvent.text);
+
+    setIsPhoneFocused(true);
+    if (val.length === 10) {
+      setIsPhoneNumberValid(true);
+    } else {
+      setIsPhoneNumberValid(false);
+    }
+  };
   const createAccount = () => {
-    console.log(formValues);
+    if (!isValidForm) {
+      return false;
+    }
     createPregnantWomenAccount(formValues, navigation);
   };
+
+  const getTodaysDate = () => {
+    let today = new Date();
+    let date = today.getDate();
+    let month = today.getMonth() + 1;
+    let year = today.getFullYear();
+    setTodaysDate((year + '-' + month + '-' + date).toString());
+  };
+
+  const isFormValid = useMemo(() => {
+    if (
+      formValues.user_type &&
+      formValues.name &&
+      formValues.lmp &&
+      formValues.phone_number &&
+      isPhoneNumberValid
+    ) {
+      setIsValidForm(true);
+
+      if (formValues.is_created_for_someone_else) {
+        setIsValidForm(Boolean(formValues.relation_with_child));
+      }
+      console.log('is Form Valid : ' + isValidForm);
+    } else {
+      setIsValidForm(false);
+      console.log('is Form Valid : ' + isValidForm);
+    }
+  }, [
+    formValues.user_type,
+    formValues.name,
+    formValues.lmp,
+    formValues.phone_number,
+    formValues.relation_with_child,
+    formValues.is_created_for_someone_else,
+    isPhoneNumberValid,
+    isValidForm,
+  ]);
+
+  //isFormValid();
 
   return (
     <SafeAreaView>
@@ -120,6 +172,7 @@ const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
             </View> */}
               <AppDatePicker
                 updatedDate={updateLMP}
+                maximumDate={todaysDate}
                 titleName={USER_DETAILS.MENSTURAL_DATE}
               />
             </View>
@@ -135,11 +188,18 @@ const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
                 placeholderTextColor={PLACEHOLDER_COLOR}
                 name="phone_number"
                 changeText={updatePhoneNumber}
+                // onBlur={validatePhoneNumber}
               />
-              {isPhoneFocused && isPhoneNumberValid && (
-                <Text style={beneficiaryInfoStyles.errorMsg}>Invalid Phone Number</Text>
-              )}
             </View>
+            {isPhoneFocused && !isPhoneNumberValid && (
+              <Text
+                style={[
+                  beneficiaryInfoStyles.errorMsg,
+                  beneficiaryInfoStyles.shiftUp,
+                ]}>
+                Invalid Phone Number
+              </Text>
+            )}
             <View style={beneficiaryInfoStyles.checkboxContainer}>
               <CheckBox
                 value={formValues.is_created_for_someone_else}
@@ -159,11 +219,23 @@ const PregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
                 <AppDropdown dropdownValue={updateRelationWithChild} />
               </View>
             )}
+            {formValues.is_created_for_someone_else &&
+              formValues.relation_with_child == null && (
+                <Text
+                  style={[
+                    beneficiaryInfoStyles.errorMsg,
+                    beneficiaryInfoStyles.shiftDown,
+                  ]}>
+                  Select any one option from the dropdown.
+                </Text>
+              )}
           </View>
         </View>
       </ScrollView>
       <View style={beneficiaryInfoStyles.buttonContainer}>
-        <Text style={beneficiaryInfoStyles.info}>{CREATE_ACCOUNT.BUTTON_INFO}</Text>
+        <Text style={beneficiaryInfoStyles.info}>
+          {CREATE_ACCOUNT.BUTTON_INFO}
+        </Text>
         <Button
           title={CREATE_ACCOUNT.OTP_BUTTON}
           textStyle={buttonStyles.buttonText}
