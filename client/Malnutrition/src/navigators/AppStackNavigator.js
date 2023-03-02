@@ -6,6 +6,7 @@ import {
   CHILDINFO_SCREEN,
   CREATEACCOUNT,
   LACTATINGMOTHER_SCREEN,
+  LOGIN,
   ONBOARDINGSLIDER1,
   ONBOARDINGSLIDER2,
   ONBOARDINGSLIDER3,
@@ -22,6 +23,7 @@ import PregnantWomanInfo from '../modules/createAccount/beneficiaryInfoScreen/Pr
 import OnBoardingSlider1 from '../modules/onboarding/OnBoardingSlider1';
 import OnBoardingSlider2 from '../modules/onboarding/OnBoardingSlider2';
 import OnBoardingSlider3 from '../modules/onboarding/OnBoardingSlider3';
+import Login from '../modules/login';
 
 const Stack = createStackNavigator();
 
@@ -41,7 +43,7 @@ export function AppStackNavigator() {
           headerShown: false,
           cardStyle: {backgroundColor: WHITE},
         }}>
-        {showSplashScreen ? (
+        {/* {showSplashScreen ? (
           <Stack.Screen name={SPLASH} component={Splash} />
         ) : null}
         <Stack.Screen name={ONBOARDINGSLIDER1} component={OnBoardingSlider1} />
@@ -56,7 +58,8 @@ export function AppStackNavigator() {
           name={LACTATINGMOTHER_SCREEN}
           component={LactatingMotherInfo}
         />
-        <Stack.Screen name={CHILDINFO_SCREEN} component={ChildInfo} />
+        <Stack.Screen name={CHILDINFO_SCREEN} component={ChildInfo} /> */}
+        <Stack.Screen name={LOGIN} component={Login} />
         <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
       </Stack.Navigator>
     </NavigationContainer>

@@ -18,6 +18,11 @@ export const MOBILE_NUMBER = '+91 - 1234562330';
 export const DID_NOT_RECEIVE_OTP = "Didn't Recieve OTP? ";
 export const RESEND = 'Resend';
 export const CONFIRM = 'Confirm';
+export const LOGIN_TITLE = 'Welcome to Udaan!!';
+export const LOGIN_CONTENT = `There can be no real growth without${'\n'} healthy population. No sustainable${'\n'} development without tackling disease${'\n'} and malnutrition.`;
+export const LOGIN_DETAILS = 'Enter you number to';
+export const LOGIN_BOTTOM = "Don't have an account?";
+export const SIGN_UP = "Sign Up";
 
 export const CREATE_ACCOUNT = {
   SELECT_CURRENT_STAGE_TEXT: "Select beneficiary's current stage to proceed",
@@ -39,7 +44,7 @@ export const SET_APP_FOR = [{name: 'An NGO Member', code: 'ngo'}];
 
 export const USER_DETAILS = {
   NAME: 'Name',
-  PHONE_NUMBER: 'Phone Number',
+  PHONE_NUMBER: 'Phone number',
   MENSTURAL_DATE: 'Last menstural period date',
   CHILD_NAME: 'Child Name',
   CHILD_DOB: 'Child date of birth',
