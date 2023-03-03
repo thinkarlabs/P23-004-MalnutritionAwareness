@@ -70,4 +70,3 @@ class LoginUserSchema(BaseModel):
         strip_whitespace=True,
         regex=r"^\+91[0-9]{10}$",
     )
-
