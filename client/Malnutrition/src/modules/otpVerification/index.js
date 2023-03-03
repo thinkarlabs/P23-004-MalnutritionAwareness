@@ -8,7 +8,10 @@ import {
   OTP_VERIFICATION,
   CREATE_ACCOUNT,
 } from '../../shared/constants/constants';
-import {CREATEACCOUNT} from '../../shared/constants/navigatorConstants';
+import {
+  LOGIN,
+  PREGNANTWOMAN_SCREEN,
+} from '../../shared/constants/navigatorConstants';
 import {Button} from '../../shared/components/button';
 import {buttonStyles} from '../../shared/components/button/styles';
 import {otpVerification as otpVerificationAction} from './Actions';
@@ -19,9 +22,9 @@ const OTPVerification = ({navigation, route, otpVerification}) => {
   const [count, setCount] = useState(30);
 
   const [formValues, setFormValues] = useState({
-    phone_number: route.params.phone_number,
+    phone_number: route?.params?.phone_number,
     otp: '',
-    is_creation: route.params.is_creation,
+    is_creation: route?.params?.is_creation,
   });
 
   const updateOtpNumber = newVal => {
@@ -51,7 +54,14 @@ const OTPVerification = ({navigation, route, otpVerification}) => {
         <AppHeader
           title={CREATE_ACCOUNT.TITLE_SCREEN}
           backArrowValue={true}
-          onPress={() => navigation.navigate(CREATEACCOUNT)}
+          onPress={
+            route.params.fromWhere === CREATE_ACCOUNT.CATEGORY_1_TITLE
+              ? () =>
+                  navigation.navigate(PREGNANTWOMAN_SCREEN, {
+                    title: CREATE_ACCOUNT.CATEGORY_1_TITLE,
+                  })
+              : () => navigation.navigate(LOGIN)
+          }
         />
       </View>
       <View style={verifyOTPStyles.innerContainer}>

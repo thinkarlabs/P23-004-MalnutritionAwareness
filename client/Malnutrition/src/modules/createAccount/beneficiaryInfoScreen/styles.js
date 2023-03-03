@@ -87,7 +87,9 @@ export const beneficiaryInfoStyles = StyleSheet.create({
   },
   checkbox: {
     backgroundColor: WHITE,
-    borderRadius: 4,
+    height: 32,
+    width: 32,
+    borderRadius: 8,
     borderWidth: 1,
     borderColor: PLACEHOLDER_BORDER_COLOR,
   },

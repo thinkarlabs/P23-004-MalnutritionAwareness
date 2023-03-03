@@ -10,7 +10,7 @@ export const getStore = () => {
   return store;
 };
 
-export const configureStore = (preloadedState) => {
+export const configureStore = preloadedState => {
   const middlewares = [ReduxThunk];
   const middlewareEnhancer = applyMiddleware(...middlewares);
 
