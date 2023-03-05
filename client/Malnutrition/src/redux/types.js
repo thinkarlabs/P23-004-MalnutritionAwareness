@@ -5,3 +5,5 @@ export const CREATE_PREGNANT_WOMEN_ACCOUNT_ERROR =
   'create_pregnant_women_account_error';
 export const OTP_VERIFICATION_SUCCESS = 'OTP_verification_success';
 export const OTP_VERIFICATION_ERROR = 'OTP_verification_error';
+export const RESEND_OTP_SUCCESS = 'resend_OTP_success';
+export const RESEND_OTP_ERROR = 'resend_OTP_error';

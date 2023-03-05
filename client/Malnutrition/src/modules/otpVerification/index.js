@@ -20,6 +20,7 @@ import {Button} from '../../shared/components/button';
 import {buttonStyles} from '../../shared/components/button/styles';
 import {
   otpVerification as otpVerificationAction,
+  resendOTP as resendOTPAction,
   hideError as hideErrorAction,
 } from './Actions';
 import {connect} from 'react-redux';
@@ -30,9 +31,11 @@ const OTPVerification = ({
   navigation,
   route,
   otpVerification,
-  hideError,
   verifyOtpData,
+  resendOtpData,
   errorText,
+  resendOtp,
+  hideError,
 }) => {
   const pinCount = 4;
   const [count, setCount] = useState(30);
@@ -79,6 +82,12 @@ const OTPVerification = ({
   const verifyOtp = () => {
     setCount(0);
     otpVerification(formValues);
+  };
+
+  const onPressResendOtp = () => {
+    setCount(30);
+    hideError();
+    resendOtp(formValues);
   };
 
   return (
@@ -137,7 +146,7 @@ const OTPVerification = ({
             {count === 0 ? (
               <Text
                 style={verifyOTPStyles.resendTextBold}
-                onPress={() => setCount(30)}>
+                onPress={onPressResendOtp}>
                 {RESEND_OTP}
               </Text>
             ) : (
@@ -164,11 +173,13 @@ const OTPVerification = ({
 
 const mapDispatchToProps = dispatch => ({
   otpVerification: formValues => dispatch(otpVerificationAction(formValues)),
+  resendOTP: formValues => dispatch(resendOTPAction(formValues)),
   hideError: () => dispatch(hideErrorAction()),
 });
 
 const mapStateToProps = state => ({
   verifyOtpData: state.otpVerification.verifyOtpData,
+  resendOtpData: state.otpVerification.resendOtpData,
   errorText: state.otpVerification.errorText,
 });
 

@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 import CreateAccountReducer from '../modules/createAccount/CreateAccountReducer';
-import VerifyOTPReducer from '../modules/otpVerification/VerifyOTPReducer';
+import VerifyOTPReducer from '../modules/otpVerification/otpReducer';
 
 const appReducer = combineReducers({
   createAccount: CreateAccountReducer,
