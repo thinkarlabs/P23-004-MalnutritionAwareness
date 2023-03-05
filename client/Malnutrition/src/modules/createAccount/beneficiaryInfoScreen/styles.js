@@ -126,4 +126,7 @@ export const beneficiaryInfoStyles = StyleSheet.create({
     position: 'relative',
     top: 10,
   },
+  paddingHorizontal: {
+    paddingHorizontal: 20,
+  },
 });

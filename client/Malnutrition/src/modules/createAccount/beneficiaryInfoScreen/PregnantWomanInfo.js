@@ -27,6 +27,7 @@ import {connect} from 'react-redux';
 import AppDropdown from '../../../shared/components/appDropdown';
 import moment from 'moment';
 import {buttonStyles} from '../../../shared/components/button/styles';
+import {createAccountStyles} from '../styles';
 
 const pregnantWomanInfo = ({
   route,
@@ -58,7 +59,7 @@ const pregnantWomanInfo = ({
       navigation.navigate(OTPVERIFICATION, {
         fromWhere: CREATE_ACCOUNT.CATEGORY_1_TITLE,
         phone_number: formValues.phone_number,
-        is_creation: false,
+        is_creation: true,
       });
     }
   }, [
@@ -132,7 +133,7 @@ const pregnantWomanInfo = ({
     setTodaysDate((year + '-' + month + '-' + date).toString());
   };
 
-  const isFormValid = useMemo(() => {
+  useMemo(() => {
     if (
       formValues.user_type &&
       formValues.name &&
@@ -165,7 +166,7 @@ const pregnantWomanInfo = ({
         backArrowValue={true}
         onPress={() => navigation.navigate(CREATEACCOUNT)}
       />
-      <ScrollView style={{height: '75%'}}>
+      <ScrollView style={createAccountStyles.scrollView}>
         <View style={beneficiaryInfoStyles.screenWrapper}>
           <Text style={beneficiaryInfoStyles.titleText}>
             {CREATE_ACCOUNT.BENEFICIARY_INFO_TITLE}
@@ -270,7 +271,7 @@ const pregnantWomanInfo = ({
             style={[
               beneficiaryInfoStyles.errorMsg,
               beneficiaryInfoStyles.shiftUp,
-              {paddingHorizontal: 20},
+              beneficiaryInfoStyles.paddingHorizontal,
             ]}>
             {errorText}
           </Text>

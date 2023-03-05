@@ -1,11 +1,11 @@
 import {
   OTP_VERIFICATION_SUCCESS,
   OTP_VERIFICATION_ERROR,
+  HIDE_API_ERROR,
 } from '../../redux/types';
 import {URL_OTP_VERIFICATION} from '../../shared/apis/APIConstants';
-import {HOME} from '../../shared/constants/navigatorConstants';
 
-export const otpVerification = (data, navigation) => dispatch => {
+export const otpVerification = data => dispatch => {
   const reqBody = {
     method: 'POST',
     headers: {
@@ -13,14 +13,11 @@ export const otpVerification = (data, navigation) => dispatch => {
     },
     body: JSON.stringify(data),
   };
-  console.log(reqBody, 'data');
   fetch(URL_OTP_VERIFICATION, reqBody)
     .then(response => response.json())
     .then(responseData => {
-      console.log(responseData, 'responseData');
       if (responseData?.message) {
         dispatch(otpVerificationSuccess(responseData?.message));
-        navigation.navigate(HOME);
       } else {
         dispatch(otpVerificationError(responseData?.error));
       }
@@ -28,7 +25,6 @@ export const otpVerification = (data, navigation) => dispatch => {
     .catch(error => {
       //display error message
       console.log(error, 'error');
-      dispatch(otpVerificationError(error));
     });
 };
 
@@ -43,5 +39,12 @@ export const otpVerificationError = error => async dispatch => {
   dispatch({
     type: OTP_VERIFICATION_ERROR,
     payload: error,
+  });
+};
+
+export const hideError = () => dispatch => {
+  dispatch({
+    type: HIDE_API_ERROR,
+    payload: '',
   });
 };
