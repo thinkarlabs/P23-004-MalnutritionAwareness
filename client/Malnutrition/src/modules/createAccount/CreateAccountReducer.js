@@ -1,6 +1,7 @@
 import {
   CREATE_PREGNANT_WOMEN_ACCOUNT_ERROR,
   CREATE_PREGNANT_WOMEN_ACCOUNT_SUCCESS,
+  HIDE_API_ERROR,
 } from '../../redux/types';
 
 const INITIAL_STATE = {
@@ -16,9 +17,17 @@ export default (state = INITIAL_STATE, action = {}) => {
         ...INITIAL_STATE,
         ...state,
         pregnantWomanData: action.payload,
+        errorText: '',
       };
     case CREATE_PREGNANT_WOMEN_ACCOUNT_ERROR:
-      return {...INITIAL_STATE, ...state, errorText: action.payload};
+      return {
+        ...INITIAL_STATE,
+        ...state,
+        errorText: action.payload,
+        pregnantWomanData: '',
+      };
+    case HIDE_API_ERROR:
+      return {...INITIAL_STATE, errorText: action.payload};
     default:
       return state;
   }

@@ -1,9 +1,9 @@
 import {
   CREATE_PREGNANT_WOMEN_ACCOUNT_ERROR,
   CREATE_PREGNANT_WOMEN_ACCOUNT_SUCCESS,
+  HIDE_API_ERROR,
 } from '../../redux/types';
 import {URL_CREATE_ACCOUNT} from '../../shared/apis/APIConstants';
-import {OTPVERIFICATION} from '../../shared/constants/navigatorConstants';
 
 export const createPregnantWomenAccount = (data, navigation) => dispatch => {
   const reqBody = {
@@ -17,13 +17,8 @@ export const createPregnantWomenAccount = (data, navigation) => dispatch => {
   fetch(URL_CREATE_ACCOUNT, reqBody)
     .then(response => response.json())
     .then(responseData => {
-      console.log(responseData, 'responseData');
       if (responseData?.message) {
         dispatch(createPregnantWomenAccountSuccess(responseData?.message));
-        navigation.navigate(OTPVERIFICATION, {
-          phone_number: data.phone_number,
-          is_creation: false,
-        });
       } else {
         dispatch(createPregnantWomenAccountError(responseData?.error));
       }
@@ -34,16 +29,23 @@ export const createPregnantWomenAccount = (data, navigation) => dispatch => {
     });
 };
 
-export const createPregnantWomenAccountSuccess = response => async dispatch => {
+export const createPregnantWomenAccountSuccess = response => dispatch => {
   dispatch({
     type: CREATE_PREGNANT_WOMEN_ACCOUNT_SUCCESS,
     payload: response,
   });
 };
 
-export const createPregnantWomenAccountError = error => async dispatch => {
+export const createPregnantWomenAccountError = error => dispatch => {
   dispatch({
     type: CREATE_PREGNANT_WOMEN_ACCOUNT_ERROR,
     payload: error,
+  });
+};
+
+export const hideError = () => dispatch => {
+  dispatch({
+    type: HIDE_API_ERROR,
+    payload: '',
   });
 };

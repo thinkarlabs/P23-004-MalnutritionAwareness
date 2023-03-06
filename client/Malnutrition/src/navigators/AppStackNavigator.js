@@ -23,7 +23,7 @@ import PregnantWomanInfo from '../modules/createAccount/beneficiaryInfoScreen/Pr
 import OnBoardingSlider1 from '../modules/onboarding/OnBoardingSlider1';
 import OnBoardingSlider2 from '../modules/onboarding/OnBoardingSlider2';
 import OnBoardingSlider3 from '../modules/onboarding/OnBoardingSlider3';
-import HomeScreen from '../modules/homeScreen';
+import Home from '../modules/home';
 
 const Stack = createStackNavigator();
 
@@ -60,7 +60,7 @@ export function AppStackNavigator() {
         />
         <Stack.Screen name={CHILDINFO_SCREEN} component={ChildInfo} />
         <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
-        <Stack.Screen name={HOME} component={HomeScreen} />
+        <Stack.Screen name={HOME} component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
   );

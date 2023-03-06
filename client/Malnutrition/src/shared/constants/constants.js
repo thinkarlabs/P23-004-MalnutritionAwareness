@@ -13,9 +13,9 @@ export const BACK = 'Back';
 export const ENGLISH = 'En';
 export const VERIFY_OTP = 'Verify OTP';
 export const OTP_VERIFICATION = 'OTP Verification';
-export const ENTER_MOBILE_NUMBER = `Enter the OTP sent on your registered ${'\n'} mobile number `;
-export const MOBILE_NUMBER = '+91 - 1234562330';
-export const DID_NOT_RECEIVE_OTP = "Didn't Recieve OTP? ";
+export const ENTER_MOBILE_NUMBER = 'Enter the OTP send on';
+export const RESEND_OTP = 'Resend OTP';
+export const RESEND_OTP_IN = 'Resend OTP in - 00.';
 export const RESEND = 'Resend';
 export const CONFIRM = 'Confirm';
 
