@@ -36,7 +36,7 @@ def send_otp_to_phone(phone_number, otp):
         print(e)
 
 
-@router.post("/account")
+@router.post("/api/v1/account")
 async def create_account(user: CreateUserSchema = Body(...)):
     user_dict = jsonable_encoder(user)
 
@@ -66,7 +66,7 @@ async def resend_otp(phone_number:ResendOTPSchema= Body(...)):
 
 
 
-@router.post("/login")
+@router.post("/api/v1/login")
 async def login_account(user:LoginUserSchema= Body(...)):
     user_dict = jsonable_encoder(user)
     # check if same record exists
