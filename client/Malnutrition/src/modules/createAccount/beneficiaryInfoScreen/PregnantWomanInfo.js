@@ -5,24 +5,38 @@ import {
   CREATE_ACCOUNT,
   USER_DETAILS,
 } from '../../../shared/constants/constants';
-import {CREATEACCOUNT} from '../../../shared/constants/navigatorConstants';
+import {
+  CREATEACCOUNT,
+  OTPVERIFICATION,
+} from '../../../shared/constants/navigatorConstants';
 import {beneficiaryInfoStyles} from './styles';
 import {
+  LIGHT_GREY,
   PLACEHOLDER_COLOR,
   WHITE,
-  BUTTON,
 } from '../../../shared/constants/colors';
 import AppTextInput from '../../../shared/components/appTextInput';
 import AppDatePicker from '../../../shared/components/appDatePicker';
 import CheckBox from '@react-native-community/checkbox';
 import {Button} from '../../../shared/components/button';
-import {createPregnantWomenAccount as createAccountAction} from '../Actions';
+import {
+  createPregnantWomenAccount as createAccountAction,
+  hideError as hideErrorAction,
+} from '../Actions';
 import {connect} from 'react-redux';
 import AppDropdown from '../../../shared/components/appDropdown';
 import moment from 'moment';
 import {buttonStyles} from '../../../shared/components/button/styles';
+import {createAccountStyles} from '../styles';
 
-const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
+const pregnantWomanInfo = ({
+  route,
+  navigation,
+  createPregnantWomenAccount,
+  pregnantWomanData,
+  errorText,
+  hideError,
+}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [todaysDate, setTodaysDate] = useState('');
@@ -41,25 +55,46 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
     if (todaysDate === '') {
       getTodaysDate();
     }
-  }, [formValues, isPhoneNumberValid, isPhoneFocused, isValidForm, todaysDate]);
+    if (pregnantWomanData && !errorText) {
+      navigation.navigate(OTPVERIFICATION, {
+        fromWhere: CREATE_ACCOUNT.CATEGORY_1_TITLE,
+        phone_number: formValues.phone_number,
+        is_creation: true,
+      });
+    }
+  }, [
+    formValues,
+    isPhoneNumberValid,
+    isPhoneFocused,
+    isValidForm,
+    todaysDate,
+    pregnantWomanData,
+    errorText,
+    navigation,
+    hideError,
+  ]);
 
   const updatename = newVal => {
+    hideError();
     setFormValues({...formValues, name: newVal});
   };
 
   const updatePhoneNumber = newVal => {
+    hideError();
     validatePhoneNumber(newVal);
     setFormValues({...formValues, phone_number: '+91' + newVal});
   };
 
   const updateLMP = newVal => {
+    hideError();
     setFormValues({
       ...formValues,
-      lmp: moment(newVal.timestamp).format('YYYY-DD-MM'),
+      lmp: moment(newVal.timestamp).format('DD/MM/YYYY'),
     });
   };
 
   const updateIsCreateForSomeoneElse = val => {
+    hideError();
     setFormValues({
       ...formValues,
       is_created_for_someone_else: val,
@@ -68,6 +103,7 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   };
 
   const updateRelationWithChild = val => {
+    hideError();
     setFormValues({
       ...formValues,
       relation_with_child: val,
@@ -75,8 +111,6 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
   };
 
   const validatePhoneNumber = val => {
-    //console.log('phone:' + val.nativeEvent.text);
-
     setIsPhoneFocused(true);
     if (val.length === 10) {
       setIsPhoneNumberValid(true);
@@ -99,7 +133,7 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
     setTodaysDate((year + '-' + month + '-' + date).toString());
   };
 
-  const isFormValid = useMemo(() => {
+  useMemo(() => {
     if (
       formValues.user_type &&
       formValues.name &&
@@ -112,10 +146,8 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
       if (formValues.is_created_for_someone_else) {
         setIsValidForm(Boolean(formValues.relation_with_child));
       }
-      console.log('is Form Valid : ' + isValidForm);
     } else {
       setIsValidForm(false);
-      console.log('is Form Valid : ' + isValidForm);
     }
   }, [
     formValues.user_type,
@@ -125,10 +157,7 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
     formValues.relation_with_child,
     formValues.is_created_for_someone_else,
     isPhoneNumberValid,
-    isValidForm,
   ]);
-
-  //isFormValid();
 
   return (
     <SafeAreaView>
@@ -137,7 +166,7 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
         backArrowValue={true}
         onPress={() => navigation.navigate(CREATEACCOUNT)}
       />
-      <ScrollView contentContainerStyle={{paddingBottom: '20%'}}>
+      <ScrollView style={createAccountStyles.scrollView}>
         <View style={beneficiaryInfoStyles.screenWrapper}>
           <Text style={beneficiaryInfoStyles.titleText}>
             {CREATE_ACCOUNT.BENEFICIARY_INFO_TITLE}
@@ -151,7 +180,7 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
                     You have selected
                   </Text>
                   <Text style={beneficiaryInfoStyles.selectedStageCardTitle}>
-                    {route.params.title}
+                    {route?.params?.title}
                   </Text>
                 </View>
               </View>
@@ -213,6 +242,8 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
                 tintColor="transparent"
                 onFillColor={WHITE}
                 name="is_created_for_someone_else"
+                onTintColor={'transparent'}
+                onCheckColor={LIGHT_GREY}
               />
               <Text style={beneficiaryInfoStyles.checkboxLabel}>
                 {CREATE_ACCOUNT.CHECK_BOX_LABEL}
@@ -235,6 +266,16 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
               )}
           </View>
         </View>
+        {!!errorText && (
+          <Text
+            style={[
+              beneficiaryInfoStyles.errorMsg,
+              beneficiaryInfoStyles.shiftUp,
+              beneficiaryInfoStyles.paddingHorizontal,
+            ]}>
+            {errorText}
+          </Text>
+        )}
       </ScrollView>
       <View style={beneficiaryInfoStyles.buttonContainer}>
         <Text style={beneficiaryInfoStyles.info}>
@@ -243,8 +284,9 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
         <Button
           title={CREATE_ACCOUNT.OTP_BUTTON}
           textStyle={buttonStyles.buttonText}
-          buttonStyle={[buttonStyles.Button]}
-          buttonColor={!isValidForm && BUTTON.PRIMARY_DISABLED}
+          buttonStyle={buttonStyles.container}
+          disabledStyle={buttonStyles.disabled}
+          disabled={!isValidForm}
           onPress={createAccount}
         />
       </View>
@@ -255,6 +297,7 @@ const pregnantWomanInfo = ({route, navigation, createPregnantWomenAccount}) => {
 const mapDispatchToProps = dispatch => ({
   createPregnantWomenAccount: (formValues, navigation) =>
     dispatch(createAccountAction(formValues, navigation)),
+  hideError: () => dispatch(hideErrorAction()),
 });
 
 const mapStateToProps = state => ({

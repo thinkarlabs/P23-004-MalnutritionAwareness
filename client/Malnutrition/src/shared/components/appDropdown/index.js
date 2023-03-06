@@ -1,15 +1,10 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';
 import GroupIcon from '../../../../assets/svg/icons/groupIcon';
-import {
-  BLACK,
-  LIGHT_GREY,
-  PLACEHOLDER_BORDER_COLOR,
-  PURPLE,
-} from '../../constants/colors';
+import {LIGHT_GREY} from '../../constants/colors';
 import {DROPDOWN_BOX, PLACEHOLDER_DETAILS} from '../../constants/constants';
-import { appDropdownStyles } from './styles';
+import {appDropdownStyles} from './styles';
 
 const data = [
   {label: DROPDOWN_BOX.A_RELATIVE, value: 'RELATIVE'},
@@ -65,5 +60,3 @@ const AppDropdown = ({dropdownValue}) => {
 };
 
 export default AppDropdown;
-
-
