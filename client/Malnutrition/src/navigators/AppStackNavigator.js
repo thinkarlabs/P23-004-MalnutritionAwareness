@@ -24,6 +24,7 @@ import OnBoardingSlider1 from '../modules/onboarding/OnBoardingSlider1';
 import OnBoardingSlider2 from '../modules/onboarding/OnBoardingSlider2';
 import OnBoardingSlider3 from '../modules/onboarding/OnBoardingSlider3';
 import Home from '../modules/home';
+import BottomTab from './BottomTab';
 
 const Stack = createStackNavigator();
 
@@ -43,7 +44,7 @@ export function AppStackNavigator() {
           headerShown: false,
           cardStyle: {backgroundColor: WHITE},
         }}>
-        {showSplashScreen ? (
+        {/* {showSplashScreen ? (
           <Stack.Screen name={SPLASH} component={Splash} />
         ) : null}
         <Stack.Screen name={ONBOARDINGSLIDER1} component={OnBoardingSlider1} />
@@ -59,8 +60,9 @@ export function AppStackNavigator() {
           component={LactatingMotherInfo}
         />
         <Stack.Screen name={CHILDINFO_SCREEN} component={ChildInfo} />
-        <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
-        <Stack.Screen name={HOME} component={Home} />
+        <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} /> */}
+        {/* <Stack.Screen name={HOME} component={Home} /> */}
+        <Stack.Screen name='Tab' component={BottomTab} />
       </Stack.Navigator>
     </NavigationContainer>
   );

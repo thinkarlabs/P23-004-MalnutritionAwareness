@@ -9,7 +9,7 @@ export const appCardStyles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 25,
     marginBottom: 8,
-    backgroundColor: '#E9EAF3',
+    backgroundColor: background,
   },
   cardTitle: {
     fontSize: 22,

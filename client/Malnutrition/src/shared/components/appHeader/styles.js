@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import { BLACK } from '../../constants/colors';
+import { BLACK, WHITE } from '../../constants/colors';
 
 export const appHeaderStyles = StyleSheet.create({
   container: {

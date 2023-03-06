@@ -18,6 +18,7 @@ export const RESEND_OTP = 'Resend OTP';
 export const RESEND_OTP_IN = 'Resend OTP in - 00.';
 export const RESEND = 'Resend';
 export const CONFIRM = 'Confirm';
+export const TITLE = 'Udaan';
 
 export const CREATE_ACCOUNT = {
   SELECT_CURRENT_STAGE_TEXT: "Select beneficiary's current stage to proceed",
@@ -63,3 +64,11 @@ export const DROPDOWN_BOX = {
   AN_NGO_MEMBER: 'An NGO Member',
   AN_ANGANWADI_MEMBER: 'An Anganwadi Member',
 };
+
+export const HOMESCREEN = {
+  TITLE : 'Welcome to Poshan!!',
+  CARD_CONTENT1: `See what most babies${'\n'}do at this age?`,
+  CARD_CONTENT2: `What you should do for${'\n'}your baby?`,
+  CARD_CONTENT3: `See what can be the${'\n'}Warning for you`,
+  CARD_CONTENT4: `Your child measurement can${'\n'}tell you how's your child${'\n'}health is.`
+}

@@ -19,5 +19,13 @@ export const BUTTON = {
   PRIMARY_DISABLED: 'rgba(112, 94, 235, 0.4);',
 };
 
+export const CARD_BACKGROUND = '#E9EAF3';
+
 export const PLACEHOLDER_COLOR = '#616568';
 export const PLACEHOLDER_BORDER_COLOR = '#DBDDEB';
+
+export const FOCUSED_TAB_ICON = '#705EEB';
+export const TAB_ICON = '#818391';
+
+export const CARD_BLUE = '#CEECF4';
+export const CARD_RED = '#F8DADA';
