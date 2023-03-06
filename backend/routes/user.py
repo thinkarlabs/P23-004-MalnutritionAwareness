@@ -39,21 +39,34 @@ def send_otp_to_phone(phone_number, otp):
 @router.post("/account")
 async def create_account(user: CreateUserSchema = Body(...)):
     user_dict = jsonable_encoder(user)
-
     user_dict.update({'is_active': False})
 
-    # check if same record exists
-    if database.user.find_one({'phone_number': user_dict['phone_number']}):
+    if database.user.find_one({'phone_number': user_dict['phone_number'], 'is_active':False}):
+        # Update the user info
+        database.user.update_one({'phone_number': user_dict['phone_number']}, {'$set': {
+                'name': user_dict['name'],
+                'user_type':user_dict['user_type'],
+                'relation_with_child':user_dict['relation_with_child'],
+                'lmp': user_dict['lmp'],
+                'is_created_for_someone_else': user_dict['is_created_for_someone_else'],
+                'child': user_dict['child']
+                }})
+        otp = otp_generate_save(user_dict['phone_number'])
+        send_otp_to_phone(user_dict['phone_number'], otp)
+        return JSONResponse(status_code=200, content={"message": "User saved successfully"})
+
+    # check if same record exists with active status True
+    elif database.user.find_one({'phone_number': user_dict['phone_number'], 'is_active':True}):
         return JSONResponse(status_code=409, content={'error': 'Phone number already exists !'})
 
-    database.user.insert_one(user_dict)
-
-    # generate and save otp for user
-    otp = otp_generate_save(user_dict['phone_number'])
-    # send otp to users phone number
-    send_otp_to_phone(user_dict['phone_number'], otp)
-
-    return JSONResponse(status_code=200, content={"message": "User saved successfully"})
+    # Create new user account
+    else:
+        database.user.insert_one(user_dict)
+        # generate and save otp for user
+        otp = otp_generate_save(user_dict['phone_number'])
+        # send otp to users phone number
+        send_otp_to_phone(user_dict['phone_number'], otp)
+        return JSONResponse(status_code=200, content={"message": "User saved successfully"})
 
 @router.post("/api/v1/resend_otp")
 async def resend_otp(phone_number:ResendOTPSchema= Body(...)):
