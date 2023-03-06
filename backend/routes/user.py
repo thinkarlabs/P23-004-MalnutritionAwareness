@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Body
-from models.user import CreateUserSchema,VerifyOTPSchema,LoginUserSchema
+from models.user import CreateUserSchema,VerifyOTPSchema,LoginUserSchema, ResendOTPSchema
 from fastapi.encoders import jsonable_encoder
 from config.database import db as database
 from config.jwt_handler import JWT_ALGORITHM,JWT_SECRET
@@ -54,6 +54,18 @@ async def create_account(user: CreateUserSchema = Body(...)):
     send_otp_to_phone(user_dict['phone_number'], otp)
 
     return JSONResponse(status_code=200, content={"message": "User saved successfully"})
+
+@router.post("/api/v1/resend_otp")
+async def resend_otp(phone_number:ResendOTPSchema= Body(...)):
+    phone_number_dict = jsonable_encoder(phone_number)
+
+    otp = otp_generate_save(phone_number_dict['phone_number'])
+    send_otp_to_phone(phone_number_dict['phone_number'], otp)
+
+    return JSONResponse(status_code=200, content={'message': 'OTP sent successfully'})
+
+
+
 @router.post("/login")
 async def login_account(user:LoginUserSchema= Body(...)):
     user_dict = jsonable_encoder(user)
