@@ -1,10 +1,11 @@
-from fastapi import APIRouter, Body, Header
+from fastapi import APIRouter, Body, Depends
 from models.user import CreateUserSchema, VerifyOTPSchema, LoginUserSchema
 from fastapi.encoders import jsonable_encoder
 from config.database import db as database
 from config.jwt_handler import JWT_ALGORITHM, JWT_SECRET
 from config.twilio_config import twilio_client, twilio_number
 from fastapi.responses import JSONResponse
+from fastapi.security import OAuth2PasswordBearer
 from schemas.user import serializeDict, serializeList
 from bson import ObjectId
 import random
@@ -13,6 +14,7 @@ import jwt
 
 router = APIRouter()
 
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 def otp_generate_save(phone_number):
     # Generate 4 digit random OTP and timestamp
@@ -104,10 +106,9 @@ async def verify_otp(user: VerifyOTPSchema = Body(...)):
 
 
 @router.get("/api/v1/sync")
-async def sync(jwt_token: str | None = Header(default=None)):
+async def sync(token: str = Depends(oauth2_scheme)):
     try:
-        print(jwt_token)
-        decoded = jwt.decode(jwt_token, JWT_SECRET, algorithms=JWT_ALGORITHM)
+        decoded = jwt.decode(token, JWT_SECRET, algorithms=JWT_ALGORITHM)
     except jwt.ExpiredSignatureError:
         return JSONResponse(content={'error': 'JWT Token expired'})
     except jwt.PyJWTError as e:
