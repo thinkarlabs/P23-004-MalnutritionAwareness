@@ -1,10 +1,11 @@
-from fastapi import APIRouter, Body
+from fastapi import APIRouter, Body, Depends
 from models.user import CreateUserSchema,VerifyOTPSchema,LoginUserSchema, ResendOTPSchema
 from fastapi.encoders import jsonable_encoder
 from config.database import db as database
 from config.jwt_handler import JWT_ALGORITHM,JWT_SECRET
 from config.twilio_config import twilio_client,twilio_number
 from fastapi.responses import JSONResponse
+from fastapi.security import OAuth2PasswordBearer
 from schemas.user import serializeDict, serializeList
 from bson import ObjectId
 import random
@@ -13,6 +14,8 @@ import jwt
 
 
 router = APIRouter()
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 def otp_generate_save(phone_number):
     # Generate 4 digit random OTP and timestamp
@@ -128,6 +131,42 @@ async def verify_otp(user: VerifyOTPSchema = Body(...)):
         # Return an error message
         return JSONResponse(status_code=400,content={"error": "Invalid OTP"})
 
+@router.get("/api/v1/sync")
+async def sync(token: str = Depends(oauth2_scheme)):
+    try:
+        print(token)
+        decoded = jwt.decode(token, JWT_SECRET, algorithms=JWT_ALGORITHM)
+    except jwt.ExpiredSignatureError:
+        return JSONResponse(content={'error': 'JWT Token expired'})
+    except jwt.PyJWTError as e:
+        print(e)
+        return JSONResponse(content={'error': 'Invalid Token'})
+    user_phone_number = decoded['phone_number']
+    user_details = database.user.find_one({'phone_number': user_phone_number})
+    child_details = user_details['child']
+    if not child_details:
+        days_from_lmp = (datetime.datetime.today() - datetime.datetime.strptime(user_details['lmp'], '%Y-%m-%d')).days
+        video_link = database.home_video.find_one({'$and': [{'persona_type': 'pregnant'},
+                                                  {'from_days': {'$lte': days_from_lmp}},
+                                                  {'upto_days': {'$gte': days_from_lmp}}]},
+                                                  {'video_link': 1, '_id': 0})
+        response = {"mother_details":
+                        {"name": user_details['name'], "phone number": user_details['phone_number'],
+                         "lmp": user_details['lmp']},
+                    "child_details": None,
+                    "video": video_link['video_link']}
+    else:
+        days_from_dob = (datetime.datetime.today() - datetime.datetime.strptime(child_details[0]['dob'], '%Y-%m-%d')).days
+        video_link = database.home_video.find_one({'$and': [{"persona_type": {"$in": ["lactating", "caregiver"]}},
+                                                  {'from_days': {'$lte': days_from_dob}},
+                                                  {'upto_days': {'$gte': days_from_dob}}]},
+                                                  {'video_link': 1, '_id': 0})
+        response = {"mother_details":
+                        {"name": user_details['name'], "phone number": user_details['phone_number'],
+                         "lmp": user_details['lmp']},
+                    "child_details":
+                        {"name": child_details[0]['name'], "dob": child_details[0]['dob']},
+                    "video": video_link['video_link']}
 
-
+    return JSONResponse(content=response)
 
