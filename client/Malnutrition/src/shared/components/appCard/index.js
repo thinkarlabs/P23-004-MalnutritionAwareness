@@ -12,6 +12,7 @@ export const AppCard = ({
   content,
   image,
   background,
+  titleText,
 }) => {
   return (
     <View
@@ -32,11 +33,9 @@ export const AppCard = ({
             onPress={onPress}
             style={appCardStyles.cardTitleContainer}>
             <Text style={appCardStyles.cardTitleText}>
-              {CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
+              {titleText}
             </Text>
-            <View>
               <BackArrowWithCircle />
-            </View>
           </TouchableOpacity>
         </View>
       </View>

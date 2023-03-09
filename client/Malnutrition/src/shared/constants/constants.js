@@ -76,7 +76,6 @@ export const HOMESCREEN = {
   CARD_CONTENT2: `What you should do for${'\n'}your baby?`,
   CARD_CONTENT3: `See what can be the${'\n'}Warning for you`,
   CARD_CONTENT4: `Your child measurement${'\n'}can tell you how's your${'\n'}childhealth is.`,
-  CARD_CONTENT4: `Your child measurement can${'\n'}tell you how's your child${'\n'}health is.`,
 };
 
 export const ERROR_MESSAGE = {
@@ -105,4 +104,4 @@ export const HOMESCREEN_CARD = {
   CARD_CONTENT6: `Make smooth moments with${'\n'}arms and legs`,
   CARD_CONTENT7: `Keep hands relaxed and take${'\n'}swipes at dangling objects`,
   CARD_CONTENT8: `Begin to babble`,
-}
+};

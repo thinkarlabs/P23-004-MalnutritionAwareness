@@ -14,13 +14,14 @@ export const appCardStyles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 24,
     fontWeight: '400',
+    paddingBottom: 18,
   },
   cardTitleContainer: {
+    backgroundColor: WHITE,
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 12,
-    backgroundColor: WHITE,
-    borderRadius: 8,
+    borderRadius: 6,
+    height: 34,
   },
   cardTitleText: {
     fontWeight: '500',
@@ -28,6 +29,7 @@ export const appCardStyles = StyleSheet.create({
     color: BLACK,
     marginLeft: 12,
     marginVertical: 4,
+    paddingRight: 8
   },
   row: {
     flexDirection: 'row',

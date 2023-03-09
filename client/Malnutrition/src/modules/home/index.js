@@ -1,7 +1,11 @@
 import React from 'react';
 import {Text, SafeAreaView, View, ScrollView} from 'react-native';
+import ChildDetails from '../../../assets/svg/childDetails';
 import PersonIcon from '../../../assets/svg/icons/personIcon';
 import PregnantWomenImage from '../../../assets/svg/pregnantWomenSVG';
+import WarningDetails from '../../../assets/svg/warningDetailSVG';
+import WhatBabyDoIllustration from '../../../assets/svg/whatBabyDoSVG';
+import WhatShouldIDoIllustration from '../../../assets/svg/whatShouldIDoSVG';
 import {AppCard} from '../../shared/components/appCard';
 import AppHeader from '../../shared/components/appHeader';
 import {
@@ -12,7 +16,7 @@ import {
   CARD_BACKGROUND,
   LIGHT_GREY,
 } from '../../shared/constants/colors';
-import {APP_NAME, HOMESCREEN} from '../../shared/constants/constants';
+import {APP_NAME, CREATE_ACCOUNT, HOMESCREEN} from '../../shared/constants/constants';
 import {createAccountStyles} from '../createAccount/styles';
 import {homeStyles} from './styles';
 
@@ -23,7 +27,6 @@ const Home = ({navigation}) => {
       <ScrollView style={{height: '75%'}}>
         <View style={homeStyles.container}>
           <View style={homeStyles.headingContainer}>
-            <PersonIcon />
             <Text style={homeStyles.headingText}>
               Aadarshini is 2 months and 10 days old
             </Text>
@@ -42,27 +45,30 @@ const Home = ({navigation}) => {
             onPress={() => {}}
             content={HOMESCREEN.CARD_CONTENT1}
             background={CARD_BLUE}
-            image={<PregnantWomenImage />}
+            image={<WhatBabyDoIllustration />}
+            titleText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
           />
           <AppCard
             onPress={() => {}}
             content={HOMESCREEN.CARD_CONTENT2}
             background={LIGHT_YELLOW}
             newStyle={createAccountStyles.rowReverse}
-            image={<PregnantWomenImage />}
+            image={<WhatShouldIDoIllustration />}
+            titleText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
           />
           <AppCard
             onPress={() => {}}
             content={HOMESCREEN.CARD_CONTENT3}
             background={CARD_RED}
-            image={<PregnantWomenImage />}
+            image={<WarningDetails />}
+            titleText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
           />
           <AppCard
             onPress={() => {}}
             content={HOMESCREEN.CARD_CONTENT4}
             background={CARD_BACKGROUND}
-            newStyle={createAccountStyles.rowReverse}
-            image={<PregnantWomenImage />}
+            image={<ChildDetails />}
+            titleText={'Add your child detail'}
           />
         </View>
       </ScrollView>

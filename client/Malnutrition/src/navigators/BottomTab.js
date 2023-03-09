@@ -16,6 +16,11 @@ import {
   TRACK,
 } from '../shared/constants/navigatorConstants';
 import Ask from '../modules/ask';
+import HomeDefaultIcon from '../../assets/svg/icons/homeDefaultIcon';
+import UserActiveIcon from '../../assets/svg/icons/userActiveIcon';
+import UserBlackIcon from '../../assets/svg/icons/userBlackIcon';
+import AskDefaultIcon from '../../assets/svg/icons/askDefaultIcon';
+import AskActiveIcon from '../../assets/svg/icons/askActiveIcon';
 
 const Tab = createBottomTabNavigator();
 
@@ -36,16 +41,7 @@ const BottomTab = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <View style={styles.container}>
-              <Image
-                source={{
-                  uri: 'https://cdn.pixabay.com/photo/2013/07/12/12/56/home-146585_1280.png',
-                }}
-                style={{
-                  height: 17,
-                  width: 12,
-                  tintColor: focused ? FOCUSED_TAB_ICON : TAB_ICON,
-                }}
-              />
+              <HomeDefaultIcon />
               <Text
                 style={{
                   color: focused ? FOCUSED_TAB_ICON : TAB_ICON,
@@ -94,16 +90,7 @@ const BottomTab = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <View style={styles.container}>
-              <Image
-                source={{
-                  uri: 'https://cdn.pixabay.com/photo/2013/07/12/12/56/home-146585_1280.png',
-                }}
-                style={{
-                  height: 17,
-                  width: 12,
-                  tintColor: focused ? FOCUSED_TAB_ICON : TAB_ICON,
-                }}
-              />
+              {focused ? <AskActiveIcon /> : <AskDefaultIcon/>}
               <Text
                 style={{
                   color: focused ? FOCUSED_TAB_ICON : TAB_ICON,
@@ -123,16 +110,7 @@ const BottomTab = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <View style={styles.container}>
-              <Image
-                source={{
-                  uri: 'https://cdn.pixabay.com/photo/2013/07/12/12/56/home-146585_1280.png',
-                }}
-                style={{
-                  height: 17,
-                  width: 12,
-                  tintColor: focused ? FOCUSED_TAB_ICON : TAB_ICON,
-                }}
-              />
+              {focused ? <UserActiveIcon /> : <UserBlackIcon/>}
               <Text
                 style={{
                   color: focused ? FOCUSED_TAB_ICON : TAB_ICON,
