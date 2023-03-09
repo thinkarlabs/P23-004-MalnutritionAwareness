@@ -27,9 +27,9 @@ export const SIGN_UP = 'Sign Up';
 export const CREATE_ACCOUNT = {
   SELECT_CURRENT_STAGE_TEXT: "Select beneficiary's current stage to proceed",
   CATEGORY_1_TITLE: 'Pregnant Woman',
-  CATEGORY_1_DESCRIPTION: `A mother understands ${'\n'}what a child does ${'\n'}not say.`,
+  CATEGORY_1_DESCRIPTION: `A grand and beautiful ${'\n'}adventure is about ${'\n'}to begin.`,
   CATEGORY_2_TITLE: 'Lactating Mother',
-  CATEGORY_2_DESCRIPTION: `A grand and beautiful ${'\n'}adventure is about ${'\n'}to begin.`,
+  CATEGORY_2_DESCRIPTION: `A mother understands ${'\n'}what a child does ${'\n'}not say.`,
   CATEGORY_3_TITLE: '6-24 Months',
   CATEGORY_3_DESCRIPTION: `A baby is born with a ${'\n'}need to be loved and ${'\n'}grow with caring.`,
   BUTTON_DESCRIPTION: 'Fill Your Details',

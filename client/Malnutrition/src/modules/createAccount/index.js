@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, ScrollView, Platform} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React from 'react';
 import {createAccountStyles} from './styles';
 import AppHeader from '../../shared/components/appHeader';
@@ -13,7 +13,7 @@ import {
   PREGNANTWOMAN_SCREEN,
 } from '../../shared/constants/navigatorConstants';
 
-const CreateAccount = ({navigation, route}) => {
+const CreateAccount = ({navigation}) => {
   return (
     <SafeAreaView style={createAccountStyles.container}>
       <AppHeader
@@ -21,11 +21,7 @@ const CreateAccount = ({navigation, route}) => {
         backArrowValue={true}
         onPress={() => navigation.navigate(LOGIN)}
       />
-      <ScrollView
-        style={Platform.select({
-          ios: createAccountStyles.scrollContainerIOS,
-          android: createAccountStyles.scrollContainer,
-        })}>
+      <ScrollView>
         <View style={createAccountStyles.screenWrapper}>
           <Text style={createAccountStyles.titleText}>
             {CREATE_ACCOUNT.SELECT_CURRENT_STAGE_TEXT}
