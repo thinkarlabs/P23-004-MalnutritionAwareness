@@ -18,11 +18,37 @@ import MotherIcon from '../../../../assets/svg/icons/motherIcon';
 import {Button} from '../../../shared/components/button';
 import AppDropdown from '../../../shared/components/appDropdown';
 import {buttonStyles} from '../../../shared/components/button/styles';
+import {
+  createAccount as createAccountAction,
+  hideError as hideErrorAction,
+} from '../Actions';
+import {connect} from 'react-redux';
 
-const LactatingMotherInfo = ({route, navigation}) => {
+const ChildInfo = ({
+  route,
+  navigation,
+  createAccount,
+  createAccountData,
+  errorText,
+  hideError,
+}) => {
   const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
-  const [toggleCheckBox, setToggleCheckBox] = useState(false);
+  const [isValidForm, setIsValidForm] = useState(false);
+  const [formValues, setFormValues] = useState({
+    user_type: 'PREGNANT',
+    name: '',
+    phone_number: '',
+    is_created_for_someone_else: false,
+    relation_with_child: null,
+    child: [
+      {
+        name: '',
+        dob: '',
+        gender: '',
+      },
+    ],
+  });
 
   const validatePhoneNumber = val => {
     if (val.length === 10) {
@@ -32,8 +58,28 @@ const LactatingMotherInfo = ({route, navigation}) => {
     }
   };
 
-  const setCheckbox = val => {
-    setToggleCheckBox(val);
+  const updateIsCreateForSomeoneElse = val => {
+    hideError();
+    setFormValues({
+      ...formValues,
+      is_created_for_someone_else: val,
+      relation_with_child: !val ? null : formValues.relation_with_child,
+    });
+  };
+
+  const updateRelationWithChild = val => {
+    hideError();
+    setFormValues({
+      ...formValues,
+      relation_with_child: val,
+    });
+  };
+
+  const onPressCreateAccount = () => {
+    if (!isValidForm) {
+      return false;
+    }
+    createAccount(formValues);
   };
 
   return (
@@ -43,7 +89,7 @@ const LactatingMotherInfo = ({route, navigation}) => {
         backArrowValue={true}
         onPress={() => navigation.navigate(CREATEACCOUNT)}
       />
-      <ScrollView style={{height: '80%'}}>
+      <ScrollView style={{height: '75%'}}>
         <View style={beneficiaryInfoStyles.screenWrapper}>
           <Text style={beneficiaryInfoStyles.titleText}>
             {CREATE_ACCOUNT.BENEFICIARY_INFO_TITLE}
@@ -108,26 +154,58 @@ const LactatingMotherInfo = ({route, navigation}) => {
                 </Text>
               )}
             </View>
+            {isPhoneFocused && !isPhoneNumberValid && (
+              <Text
+                style={[
+                  beneficiaryInfoStyles.errorMsg,
+                  beneficiaryInfoStyles.shiftUp,
+                ]}>
+                Invalid Phone Number
+              </Text>
+            )}
             <View style={beneficiaryInfoStyles.checkboxContainer}>
               <CheckBox
-                value={toggleCheckBox}
+                value={formValues.is_created_for_someone_else}
                 style={beneficiaryInfoStyles.checkbox}
-                onValueChange={setCheckbox}
+                onValueChange={updateIsCreateForSomeoneElse}
                 boxType="square"
                 tintColor="transparent"
                 onFillColor={WHITE}
+                name="is_created_for_someone_else"
+                onTintColor={'transparent'}
+                onCheckColor={LIGHT_GREY}
               />
               <Text style={beneficiaryInfoStyles.checkboxLabel}>
                 {CREATE_ACCOUNT.CHECK_BOX_LABEL}
               </Text>
             </View>
-            {toggleCheckBox && (
+            {formValues.is_created_for_someone_else && (
               <View style={beneficiaryInfoStyles.dropdownWrapper}>
-                <AppDropdown />
+                <AppDropdown dropdownValue={updateRelationWithChild} />
               </View>
             )}
+            {formValues.is_created_for_someone_else &&
+              formValues.relation_with_child == null && (
+                <Text
+                  style={[
+                    beneficiaryInfoStyles.errorMsg,
+                    beneficiaryInfoStyles.shiftDown,
+                  ]}>
+                  Select any one option from the dropdown.
+                </Text>
+              )}
           </View>
         </View>
+        {!!errorText && (
+          <Text
+            style={[
+              beneficiaryInfoStyles.errorMsg,
+              beneficiaryInfoStyles.shiftUp,
+              beneficiaryInfoStyles.paddingHorizontal,
+            ]}>
+            {errorText}
+          </Text>
+        )}
       </ScrollView>
       <View style={beneficiaryInfoStyles.buttonContainer}>
         <Text style={beneficiaryInfoStyles.info}>
@@ -136,11 +214,25 @@ const LactatingMotherInfo = ({route, navigation}) => {
         <Button
           title={CREATE_ACCOUNT.OTP_BUTTON}
           textStyle={buttonStyles.buttonText}
-          onPress={() => {}}
+          buttonStyle={buttonStyles.container}
+          disabledStyle={buttonStyles.disabled}
+          disabled={!isValidForm}
+          onPress={onPressCreateAccount}
         />
       </View>
     </SafeAreaView>
   );
 };
 
-export default LactatingMotherInfo;
+const mapDispatchToProps = dispatch => ({
+  createAccount: (formValues, navigation) =>
+    dispatch(createAccountAction(formValues, navigation)),
+  hideError: () => dispatch(hideErrorAction()),
+});
+
+const mapStateToProps = state => ({
+  createAccountData: state.createAccount.createAccountData,
+  errorText: state.createAccount.errorText,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChildInfo);

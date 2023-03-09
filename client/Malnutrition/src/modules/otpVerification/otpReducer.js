@@ -23,7 +23,12 @@ export default (state = INITIAL_STATE, action = {}) => {
         errorText: '',
       };
     case OTP_VERIFICATION_ERROR:
-      return {...INITIAL_STATE, ...state, errorText: action.payload};
+      return {
+        ...INITIAL_STATE,
+        ...state,
+        errorText: action.payload,
+        resendOtpData: '',
+      };
     case RESEND_OTP_SUCCESS:
       return {
         ...INITIAL_STATE,

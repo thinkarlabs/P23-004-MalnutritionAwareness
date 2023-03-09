@@ -3,6 +3,7 @@ import React, {useState, useEffect, useMemo} from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {
   CREATE_ACCOUNT,
+  ERROR_MESSAGE,
   USER_DETAILS,
 } from '../../../shared/constants/constants';
 import {
@@ -20,7 +21,7 @@ import AppDatePicker from '../../../shared/components/appDatePicker';
 import CheckBox from '@react-native-community/checkbox';
 import {Button} from '../../../shared/components/button';
 import {
-  createPregnantWomenAccount as createAccountAction,
+  createAccount as createAccountAction,
   hideError as hideErrorAction,
 } from '../Actions';
 import {connect} from 'react-redux';
@@ -28,12 +29,15 @@ import AppDropdown from '../../../shared/components/appDropdown';
 import moment from 'moment';
 import {buttonStyles} from '../../../shared/components/button/styles';
 import {createAccountStyles} from '../styles';
+import PhoneIcon from '../../../../assets/svg/icons/phoneIcon';
+import CalendarIcon from '../../../../assets/svg/icons/calendarIcon';
+import MotherIcon from '../../../../assets/svg/icons/motherIcon';
 
-const pregnantWomanInfo = ({
+const PregnantWomanInfo = ({
   route,
   navigation,
-  createPregnantWomenAccount,
-  pregnantWomanData,
+  createAccount,
+  createAccountData,
   errorText,
   hideError,
 }) => {
@@ -55,7 +59,7 @@ const pregnantWomanInfo = ({
     if (todaysDate === '') {
       getTodaysDate();
     }
-    if (pregnantWomanData && !errorText) {
+    if (createAccountData && !errorText) {
       navigation.navigate(OTPVERIFICATION, {
         fromWhere: CREATE_ACCOUNT.CATEGORY_1_TITLE,
         phone_number: formValues.phone_number,
@@ -68,7 +72,7 @@ const pregnantWomanInfo = ({
     isPhoneFocused,
     isValidForm,
     todaysDate,
-    pregnantWomanData,
+    createAccountData,
     errorText,
     navigation,
     hideError,
@@ -118,11 +122,11 @@ const pregnantWomanInfo = ({
       setIsPhoneNumberValid(false);
     }
   };
-  const createAccount = () => {
+  const onPressCreateAccount = () => {
     if (!isValidForm) {
       return false;
     }
-    createPregnantWomenAccount(formValues, navigation);
+    createAccount(formValues);
   };
 
   const getTodaysDate = () => {
@@ -188,9 +192,9 @@ const pregnantWomanInfo = ({
           </View>
           <View style={beneficiaryInfoStyles.formWrapper}>
             <View style={beneficiaryInfoStyles.inputContainer}>
-              {/* <View style={styles.iconTextInput}>
-              <CalenderIcon />
-            </View> */}
+              <View style={beneficiaryInfoStyles.iconTextInput}>
+                <MotherIcon />
+              </View>
               <AppTextInput
                 placeholder={USER_DETAILS.NAME}
                 placeholderTextColor={PLACEHOLDER_COLOR}
@@ -200,9 +204,9 @@ const pregnantWomanInfo = ({
               />
             </View>
             <View style={beneficiaryInfoStyles.inputContainer}>
-              {/* <View style={styles.iconTextInput}>
-              <CalenderIcon />
-            </View> */}
+              <View style={beneficiaryInfoStyles.iconTextInput}>
+                <CalendarIcon />
+              </View>
               <AppDatePicker
                 updatedDate={updateLMP}
                 maximumDate={todaysDate}
@@ -210,9 +214,9 @@ const pregnantWomanInfo = ({
               />
             </View>
             <View style={beneficiaryInfoStyles.inputContainer}>
-              {/* <View style={styles.iconTextInput}>
-              <CalenderIcon />
-            </View> */}
+              <View style={beneficiaryInfoStyles.iconTextInput}>
+                <PhoneIcon />
+              </View>
               <AppTextInput
                 newStyles={beneficiaryInfoStyles.inputField}
                 placeholder={USER_DETAILS.PHONE_NUMBER}
@@ -221,7 +225,6 @@ const pregnantWomanInfo = ({
                 placeholderTextColor={PLACEHOLDER_COLOR}
                 name="phone_number"
                 changeText={updatePhoneNumber}
-                // onBlur={validatePhoneNumber}
               />
             </View>
             {isPhoneFocused && !isPhoneNumberValid && (
@@ -230,7 +233,7 @@ const pregnantWomanInfo = ({
                   beneficiaryInfoStyles.errorMsg,
                   beneficiaryInfoStyles.shiftUp,
                 ]}>
-                Invalid Phone Number
+                {ERROR_MESSAGE.PHONE_NUMBER}
               </Text>
             )}
             <View style={beneficiaryInfoStyles.checkboxContainer}>
@@ -261,7 +264,7 @@ const pregnantWomanInfo = ({
                     beneficiaryInfoStyles.errorMsg,
                     beneficiaryInfoStyles.shiftDown,
                   ]}>
-                  Select any one option from the dropdown.
+                  {ERROR_MESSAGE.DROPDOWN}
                 </Text>
               )}
           </View>
@@ -287,7 +290,7 @@ const pregnantWomanInfo = ({
           buttonStyle={buttonStyles.container}
           disabledStyle={buttonStyles.disabled}
           disabled={!isValidForm}
-          onPress={createAccount}
+          onPress={onPressCreateAccount}
         />
       </View>
     </SafeAreaView>
@@ -295,14 +298,13 @@ const pregnantWomanInfo = ({
 };
 
 const mapDispatchToProps = dispatch => ({
-  createPregnantWomenAccount: (formValues, navigation) =>
-    dispatch(createAccountAction(formValues, navigation)),
+  createAccount: formValues => dispatch(createAccountAction(formValues)),
   hideError: () => dispatch(hideErrorAction()),
 });
 
 const mapStateToProps = state => ({
-  pregnantWomanData: state.createAccount.pregnantWomanData,
+  createAccountData: state.createAccount.createAccountData,
   errorText: state.createAccount.errorText,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(pregnantWomanInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(PregnantWomanInfo);

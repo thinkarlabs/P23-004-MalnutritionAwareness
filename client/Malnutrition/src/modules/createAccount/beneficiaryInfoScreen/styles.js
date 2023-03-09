@@ -4,6 +4,7 @@ import {
   LIGHT_BLUE,
   LIGHT_GREY,
   PLACEHOLDER_BORDER_COLOR,
+  RED,
   WHITE,
 } from '../../../shared/constants/colors';
 
@@ -116,7 +117,7 @@ export const beneficiaryInfoStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   errorMsg: {
-    color: '#E32828',
+    color: RED,
   },
   shiftUp: {
     position: 'relative',

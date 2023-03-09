@@ -1,13 +1,12 @@
-export const HEADING_ONE = "1000 Day's";
-export const HEADING_TWO = 'Journey of a child';
-export const ONBOARDSCREEN1_TITLE = 'Why 1000 Days Journey?';
-export const ONBOARDSCREEN1_CONTENT = `Healthy eating is a way of life, so its ${'\n'} important to establish routine that ${'\n'}are simple, realistically and ${'\n'}ultimately livable`;
+export const APP_NAME = 'Poshan';
+export const HEADING_TWO = 'Journey of your child';
+export const ONBOARDSCREEN1_TITLE = `Importance of first${'\n'} 1000 days`;
+export const ONBOARDSCREEN1_CONTENT = `The first 1000 days are when a child’s${'\n'} brain begins to grow and develop and${'\n'} when the foundations for their lifelong${'\n'} health are built.`;
 export const ONBOARDSCREEN2_TITLE =
   'Nutrition - before, during and after pregnancy';
-export const ONBOARDSCREEN2_CONTENT = `It's a time of rapid physical growth,${'\n'} accelerated mental development${'\n'} and offers a unique opportunity to${'\n'} build lifelong health & intelligence.`;
-export const ONBOARDSCREEN3_TITLE =
-  'Important to measure your child every month';
-export const ONBOARDSCREEN3_CONTENT = `Measuring child can help to detect${'\n'} overweight and underweight, short${'\n'} stature & faltering growth potential${'\n'} due to underlying medical problem`;
+export const ONBOARDSCREEN2_CONTENT = `It’s a time of rapid physical growth,${'\n'} accelerated mental development and${'\n'} offers a unique opportunity to build${'\n'} lifelong health & intelligence.`;
+export const ONBOARDSCREEN3_TITLE = `Important to measure${'\n'} child every month`;
+export const ONBOARDSCREEN3_CONTENT = `Measuring child can help to detect${'\n'} overweight and underweight, short${'\n'} stature & faltering growth potential due${'\n'} to underlying medical problem`;
 export const SKIP = 'Skip';
 export const BACK = 'Back';
 export const ENGLISH = 'En';
@@ -18,11 +17,12 @@ export const RESEND_OTP = 'Resend OTP';
 export const RESEND_OTP_IN = 'Resend OTP in - 00.';
 export const RESEND = 'Resend';
 export const CONFIRM = 'Confirm';
+export const LOGIN_TEXT = 'Login';
 export const LOGIN_TITLE = 'Welcome to Udaan!!';
 export const LOGIN_CONTENT = `There can be no real growth without${'\n'} healthy population. No sustainable${'\n'} development without tackling disease${'\n'} and malnutrition.`;
 export const LOGIN_DETAILS = 'Enter you number to';
 export const LOGIN_BOTTOM = "Don't have an account?";
-export const SIGN_UP = "Sign Up";
+export const SIGN_UP = 'Sign Up';
 
 export const CREATE_ACCOUNT = {
   SELECT_CURRENT_STAGE_TEXT: "Select beneficiary's current stage to proceed",
@@ -67,4 +67,9 @@ export const DROPDOWN_BOX = {
   A_RELATIVE: 'A Relative',
   AN_NGO_MEMBER: 'An NGO Member',
   AN_ANGANWADI_MEMBER: 'An Anganwadi Member',
+};
+
+export const ERROR_MESSAGE = {
+  DROPDOWN: 'Select any one option from the dropdown.',
+  PHONE_NUMBER: 'Invalid Phone Number',
 };

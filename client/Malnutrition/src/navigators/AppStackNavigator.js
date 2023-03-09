@@ -6,7 +6,6 @@ import {
   CHILDINFO_SCREEN,
   CREATEACCOUNT,
   HOME,
-  LACTATINGMOTHER_SCREEN,
   LOGIN,
   ONBOARDINGSLIDER1,
   ONBOARDINGSLIDER2,
@@ -18,14 +17,13 @@ import {
 import {WHITE} from '../shared/constants/colors';
 import CreateAccount from '../modules/createAccount';
 import OTPVerification from '../modules/otpVerification';
-import ChildInfo from '../modules/createAccount/beneficiaryInfoScreen/ChildInfo';
-import LactatingMotherInfo from '../modules/createAccount/beneficiaryInfoScreen/LactatingMotherInfo';
 import PregnantWomanInfo from '../modules/createAccount/beneficiaryInfoScreen/PregnantWomanInfo';
 import OnBoardingSlider1 from '../modules/onboarding/OnBoardingSlider1';
 import OnBoardingSlider2 from '../modules/onboarding/OnBoardingSlider2';
 import OnBoardingSlider3 from '../modules/onboarding/OnBoardingSlider3';
 import Login from '../modules/login';
 import Home from '../modules/home';
+import ChildInfo from '../modules/createAccount/beneficiaryInfoScreen/ChildInfo';
 
 const Stack = createStackNavigator();
 
@@ -55,10 +53,6 @@ export function AppStackNavigator() {
         <Stack.Screen
           name={PREGNANTWOMAN_SCREEN}
           component={PregnantWomanInfo}
-        />
-        <Stack.Screen
-          name={LACTATINGMOTHER_SCREEN}
-          component={LactatingMotherInfo}
         />
         <Stack.Screen name={CHILDINFO_SCREEN} component={ChildInfo} />
         <Stack.Screen name={LOGIN} component={Login} />

@@ -1,17 +1,19 @@
 import {StyleSheet} from 'react-native';
-import {color} from 'react-native-reanimated';
 import {
   BLACK,
   BUTTON,
   LIGHT_GREY,
   PLACEHOLDER_BORDER_COLOR,
-  WHITE,
+  RED,
 } from '../../shared/constants/colors';
 
 export const loginStyles = StyleSheet.create({
-  container: {
-    left: 20,
-    right: 20,
+  screenWrapper: {
+    paddingRight: 20,
+    paddingLeft: 20,
+  },
+  scrollView: {
+    height: '75%',
   },
   loginTitle: {
     paddingTop: 13,
@@ -26,6 +28,7 @@ export const loginStyles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 24,
     color: LIGHT_GREY,
+    textAlign: 'justify',
   },
   detailContainer: {
     paddingTop: 52,
@@ -46,23 +49,22 @@ export const loginStyles = StyleSheet.create({
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: PLACEHOLDER_BORDER_COLOR,
-    width: '90%',
     alignItems: 'center',
     height: 60,
     paddingLeft: 12,
     borderRadius: 12,
+    marginTop: 4,
   },
   inputField: {
     fontWeight: '400',
     fontSize: 18,
     lineHeight: 22,
+    marginLeft: 10,
   },
   buttonContainer: {
     alignSelf: 'center',
     width: '100%',
     paddingHorizontal: 20,
-    position: 'absolute',
-    bottom: 46,
   },
   info: {
     fontWeight: '400',
@@ -79,6 +81,14 @@ export const loginStyles = StyleSheet.create({
   bottomContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
+  errorText: {
+    fontWeight: '400',
+    fontSize: 14,
+    lineHeight: 20,
+    color: RED,
+    marginHorizontal: 20,
+    marginTop: 12,
+  },
 });

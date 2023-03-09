@@ -8,12 +8,13 @@ export const appTextTranslateStyles = StyleSheet.create({
   languageIcon: {
     color: LIGHT_GREY,
     fontSize: 12,
-    paddingRight: '5%',
+    paddingRight: 20,
     justifyContent: 'center',
   },
   languageText: {
-    fontSize: 16,
+    fontSize: 14,
+    lineHeight: 24,
     color: LIGHT_GREY,
-    fontWeight: '400',
+    fontWeight: '500',
   },
 });

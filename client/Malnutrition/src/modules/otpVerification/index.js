@@ -10,6 +10,7 @@ import {
   RESEND_OTP,
   RESEND_OTP_IN,
   VERIFY_OTP,
+  LOGIN_TEXT,
 } from '../../shared/constants/constants';
 import {
   HOME,
@@ -34,22 +35,26 @@ const OTPVerification = ({
   verifyOtpData,
   resendOtpData,
   errorText,
-  resendOtp,
+  resendOTP,
   hideError,
 }) => {
   const pinCount = 4;
   const [count, setCount] = useState(30);
   const [isValidForm, setIsValidForm] = useState(false);
 
-  const [formValues, setFormValues] = useState({
+  const [verifyOtpFormValues, setVerifyOtpFormValues] = useState({
     phone_number: route?.params?.phone_number,
     otp: '',
     is_creation: route?.params?.is_creation,
   });
 
+  const [resendOtpFormValues, setResendOtpFormValues] = useState({
+    phone_number: route?.params?.phone_number,
+  });
+
   const updateOtpNumber = newVal => {
     hideError();
-    setFormValues({...formValues, otp: newVal});
+    setVerifyOtpFormValues({...verifyOtpFormValues, otp: Number(newVal)});
   };
 
   useEffect(() => {
@@ -72,28 +77,37 @@ const OTPVerification = ({
   });
 
   useMemo(() => {
-    if (formValues?.otp && formValues?.otp?.length === pinCount) {
+    if (
+      verifyOtpFormValues?.otp
+      // verifyOtpFormValues?.otp?.length === pinCount
+    ) {
       setIsValidForm(true);
     } else {
       setIsValidForm(false);
     }
-  }, [formValues.otp]);
+  }, [verifyOtpFormValues.otp]);
 
   const verifyOtp = () => {
+    console.log(verifyOtpFormValues, 'verifyOtpFormValues');
     setCount(0);
-    otpVerification(formValues);
+    otpVerification(verifyOtpFormValues);
   };
 
   const onPressResendOtp = () => {
     setCount(30);
     hideError();
-    resendOtp(formValues);
+    console.log(resendOtpFormValues, 'resendOtpFormValues');
+    resendOTP(resendOtpFormValues);
   };
 
   return (
     <SafeAreaView>
       <AppHeader
-        title={CREATE_ACCOUNT.TITLE_SCREEN}
+        title={
+          route?.params?.fromWhere === LOGIN_TEXT
+            ? LOGIN_TEXT
+            : CREATE_ACCOUNT.TITLE_SCREEN
+        }
         backArrowValue={true}
         onPress={
           route?.params?.fromWhere === CREATE_ACCOUNT.CATEGORY_1_TITLE
@@ -156,6 +170,9 @@ const OTPVerification = ({
             )}
           </View>
         </View>
+        {!!resendOtpData && (
+          <Text style={verifyOTPStyles.successText}>{resendOtpData}</Text>
+        )}
       </ScrollView>
       <View style={verifyOTPStyles.button}>
         <Button
@@ -172,8 +189,10 @@ const OTPVerification = ({
 };
 
 const mapDispatchToProps = dispatch => ({
-  otpVerification: formValues => dispatch(otpVerificationAction(formValues)),
-  resendOTP: formValues => dispatch(resendOTPAction(formValues)),
+  otpVerification: verifyOtpFormValues =>
+    dispatch(otpVerificationAction(verifyOtpFormValues)),
+  resendOTP: resendOtpFormValues =>
+    dispatch(resendOTPAction(resendOtpFormValues)),
   hideError: () => dispatch(hideErrorAction()),
 });
 

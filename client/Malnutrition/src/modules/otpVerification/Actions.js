@@ -21,6 +21,7 @@ export const otpVerification = data => dispatch => {
   fetch(URL_OTP_VERIFICATION, reqBody)
     .then(response => response.json())
     .then(responseData => {
+      console.log(responseData, 'responseData verify otp');
       if (responseData?.message) {
         dispatch(otpVerificationSuccess(responseData?.message));
       } else {
@@ -58,10 +59,11 @@ export const resendOTP = data => dispatch => {
   fetch(URL_RESEND_OTP, reqBody)
     .then(response => response.json())
     .then(responseData => {
+      console.log(responseData, 'responseData resend otp');
       if (responseData?.message) {
-        dispatch(otpVerificationSuccess(responseData?.message));
+        dispatch(resendOTPSuccess(responseData?.message));
       } else {
-        dispatch(otpVerificationError(responseData?.error));
+        dispatch(resendOTPError(responseData?.error));
       }
     })
     .catch(error => {

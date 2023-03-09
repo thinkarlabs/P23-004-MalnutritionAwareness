@@ -9,14 +9,18 @@ import LactatingMotherImage from '../../../assets/svg/lactatingMotherSVG';
 import Child6MonthImage from '../../../assets/svg/6MonthChildSVG';
 import {
   CHILDINFO_SCREEN,
-  LACTATINGMOTHER_SCREEN,
+  LOGIN,
   PREGNANTWOMAN_SCREEN,
 } from '../../shared/constants/navigatorConstants';
 
-const CreateAccount = ({navigation}) => {
+const CreateAccount = ({navigation, route}) => {
   return (
     <SafeAreaView style={createAccountStyles.container}>
-      <AppHeader title={CREATE_ACCOUNT.TITLE_SCREEN} />
+      <AppHeader
+        title={CREATE_ACCOUNT.TITLE_SCREEN}
+        backArrowValue={true}
+        onPress={() => navigation.navigate(LOGIN)}
+      />
       <ScrollView
         style={Platform.select({
           ios: createAccountStyles.scrollContainerIOS,
@@ -39,7 +43,7 @@ const CreateAccount = ({navigation}) => {
           />
           <AppCard
             onPress={() => {
-              navigation.navigate(LACTATINGMOTHER_SCREEN, {
+              navigation.navigate(CHILDINFO_SCREEN, {
                 title: CREATE_ACCOUNT.CATEGORY_2_TITLE,
               });
             }}
