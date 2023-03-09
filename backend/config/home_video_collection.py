@@ -1,5 +1,6 @@
-from config.database import db as database
+from database import db as database
 
+home_video = database.create_collection("home_video")
 home_video_collection = database["home_video"]
 
 # Define the video data
@@ -207,5 +208,6 @@ video_data = [{
 ]
 
 # Insert the video data into the home_video collection
+home_video_collection.insert_many(video_data)
 
 
