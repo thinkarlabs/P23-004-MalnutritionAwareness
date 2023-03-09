@@ -8,10 +8,7 @@ const AppTextTranslates = () => {
   return (
     <View style={appTextTranslateStyles.headerContainer}>
       <View style={appTextTranslateStyles.languageIcon}>
-        <Entypo
-          name="triangle-down"
-          style={appTextTranslateStyles.languageIcon}
-        />
+        <Entypo name="triangle-down" />
       </View>
       <Text style={appTextTranslateStyles.languageText}>{ENGLISH}</Text>
     </View>

@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
 import {BLACK} from '../../shared/constants/colors';
-import {ENTYPO} from '../../shared/constants/fontFamilyConstants';
 import {
   SPLASH_BODY_SIZE,
   SPLASH_TITLE_SIZE,
@@ -23,16 +22,16 @@ const splashStyles = StyleSheet.create({
   },
   titleText: {
     fontSize: SPLASH_TITLE_SIZE,
-    fontWeight: '700',
+    fontWeight: '400',
     color: BLACK,
     textAlign: 'center',
-    // fontFamily: WORK_SANS_BLACK
-    fontFamily: ENTYPO,
+    lineHeight: 46,
   },
   bodyText: {
     fontSize: SPLASH_BODY_SIZE,
-    fontWeight: '600',
-    color: BLACK,
+    fontWeight: '400',
+    color: '#797C8B',
+    lineHeight: 24,
   },
   svgBackground: {
     top: 0,

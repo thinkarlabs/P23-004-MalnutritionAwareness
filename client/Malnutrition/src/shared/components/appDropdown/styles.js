@@ -14,8 +14,15 @@ export const appDropdownStyles = StyleSheet.create({
     borderColor: PLACEHOLDER_BORDER_COLOR,
     borderWidth: 1,
     borderRadius: 12,
+    marginBottom: 12,
   },
-  dropdown: {
+  roleDropdown: {
+    height: 40,
+    borderColor: 'gray',
+    borderRadius: 8,
+    paddingHorizontal: 8,
+  },
+  genderDropdown: {
     height: 40,
     borderColor: 'gray',
     borderRadius: 8,

@@ -3,7 +3,7 @@ import React from 'react';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {nextScreenArrowStyles} from './styles';
 import * as Progress from 'react-native-progress';
-import {BLUE, TRANSPARENT} from '../../constants/colors';
+import {TRANSPARENT, WHITE} from '../../constants/colors';
 
 const NextScreenArrow = ({onPress, progress}) => {
   return (
@@ -11,7 +11,7 @@ const NextScreenArrow = ({onPress, progress}) => {
       <Progress.Circle
         size={80}
         style={nextScreenArrowStyles.progressCircle}
-        color={BLUE}
+        color={WHITE}
         unfilledColor={TRANSPARENT}
         borderColor={TRANSPARENT}
         progress={progress}>
