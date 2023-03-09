@@ -75,7 +75,12 @@ export const HOMESCREEN = {
   CARD_CONTENT1: `See what most babies${'\n'}do at this age?`,
   CARD_CONTENT2: `What you should do for${'\n'}your baby?`,
   CARD_CONTENT3: `See what can be the${'\n'}Warning for you`,
+<<<<<<< HEAD
   CARD_CONTENT4: `Your child measurement${'\n'}can tell you how's your${'\n'}childhealth is.`,
+=======
+<<<<<<< HEAD
+  CARD_CONTENT4: `Your child measurement can${'\n'}tell you how's your child${'\n'}health is.`,
+>>>>>>> e9019da (added home screen card detail)
 };
 
 export const ERROR_MESSAGE = {
@@ -93,3 +98,19 @@ export const GENDER = [
   {label: 'Male', value: 'MALE'},
   {label: 'Female', value: 'Female'},
 ];
+=======
+  CARD_CONTENT4: `Your child measurement can${'\n'}tell you how's your child${'\n'}health is.`
+}
+
+export const HOMESCREEN_CARD = {
+  TITLE : `What most babies do at${'\n'}this age? Look at this video`,
+  CARD_CONTENT1: `Pay close attention to and turn${'\n'}head towards the voice of the${'\n'}mother`,
+  CARD_CONTENT2: `Begin to smile at people`,
+  CARD_CONTENT3: `Startle or erupt into cry at loud${'\n'}noise`,
+  CARD_CONTENT4: `Coo make gurgling sounds when${'\n'}happy or after feeding`,
+  CARD_CONTENT5: `Can hold head up and begin to${'\n'}push up when lying on tummy`,
+  CARD_CONTENT6: `Make smooth moments with${'\n'}arms and legs`,
+  CARD_CONTENT7: `Keep hands relaxed and take${'\n'}swipes at dangling objects`,
+  CARD_CONTENT8: `Begin to babble`,
+}
+>>>>>>> 8fcfecb (added home screen card detail)

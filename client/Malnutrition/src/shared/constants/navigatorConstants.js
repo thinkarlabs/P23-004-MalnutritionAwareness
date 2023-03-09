@@ -11,3 +11,4 @@ export const HOME = 'Home';
 export const TRACK = 'Track';
 export const ASK = 'Ask';
 export const PROFILE = 'Profile';
+export const TAB = 'Tab';

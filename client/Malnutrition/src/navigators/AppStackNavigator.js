@@ -13,6 +13,7 @@ import {
   OTPVERIFICATION,
   PREGNANTWOMAN_SCREEN,
   SPLASH,
+  TAB,
 } from '../shared/constants/navigatorConstants';
 import {WHITE} from '../shared/constants/colors';
 import CreateAccount from '../modules/createAccount';
@@ -24,7 +25,11 @@ import OnBoardingSlider3 from '../modules/onboarding/OnBoardingSlider3';
 import Login from '../modules/login';
 import Home from '../modules/home';
 import BottomTab from './BottomTab';
+<<<<<<< HEAD
 import ChildInfo from '../modules/createAccount/beneficiaryInfoScreen/ChildInfo';
+=======
+import ChildCardContent from '../modules/home/homeCardContent/ChildCardContent';
+>>>>>>> 8fcfecb (added home screen card detail)
 
 const Stack = createStackNavigator();
 
@@ -59,6 +64,12 @@ export function AppStackNavigator() {
         <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
         <Stack.Screen name="Tab" component={BottomTab} />
         <Stack.Screen name={LOGIN} component={Login} />
+        <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
+        <Stack.Screen name={HOME} component={Home} />
+        <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} /> */}
+        {/* <Stack.Screen name={HOME} component={Home} /> */}
+        <Stack.Screen name={TAB} component={BottomTab} />
+        <Stack.Screen name='ChildCard' component={ChildCardContent} />
       </Stack.Navigator>
     </NavigationContainer>
   );

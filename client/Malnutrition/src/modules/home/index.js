@@ -16,7 +16,7 @@ import {APP_NAME, HOMESCREEN} from '../../shared/constants/constants';
 import {createAccountStyles} from '../createAccount/styles';
 import {homeStyles} from './styles';
 
-const Home = () => {
+const Home = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: WHITE}}>
       <AppHeader title={APP_NAME} />
