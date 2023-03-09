@@ -53,7 +53,7 @@ export const beneficiaryInfoStyles = StyleSheet.create({
     top: 12,
   },
   inputContainer: {
-    marginBottom: 20,
+    marginBottom: 12,
     borderWidth: 1,
     borderRadius: 12,
     borderColor: PLACEHOLDER_BORDER_COLOR,

@@ -61,6 +61,7 @@ export const TOAST_MESSAGE = {
 export const PLACEHOLDER_DETAILS = {
   SELECT_YOUR_ROLE: 'Select your role',
   PHONE_NUMBER: 'Phone number',
+  GENDER: 'Gender',
 };
 
 export const DROPDOWN_BOX = {
@@ -73,3 +74,14 @@ export const ERROR_MESSAGE = {
   DROPDOWN: 'Select any one option from the dropdown.',
   PHONE_NUMBER: 'Invalid Phone Number',
 };
+
+export const CAREGIVER_ROLE = [
+  {label: DROPDOWN_BOX.A_RELATIVE, value: 'RELATIVE'},
+  {label: DROPDOWN_BOX.AN_NGO_MEMBER, value: 'NGO_MEMBER'},
+  {label: DROPDOWN_BOX.AN_ANGANWADI_MEMBER, value: 'ANGANWADI_MEMBER'},
+];
+
+export const GENDER = [
+  {label: 'Male', value: 'MALE'},
+  {label: 'Female', value: 'Female'},
+];

@@ -2,8 +2,10 @@ import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React, {useState, useEffect, useMemo} from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {
+  CAREGIVER_ROLE,
   CREATE_ACCOUNT,
   ERROR_MESSAGE,
+  PLACEHOLDER_DETAILS,
   USER_DETAILS,
 } from '../../../shared/constants/constants';
 import {
@@ -32,6 +34,7 @@ import {createAccountStyles} from '../styles';
 import PhoneIcon from '../../../../assets/svg/icons/phoneIcon';
 import CalendarIcon from '../../../../assets/svg/icons/calendarIcon';
 import MotherIcon from '../../../../assets/svg/icons/motherIcon';
+import { appDropdownStyles } from '../../../shared/components/appDropdown/styles';
 
 const PregnantWomanInfo = ({
   route,
@@ -254,7 +257,12 @@ const PregnantWomanInfo = ({
             </View>
             {formValues.is_created_for_someone_else && (
               <View style={beneficiaryInfoStyles.dropdownWrapper}>
-                <AppDropdown dropdownValue={updateRelationWithChild} />
+                <AppDropdown
+                  style={appDropdownStyles.roleDropdown}
+                  placeholder={PLACEHOLDER_DETAILS.SELECT_YOUR_ROLE}
+                  data={CAREGIVER_ROLE}
+                  dropdownValue={updateRelationWithChild}
+                />
               </View>
             )}
             {formValues.is_created_for_someone_else &&

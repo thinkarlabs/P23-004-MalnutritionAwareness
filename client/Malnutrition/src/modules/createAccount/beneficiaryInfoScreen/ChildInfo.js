@@ -2,8 +2,11 @@ import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React, {useEffect, useMemo, useState} from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {
+  CAREGIVER_ROLE,
   CREATE_ACCOUNT,
   ERROR_MESSAGE,
+  GENDER,
+  PLACEHOLDER_DETAILS,
   USER_DETAILS,
 } from '../../../shared/constants/constants';
 import {
@@ -33,6 +36,7 @@ import {
 import {connect} from 'react-redux';
 import moment from 'moment';
 import {createAccountStyles} from '../styles';
+import {appDropdownStyles} from '../../../shared/components/appDropdown/styles';
 
 const ChildInfo = ({
   route,
@@ -142,13 +146,20 @@ const ChildInfo = ({
     });
   };
 
+  const updateGender = val => {
+    hideError();
+    setFormValues({
+      ...formValues,
+      ...formValues.child,
+      gender: val,
+    });
+  };
+
   useMemo(() => {
     if (
       formValues.user_type &&
       formValues.name &&
       formValues.phone_number &&
-      formValues.child.name &&
-      formValues.child.dob &&
       isPhoneNumberValid
     ) {
       setIsValidForm(true);
@@ -163,8 +174,6 @@ const ChildInfo = ({
     formValues.user_type,
     formValues.name,
     formValues.phone_number,
-    formValues.child.name,
-    formValues.child.dob,
     formValues.is_created_for_someone_else,
     formValues.relation_with_child,
     isPhoneNumberValid,
@@ -226,6 +235,14 @@ const ChildInfo = ({
                 titleName={USER_DETAILS.CHILD_DOB}
               />
             </View>
+            <View>
+              <AppDropdown
+                style={appDropdownStyles.genderDropdown}
+                placeholder={PLACEHOLDER_DETAILS.GENDER}
+                data={GENDER}
+                dropdownValue={updateGender}
+              />
+            </View>
             <View style={beneficiaryInfoStyles.inputContainer}>
               <View style={beneficiaryInfoStyles.iconTextInput}>
                 <MotherIcon />
@@ -279,7 +296,12 @@ const ChildInfo = ({
             </View>
             {formValues.is_created_for_someone_else && (
               <View style={beneficiaryInfoStyles.dropdownWrapper}>
-                <AppDropdown dropdownValue={updateRelationWithChild} />
+                <AppDropdown
+                  style={appDropdownStyles.roleDropdown}
+                  placeholder={PLACEHOLDER_DETAILS.SELECT_YOUR_ROLE}
+                  data={CAREGIVER_ROLE}
+                  dropdownValue={updateRelationWithChild}
+                />
               </View>
             )}
             {formValues.is_created_for_someone_else &&
