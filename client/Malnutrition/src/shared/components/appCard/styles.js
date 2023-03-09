@@ -2,26 +2,6 @@ import {StyleSheet} from 'react-native';
 import {BLACK, LIGHT_GREY, WHITE} from '../../constants/colors';
 
 export const appCardStyles = StyleSheet.create({
-<<<<<<< HEAD
-  stageCard: {
-    borderRadius: 16,
-    borderColor: WHITE,
-    paddingHorizontal: 20,
-    paddingVertical: 25,
-    marginBottom: 12,
-    backgroundColor: '#E9EAF3',
-  },
-=======
-  // stageCard: {
-  //   borderRadius: 20,
-  //   borderColor: WHITE,
-  //   borderWidth: 4,
-  //   paddingHorizontal: 20,
-  //   paddingVertical: 25,
-  //   marginBottom: 8,
-  //   backgroundColor: background,
-  // },
->>>>>>> 8fcfecb (added home screen card detail)
   cardTitle: {
     fontSize: 22,
     lineHeight: 24,
