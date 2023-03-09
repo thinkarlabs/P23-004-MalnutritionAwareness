@@ -9,4 +9,5 @@ export const PREGNANTWOMAN_SCREEN = 'pregnantWoman';
 export const CHILDINFO_SCREEN = 'childInfo';
 export const HOME = 'Home';
 export const TRACK = 'Track';
+export const ASK = 'Ask';
 export const PROFILE = 'Profile';

@@ -1,3 +1,4 @@
+import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Image, View, Text, StyleSheet} from 'react-native';
 import Home from '../modules/home';
@@ -7,9 +8,14 @@ import {
   FOCUSED_TAB_ICON,
   PLACEHOLDER_BORDER_COLOR,
   TAB_ICON,
-  WHITE,
 } from '../shared/constants/colors';
-import {HOME, PROFILE, TRACK} from '../shared/constants/navigatorConstants';
+import {
+  ASK,
+  HOME,
+  PROFILE,
+  TRACK,
+} from '../shared/constants/navigatorConstants';
+import Ask from '../modules/ask';
 
 const Tab = createBottomTabNavigator();
 
@@ -73,10 +79,39 @@ const BottomTab = () => {
                 style={{
                   color: focused ? FOCUSED_TAB_ICON : TAB_ICON,
                   fontSize: 16,
-                  fontWeight: '700',
+                  fontWeight: focused ? '700' : '400',
                   lineHeight: 24,
                 }}>
                 Track
+              </Text>
+            </View>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name={ASK}
+        component={Ask}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <View style={styles.container}>
+              <Image
+                source={{
+                  uri: 'https://cdn.pixabay.com/photo/2013/07/12/12/56/home-146585_1280.png',
+                }}
+                style={{
+                  height: 17,
+                  width: 12,
+                  tintColor: focused ? FOCUSED_TAB_ICON : TAB_ICON,
+                }}
+              />
+              <Text
+                style={{
+                  color: focused ? FOCUSED_TAB_ICON : TAB_ICON,
+                  fontSize: 16,
+                  fontWeight: focused ? '700' : '400',
+                  lineHeight: 24,
+                }}>
+                Ask
               </Text>
             </View>
           ),
@@ -102,7 +137,7 @@ const BottomTab = () => {
                 style={{
                   color: focused ? FOCUSED_TAB_ICON : TAB_ICON,
                   fontSize: 16,
-                  fontWeight: '700',
+                  fontWeight: focused ? '700' : '400',
                   lineHeight: 24,
                 }}>
                 Profile

@@ -57,11 +57,8 @@ export function AppStackNavigator() {
         />
         <Stack.Screen name={CHILDINFO_SCREEN} component={ChildInfo} />
         <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
-        <Stack.Screen name={HOME} component={Home} />
-        <Stack.Screen name='Tab' component={BottomTab} />
+        <Stack.Screen name="Tab" component={BottomTab} />
         <Stack.Screen name={LOGIN} component={Login} />
-        <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
-        <Stack.Screen name={HOME} component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
   );

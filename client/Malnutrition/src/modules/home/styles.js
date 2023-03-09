@@ -3,13 +3,12 @@ import {BLACK} from '../../shared/constants/colors';
 
 export const homeStyles = StyleSheet.create({
   container: {
-    left: 20,
-    right: 20,
+    marginHorizontal: 20,
   },
   headingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: 40
+    height: 40,
   },
   headingText: {
     color: BLACK,
@@ -18,11 +17,7 @@ export const homeStyles = StyleSheet.create({
     lineHeight: 24,
     left: 8,
   },
-  homeTitle: {
-    paddingTop: 100,
-    paddingBottom: 12,
-  },
-  homeText : {
+  homeText: {
     fontWeight: '400',
     fontSize: 26,
     lineHeight: 31,

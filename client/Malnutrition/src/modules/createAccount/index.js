@@ -12,7 +12,7 @@ import {
   LOGIN,
   PREGNANTWOMAN_SCREEN,
 } from '../../shared/constants/navigatorConstants';
-import { CARD_BACKGROUND } from '../../shared/constants/colors';
+import {CARD_BACKGROUND} from '../../shared/constants/colors';
 
 const CreateAccount = ({navigation}) => {
   return (

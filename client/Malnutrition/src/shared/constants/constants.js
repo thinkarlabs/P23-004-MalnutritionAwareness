@@ -75,7 +75,7 @@ export const HOMESCREEN = {
   CARD_CONTENT1: `See what most babies${'\n'}do at this age?`,
   CARD_CONTENT2: `What you should do for${'\n'}your baby?`,
   CARD_CONTENT3: `See what can be the${'\n'}Warning for you`,
-  CARD_CONTENT4: `Your child measurement can${'\n'}tell you how's your child${'\n'}health is.`,
+  CARD_CONTENT4: `Your child measurement${'\n'}can tell you how's your${'\n'}childhealth is.`,
 };
 
 export const ERROR_MESSAGE = {
