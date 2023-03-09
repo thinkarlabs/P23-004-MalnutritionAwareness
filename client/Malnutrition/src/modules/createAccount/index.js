@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, ScrollView, Platform} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React from 'react';
 import {createAccountStyles} from './styles';
 import AppHeader from '../../shared/components/appHeader';
@@ -9,7 +9,7 @@ import LactatingMotherImage from '../../../assets/svg/lactatingMotherSVG';
 import Child6MonthImage from '../../../assets/svg/6MonthChildSVG';
 import {
   CHILDINFO_SCREEN,
-  LACTATINGMOTHER_SCREEN,
+  LOGIN,
   PREGNANTWOMAN_SCREEN,
 } from '../../shared/constants/navigatorConstants';
 import { CARD_BACKGROUND } from '../../shared/constants/colors';
@@ -17,12 +17,12 @@ import { CARD_BACKGROUND } from '../../shared/constants/colors';
 const CreateAccount = ({navigation}) => {
   return (
     <SafeAreaView style={createAccountStyles.container}>
-      <AppHeader title={CREATE_ACCOUNT.TITLE_SCREEN} />
-      <ScrollView
-        style={Platform.select({
-          ios: createAccountStyles.scrollContainerIOS,
-          android: createAccountStyles.scrollContainer,
-        })}>
+      <AppHeader
+        title={CREATE_ACCOUNT.TITLE_SCREEN}
+        backArrowValue={true}
+        onPress={() => navigation.navigate(LOGIN)}
+      />
+      <ScrollView>
         <View style={createAccountStyles.screenWrapper}>
           <Text style={createAccountStyles.titleText}>
             {CREATE_ACCOUNT.SELECT_CURRENT_STAGE_TEXT}
@@ -41,7 +41,7 @@ const CreateAccount = ({navigation}) => {
           />
           <AppCard
             onPress={() => {
-              navigation.navigate(LACTATINGMOTHER_SCREEN, {
+              navigation.navigate(CHILDINFO_SCREEN, {
                 title: CREATE_ACCOUNT.CATEGORY_2_TITLE,
               });
             }}

@@ -18,7 +18,7 @@ export const AppCard = ({onPress, newStyle, title, content, image, background}) 
     }}>
       <View style={newStyle ? newStyle : appCardStyles.row}>
         {image}
-        <View style={{flexDirection: 'column'}}>
+        <View>
           <Text style={appCardStyles.cardTitle}>{title}</Text>
           <Text style={appCardStyles.cardDesc}>{content}</Text>
           <TouchableOpacity
@@ -27,7 +27,7 @@ export const AppCard = ({onPress, newStyle, title, content, image, background}) 
             <Text style={appCardStyles.cardTitleText}>
               {CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
             </Text>
-            <View style={{left: 8}}>
+            <View>
               <BackArrowWithCircle />
             </View>
           </TouchableOpacity>

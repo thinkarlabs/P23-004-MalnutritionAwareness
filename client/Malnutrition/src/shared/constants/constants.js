@@ -1,13 +1,12 @@
-export const HEADING_ONE = "1000 Day's";
-export const HEADING_TWO = 'Journey of a child';
-export const ONBOARDSCREEN1_TITLE = 'Why 1000 Days Journey?';
-export const ONBOARDSCREEN1_CONTENT = `Healthy eating is a way of life, so its ${'\n'} important to establish routine that ${'\n'}are simple, realistically and ${'\n'}ultimately livable`;
+export const APP_NAME = 'Poshan';
+export const HEADING_TWO = 'Journey of your child';
+export const ONBOARDSCREEN1_TITLE = `Importance of first${'\n'} 1000 days`;
+export const ONBOARDSCREEN1_CONTENT = `The first 1000 days are when a child’s${'\n'} brain begins to grow and develop and${'\n'} when the foundations for their lifelong${'\n'} health are built.`;
 export const ONBOARDSCREEN2_TITLE =
   'Nutrition - before, during and after pregnancy';
-export const ONBOARDSCREEN2_CONTENT = `It's a time of rapid physical growth,${'\n'} accelerated mental development${'\n'} and offers a unique opportunity to${'\n'} build lifelong health & intelligence.`;
-export const ONBOARDSCREEN3_TITLE =
-  'Important to measure your child every month';
-export const ONBOARDSCREEN3_CONTENT = `Measuring child can help to detect${'\n'} overweight and underweight, short${'\n'} stature & faltering growth potential${'\n'} due to underlying medical problem`;
+export const ONBOARDSCREEN2_CONTENT = `It’s a time of rapid physical growth,${'\n'} accelerated mental development and${'\n'} offers a unique opportunity to build${'\n'} lifelong health & intelligence.`;
+export const ONBOARDSCREEN3_TITLE = `Important to measure${'\n'} child every month`;
+export const ONBOARDSCREEN3_CONTENT = `Measuring child can help to detect${'\n'} overweight and underweight, short${'\n'} stature & faltering growth potential due${'\n'} to underlying medical problem`;
 export const SKIP = 'Skip';
 export const BACK = 'Back';
 export const ENGLISH = 'En';
@@ -18,14 +17,19 @@ export const RESEND_OTP = 'Resend OTP';
 export const RESEND_OTP_IN = 'Resend OTP in - 00.';
 export const RESEND = 'Resend';
 export const CONFIRM = 'Confirm';
-export const TITLE = 'Udaan';
+export const LOGIN_TEXT = 'Login';
+export const LOGIN_TITLE = 'Welcome to Udaan!!';
+export const LOGIN_CONTENT = `There can be no real growth without${'\n'} healthy population. No sustainable${'\n'} development without tackling disease${'\n'} and malnutrition.`;
+export const LOGIN_DETAILS = 'Enter you number to';
+export const LOGIN_BOTTOM = "Don't have an account?";
+export const SIGN_UP = 'Sign Up';
 
 export const CREATE_ACCOUNT = {
   SELECT_CURRENT_STAGE_TEXT: "Select beneficiary's current stage to proceed",
   CATEGORY_1_TITLE: 'Pregnant Woman',
-  CATEGORY_1_DESCRIPTION: `A mother understands ${'\n'}what a child does ${'\n'}not say.`,
+  CATEGORY_1_DESCRIPTION: `A grand and beautiful ${'\n'}adventure is about ${'\n'}to begin.`,
   CATEGORY_2_TITLE: 'Lactating Mother',
-  CATEGORY_2_DESCRIPTION: `A grand and beautiful ${'\n'}adventure is about ${'\n'}to begin.`,
+  CATEGORY_2_DESCRIPTION: `A mother understands ${'\n'}what a child does ${'\n'}not say.`,
   CATEGORY_3_TITLE: '6-24 Months',
   CATEGORY_3_DESCRIPTION: `A baby is born with a ${'\n'}need to be loved and ${'\n'}grow with caring.`,
   BUTTON_DESCRIPTION: 'Fill Your Details',
@@ -40,7 +44,7 @@ export const SET_APP_FOR = [{name: 'An NGO Member', code: 'ngo'}];
 
 export const USER_DETAILS = {
   NAME: 'Name',
-  PHONE_NUMBER: 'Phone Number',
+  PHONE_NUMBER: 'Phone number',
   MENSTURAL_DATE: 'Last menstural period date',
   CHILD_NAME: 'Child Name',
   CHILD_DOB: 'Child date of birth',
@@ -57,6 +61,7 @@ export const TOAST_MESSAGE = {
 export const PLACEHOLDER_DETAILS = {
   SELECT_YOUR_ROLE: 'Select your role',
   PHONE_NUMBER: 'Phone number',
+  GENDER: 'Gender',
 };
 
 export const DROPDOWN_BOX = {
@@ -66,9 +71,25 @@ export const DROPDOWN_BOX = {
 };
 
 export const HOMESCREEN = {
-  TITLE : 'Welcome to Poshan!!',
+  TITLE: 'Welcome to Poshan!!',
   CARD_CONTENT1: `See what most babies${'\n'}do at this age?`,
   CARD_CONTENT2: `What you should do for${'\n'}your baby?`,
   CARD_CONTENT3: `See what can be the${'\n'}Warning for you`,
-  CARD_CONTENT4: `Your child measurement can${'\n'}tell you how's your child${'\n'}health is.`
-}
+  CARD_CONTENT4: `Your child measurement can${'\n'}tell you how's your child${'\n'}health is.`,
+};
+
+export const ERROR_MESSAGE = {
+  DROPDOWN: 'Select any one option from the dropdown.',
+  PHONE_NUMBER: 'Invalid Phone Number',
+};
+
+export const CAREGIVER_ROLE = [
+  {label: DROPDOWN_BOX.A_RELATIVE, value: 'RELATIVE'},
+  {label: DROPDOWN_BOX.AN_NGO_MEMBER, value: 'NGO_MEMBER'},
+  {label: DROPDOWN_BOX.AN_ANGANWADI_MEMBER, value: 'ANGANWADI_MEMBER'},
+];
+
+export const GENDER = [
+  {label: 'Male', value: 'MALE'},
+  {label: 'Female', value: 'Female'},
+];

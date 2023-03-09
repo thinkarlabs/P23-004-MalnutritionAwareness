@@ -6,7 +6,6 @@ export const OTPVERIFICATION = 'OTPVerification';
 export const LOGIN = 'Login';
 export const CREATEACCOUNT = 'CreateAccount';
 export const PREGNANTWOMAN_SCREEN = 'pregnantWoman';
-export const LACTATINGMOTHER_SCREEN = 'lactatingMother';
 export const CHILDINFO_SCREEN = 'childInfo';
 export const HOME = 'Home';
 export const TRACK = 'Track';

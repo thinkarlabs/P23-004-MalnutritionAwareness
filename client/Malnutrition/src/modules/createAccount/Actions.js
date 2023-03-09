@@ -1,11 +1,11 @@
 import {
-  CREATE_PREGNANT_WOMEN_ACCOUNT_ERROR,
-  CREATE_PREGNANT_WOMEN_ACCOUNT_SUCCESS,
+  CREATE_ACCOUNT_ERROR,
+  CREATE_ACCOUNT_SUCCESS,
   HIDE_API_ERROR,
 } from '../../redux/types';
 import {URL_CREATE_ACCOUNT} from '../../shared/apis/APIConstants';
 
-export const createPregnantWomenAccount = (data, navigation) => dispatch => {
+export const createAccount = data => dispatch => {
   const reqBody = {
     method: 'POST',
     headers: {
@@ -18,9 +18,9 @@ export const createPregnantWomenAccount = (data, navigation) => dispatch => {
     .then(response => response.json())
     .then(responseData => {
       if (responseData?.message) {
-        dispatch(createPregnantWomenAccountSuccess(responseData?.message));
+        dispatch(createAccountSuccess(responseData?.message));
       } else {
-        dispatch(createPregnantWomenAccountError(responseData?.error));
+        dispatch(createAccountError(responseData?.error));
       }
     })
     .catch(error => {
@@ -29,16 +29,16 @@ export const createPregnantWomenAccount = (data, navigation) => dispatch => {
     });
 };
 
-export const createPregnantWomenAccountSuccess = response => dispatch => {
+export const createAccountSuccess = response => dispatch => {
   dispatch({
-    type: CREATE_PREGNANT_WOMEN_ACCOUNT_SUCCESS,
+    type: CREATE_ACCOUNT_SUCCESS,
     payload: response,
   });
 };
 
-export const createPregnantWomenAccountError = error => dispatch => {
+export const createAccountError = error => dispatch => {
   dispatch({
-    type: CREATE_PREGNANT_WOMEN_ACCOUNT_ERROR,
+    type: CREATE_ACCOUNT_ERROR,
     payload: error,
   });
 };

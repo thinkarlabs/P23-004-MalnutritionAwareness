@@ -1,32 +1,44 @@
 import {StyleSheet} from 'react-native';
-import { BLACK, WHITE } from '../../constants/colors';
+import {BLACK} from '../../constants/colors';
 
 export const appHeaderStyles = StyleSheet.create({
   container: {
     height: 56,
+    paddingLeft: 20,
+    justifyContent: 'center',
   },
   headerContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    top: 16,
-    bottom: 12,
+  },
+  backIcon: {
+    paddingRight: 8,
+    justifyContent: 'center',
   },
   headerText: {
     fontSize: 18,
     fontWeight: '700',
+    lineHeight: 32,
     color: BLACK,
+  },
+  backText: {
+    fontSize: 14,
+    fontWeight: '500',
+    lineHeight: 24,
+    color: BLACK,
+    marginRight: 16,
   },
   secondContainer: {
     flexDirection: 'row-reverse',
-    bottom: 12,
-    top: 12,
     backgroundColor: 'white',
-    width: 57,
-    height: 32,
-    right: 20,
+    right: 0,
     position: 'absolute',
+    justifyContent: 'flex-start',
   },
-  secondTextContainer: {
-    justifyContent: 'center',
+  onBoarding: {
+    flexDirection: 'row-reverse',
+    right: 0,
+    position: 'absolute',
+    justifyContent: 'flex-start',
   },
 });
