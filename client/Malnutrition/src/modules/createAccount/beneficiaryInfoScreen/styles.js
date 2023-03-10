@@ -4,6 +4,7 @@ import {
   LIGHT_BLUE,
   LIGHT_GREY,
   PLACEHOLDER_BORDER_COLOR,
+  RED,
   WHITE,
 } from '../../../shared/constants/colors';
 
@@ -52,7 +53,7 @@ export const beneficiaryInfoStyles = StyleSheet.create({
     top: 12,
   },
   inputContainer: {
-    marginBottom: 20,
+    marginBottom: 12,
     borderWidth: 1,
     borderRadius: 12,
     borderColor: PLACEHOLDER_BORDER_COLOR,
@@ -87,7 +88,9 @@ export const beneficiaryInfoStyles = StyleSheet.create({
   },
   checkbox: {
     backgroundColor: WHITE,
-    borderRadius: 4,
+    height: 32,
+    width: 32,
+    borderRadius: 8,
     borderWidth: 1,
     borderColor: PLACEHOLDER_BORDER_COLOR,
   },
@@ -114,7 +117,7 @@ export const beneficiaryInfoStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   errorMsg: {
-    color: '#E32828',
+    color: RED,
   },
   shiftUp: {
     position: 'relative',
@@ -123,5 +126,8 @@ export const beneficiaryInfoStyles = StyleSheet.create({
   shiftDown: {
     position: 'relative',
     top: 10,
+  },
+  paddingHorizontal: {
+    paddingHorizontal: 20,
   },
 });

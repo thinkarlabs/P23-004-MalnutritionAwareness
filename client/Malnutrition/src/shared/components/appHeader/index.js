@@ -3,23 +3,41 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import AppTextTranslates from '../appTextTranslate';
 import BackArrow from '../../../../assets/svg/backArrowSVG';
 import {appHeaderStyles} from './styles';
+import {BACK} from '../../constants/constants';
 
-const AppHeader = ({onPress, canGoBack, title, backArrowValue}) => {
+const AppHeader = ({
+  onPress,
+  title,
+  backArrowValue,
+  onBoarding,
+  backText,
+  onBackPress,
+}) => {
   return (
     <View style={appHeaderStyles.container}>
       <View style={appHeaderStyles.headerContainer}>
-        <TouchableOpacity
-          onPress={onPress}
-          backArrowValue={backArrowValue}
-          style={{paddingLeft: 20, paddingRight: 8}}>
-          {backArrowValue === true ? <BackArrow /> : null}
-        </TouchableOpacity>
+        {backArrowValue ? (
+          <TouchableOpacity
+            onPress={onPress}
+            backArrowValue={backArrowValue}
+            style={appHeaderStyles.backIcon}>
+            <BackArrow />
+          </TouchableOpacity>
+        ) : null}
         <Text style={appHeaderStyles.headerText}>{title}</Text>
       </View>
-      <View style={appHeaderStyles.secondContainer}>
-        <View style={appHeaderStyles.secondTextContainer}>
-          <AppTextTranslates />
-        </View>
+      <View
+        style={
+          onBoarding
+            ? appHeaderStyles.onBoarding
+            : appHeaderStyles.secondContainer
+        }>
+        <AppTextTranslates />
+        {backText ? (
+          <Text style={appHeaderStyles.backText} onPress={onBackPress}>
+            {BACK}
+          </Text>
+        ) : null}
       </View>
     </View>
   );

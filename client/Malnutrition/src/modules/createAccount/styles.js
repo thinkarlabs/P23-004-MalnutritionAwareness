@@ -2,6 +2,9 @@ import {StyleSheet} from 'react-native';
 import {BLACK, BLUE, WHITE} from '../../shared/constants/colors';
 
 export const createAccountStyles = StyleSheet.create({
+  scrollView: {
+    height: '75%',
+  },
   container: {
     flex: 1,
   },

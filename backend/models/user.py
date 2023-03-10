@@ -70,3 +70,9 @@ class LoginUserSchema(BaseModel):
         strip_whitespace=True,
         regex=r"^\+91[0-9]{10}$",
     )
+
+class ResendOTPSchema(BaseModel):
+    phone_number: constr(
+        strip_whitespace=True,
+        regex=r"^\+91[0-9]{10}$",
+    )

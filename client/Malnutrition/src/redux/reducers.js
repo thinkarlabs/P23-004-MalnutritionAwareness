@@ -1,12 +1,14 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 import CreateAccountReducer from '../modules/createAccount/CreateAccountReducer';
-import VerifyOTPReducer from '../modules/otpVerification/VerifyOTPReducer';
+import LoginReducer from '../modules/login/LoginReducer';
+import OtpReducer from '../modules/otpVerification/OtpReducer';
 
 const appReducer = combineReducers({
   createAccount: CreateAccountReducer,
-  otpVerification: VerifyOTPReducer,
+  otpVerification: OtpReducer,
+  login: LoginReducer,
 });
 
-export const rootReducer = () => {
-  return appReducer();
+export const rootReducer = (state, action) => {
+  return appReducer(state, action);
 };

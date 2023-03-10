@@ -1,15 +1,19 @@
 import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import {WHITE} from '../../constants/colors';
-import {buttonStyles} from './styles';
 
-export const Button = ({onPress, title, buttonStyle, textStyle}) => {
+export const Button = ({
+  onPress,
+  title,
+  buttonStyle,
+  textStyle,
+  disabled,
+  disabledStyle,
+}) => {
   return (
     <TouchableOpacity
-      style={{
-        ...buttonStyles.container,
-        ...buttonStyle,
-      }}
+      style={disabled ? disabledStyle : buttonStyle}
+      disabled={disabled}
       onPress={onPress}>
       <Text
         style={{

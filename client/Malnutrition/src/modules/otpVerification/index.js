@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {Image, Text, View} from 'react-native';
+import React, {useEffect, useMemo, useState} from 'react';
+import {SafeAreaView, ScrollView, Text, View} from 'react-native';
 import AppHeader from '../../shared/components/appHeader';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import verifyOTPStyles from './styles';
@@ -7,34 +7,59 @@ import {
   ENTER_MOBILE_NUMBER,
   OTP_VERIFICATION,
   CREATE_ACCOUNT,
+  RESEND_OTP,
+  RESEND_OTP_IN,
+  VERIFY_OTP,
+  LOGIN_TEXT,
 } from '../../shared/constants/constants';
-import {CREATEACCOUNT} from '../../shared/constants/navigatorConstants';
+import {
+  HOME,
+  LOGIN,
+  PREGNANTWOMAN_SCREEN,
+} from '../../shared/constants/navigatorConstants';
 import {Button} from '../../shared/components/button';
 import {buttonStyles} from '../../shared/components/button/styles';
-import {otpVerification as otpVerificationAction} from './Actions';
+import {
+  otpVerification as otpVerificationAction,
+  resendOTP as resendOTPAction,
+  hideError as hideErrorAction,
+} from './Actions';
 import {connect} from 'react-redux';
+import {LIGHT_GREY} from '../../shared/constants/colors';
+import OtpIllustrationSVG from '../../../assets/svg/otpIllustrationSVG';
 
-const OTPVerification = ({navigation, route, otpVerification}) => {
-  const [otpValues, setOtpValues] = useState('');
+const OTPVerification = ({
+  navigation,
+  route,
+  otpVerification,
+  verifyOtpData,
+  resendOtpData,
+  errorText,
+  resendOTP,
+  hideError,
+}) => {
+  const pinCount = 4;
   const [count, setCount] = useState(30);
+  const [isValidForm, setIsValidForm] = useState(false);
 
-  const [formValues, setFormValues] = useState({
-    phone_number: route.params.phone_number,
+  const [verifyOtpFormValues, setVerifyOtpFormValues] = useState({
+    phone_number: route?.params?.phone_number,
     otp: '',
-    is_creation: route.params.is_creation,
+    is_creation: route?.params?.is_creation,
+  });
+
+  const [resendOtpFormValues, setResendOtpFormValues] = useState({
+    phone_number: route?.params?.phone_number,
   });
 
   const updateOtpNumber = newVal => {
-    setFormValues({...formValues, otp: newVal});
-  };
-
-  const verifyOtp = () => {
-    otpVerification(formValues, navigation);
+    hideError();
+    setVerifyOtpFormValues({...verifyOtpFormValues, otp: Number(newVal)});
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (count == 0) {
+      if (count === 0) {
         clearInterval(interval);
       } else {
         setCount(count - 1);
@@ -45,73 +70,134 @@ const OTPVerification = ({navigation, route, otpVerification}) => {
     };
   }, [count]);
 
+  useEffect(() => {
+    if (verifyOtpData && !errorText) {
+      navigation.navigate(HOME);
+    }
+  });
+
+  useMemo(() => {
+    if (
+      verifyOtpFormValues?.otp
+      // verifyOtpFormValues?.otp?.length === pinCount
+    ) {
+      setIsValidForm(true);
+    } else {
+      setIsValidForm(false);
+    }
+  }, [verifyOtpFormValues.otp]);
+
+  const verifyOtp = () => {
+    setCount(0);
+    otpVerification(verifyOtpFormValues);
+  };
+
+  const onPressResendOtp = () => {
+    setCount(30);
+    hideError();
+    resendOTP(resendOtpFormValues);
+  };
+
   return (
-    <View style={verifyOTPStyles.container}>
-      <View style={verifyOTPStyles.headerContainer}>
-        <AppHeader
-          title={CREATE_ACCOUNT.TITLE_SCREEN}
-          backArrowValue={true}
-          onPress={() => navigation.navigate(CREATEACCOUNT)}
-        />
-      </View>
-      <View style={verifyOTPStyles.innerContainer}>
-        <Image
-          source={require('../../../assets/images/verifyOtp.png')}
-          style={verifyOTPStyles.phoneImage}
-        />
-        <View style={verifyOTPStyles.otpHeadingContainer}>
-          <Text style={verifyOTPStyles.otpHeadingText}>{OTP_VERIFICATION}</Text>
+    <SafeAreaView>
+      <AppHeader
+        title={
+          route?.params?.fromWhere === LOGIN_TEXT
+            ? LOGIN_TEXT
+            : CREATE_ACCOUNT.TITLE_SCREEN
+        }
+        backArrowValue={true}
+        onPress={
+          route?.params?.fromWhere === CREATE_ACCOUNT.CATEGORY_1_TITLE
+            ? () =>
+                navigation.navigate(PREGNANTWOMAN_SCREEN, {
+                  title: CREATE_ACCOUNT.CATEGORY_1_TITLE,
+                })
+            : () => navigation.navigate(LOGIN)
+        }
+      />
+      <ScrollView style={verifyOTPStyles.scrollView}>
+        <View style={verifyOTPStyles.innerContainer}>
+          <OtpIllustrationSVG />
+          <View style={verifyOTPStyles.otpHeadingContainer}>
+            <Text style={verifyOTPStyles.otpHeadingText}>
+              {OTP_VERIFICATION}
+            </Text>
+          </View>
+          <View style={verifyOTPStyles.phoneNumberContainer}>
+            <Text style={verifyOTPStyles.enterOtpText}>
+              {ENTER_MOBILE_NUMBER}
+            </Text>
+            <Text style={verifyOTPStyles.phoneNumberText}>
+              {route?.params?.phone_number}
+            </Text>
+          </View>
         </View>
-        <Text>
-          <Text style={verifyOTPStyles.enterOtpText}>
-            {ENTER_MOBILE_NUMBER}
-          </Text>
-          <Text style={verifyOTPStyles.phoneNumberText}>
-            {route.params.phone_number}
-          </Text>
-        </Text>
         <View style={verifyOTPStyles.otpInputContainer}>
           <OTPInputView
-            pinCount={4}
+            pinCount={pinCount}
             autoFocusOnLoad={false}
-            codeInputFieldStyle={verifyOTPStyles.codeInputField}
+            codeInputFieldStyle={
+              errorText
+                ? verifyOTPStyles.errorCodeInputField
+                : verifyOTPStyles.codeInputField
+            }
             style={verifyOTPStyles.otpText}
-            onCodeFilled={code => {
-              console.log(`Code is ${code}, you are good to go!`);
-            }}
             onCodeChanged={updateOtpNumber}
+            placeholderCharacter={'-'}
+            placeholderTextColor={LIGHT_GREY}
           />
         </View>
-        <View style={verifyOTPStyles.resendContainer}>
-          {count == 0 ? (
-            <Text
-              style={verifyOTPStyles.resendTextBold}
-              onPress={() => setCount(30)}>
-              Resend OTP
-            </Text>
+        <View style={verifyOTPStyles.centerContainer}>
+          {errorText ? (
+            <Text style={verifyOTPStyles.errorText}>{errorText}</Text>
           ) : (
-            <Text style={verifyOTPStyles.resendText}>Resend OTP in -</Text>
+            <Text>{''}</Text>
           )}
-          {count !== 0 && (
-            <Text style={verifyOTPStyles.resendText}> {count}</Text>
-          )}
+          <View style={verifyOTPStyles.resendContainer}>
+            {count === 0 ? (
+              <Text
+                style={verifyOTPStyles.resendTextBold}
+                onPress={onPressResendOtp}>
+                {RESEND_OTP}
+              </Text>
+            ) : (
+              <Text style={verifyOTPStyles.resendText}>
+                {RESEND_OTP_IN + count}
+              </Text>
+            )}
+          </View>
         </View>
-        <View style={verifyOTPStyles.button}>
-          <Button
-            title={'Verify OTP'}
-            textStyle={buttonStyles.buttonText}
-            buttonStyle={[verifyOTPStyles.buttonContainer]}
-            onPress={verifyOtp}
-          />
-        </View>
+        {!!resendOtpData && (
+          <Text style={verifyOTPStyles.successText}>{resendOtpData}</Text>
+        )}
+      </ScrollView>
+      <View style={verifyOTPStyles.button}>
+        <Button
+          title={VERIFY_OTP}
+          textStyle={buttonStyles.buttonText}
+          buttonStyle={buttonStyles.container}
+          disabledStyle={buttonStyles.disabled}
+          disabled={!isValidForm}
+          onPress={verifyOtp}
+        />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const mapDispatchToProps = dispatch => ({
-  otpVerification: (formValues, navigation) =>
-    dispatch(otpVerificationAction(formValues, navigation)),
+  otpVerification: verifyOtpFormValues =>
+    dispatch(otpVerificationAction(verifyOtpFormValues)),
+  resendOTP: resendOtpFormValues =>
+    dispatch(resendOTPAction(resendOtpFormValues)),
+  hideError: () => dispatch(hideErrorAction()),
 });
 
-export default connect(null, mapDispatchToProps)(OTPVerification);
+const mapStateToProps = state => ({
+  verifyOtpData: state.otpVerification.verifyOtpData,
+  resendOtpData: state.otpVerification.resendOtpData,
+  errorText: state.otpVerification.errorText,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(OTPVerification);

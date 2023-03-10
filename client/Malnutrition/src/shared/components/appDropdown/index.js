@@ -1,23 +1,11 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';
 import GroupIcon from '../../../../assets/svg/icons/groupIcon';
-import {
-  BLACK,
-  LIGHT_GREY,
-  PLACEHOLDER_BORDER_COLOR,
-  PURPLE,
-} from '../../constants/colors';
-import {DROPDOWN_BOX, PLACEHOLDER_DETAILS} from '../../constants/constants';
-import { appDropdownStyles } from './styles';
+import {LIGHT_GREY} from '../../constants/colors';
+import {appDropdownStyles} from './styles';
 
-const data = [
-  {label: DROPDOWN_BOX.A_RELATIVE, value: 'RELATIVE'},
-  {label: DROPDOWN_BOX.AN_NGO_MEMBER, value: 'NGO_MEMBER'},
-  {label: DROPDOWN_BOX.AN_ANGANWADI_MEMBER, value: 'ANGANWADI_MEMBER'},
-];
-
-const AppDropdown = ({dropdownValue}) => {
+const AppDropdown = ({dropdownValue, data, placeholder, style}) => {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
 
@@ -25,7 +13,7 @@ const AppDropdown = ({dropdownValue}) => {
     if (value || isFocus) {
       return (
         <Text style={[appDropdownStyles.label, isFocus && {color: LIGHT_GREY}]}>
-          {PLACEHOLDER_DETAILS.SELECT_YOUR_ROLE}
+          {placeholder}
         </Text>
       );
     }
@@ -36,7 +24,7 @@ const AppDropdown = ({dropdownValue}) => {
     <View style={appDropdownStyles.container}>
       {renderLabel()}
       <Dropdown
-        style={[appDropdownStyles.dropdown, isFocus && {borderColor: 'blue'}]}
+        style={[style, isFocus && {borderColor: 'blue'}]}
         placeholderStyle={appDropdownStyles.placeholderStyle}
         data={data}
         itemTextStyle={appDropdownStyles.itemTextStyle}
@@ -45,7 +33,7 @@ const AppDropdown = ({dropdownValue}) => {
         labelField="label"
         valueField="value"
         selectedTextStyle={appDropdownStyles.selectedTextStyle}
-        placeholder={!isFocus ? 'Select your role' : 'I am '}
+        placeholder={!isFocus ? placeholder : 'I am '}
         value={value}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
@@ -65,5 +53,3 @@ const AppDropdown = ({dropdownValue}) => {
 };
 
 export default AppDropdown;
-
-

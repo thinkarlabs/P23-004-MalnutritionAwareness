@@ -1,22 +1,20 @@
 import {StyleSheet} from 'react-native';
-import {BLACK, LIGHT_GREY, WHITE} from '../../shared/constants/colors';
+import {
+  BLACK,
+  BLUE,
+  LIGHT_GREY,
+  PLACEHOLDER_BORDER_COLOR,
+  RED,
+  WHITE,
+} from '../../shared/constants/colors';
 
 const verifyOTPStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: WHITE,
-  },
-  headerContainer: {
-    marginTop: 50,
+  scrollView: {
+    height: '75%',
   },
   innerContainer: {
-    flex: 1,
     paddingTop: 52,
-  },
-  phoneImage: {
-    height: 119,
-    width: 122,
-    alignSelf: 'center',
+    alignItems: 'center',
   },
   otpHeadingContainer: {
     marginTop: 24,
@@ -25,73 +23,93 @@ const verifyOTPStyles = StyleSheet.create({
   otpHeadingText: {
     fontWeight: '400',
     fontSize: 24,
-    lineHeight: 28,
-    textAlign: 'center',
+    lineHeight: 34,
   },
   enterOtpText: {
     fontWeight: '400',
     fontSize: 16,
     lineHeight: 24,
-    textAlign: 'center',
     color: LIGHT_GREY,
   },
   phoneNumberText: {
     fontWeight: '600',
     fontSize: 16,
     lineHeight: 24,
-    textAlign: 'center',
     color: LIGHT_GREY,
+    textAlign: 'center',
   },
   otpInputContainer: {
-    backgroundColor: '#F2F5F7',
-    height: '12%',
-    marginTop: 20,
-    paddingHorizontal: 39,
-    marginHorizontal: 20,
-    borderRadius: 16,
+    paddingHorizontal: 60,
+    height: 55,
   },
   codeInputField: {
     backgroundColor: WHITE,
     width: 52,
     height: 52,
     borderRadius: 16,
-    borderWidth: 0,
-    fontSize: 16,
+    borderWidth: 1,
+    fontSize: 18,
+    borderColor: PLACEHOLDER_BORDER_COLOR,
     color: BLACK,
-    fontWeight: '500',
+    fontWeight: '400',
+  },
+  errorCodeInputField: {
+    backgroundColor: 'rgba(248, 218, 218, 0.3)',
+    width: 52,
+    height: 52,
+    borderRadius: 16,
+    borderWidth: 1,
+    fontSize: 18,
+    borderColor: RED,
+    color: BLACK,
+    fontWeight: '400',
   },
   otpText: {
     fontSize: 20,
   },
-  otpNotReceivedContainer: {
-    marginTop: 8,
-    marginRight: 87,
-    alignItems: 'flex-end',
+  button: {
+    alignSelf: 'center',
+    width: '100%',
+    paddingHorizontal: 20,
   },
-  otpNotReceivedText: {
-    fontWeight: '400',
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#616568',
-  },
-  button: {width: '90%', left: 20, right: 20, top: 231},
   resendContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    right: 67,
+    paddingRight: 60,
     paddingTop: 12,
   },
   resendTextBold: {
     fontWeight: '500',
     fontSize: 16,
     lineHeight: 24,
-    color: '#6667FF',
+    color: BLUE,
   },
   resendText: {
     fontWeight: '400',
-    fontSize: 16,
+    fontSize: 14,
     lineHeight: 24,
-    color: '#616568',
+    color: LIGHT_GREY,
+  },
+  phoneNumberContainer: {
+    marginBottom: 32,
+  },
+  errorText: {
+    fontWeight: '400',
+    fontSize: 14,
+    lineHeight: 24,
+    color: RED,
+    paddingLeft: 60,
+    paddingTop: 12,
+  },
+  successText: {
+    fontWeight: '400',
+    fontSize: 14,
+    lineHeight: 24,
+    color: 'green',
+    paddingLeft: 60,
+    paddingTop: 12,
+  },
+  centerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
 
