@@ -1,10 +1,9 @@
 import {SafeAreaView, Text, View} from 'react-native';
 import React from 'react';
 import AppHeader from '../../../shared/components/appHeader';
-import {HOME, TAB} from '../../../shared/constants/navigatorConstants';
+import {TAB} from '../../../shared/constants/navigatorConstants';
 import {CHILDSCREEN_CARD} from '../../../shared/constants/constants';
 import {homeCardStyles} from './styles';
-import {Image} from 'react-native';
 import ChildIcon from '../../../../assets/svg/icons/childIcon';
 
 const ChildCardContent = ({navigation}) => {

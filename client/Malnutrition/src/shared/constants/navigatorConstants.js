@@ -14,7 +14,7 @@ export const PROFILE = 'Profile';
 export const TAB = 'Tab';
 
 export const HOME_CARD = {
-    CONTENT1: 'ChildCard',
-    CONTENT2: 'ParentCard',
-    CONTENT3: 'WarningCard',
-}
+  CONTENT1: 'ChildCard',
+  CONTENT2: 'ParentCard',
+  CONTENT3: 'WarningCard',
+};

@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   OTP_VERIFICATION_SUCCESS,
   OTP_VERIFICATION_ERROR,
@@ -22,6 +23,7 @@ export const otpVerification = data => dispatch => {
     .then(response => response.json())
     .then(responseData => {
       if (responseData?.message) {
+        AsyncStorage.setItem('TOKEN', responseData?.access_token);
         dispatch(otpVerificationSuccess(responseData?.message));
       } else {
         dispatch(otpVerificationError(responseData?.error));

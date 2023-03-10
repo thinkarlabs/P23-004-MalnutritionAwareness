@@ -1,26 +1,29 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   HOMESCREEN_SYNC_ERROR,
   HOMESCREEN_SYNC_SUCCESS,
 } from '../../redux/types';
-import {URL_HOMESCREEN} from '../../shared/apis/APIConstants';
+import {URL_SYNC} from '../../shared/apis/APIConstants';
 
-export const homeScreenSync = data => dispatch => {
+export const homeScreenSync = () => async dispatch => {
+  const jwtToken = await AsyncStorage.getItem('TOKEN');
   const reqBody = {
     method: 'GET',
     headers: {
-      'Auth': '',
+      Authorization: `Bearer ${jwtToken}`,
       'Content-Type': 'application/json',
     },
-    body: data,
   };
 
-  fetch(URL_HOMESCREEN, reqBody)
+  fetch(URL_SYNC, reqBody)
     .then(response => response.json())
     .then(responseData => {
+      console.log(responseData, 'responseData');
       dispatch(homeScreenSyncSuccess(responseData));
     })
     .catch(error => {
-      dispatch(homeScreenSyncError(responseData));
+      console.log(error, 'error');
+      dispatch(homeScreenSyncError(error));
     });
 };
 

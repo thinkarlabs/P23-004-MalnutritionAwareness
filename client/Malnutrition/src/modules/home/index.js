@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text, SafeAreaView, View, ScrollView} from 'react-native';
+import {connect} from 'react-redux';
 import ChildDetails from '../../../assets/svg/childDetails';
 import PersonIcon from '../../../assets/svg/icons/personIcon';
 import UserBlackIcon from '../../../assets/svg/icons/userBlackIcon';
@@ -17,12 +18,22 @@ import {
   CARD_BACKGROUND,
   LIGHT_GREY,
 } from '../../shared/constants/colors';
-import {APP_NAME, CREATE_ACCOUNT, HOMESCREEN} from '../../shared/constants/constants';
-import { HOME_CARD } from '../../shared/constants/navigatorConstants';
+import {
+  APP_NAME,
+  CREATE_ACCOUNT,
+  HOMESCREEN,
+} from '../../shared/constants/constants';
+import {HOME_CARD} from '../../shared/constants/navigatorConstants';
 import {createAccountStyles} from '../createAccount/styles';
 import {homeStyles} from './styles';
+import {homeScreenSync as homeScreenSyncAction} from './Actions';
 
-const Home = ({navigation}) => {
+const Home = ({navigation, homeScreenSync, syncData}) => {
+  useEffect(() => {
+    // homeScreenSync();
+    // console.log(syncData);
+  });
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: WHITE}}>
       <AppHeader title={APP_NAME} />
@@ -81,4 +92,13 @@ const Home = ({navigation}) => {
   );
 };
 
-export default Home;
+const mapDispatchToProps = dispatch => ({
+  homeScreenSync: () => dispatch(homeScreenSyncAction()),
+});
+
+const mapStateToProps = state => ({
+  syncData: state.homeScreen.syncData,
+  errorText: state.homeScreen.errorText,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
