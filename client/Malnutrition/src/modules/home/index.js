@@ -30,8 +30,8 @@ import {homeScreenSync as homeScreenSyncAction} from './Actions';
 
 const Home = ({navigation, homeScreenSync, syncData}) => {
   useEffect(() => {
-    // homeScreenSync();
-    // console.log(syncData);
+    homeScreenSync();
+    console.log(syncData);
   });
 
   return (
