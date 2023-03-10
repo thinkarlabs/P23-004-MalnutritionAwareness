@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { JumpingTransition } from 'react-native-reanimated';
 import { BLACK, LIGHT_GREY, PLACEHOLDER_BORDER_COLOR } from '../../../shared/constants/colors';
 
 export const homeCardStyles = StyleSheet.create({
@@ -33,5 +34,19 @@ export const homeCardStyles = StyleSheet.create({
     },
     tabCardContainer: {
         paddingBottom: 8,
+    },
+    cardContainer: {
+        paddingTop: 12,
+    },
+    carasoulContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        paddingTop: 12,
+    },
+    carasoulText: {
+        fontWeight: '600',
+        fontSize: 14,
+        lineHeight: 24,
+        paddingLeft: 9
     },
 })

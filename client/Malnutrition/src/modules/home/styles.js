@@ -23,8 +23,13 @@ export const homeStyles = StyleSheet.create({
     lineHeight: 31,
     color: BLACK,
   },
-  rowReverse: {
-    
+  rowReverse: {},
+  profile: {
+    backgroundColor: PROFILE,
+    height: 24,
+    width: 24,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  profile: {backgroundColor: PROFILE,height: 24, width: 24, borderRadius: 12, justifyContent: 'center', alignItems: 'center'}
 });

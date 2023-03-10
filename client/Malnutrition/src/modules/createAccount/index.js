@@ -38,6 +38,7 @@ const CreateAccount = ({navigation}) => {
             content={CREATE_ACCOUNT.CATEGORY_1_DESCRIPTION}
             image={<PregnantWomenImage />}
             background={CARD_BACKGROUND}
+            boxText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
           />
           <AppCard
             onPress={() => {
@@ -50,6 +51,7 @@ const CreateAccount = ({navigation}) => {
             image={<LactatingMotherImage />}
             newStyle={createAccountStyles.rowReverse}
             background={CARD_BACKGROUND}
+            boxText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
           />
           <AppCard
             onPress={() => {
@@ -61,6 +63,7 @@ const CreateAccount = ({navigation}) => {
             content={CREATE_ACCOUNT.CATEGORY_3_DESCRIPTION}
             image={<Child6MonthImage />}
             background={CARD_BACKGROUND}
+            boxText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
           />
         </View>
       </ScrollView>

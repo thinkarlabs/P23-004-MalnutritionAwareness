@@ -18,6 +18,7 @@ import {
   LIGHT_GREY,
 } from '../../shared/constants/colors';
 import {APP_NAME, CREATE_ACCOUNT, HOMESCREEN} from '../../shared/constants/constants';
+import { HOME_CARD } from '../../shared/constants/navigatorConstants';
 import {createAccountStyles} from '../createAccount/styles';
 import {homeStyles} from './styles';
 
@@ -46,33 +47,33 @@ const Home = ({navigation}) => {
             }}
           />
           <AppCard
-            onPress={() => {}}
+            onPress={() => navigation.navigate(HOME_CARD.CONTENT1)}
             content={HOMESCREEN.CARD_CONTENT1}
             background={CARD_BLUE}
             image={<WhatBabyDoIllustration />}
-            titleText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
+            boxText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
           />
           <AppCard
-            onPress={() => {}}
+            onPress={() => navigation.navigate(HOME_CARD.CONTENT2)}
             content={HOMESCREEN.CARD_CONTENT2}
             background={LIGHT_YELLOW}
             newStyle={createAccountStyles.rowReverse}
             image={<WhatShouldIDoIllustration />}
-            titleText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
+            boxText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
           />
           <AppCard
-            onPress={() => {}}
+            onPress={() => navigation.navigate(HOME_CARD.CONTENT3)}
             content={HOMESCREEN.CARD_CONTENT3}
             background={CARD_RED}
             image={<WarningDetails />}
-            titleText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
+            boxText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
           />
           <AppCard
             onPress={() => {}}
             content={HOMESCREEN.CARD_CONTENT4}
             background={CARD_BACKGROUND}
             image={<ChildDetails />}
-            titleText={'Add your child detail'}
+            boxText={'Add your child detail'}
           />
         </View>
       </ScrollView>

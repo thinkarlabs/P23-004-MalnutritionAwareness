@@ -6,6 +6,7 @@ import {
   CHILDINFO_SCREEN,
   CREATEACCOUNT,
   HOME,
+  HOME_CARD,
   LOGIN,
   ONBOARDINGSLIDER1,
   ONBOARDINGSLIDER2,
@@ -27,6 +28,8 @@ import Home from '../modules/home';
 import BottomTab from './BottomTab';
 import ChildInfo from '../modules/createAccount/beneficiaryInfoScreen/ChildInfo';
 import ChildCardContent from '../modules/home/homeCardContent/ChildCardContent';
+import ParentCardContent from '../modules/home/homeCardContent/ParentCardContent';
+import WarningCardContent from '../modules/home/homeCardContent/WarningCardContent';
 
 const Stack = createStackNavigator();
 
@@ -46,7 +49,7 @@ export function AppStackNavigator() {
           headerShown: false,
           cardStyle: {backgroundColor: WHITE},
         }}>
-        {/* {showSplashScreen ? (
+        {showSplashScreen ? (
           <Stack.Screen name={SPLASH} component={Splash} />
         ) : null}
         <Stack.Screen name={ONBOARDINGSLIDER1} component={OnBoardingSlider1} />
@@ -58,14 +61,16 @@ export function AppStackNavigator() {
           component={PregnantWomanInfo}
         />
         <Stack.Screen name={CHILDINFO_SCREEN} component={ChildInfo} />
-        <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
-        <Stack.Screen name="Tab" component={BottomTab} />
         <Stack.Screen name={LOGIN} component={Login} />
+        <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
         <Stack.Screen name={HOME} component={Home} />
-        <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} /> 
-        <Stack.Screen name={HOME} component={Home} /> */}
         <Stack.Screen name={TAB} component={BottomTab} />
-        <Stack.Screen name='ChildCard' component={ChildCardContent} />
+        <Stack.Screen name={HOME_CARD.CONTENT1} component={ChildCardContent} />
+        <Stack.Screen name={HOME_CARD.CONTENT2} component={ParentCardContent} />
+        <Stack.Screen
+          name={HOME_CARD.CONTENT3}
+          component={WarningCardContent}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -12,7 +12,8 @@ export const AppCard = ({
   content,
   image,
   background,
-  titleText,
+  boxContainer,
+  boxText,
 }) => {
   return (
     <View
@@ -29,14 +30,14 @@ export const AppCard = ({
         <View>
           <Text style={appCardStyles.cardTitle}>{title}</Text>
           <Text style={appCardStyles.cardDesc}>{content}</Text>
-          <TouchableOpacity
-            onPress={onPress}
-            style={appCardStyles.cardTitleContainer}>
-            <Text style={appCardStyles.cardTitleText}>
-              {titleText}
-            </Text>
+          {boxContainer == false ? null : (
+            <TouchableOpacity
+              onPress={onPress}
+              style={appCardStyles.cardTitleContainer}>
+              <Text style={appCardStyles.cardTitleText}>{boxText}</Text>
               <BackArrowWithCircle />
-          </TouchableOpacity>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     </View>
