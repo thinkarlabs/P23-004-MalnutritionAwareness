@@ -21,6 +21,10 @@ import UserActiveIcon from '../../assets/svg/icons/userActiveIcon';
 import UserBlackIcon from '../../assets/svg/icons/userBlackIcon';
 import AskDefaultIcon from '../../assets/svg/icons/askDefaultIcon';
 import AskActiveIcon from '../../assets/svg/icons/askActiveIcon';
+import HomeActive from '../../assets/svg/icons/homeActive';
+import TrackDefault from '../../assets/svg/icons/trackDefaultIcon';
+import TrackActive from '../../assets/svg/icons/trackActiveIcon';
+import UserDefault from '../../assets/svg/icons/userDefaultIcon';
 
 const Tab = createBottomTabNavigator();
 
@@ -41,7 +45,7 @@ const BottomTab = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <View style={styles.container}>
-              <HomeDefaultIcon />
+              {focused ? <HomeActive /> : <HomeDefaultIcon/>}
               <Text
                 style={{
                   color: focused ? FOCUSED_TAB_ICON : TAB_ICON,
@@ -61,16 +65,7 @@ const BottomTab = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <View style={styles.container}>
-              <Image
-                source={{
-                  uri: 'https://cdn.pixabay.com/photo/2013/07/12/12/56/home-146585_1280.png',
-                }}
-                style={{
-                  height: 17,
-                  width: 12,
-                  tintColor: focused ? FOCUSED_TAB_ICON : TAB_ICON,
-                }}
-              />
+              {focused ? <TrackActive /> : <TrackDefault/>}
               <Text
                 style={{
                   color: focused ? FOCUSED_TAB_ICON : TAB_ICON,
@@ -110,7 +105,7 @@ const BottomTab = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <View style={styles.container}>
-              {focused ? <UserActiveIcon /> : <UserBlackIcon/>}
+              {focused ? <UserActiveIcon /> : <UserDefault/>}
               <Text
                 style={{
                   color: focused ? FOCUSED_TAB_ICON : TAB_ICON,

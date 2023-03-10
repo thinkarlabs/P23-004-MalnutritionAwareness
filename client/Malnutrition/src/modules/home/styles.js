@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {BLACK} from '../../shared/constants/colors';
+import {BLACK, PROFILE} from '../../shared/constants/colors';
 
 export const homeStyles = StyleSheet.create({
   container: {
@@ -25,5 +25,6 @@ export const homeStyles = StyleSheet.create({
   },
   rowReverse: {
     
-  }
+  },
+  profile: {backgroundColor: PROFILE,height: 24, width: 24, borderRadius: 12, justifyContent: 'center', alignItems: 'center'}
 });

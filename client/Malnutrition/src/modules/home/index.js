@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, SafeAreaView, View, ScrollView} from 'react-native';
 import ChildDetails from '../../../assets/svg/childDetails';
 import PersonIcon from '../../../assets/svg/icons/personIcon';
+import UserBlackIcon from '../../../assets/svg/icons/userBlackIcon';
 import PregnantWomenImage from '../../../assets/svg/pregnantWomenSVG';
 import WarningDetails from '../../../assets/svg/warningDetailSVG';
 import WhatBabyDoIllustration from '../../../assets/svg/whatBabyDoSVG';
@@ -27,6 +28,9 @@ const Home = ({navigation}) => {
       <ScrollView style={{height: '75%'}}>
         <View style={homeStyles.container}>
           <View style={homeStyles.headingContainer}>
+            <View style={homeStyles.profile}>
+              <UserBlackIcon />
+            </View>
             <Text style={homeStyles.headingText}>
               Aadarshini is 2 months and 10 days old
             </Text>

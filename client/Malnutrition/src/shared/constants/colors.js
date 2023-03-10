@@ -29,3 +29,4 @@ export const TAB_ICON = '#818391';
 
 export const CARD_BLUE = '#CEECF4';
 export const CARD_RED = '#F8DADA';
+export const PROFILE = '#F7D2BD';
