@@ -10,16 +10,12 @@ export const login = data => dispatch => {
     body: JSON.stringify(data),
   };
 
-  console.log(reqBody, 'reqBody');
-
   fetch(URL_LOGIN, reqBody)
     .then(response => response.json())
     .then(responseData => {
       if (responseData?.message) {
-        console.log(responseData?.message, 'success');
         dispatch(loginSuccess(responseData?.message));
       } else {
-        console.log(responseData?.error, 'error');
         dispatch(loginError(responseData?.error));
       }
     })
