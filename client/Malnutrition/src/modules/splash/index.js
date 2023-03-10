@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 import SplashBackgroundSVG from '../../../assets/svg/splashBackgroungSVG';
-import {HEADING_ONE, HEADING_TWO} from '../../shared/constants/constants';
+import {APP_NAME, HEADING_TWO} from '../../shared/constants/constants';
 import splashStyle from './styles';
 
 const Splash = ({}) => {
@@ -11,7 +11,7 @@ const Splash = ({}) => {
         <SplashBackgroundSVG />
       </View>
       <View style={splashStyle.title}>
-        <Text style={splashStyle.titleText}>{HEADING_ONE}</Text>
+        <Text style={splashStyle.titleText}>{APP_NAME}</Text>
         <Text style={splashStyle.bodyText}>{HEADING_TWO}</Text>
       </View>
     </View>

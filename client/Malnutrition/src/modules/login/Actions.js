@@ -1,11 +1,7 @@
-import {
-  CREATE_ACCOUNT_ERROR,
-  CREATE_ACCOUNT_SUCCESS,
-  HIDE_API_ERROR,
-} from '../../redux/types';
-import {URL_CREATE_ACCOUNT} from '../../shared/apis/APIConstants';
+import {HIDE_API_ERROR, LOGIN_ERROR, LOGIN_SUCCESS} from '../../redux/types';
+import {URL_LOGIN} from '../../shared/apis/APIConstants';
 
-export const createAccount = data => dispatch => {
+export const login = data => dispatch => {
   const reqBody = {
     method: 'POST',
     headers: {
@@ -14,13 +10,13 @@ export const createAccount = data => dispatch => {
     body: JSON.stringify(data),
   };
 
-  fetch(URL_CREATE_ACCOUNT, reqBody)
+  fetch(URL_LOGIN, reqBody)
     .then(response => response.json())
     .then(responseData => {
       if (responseData?.message) {
-        dispatch(createAccountSuccess(responseData?.message));
+        dispatch(loginSuccess(responseData?.message));
       } else {
-        dispatch(createAccountError(responseData?.error));
+        dispatch(loginError(responseData?.error));
       }
     })
     .catch(error => {
@@ -29,16 +25,16 @@ export const createAccount = data => dispatch => {
     });
 };
 
-export const createAccountSuccess = response => dispatch => {
+export const loginSuccess = response => dispatch => {
   dispatch({
-    type: CREATE_ACCOUNT_SUCCESS,
+    type: LOGIN_SUCCESS,
     payload: response,
   });
 };
 
-export const createAccountError = error => dispatch => {
+export const loginError = error => dispatch => {
   dispatch({
-    type: CREATE_ACCOUNT_ERROR,
+    type: LOGIN_ERROR,
     payload: error,
   });
 };

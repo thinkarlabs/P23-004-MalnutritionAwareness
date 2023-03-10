@@ -3,46 +3,42 @@ import {BLACK, LIGHT_GREY, WHITE} from '../../constants/colors';
 
 export const appCardStyles = StyleSheet.create({
   stageCard: {
-    borderRadius: 20,
+    borderRadius: 16,
     borderColor: WHITE,
-    borderWidth: 4,
     paddingHorizontal: 20,
     paddingVertical: 25,
-    marginBottom: 8,
+    marginBottom: 12,
     backgroundColor: '#E9EAF3',
   },
   cardTitle: {
     fontSize: 22,
-    lineHeight: 26,
+    lineHeight: 24,
     marginBottom: 5,
-    fontWeight: '400',
+    fontWeight: '500',
     color: BLACK,
-    alignSelf: 'stretch',
   },
   cardDesc: {
     color: LIGHT_GREY,
-    fontSize: 16,
-    lineHeight: 22,
+    fontSize: 18,
+    lineHeight: 24,
     fontWeight: '400',
-    alignSelf: 'stretch',
   },
   cardTitleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    top: 12,
+    marginTop: 12,
     backgroundColor: WHITE,
-    height: 34,
-    paddingLeft: 12,
     borderRadius: 8,
-    width: '90%',
   },
   cardTitleText: {
     fontWeight: '500',
     fontSize: 16,
     color: BLACK,
+    marginLeft: 12,
+    marginVertical: 4,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-  }
+  },
 });

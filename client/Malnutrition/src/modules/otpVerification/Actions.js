@@ -59,9 +59,9 @@ export const resendOTP = data => dispatch => {
     .then(response => response.json())
     .then(responseData => {
       if (responseData?.message) {
-        dispatch(otpVerificationSuccess(responseData?.message));
+        dispatch(resendOTPSuccess(responseData?.message));
       } else {
-        dispatch(otpVerificationError(responseData?.error));
+        dispatch(resendOTPError(responseData?.error));
       }
     })
     .catch(error => {

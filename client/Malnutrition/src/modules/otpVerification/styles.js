@@ -99,6 +99,14 @@ const verifyOTPStyles = StyleSheet.create({
     paddingLeft: 60,
     paddingTop: 12,
   },
+  successText: {
+    fontWeight: '400',
+    fontSize: 14,
+    lineHeight: 24,
+    color: 'green',
+    paddingLeft: 60,
+    paddingTop: 12,
+  },
   centerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',

@@ -1,11 +1,5 @@
 import {StyleSheet} from 'react-native';
 import {BLACK, GREEN, PINK, YELLOW} from '../../shared/constants/colors';
-import {
-  FONT_LARGE,
-  FONT_MEDIUM,
-  FONT_SMALL,
-  TITLE_FONT_SIZE,
-} from '../../shared/constants/fontSizeConstants';
 
 export const onBoardingScreenStyles = StyleSheet.create({
   container: {
@@ -23,65 +17,38 @@ export const onBoardingScreenStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: YELLOW,
   },
-  header: {
-    flexDirection: 'row-reverse',
-    paddingLeft: '5%',
-  },
-  headerContainer: {
-    flexDirection: 'row-reverse',
-  },
-  headerText: {
-    fontWeight: '600',
-    fontSize: FONT_MEDIUM,
-    color: BLACK,
-  },
   headerImage: {
-    height: '50%',
-    width: '100%',
-    left: 50,
-    top: 37,
+    position: 'absolute',
+    right: 0,
+    top: 130,
   },
   headerImage2: {
-    height: '50%',
-    width: '100%',
-    top: 37,
-  },
-  languageIcon: {
-    color: BLACK,
-    fontSize: FONT_SMALL,
-    paddingRight: '5%',
-    justifyContent: 'center',
-  },
-  languageText: {
-    fontSize: FONT_MEDIUM,
-    color: BLACK,
-    fontWeight: '700',
+    position: 'absolute',
+    left: 0,
+    top: 130,
   },
   contentContainer: {
-    alignItems: 'center',
+    marginHorizontal: 20,
+    marginTop: 350,
   },
   contentTitle: {
-    fontSize: TITLE_FONT_SIZE,
-    fontWeight: '700',
+    fontSize: 26,
+    fontWeight: '400',
     color: BLACK,
-    lineHeight: 28,
-    paddingLeft: 50,
-    paddingRight: 51,
+    lineHeight: 32,
     textAlign: 'center',
+    marginBottom: 13,
   },
   contentBody: {
     textAlign: 'center',
-    fontSize: FONT_LARGE,
+    fontSize: 18,
     fontWeight: '400',
     color: BLACK,
     lineHeight: 24,
-    flexGrow: 1,
-    paddingTop: 13,
-    paddingLeft: 25,
-    paddingRight: 26,
   },
   circleContainer: {
-    alignItems: 'center',
-    bottom: 47,
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: 27,
   },
 });
