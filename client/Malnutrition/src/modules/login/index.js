@@ -35,6 +35,7 @@ const Login = ({navigation, login, loginData, errorText, hideError}) => {
   const [isValidForm, setIsValidForm] = useState(false);
   const [formValues, setFormValues] = useState({
     phone_number: '',
+    is_creation: false,
   });
 
   useEffect(() => {

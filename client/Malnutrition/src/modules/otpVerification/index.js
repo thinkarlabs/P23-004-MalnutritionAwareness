@@ -88,7 +88,6 @@ const OTPVerification = ({
   }, [verifyOtpFormValues.otp]);
 
   const verifyOtp = () => {
-    console.log(verifyOtpFormValues, 'verifyOtpFormValues');
     setCount(0);
     otpVerification(verifyOtpFormValues);
   };
@@ -96,7 +95,6 @@ const OTPVerification = ({
   const onPressResendOtp = () => {
     setCount(30);
     hideError();
-    console.log(resendOtpFormValues, 'resendOtpFormValues');
     resendOTP(resendOtpFormValues);
   };
 
