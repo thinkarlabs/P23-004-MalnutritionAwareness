@@ -10,7 +10,7 @@ import {
   URL_OTP_VERIFICATION,
   URL_RESEND_OTP,
 } from '../../shared/apis/APIConstants';
-import { ASYNC_CONSTANTS } from '../../shared/constants/constants';
+import {ASYNC_CONSTANTS} from '../../shared/constants/constants';
 
 export const otpVerification = data => dispatch => {
   const reqBody = {

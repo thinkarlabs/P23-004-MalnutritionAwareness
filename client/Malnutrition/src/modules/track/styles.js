@@ -1,9 +1,9 @@
-import { StyleSheet } from 'react-native'
-import { WHITE } from '../../shared/constants/colors'
+import {StyleSheet} from 'react-native';
+import {WHITE} from '../../shared/constants/colors';
 
 export const trackHealthStyles = StyleSheet.create({
-    screenContainer: {
-        flex: 1,
-        backgroundColor: WHITE,
-    }
-})
+  screenContainer: {
+    flex: 1,
+    backgroundColor: WHITE,
+  },
+});

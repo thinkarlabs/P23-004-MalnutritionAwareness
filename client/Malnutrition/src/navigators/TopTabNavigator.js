@@ -1,9 +1,10 @@
+import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import {StyleSheet, Text, View} from 'react-native';
-import Timeline from '../modules/track/trackHealthScreen/Timeline';
-import TrackHealth from '../modules/track/trackHealthScreen/TrackHealth';
+import {Text, View} from 'react-native';
 import {BLACK} from '../shared/constants/colors';
 import {TRACK_HEALTH} from '../shared/constants/navigatorConstants';
+import TrackHealth from '../modules/track/trackHealthScreen/trackHealth';
+import Timeline from '../modules/track/trackHealthScreen/timeline';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -37,16 +38,3 @@ export const TopTabNavigator = () => {
     </Tab.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    top: 10,
-  },
-  tabBarText: {
-    fontSize: 18,
-    lineHeight: 22,
-    color: 'red',
-  },
-});

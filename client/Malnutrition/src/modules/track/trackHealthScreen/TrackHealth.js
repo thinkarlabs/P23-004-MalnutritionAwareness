@@ -1,13 +1,13 @@
-import {View, Text, SafeAreaView} from 'react-native';
+import {View, Text} from 'react-native';
 import React from 'react';
 import {trackHealthContainerStyles} from './styles';
-import {TRACK_HEALTH, USER_DETAILS} from '../../../shared/constants/constants';
+import {TRACK_HEALTH} from '../../../shared/constants/constants';
 import {beneficiaryInfoStyles} from '../../createAccount/beneficiaryInfoScreen/styles';
 import AppTextInput from '../../../shared/components/appTextInput';
 import CalendarIcon from '../../../../assets/svg/icons/calendarIcon';
 import {PLACEHOLDER_COLOR} from '../../../shared/constants/colors';
-import { Button } from '../../../shared/components/button';
-import { buttonStyles } from '../../../shared/components/button/styles';
+import {Button} from '../../../shared/components/button';
+import {buttonStyles} from '../../../shared/components/button/styles';
 
 const TrackHealth = () => {
   return (
