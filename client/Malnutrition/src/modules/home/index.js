@@ -27,6 +27,7 @@ import {HOME_CARD} from '../../shared/constants/navigatorConstants';
 import {createAccountStyles} from '../createAccount/styles';
 import {homeStyles} from './styles';
 import {homeScreenSync as homeScreenSyncAction} from './Actions';
+import { AppVideoPlayer } from '../../shared/components/appVideoPlayer';
 
 const Home = ({navigation, homeScreenSync, syncData}) => {
   useEffect(() => {
@@ -48,7 +49,7 @@ const Home = ({navigation, homeScreenSync, syncData}) => {
             </Text>
           </View>
           <Text style={homeStyles.homeText}>{HOMESCREEN.TITLE}</Text>
-          <View
+          {/* <View
             style={{
               // width: 335,
               height: 195,
@@ -56,7 +57,8 @@ const Home = ({navigation, homeScreenSync, syncData}) => {
               borderRadius: 12,
               marginVertical: 12,
             }}
-          />
+          /> */}
+          <AppVideoPlayer />
           <AppCard
             onPress={() => navigation.navigate(HOME_CARD.CONTENT1)}
             content={HOMESCREEN.CARD_CONTENT1}
