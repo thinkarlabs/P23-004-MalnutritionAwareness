@@ -12,6 +12,7 @@ import {
   LOGIN,
   PREGNANTWOMAN_SCREEN,
 } from '../../shared/constants/navigatorConstants';
+import {CARD_BACKGROUND} from '../../shared/constants/colors';
 
 const CreateAccount = ({navigation}) => {
   return (
@@ -36,6 +37,8 @@ const CreateAccount = ({navigation}) => {
             title={CREATE_ACCOUNT.CATEGORY_1_TITLE}
             content={CREATE_ACCOUNT.CATEGORY_1_DESCRIPTION}
             image={<PregnantWomenImage />}
+            background={CARD_BACKGROUND}
+            boxText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
           />
           <AppCard
             onPress={() => {
@@ -47,6 +50,8 @@ const CreateAccount = ({navigation}) => {
             content={CREATE_ACCOUNT.CATEGORY_2_DESCRIPTION}
             image={<LactatingMotherImage />}
             newStyle={createAccountStyles.rowReverse}
+            background={CARD_BACKGROUND}
+            boxText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
           />
           <AppCard
             onPress={() => {
@@ -57,6 +62,8 @@ const CreateAccount = ({navigation}) => {
             title={CREATE_ACCOUNT.CATEGORY_3_TITLE}
             content={CREATE_ACCOUNT.CATEGORY_3_DESCRIPTION}
             image={<Child6MonthImage />}
+            background={CARD_BACKGROUND}
+            boxText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
           />
         </View>
       </ScrollView>

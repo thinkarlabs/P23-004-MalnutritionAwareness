@@ -7,3 +7,5 @@ export const RESEND_OTP_SUCCESS = 'resend_OTP_success';
 export const RESEND_OTP_ERROR = 'resend_OTP_error';
 export const LOGIN_SUCCESS = 'login_success';
 export const LOGIN_ERROR = 'login_error';
+export const HOMESCREEN_SYNC_SUCCESS = 'homescreen_sync_success';
+export const HOMESCREEN_SYNC_ERROR = 'homescreen_sync_error';

@@ -5,7 +5,7 @@ import Splash from '../modules/splash';
 import {
   CHILDINFO_SCREEN,
   CREATEACCOUNT,
-  HOME,
+  HOME_CARD,
   LOGIN,
   ONBOARDINGSLIDER1,
   ONBOARDINGSLIDER2,
@@ -13,6 +13,7 @@ import {
   OTPVERIFICATION,
   PREGNANTWOMAN_SCREEN,
   SPLASH,
+  TAB,
 } from '../shared/constants/navigatorConstants';
 import {WHITE} from '../shared/constants/colors';
 import CreateAccount from '../modules/createAccount';
@@ -22,7 +23,7 @@ import OnBoardingSlider1 from '../modules/onboarding/OnBoardingSlider1';
 import OnBoardingSlider2 from '../modules/onboarding/OnBoardingSlider2';
 import OnBoardingSlider3 from '../modules/onboarding/OnBoardingSlider3';
 import Login from '../modules/login';
-import Home from '../modules/home';
+import BottomTab from './BottomTab';
 import ChildInfo from '../modules/createAccount/beneficiaryInfoScreen/ChildInfo';
 
 const Stack = createStackNavigator();
@@ -37,11 +38,11 @@ export function AppStackNavigator() {
   }, []);
 
   return (
-    <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
           cardStyle: {backgroundColor: WHITE},
+          gestureEnabled: false,
         }}>
         {showSplashScreen ? (
           <Stack.Screen name={SPLASH} component={Splash} />
@@ -57,8 +58,7 @@ export function AppStackNavigator() {
         <Stack.Screen name={CHILDINFO_SCREEN} component={ChildInfo} />
         <Stack.Screen name={LOGIN} component={Login} />
         <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
-        <Stack.Screen name={HOME} component={Home} />
+        <Stack.Screen name={TAB} component={BottomTab} />
       </Stack.Navigator>
-    </NavigationContainer>
   );
 }

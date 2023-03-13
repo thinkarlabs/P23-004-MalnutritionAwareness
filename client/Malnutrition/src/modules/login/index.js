@@ -41,10 +41,11 @@ const Login = ({navigation, login, loginData, errorText, hideError}) => {
   useEffect(() => {
     if (loginData && !errorText) {
       navigation.navigate(OTPVERIFICATION, {
+        phone_number: formValues?.phone_number,
         fromWhere: LOGIN_TEXT,
       });
     }
-  }, [loginData, errorText, navigation]);
+  }, [loginData, errorText, navigation, formValues.phone_number]);
 
   const updatePhoneNumber = newVal => {
     hideError();

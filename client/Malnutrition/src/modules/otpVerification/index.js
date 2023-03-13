@@ -13,9 +13,9 @@ import {
   LOGIN_TEXT,
 } from '../../shared/constants/constants';
 import {
-  HOME,
   LOGIN,
   PREGNANTWOMAN_SCREEN,
+  TAB,
 } from '../../shared/constants/navigatorConstants';
 import {Button} from '../../shared/components/button';
 import {buttonStyles} from '../../shared/components/button/styles';
@@ -72,7 +72,7 @@ const OTPVerification = ({
 
   useEffect(() => {
     if (verifyOtpData && !errorText) {
-      navigation.navigate(HOME);
+      navigation.navigate(TAB);
     }
   });
 
