@@ -48,7 +48,7 @@ export function AppStackNavigator() {
           cardStyle: {backgroundColor: WHITE},
           gestureEnabled: false,
         }}>
-        {/* {showSplashScreen ? (
+        {showSplashScreen ? (
           <Stack.Screen name={SPLASH} component={Splash} />
         ) : null}
         <Stack.Screen name={ONBOARDINGSLIDER1} component={OnBoardingSlider1} />
@@ -61,14 +61,14 @@ export function AppStackNavigator() {
         />
         <Stack.Screen name={CHILDINFO_SCREEN} component={ChildInfo} />
         <Stack.Screen name={LOGIN} component={Login} />
-        <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} /> */}
-        <Stack.Screen name={TAB} component={BottomTab} />
-        <Stack.Screen name={HOME_CARD.CONTENT1} component={ChildCardContent} />
+        <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
+        {/* <Stack.Screen name={TAB} component={BottomTab} /> */}
+        {/* <Stack.Screen name={HOME_CARD.CONTENT1} component={ChildCardContent} />
         <Stack.Screen name={HOME_CARD.CONTENT2} component={ParentCardContent} />
         <Stack.Screen
           name={HOME_CARD.CONTENT3}
           component={WarningCardContent}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

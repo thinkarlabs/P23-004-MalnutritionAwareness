@@ -9,3 +9,4 @@ export const LOGIN_SUCCESS = 'login_success';
 export const LOGIN_ERROR = 'login_error';
 export const HOMESCREEN_SYNC_SUCCESS = 'homescreen_sync_success';
 export const HOMESCREEN_SYNC_ERROR = 'homescreen_sync_error';
+export const ACCESS_TOKEN = 'access_token';

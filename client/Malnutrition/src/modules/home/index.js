@@ -28,12 +28,14 @@ import {createAccountStyles} from '../createAccount/styles';
 import {homeStyles} from './styles';
 import {homeScreenSync as homeScreenSyncAction} from './Actions';
 import { AppVideoPlayer } from '../../shared/components/appVideoPlayer';
+import {useSelector} from 'react-redux';
 
 const Home = ({navigation, homeScreenSync, syncData}) => {
   useEffect(() => {
     homeScreenSync();
-    console.log(syncData);
+    console.log(syncData.video, 'data');
   });
+  const URL = syncData.video;
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: WHITE}}>
@@ -45,20 +47,11 @@ const Home = ({navigation, homeScreenSync, syncData}) => {
               <UserBlackIcon />
             </View>
             <Text style={homeStyles.headingText}>
-              Aadarshini is 2 months and 10 days old
+              Aash is 2 months and 10 days old
             </Text>
           </View>
           <Text style={homeStyles.homeText}>{HOMESCREEN.TITLE}</Text>
-          {/* <View
-            style={{
-              // width: 335,
-              height: 195,
-              backgroundColor: LIGHT_GREY,
-              borderRadius: 12,
-              marginVertical: 12,
-            }}
-          /> */}
-          <AppVideoPlayer />
+          <AppVideoPlayer link={URL}/>
           <AppCard
             onPress={() => navigation.navigate(HOME_CARD.CONTENT1)}
             content={HOMESCREEN.CARD_CONTENT1}
