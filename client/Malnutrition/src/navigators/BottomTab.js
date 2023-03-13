@@ -1,6 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Image, View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import Home from '../modules/home';
 import Profile from '../modules/profile';
 import Track from '../modules/track';
@@ -18,7 +18,6 @@ import {
 import Ask from '../modules/ask';
 import HomeDefaultIcon from '../../assets/svg/icons/homeDefaultIcon';
 import UserActiveIcon from '../../assets/svg/icons/userActiveIcon';
-import UserBlackIcon from '../../assets/svg/icons/userBlackIcon';
 import AskDefaultIcon from '../../assets/svg/icons/askDefaultIcon';
 import AskActiveIcon from '../../assets/svg/icons/askActiveIcon';
 import HomeActive from '../../assets/svg/icons/homeActive';

@@ -25,9 +25,6 @@ import OnBoardingSlider3 from '../modules/onboarding/OnBoardingSlider3';
 import Login from '../modules/login';
 import BottomTab from './BottomTab';
 import ChildInfo from '../modules/createAccount/beneficiaryInfoScreen/ChildInfo';
-import ChildCardContent from '../modules/home/homeCardContent/ChildCardContent';
-import ParentCardContent from '../modules/home/homeCardContent/ParentCardContent';
-import WarningCardContent from '../modules/home/homeCardContent/WarningCardContent';
 
 const Stack = createStackNavigator();
 
@@ -41,14 +38,13 @@ export function AppStackNavigator() {
   }, []);
 
   return (
-    <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
           cardStyle: {backgroundColor: WHITE},
           gestureEnabled: false,
         }}>
-        {/* {showSplashScreen ? (
+        {showSplashScreen ? (
           <Stack.Screen name={SPLASH} component={Splash} />
         ) : null}
         <Stack.Screen name={ONBOARDINGSLIDER1} component={OnBoardingSlider1} />
@@ -61,15 +57,8 @@ export function AppStackNavigator() {
         />
         <Stack.Screen name={CHILDINFO_SCREEN} component={ChildInfo} />
         <Stack.Screen name={LOGIN} component={Login} />
-        <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} /> */}
+        <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
         <Stack.Screen name={TAB} component={BottomTab} />
-        <Stack.Screen name={HOME_CARD.CONTENT1} component={ChildCardContent} />
-        <Stack.Screen name={HOME_CARD.CONTENT2} component={ParentCardContent} />
-        <Stack.Screen
-          name={HOME_CARD.CONTENT3}
-          component={WarningCardContent}
-        />
       </Stack.Navigator>
-    </NavigationContainer>
   );
 }

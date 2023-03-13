@@ -131,5 +131,9 @@ export const TRACK_HEALTH = {
   PLACEHOLDER3: 'Height (CM)',
   PLACEHOLDER4: 'Head Circumference (CM)',
   PLACEHOLDER5: 'Mid Upper Arm Circumference (CM)',
-  BUTTON: 'Show result'
-}
+  BUTTON: 'Show result',
+};
+
+export const ASYNC_CONSTANTS = {
+  TOKEN: 'TOKEN',
+};

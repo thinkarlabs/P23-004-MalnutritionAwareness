@@ -2,6 +2,13 @@ import {StyleSheet} from 'react-native';
 import {BLACK, LIGHT_GREY, WHITE} from '../../constants/colors';
 
 export const appCardStyles = StyleSheet.create({
+  container: {
+    borderRadius: 16,
+    borderColor: WHITE,
+    paddingHorizontal: 20,
+    paddingVertical: 25,
+    marginBottom: 12,
+  },
   cardTitle: {
     fontSize: 22,
     lineHeight: 24,
