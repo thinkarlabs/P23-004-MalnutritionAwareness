@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import {StatusBar} from 'react-native';
 import {Provider} from 'react-redux';
@@ -12,7 +13,9 @@ function App() {
     <Provider store={store}>
       <StatusBar />
       {/* <AppStackNavigator /> */}
+      <NavigationContainer>
       <RootNavigation />
+      </NavigationContainer>
     </Provider>
   );
 }

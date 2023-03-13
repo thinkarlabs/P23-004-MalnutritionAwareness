@@ -8,7 +8,6 @@ const INITIAL_STATE = {
   loading: false,
   errorText: '',
   syncData: {},
-  accessToken: '',
 };
 
 export default (state = INITIAL_STATE, action = {}) => {
@@ -26,12 +25,6 @@ export default (state = INITIAL_STATE, action = {}) => {
         ...state,
         errorText: action.payload,
       };
-      case ACCESS_TOKEN:
-        return {
-        ...INITIAL_STATE,
-        ...state,
-        accessToken: action.payload,
-      }
     default:
       return state;
   }

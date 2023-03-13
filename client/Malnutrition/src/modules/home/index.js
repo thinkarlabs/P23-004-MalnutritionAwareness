@@ -28,12 +28,11 @@ import {AppVideoPlayer} from '../../shared/components/appVideoPlayer';
 
 const Home = ({navigation, homeScreenSync, syncData}) => {
   const [videoId, setVideoId] = useState(false);
+
   useEffect(() => {
     homeScreenSync();
-    console.log(syncData);
     const video = syncData?.video;
-    setVideoId(video.split('https://youtu.be/').pop());
-    console.log(videoId);
+    setVideoId(video?.split('https://youtu.be/')?.pop());
   }, []);
 
   return (

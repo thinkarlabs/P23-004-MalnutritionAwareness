@@ -16,7 +16,7 @@ const Profile = ({navigation}) => {
         title={'Logout'}
         textStyle={buttonStyles.buttonText}
         buttonStyle={buttonStyles.container}
-        onPress={onPressLogout}
+        // onPress={onPressLogout}
       />
     </SafeAreaView>
   );

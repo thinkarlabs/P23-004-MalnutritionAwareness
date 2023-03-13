@@ -123,3 +123,7 @@ export const WARNINGSCREEN_CARD = {
   TITLE: `Your baby can do any${'\n'}unwanted action to be${'\n'}harmed`,
   CARD_CONTENT1: `Contact ANM/AWW/${'\n'}Health care provider if${'\n'}you see any of these${'\n'}“Warnings”`,
 };
+
+export const ASYNC_CONSTANTS = {
+  TOKEN : 'TOKEN',
+}

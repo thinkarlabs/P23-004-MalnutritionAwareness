@@ -1,20 +1,26 @@
-import React from 'react';
-import { View } from 'react-native';
-import { useSelector } from 'react-redux';
-import { AppStackNavigator } from './AppStackNavigator';
-import { HomeStackNavigator } from './HomeStackNavigator';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useEffect, useState } from 'react';
+import {View} from 'react-native';
+import { ASYNC_CONSTANTS } from '../shared/constants/constants';
+import {AppStackNavigator} from './AppStackNavigator';
+import {HomeStackNavigator} from './HomeStackNavigator';
 
 export const RootNavigation = () => {
-    const accessToken = useSelector(state => state.homeScreen.accessToken);
-    console.log(accessToken, 'tokendata');
+  const [accessToken, setAccessToken] = useState('');
 
-    return (
-        <View>
-        {accessToken == null || accessToken == undefined || accessToken == '' ? (
+  useEffect(async() => {
+    const token = await AsyncStorage.getItem('TOKEN');
+    setAccessToken(token);
+  }, [])
+  
+
+  return (
+    <View style={{flex: 1, backgroundColor: 'black'}}>
+      {accessToken == null || accessToken == undefined || accessToken == '' ? (
         <AppStackNavigator />
       ) : (
         <HomeStackNavigator />
       )}
-        </View>
-    )
-}
+    </View>
+  );
+};
