@@ -3,7 +3,10 @@ import React from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {TAB} from '../../../shared/constants/navigatorConstants';
 import {homeCardStyles} from './styles';
-import {HOMESCREEN, PARENTSCREEN_CARD} from '../../../shared/constants/constants';
+import {
+  HOMESCREEN,
+  PARENTSCREEN_CARD,
+} from '../../../shared/constants/constants';
 import ChildIcon from '../../../../assets/svg/icons/childIcon';
 import SwipeRightIcon from '../../../../assets/svg/icons/swipeRightIcon';
 

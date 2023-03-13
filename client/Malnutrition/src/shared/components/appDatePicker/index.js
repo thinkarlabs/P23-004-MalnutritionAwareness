@@ -1,8 +1,7 @@
-import {View, TouchableOpacity, Text, Modal, Pressable} from 'react-native';
+import {View, TouchableOpacity, Text, Modal} from 'react-native';
 import React, {useState} from 'react';
 import {Calendar} from 'react-native-calendars';
 import {appDatePickerStyles} from './styles';
-import {USER_DETAILS} from '../../constants/constants';
 import {BLACK, PURPLE} from '../../constants/colors';
 import moment from 'moment';
 

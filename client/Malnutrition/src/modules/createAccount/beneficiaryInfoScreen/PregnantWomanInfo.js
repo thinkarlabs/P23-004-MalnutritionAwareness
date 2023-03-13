@@ -34,7 +34,7 @@ import {createAccountStyles} from '../styles';
 import PhoneIcon from '../../../../assets/svg/icons/phoneIcon';
 import CalendarIcon from '../../../../assets/svg/icons/calendarIcon';
 import MotherIcon from '../../../../assets/svg/icons/motherIcon';
-import { appDropdownStyles } from '../../../shared/components/appDropdown/styles';
+import {appDropdownStyles} from '../../../shared/components/appDropdown/styles';
 
 const PregnantWomanInfo = ({
   route,
