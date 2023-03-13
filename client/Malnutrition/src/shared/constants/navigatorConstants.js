@@ -18,3 +18,8 @@ export const HOME_CARD = {
   CONTENT2: 'ParentCard',
   CONTENT3: 'WarningCard',
 };
+
+export const TRACK_HEALTH = {
+  CONTENT1: 'Track Health',
+  CONTENT2: 'Timeline',
+}

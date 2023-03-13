@@ -41,4 +41,9 @@ export const appHeaderStyles = StyleSheet.create({
     position: 'absolute',
     justifyContent: 'flex-start',
   },
+  headerSubText: {
+    fontWeight: '400',
+    fontSize: 14,
+    lineHeight: 22,
+  }
 });

@@ -1,11 +1,17 @@
-import { View, Text } from 'react-native'
+import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
+import AppHeader from '../../shared/components/appHeader'
+import { trackHealthStyles } from './styles'
+import { TopTabNavigator } from '../../navigators/TopTabNavigator'
 
 const Track = () => {
   return (
-    <View>
-      <Text>Track</Text>
-    </View>
+    <SafeAreaView style={trackHealthStyles.screenContainer}>
+      <AppHeader 
+        title={'Aadarshini'}
+      />
+      <TopTabNavigator />
+    </SafeAreaView>
   )
 }
 
