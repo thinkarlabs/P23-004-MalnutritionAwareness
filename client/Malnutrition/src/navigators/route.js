@@ -8,9 +8,12 @@ import {HomeStackNavigator} from './HomeStackNavigator';
 export const RootNavigation = () => {
   const [accessToken, setAccessToken] = useState('');
 
-  useEffect(async() => {
-    const token = await AsyncStorage.getItem('TOKEN');
-    setAccessToken(token);
+  useEffect( () => {
+    async function token() {
+      const token = await AsyncStorage.getItem('TOKEN');
+      setAccessToken(token);
+    }
+    token();
   }, [])
   
 
