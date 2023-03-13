@@ -1,10 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Text, SafeAreaView, View, ScrollView} from 'react-native';
 import {connect} from 'react-redux';
 import ChildDetails from '../../../assets/svg/childDetails';
-import PersonIcon from '../../../assets/svg/icons/personIcon';
 import UserBlackIcon from '../../../assets/svg/icons/userBlackIcon';
-import PregnantWomenImage from '../../../assets/svg/pregnantWomenSVG';
 import WarningDetails from '../../../assets/svg/warningDetailSVG';
 import WhatBabyDoIllustration from '../../../assets/svg/whatBabyDoSVG';
 import WhatShouldIDoIllustration from '../../../assets/svg/whatShouldIDoSVG';
@@ -16,7 +14,6 @@ import {
   LIGHT_YELLOW,
   CARD_RED,
   CARD_BACKGROUND,
-  LIGHT_GREY,
 } from '../../shared/constants/colors';
 import {
   APP_NAME,
@@ -27,13 +24,17 @@ import {HOME_CARD} from '../../shared/constants/navigatorConstants';
 import {createAccountStyles} from '../createAccount/styles';
 import {homeStyles} from './styles';
 import {homeScreenSync as homeScreenSyncAction} from './Actions';
-import { AppVideoPlayer } from '../../shared/components/appVideoPlayer';
+import {AppVideoPlayer} from '../../shared/components/appVideoPlayer';
 
 const Home = ({navigation, homeScreenSync, syncData}) => {
+  const [videoId, setVideoId] = useState(false);
   useEffect(() => {
     homeScreenSync();
     console.log(syncData);
-  });
+    const video = syncData?.video;
+    setVideoId(video.split('https://youtu.be/').pop());
+    console.log(videoId);
+  }, []);
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: WHITE}}>
@@ -49,16 +50,7 @@ const Home = ({navigation, homeScreenSync, syncData}) => {
             </Text>
           </View>
           <Text style={homeStyles.homeText}>{HOMESCREEN.TITLE}</Text>
-          {/* <View
-            style={{
-              // width: 335,
-              height: 195,
-              backgroundColor: LIGHT_GREY,
-              borderRadius: 12,
-              marginVertical: 12,
-            }}
-          /> */}
-          <AppVideoPlayer />
+          <AppVideoPlayer videoId={videoId} />
           <AppCard
             onPress={() => navigation.navigate(HOME_CARD.CONTENT1)}
             content={HOMESCREEN.CARD_CONTENT1}
