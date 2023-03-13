@@ -44,7 +44,7 @@ const BottomTab = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <View style={styles.container}>
-              {focused ? <HomeActive /> : <HomeDefaultIcon/>}
+              {focused ? <HomeActive /> : <HomeDefaultIcon />}
               <Text
                 style={{
                   color: focused ? FOCUSED_TAB_ICON : TAB_ICON,
@@ -64,7 +64,7 @@ const BottomTab = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <View style={styles.container}>
-              {focused ? <TrackActive /> : <TrackDefault/>}
+              {focused ? <TrackActive /> : <TrackDefault />}
               <Text
                 style={{
                   color: focused ? FOCUSED_TAB_ICON : TAB_ICON,
@@ -84,7 +84,7 @@ const BottomTab = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <View style={styles.container}>
-              {focused ? <AskActiveIcon /> : <AskDefaultIcon/>}
+              {focused ? <AskActiveIcon /> : <AskDefaultIcon />}
               <Text
                 style={{
                   color: focused ? FOCUSED_TAB_ICON : TAB_ICON,
@@ -104,7 +104,7 @@ const BottomTab = () => {
         options={{
           tabBarIcon: ({focused}) => (
             <View style={styles.container}>
-              {focused ? <UserActiveIcon /> : <UserDefault/>}
+              {focused ? <UserActiveIcon /> : <UserDefault />}
               <Text
                 style={{
                   color: focused ? FOCUSED_TAB_ICON : TAB_ICON,
