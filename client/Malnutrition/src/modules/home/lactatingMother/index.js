@@ -27,7 +27,7 @@ import {homeScreenSync as homeScreenSyncAction} from './Actions';
 import {AppVideoPlayer} from '../../shared/components/appVideoPlayer';
 import { useIsFocused } from '@react-navigation/native';
 
-const Home = ({navigation, homeScreenSync, syncData}) => {
+const LactatingMother = ({navigation, homeScreenSync, syncData}) => {
   const [videoId, setVideoId] = useState(false);
   const [userDetails, setUserDetails] = useState(syncData);
   const isFocused = useIsFocused();
@@ -119,4 +119,4 @@ const mapStateToProps = state => ({
   errorText: state.homeScreen.errorText,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(LactatingMother);
