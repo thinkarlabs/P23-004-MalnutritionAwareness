@@ -24,6 +24,7 @@ const TrackHealth = () => {
             placeholder={TRACK_HEALTH.PLACEHOLDER1}
             placeholderTextColor={PLACEHOLDER_COLOR}
             newStyles={beneficiaryInfoStyles.inputField}
+            keyboardType="numeric"
             name="name"
           />
         </View>
@@ -35,6 +36,7 @@ const TrackHealth = () => {
             placeholder={TRACK_HEALTH.PLACEHOLDER2}
             placeholderTextColor={PLACEHOLDER_COLOR}
             newStyles={beneficiaryInfoStyles.inputField}
+            keyboardType="numeric"
             name="name"
           />
         </View>
@@ -46,6 +48,7 @@ const TrackHealth = () => {
             placeholder={TRACK_HEALTH.PLACEHOLDER3}
             placeholderTextColor={PLACEHOLDER_COLOR}
             newStyles={beneficiaryInfoStyles.inputField}
+            keyboardType="numeric"
             name="name"
           />
         </View>
@@ -57,6 +60,7 @@ const TrackHealth = () => {
             placeholder={TRACK_HEALTH.PLACEHOLDER4}
             placeholderTextColor={PLACEHOLDER_COLOR}
             newStyles={beneficiaryInfoStyles.inputField}
+            keyboardType="numeric"
             name="name"
           />
         </View>
@@ -68,6 +72,7 @@ const TrackHealth = () => {
             placeholder={TRACK_HEALTH.PLACEHOLDER5}
             placeholderTextColor={PLACEHOLDER_COLOR}
             newStyles={beneficiaryInfoStyles.inputField}
+            keyboardType="numeric"
             name="name"
           />
         </View>

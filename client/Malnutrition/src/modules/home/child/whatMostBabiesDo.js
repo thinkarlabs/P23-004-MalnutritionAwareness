@@ -2,11 +2,11 @@ import {SafeAreaView, Text, View} from 'react-native';
 import React from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {TAB} from '../../../shared/constants/navigatorConstants';
-import {CHILDSCREEN_CARD} from '../../../shared/constants/constants';
 import {homeCardStyles} from './styles';
 import ChildIcon from '../../../../assets/svg/icons/childIcon';
+import {CHILDSCREEN_CARD} from '../../../shared/constants/homeConstants/parentConstants';
 
-const ChildCardContent = ({navigation}) => {
+const whatMostBabiesDo = ({navigation}) => {
   return (
     <SafeAreaView>
       <AppHeader
@@ -88,4 +88,4 @@ const ChildCardContent = ({navigation}) => {
   );
 };
 
-export default ChildCardContent;
+export default whatMostBabiesDo;

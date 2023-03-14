@@ -25,9 +25,9 @@ import {createAccountStyles} from '../createAccount/styles';
 import {homeStyles} from './styles';
 import {homeScreenSync as homeScreenSyncAction} from './Actions';
 import {AppVideoPlayer} from '../../shared/components/appVideoPlayer';
-import { useIsFocused } from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
 
-const LactatingMother = ({navigation, homeScreenSync, syncData}) => {
+const ChildHomeScreen = ({navigation, homeScreenSync, syncData}) => {
   const [videoId, setVideoId] = useState(false);
   const [userDetails, setUserDetails] = useState(syncData);
   const isFocused = useIsFocused();
@@ -48,17 +48,21 @@ const LactatingMother = ({navigation, homeScreenSync, syncData}) => {
       years--;
       months += 12;
       if (days < 0) {
-        const monthDays = new Date(today.getFullYear(), today.getMonth() - 1, 0).getDate();
+        const monthDays = new Date(
+          today.getFullYear(),
+          today.getMonth() - 1,
+          0,
+        ).getDate();
         days += monthDays;
       }
     }
     const age = {
       years: years,
       months: months,
-      days: days
+      days: days,
     };
     return age;
-  };
+  }
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: WHITE}}>
@@ -70,7 +74,9 @@ const LactatingMother = ({navigation, homeScreenSync, syncData}) => {
               <UserBlackIcon />
             </View>
             <Text style={homeStyles.headingText}>
-              {syncData?.mother_details?.name} is {getAgeFromDateOfBirth().months} months and {getAgeFromDateOfBirth().days} days old
+              {syncData?.mother_details?.name} is{' '}
+              {getAgeFromDateOfBirth().months} months and{' '}
+              {getAgeFromDateOfBirth().days} days old
             </Text>
           </View>
           <Text style={homeStyles.homeText}>{HOMESCREEN.TITLE}</Text>
@@ -119,4 +125,4 @@ const mapStateToProps = state => ({
   errorText: state.homeScreen.errorText,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LactatingMother);
+export default connect(mapStateToProps, mapDispatchToProps)(ChildHomeScreen);

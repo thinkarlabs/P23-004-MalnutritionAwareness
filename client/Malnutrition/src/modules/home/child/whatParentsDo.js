@@ -10,7 +10,7 @@ import {
 import ChildIcon from '../../../../assets/svg/icons/childIcon';
 import SwipeRightIcon from '../../../../assets/svg/icons/swipeRightIcon';
 
-const ParentCardContent = ({navigation}) => {
+const WhatParentsDo = ({navigation}) => {
   return (
     <SafeAreaView>
       <AppHeader
@@ -102,4 +102,4 @@ const ParentCardContent = ({navigation}) => {
   );
 };
 
-export default ParentCardContent;
+export default WhatParentsDo;
