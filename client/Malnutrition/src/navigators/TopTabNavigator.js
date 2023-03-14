@@ -3,8 +3,8 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 import {Text, View} from 'react-native';
 import {BLACK} from '../shared/constants/colors';
 import {TRACK_HEALTH} from '../shared/constants/navigatorConstants';
-import TrackHealth from '../modules/track/trackHealthScreen/trackHealth';
-import Timeline from '../modules/track/trackHealthScreen/timeline';
+import Timeline from '../modules/track/trackHealthScreen/Timeline';
+import TrackHealth from '../modules/track/trackHealthScreen/TrackHealth';
 
 const Tab = createMaterialTopTabNavigator();
 
