@@ -1,72 +1,44 @@
-import React, {useEffect, useState} from 'react';
-import {Text, SafeAreaView, View, ScrollView} from 'react-native';
-import {connect} from 'react-redux';
-import ChildDetails from '../../../assets/svg/childDetails';
-import UserBlackIcon from '../../../assets/svg/icons/userBlackIcon';
-import WarningDetails from '../../../assets/svg/warningDetailSVG';
-import WhatBabyDoIllustration from '../../../assets/svg/whatBabyDoSVG';
-import WhatShouldIDoIllustration from '../../../assets/svg/whatShouldIDoSVG';
-import {AppCard} from '../../shared/components/appCard';
-import AppHeader from '../../shared/components/appHeader';
-import {
-  CARD_BLUE,
-  WHITE,
-  LIGHT_YELLOW,
-  CARD_RED,
-  CARD_BACKGROUND,
-} from '../../shared/constants/colors';
-import {
-  APP_NAME,
-  CREATE_ACCOUNT,
-  HOMESCREEN,
-} from '../../shared/constants/constants';
-import {HOME_CARD} from '../../shared/constants/navigatorConstants';
-import {createAccountStyles} from '../createAccount/styles';
-import {homeStyles} from './styles';
-import {homeScreenSync as homeScreenSyncAction} from './Actions';
-import {AppVideoPlayer} from '../../shared/components/appVideoPlayer';
 import {useIsFocused} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import {Text, SafeAreaView, View, ScrollView, FlatList} from 'react-native';
+import {connect} from 'react-redux';
+import ChildDetails from '../../../../assets/svg/childDetails';
+import UserBlackIcon from '../../../../assets/svg/icons/userBlackIcon';
+import WarningDetails from '../../../../assets/svg/warningDetailSVG';
+import WhatBabyDoIllustration from '../../../../assets/svg/whatBabyDoSVG';
+import WhatShouldIDoIllustration from '../../../../assets/svg/whatShouldIDoSVG';
+import {AppCard} from '../../../shared/components/appCard';
+import {AppVideoPlayer} from '../../../shared/components/appVideoPlayer';
+import {
+  CARD_BACKGROUND,
+  CARD_BLUE,
+  CARD_RED,
+  LIGHT_YELLOW,
+  WHITE,
+} from '../../../shared/constants/colors';
+import {CREATE_ACCOUNT, HOMESCREEN} from '../../../shared/constants/constants';
+import {
+  CHILDSCREEN_CARD,
+  WHAT_MOST_BABIES_DO,
+  WHAT_PARENT_DO,
+} from '../../../shared/constants/homeConstants/childConstants';
+import {HOME_CARD} from '../../../shared/constants/navigatorConstants';
+import {getAgeFromDateOfBirth} from '../../../shared/Utils';
+import {createAccountStyles} from '../../createAccount/styles';
+import {homeStyles} from '../styles';
 
-const ChildHomeScreen = ({navigation, homeScreenSync, syncData}) => {
+const ChildHomeScreen = ({navigation, data}) => {
   const [videoId, setVideoId] = useState(false);
-  const [userDetails, setUserDetails] = useState(syncData);
+  const [userDetails, setUserDetails] = useState();
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    homeScreenSync();
-    setUserDetails(syncData);
+    setUserDetails(data);
     setVideoId(userDetails?.video?.split('https://youtu.be/')?.pop());
   }, [isFocused]);
 
-  function getAgeFromDateOfBirth() {
-    const birthDate = new Date(syncData.mother_details.lmp);
-    const today = new Date();
-    let years = today.getFullYear() - birthDate.getFullYear();
-    let months = today.getMonth() - birthDate.getMonth();
-    let days = today.getDate() - birthDate.getDate();
-    if (months < 0 || (months === 0 && days < 0)) {
-      years--;
-      months += 12;
-      if (days < 0) {
-        const monthDays = new Date(
-          today.getFullYear(),
-          today.getMonth() - 1,
-          0,
-        ).getDate();
-        days += monthDays;
-      }
-    }
-    const age = {
-      years: years,
-      months: months,
-      days: days,
-    };
-    return age;
-  }
-
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: WHITE}}>
-      <AppHeader title={APP_NAME} />
       <ScrollView style={{height: '75%'}}>
         <View style={homeStyles.container}>
           <View style={homeStyles.headingContainer}>
@@ -74,41 +46,31 @@ const ChildHomeScreen = ({navigation, homeScreenSync, syncData}) => {
               <UserBlackIcon />
             </View>
             <Text style={homeStyles.headingText}>
-              {syncData?.mother_details?.name} is{' '}
-              {getAgeFromDateOfBirth().months} months and{' '}
-              {getAgeFromDateOfBirth().days} days old
+              {userDetails?.mother_details?.name} is{' '}
+              {getAgeFromDateOfBirth(userDetails?.child_details?.lmp).months}{' '}
+              months and{' '}
+              {getAgeFromDateOfBirth(userDetails?.child_details?.lmp).days} days
+              old
             </Text>
           </View>
           <Text style={homeStyles.homeText}>{HOMESCREEN.TITLE}</Text>
           <AppVideoPlayer videoId={videoId} />
-          <AppCard
-            onPress={() => navigation.navigate(HOME_CARD.CONTENT1)}
-            content={HOMESCREEN.CARD_CONTENT1}
-            background={CARD_BLUE}
-            image={<WhatBabyDoIllustration />}
-            boxText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
-          />
-          <AppCard
-            onPress={() => navigation.navigate(HOME_CARD.CONTENT2)}
-            content={HOMESCREEN.CARD_CONTENT2}
-            background={LIGHT_YELLOW}
-            newStyle={createAccountStyles.rowReverse}
-            image={<WhatShouldIDoIllustration />}
-            boxText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
-          />
-          <AppCard
-            onPress={() => navigation.navigate(HOME_CARD.CONTENT3)}
-            content={HOMESCREEN.CARD_CONTENT3}
-            background={CARD_RED}
-            image={<WarningDetails />}
-            boxText={CREATE_ACCOUNT.MOVE_FORWARD_TEXT}
-          />
-          <AppCard
-            onPress={() => {}}
-            content={HOMESCREEN.CARD_CONTENT4}
-            background={CARD_BACKGROUND}
-            image={<ChildDetails />}
-            boxText={'Add your child detail'}
+          <FlatList
+            data={CHILDSCREEN_CARD}
+            renderItem={({item}) => {
+              return (
+                <View>
+                  <AppCard
+                    // onPress={() => navigation.navigate(item.ONPRESS)}
+                    content={item.CONTENT}
+                    background={item.BACKGROUND}
+                    image={item.IMAGE}
+                    boxText={item.BOX_TEXT}
+                    newStyle={item.STYLE}
+                  />
+                </View>
+              );
+            }}
           />
         </View>
       </ScrollView>
@@ -116,13 +78,4 @@ const ChildHomeScreen = ({navigation, homeScreenSync, syncData}) => {
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  homeScreenSync: () => dispatch(homeScreenSyncAction()),
-});
-
-const mapStateToProps = state => ({
-  syncData: state.homeScreen.syncData,
-  errorText: state.homeScreen.errorText,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ChildHomeScreen);
+export default ChildHomeScreen;
