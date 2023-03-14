@@ -131,3 +131,5 @@ export const beneficiaryInfoStyles = StyleSheet.create({
     paddingHorizontal: 20,
   },
 });
+
+

@@ -124,6 +124,16 @@ export const WARNINGSCREEN_CARD = {
   CARD_CONTENT1: `Contact ANM/AWW/${'\n'}Health care provider if${'\n'}you see any of these${'\n'}“Warnings”`,
 };
 
+export const TRACK_HEALTH = {
+  TITLE: 'Enter measurements',
+  PLACEHOLDER1: 'Month(s)',
+  PLACEHOLDER2: 'Weight (KG)',
+  PLACEHOLDER3: 'Height (CM)',
+  PLACEHOLDER4: 'Head Circumference (CM)',
+  PLACEHOLDER5: 'Mid Upper Arm Circumference (CM)',
+  BUTTON: 'Show result',
+};
+
 export const ASYNC_CONSTANTS = {
-  TOKEN : 'TOKEN',
-}
+  TOKEN: 'TOKEN',
+};

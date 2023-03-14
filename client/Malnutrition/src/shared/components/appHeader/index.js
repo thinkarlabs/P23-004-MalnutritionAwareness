@@ -8,6 +8,7 @@ import {BACK} from '../../constants/constants';
 const AppHeader = ({
   onPress,
   title,
+  subTitle,
   backArrowValue,
   onBoarding,
   backText,
@@ -25,6 +26,7 @@ const AppHeader = ({
           </TouchableOpacity>
         ) : null}
         <Text style={appHeaderStyles.headerText}>{title}</Text>
+        <Text style={appHeaderStyles.headerSubText}>{subTitle}</Text>
       </View>
       <View
         style={

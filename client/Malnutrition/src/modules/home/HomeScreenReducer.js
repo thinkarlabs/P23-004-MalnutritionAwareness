@@ -1,7 +1,6 @@
 import {
   HOMESCREEN_SYNC_SUCCESS,
   HOMESCREEN_SYNC_ERROR,
-  ACCESS_TOKEN,
 } from '../../redux/types';
 
 const INITIAL_STATE = {
