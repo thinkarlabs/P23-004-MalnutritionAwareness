@@ -1,7 +1,7 @@
 from enum import Enum
 import datetime
 from typing import Optional, List
-from pydantic import BaseModel, validator, constr
+from pydantic import BaseModel, validator, constr, PositiveFloat
 
 
 class UserType(str, Enum):
@@ -15,9 +15,16 @@ class RelationWithChild(str, Enum):
     RELATIVE = 'RELATIVE'
     ANGANWADI_MEMBER = 'ANGANWADI_MEMBER'
 
+
 class GenderType(str, Enum):
     MALE = 'MALE'
     FEMALE = 'FEMALE'
+
+
+class ChildCondition(str, Enum):
+    SAM = 'SAM'
+    MAM = 'MAM'
+    NORMAL = 'NORMAL'
 
 
 class Child(BaseModel):
@@ -52,6 +59,7 @@ class CreateUserSchema(BaseModel):
             "%d/%m/%Y"
         ).date()
 
+
 class VerifyOTPSchema(BaseModel):
     phone_number: constr(
         strip_whitespace=True,
@@ -62,7 +70,7 @@ class VerifyOTPSchema(BaseModel):
 
 
 class SessionToken(BaseModel):
-    session_token : str = None
+    session_token: str = None
 
 
 class LoginUserSchema(BaseModel):
@@ -71,8 +79,18 @@ class LoginUserSchema(BaseModel):
         regex=r"^\+91[0-9]{10}$",
     )
 
+
 class ResendOTPSchema(BaseModel):
     phone_number: constr(
         strip_whitespace=True,
         regex=r"^\+91[0-9]{10}$",
     )
+
+
+class TrackHealthSchema(BaseModel):
+    months: int
+    weight: PositiveFloat
+    height: int
+    head_circumference: Optional[PositiveFloat] = None
+    mid_upper_arm_circumference: Optional[PositiveFloat] = None
+    child_condition: ChildCondition

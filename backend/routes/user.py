@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Body, Depends
-from models.user import CreateUserSchema, VerifyOTPSchema, LoginUserSchema, ResendOTPSchema
+from models.user import CreateUserSchema, VerifyOTPSchema, LoginUserSchema, ResendOTPSchema, TrackHealthSchema
 from fastapi.encoders import jsonable_encoder
 from config.database import db as database
 from config.jwt_handler import JWT_ALGORITHM, JWT_SECRET
@@ -83,9 +83,8 @@ async def resend_otp(phone_number: ResendOTPSchema = Body(...)):
     return JSONResponse(status_code=200, content={'message': 'OTP sent successfully'})
 
 
-
 @router.post("/api/v1/login")
-async def login_account(user:LoginUserSchema= Body(...)):
+async def login_account(user: LoginUserSchema = Body(...)):
     user_dict = jsonable_encoder(user)
     # check if same record exists
     if database.user.find_one({'phone_number': user.phone_number}):
@@ -98,7 +97,8 @@ async def login_account(user:LoginUserSchema= Body(...)):
 
             return JSONResponse(status_code=200, content={"message": "OTP sent successfully"})
         else:
-            return JSONResponse(status_code=404, content={"error": " Account exists but not verified. Please sign up again !"})
+            return JSONResponse(status_code=404,
+                                content={"error": " Account exists but not verified. Please sign up again !"})
 
     else:
         return JSONResponse(status_code=409, content={"error": "Phone number does not exists !"})
@@ -161,7 +161,7 @@ async def sync(token: str = Depends(oauth2_scheme)):
         response["video"] = video_link['video_link']
     else:
         days_from_dob = (
-                    datetime.datetime.today() - datetime.datetime.strptime(child_details[0]['dob'], '%Y-%m-%d')).days
+                datetime.datetime.today() - datetime.datetime.strptime(child_details[0]['dob'], '%Y-%m-%d')).days
         video_link = database.home_video.find_one({'$and': [{"persona_type": {"$in": ["lactating", "caregiver"]}},
                                                             {'from_days': {'$lte': days_from_dob}},
                                                             {'upto_days': {'$gte': days_from_dob}}]},
@@ -170,3 +170,27 @@ async def sync(token: str = Depends(oauth2_scheme)):
         response["video"] = video_link['video_link']
 
     return JSONResponse(content=response)
+
+
+@router.post("/api/v1/track_health")
+async def track_health(token: str = Depends(oauth2_scheme), user: TrackHealthSchema = Body(...)):
+    try:
+        decoded = jwt.decode(token, JWT_SECRET, algorithms=JWT_ALGORITHM)
+    except jwt.ExpiredSignatureError:
+        return JSONResponse(content={'error': 'JWT Token expired'})
+    except jwt.PyJWTError as e:
+        print(e)
+        return JSONResponse(content={'error': 'Invalid Token'})
+    user_phone_number = decoded['phone_number']
+    user_details = database.user.find_one({'phone_number': user_phone_number})
+    user_dict = jsonable_encoder(user)
+    database.trackhealth.update_one({'months': user_dict['months']},
+                                    {'$set': {'user_id': user_details['_id'],
+                                              'weight': user_dict['height'],
+                                              'height': user_dict['height'],
+                                              'head_circumference': user_dict['head_circumference'],
+                                              'mid_upper_arm_circumference': user_dict[
+                                                  'mid_upper_arm_circumference'],
+                                              'child_condition': user_dict['child_condition']
+                                              }}, upsert=True)
+    return JSONResponse(content={"message": "Details updated successfully"})
