@@ -64,6 +64,7 @@ const ChildInfo = ({
       },
     ],
   });
+  const [childDob, setChildDob] = useState('');
 
   useEffect(() => {
     if (todaysDate === '') {
@@ -97,16 +98,31 @@ const ChildInfo = ({
 
   const updateChildName = newVal => {
     hideError();
-    setFormValues({...formValues, name: newVal});
+    setFormValues(() => {
+      const updatedData = {...formValues};
+      updatedData.child[0].name = newVal;
+      return updatedData;
+    });
+  };
+
+  const updateChildGender = newVal => {
+    hideError();
+    setFormValues(() => {
+      const updatedData = {...formValues};
+      updatedData.child[0].gender = newVal;
+      return updatedData;
+    });
   };
 
   const updatedDob = newVal => {
     hideError();
-    setFormValues({
-      // ...formValues,
-      ...formValues.child,
-      dob: moment(newVal.timestamp).format('DD/MM/YYYY'),
+    setFormValues(() => {
+      const updatedData = {...formValues};
+      updatedData.child[0].dob = moment(newVal.timestamp).format('DD/MM/YYYY');
+      return updatedData;
     });
+
+    //return updatedData;
   };
 
   const updateMotherName = newVal => {
@@ -143,15 +159,6 @@ const ChildInfo = ({
     setFormValues({
       ...formValues,
       relation_with_child: val,
-    });
-  };
-
-  const updateGender = val => {
-    hideError();
-    setFormValues({
-      ...formValues,
-      ...formValues.child,
-      gender: val,
     });
   };
 
@@ -242,7 +249,7 @@ const ChildInfo = ({
                 style={appDropdownStyles.genderDropdown}
                 placeholder={PLACEHOLDER_DETAILS.GENDER}
                 data={GENDER}
-                dropdownValue={updateGender}
+                dropdownValue={updateChildGender}
               />
             </View>
             <View style={beneficiaryInfoStyles.inputContainer}>

@@ -33,7 +33,7 @@ const AppDropdown = ({dropdownValue, data, placeholder, style}) => {
         labelField="label"
         valueField="value"
         selectedTextStyle={appDropdownStyles.selectedTextStyle}
-        placeholder={!isFocus ? placeholder : 'I am '}
+        placeholder={!isFocus ? placeholder : ''}
         value={value}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
