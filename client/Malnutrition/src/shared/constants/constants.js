@@ -143,3 +143,7 @@ export const TRACK_HEALTH = {
 export const ASYNC_CONSTANTS = {
   TOKEN: 'TOKEN',
 };
+
+export const TAP_TO_CONNECT = 'Tap to Connect';
+export const ASK_QUERIES_TEXT =
+  'For any kind of your queries or suggestions, please connect with your Anganwadi Centre via Whatsapp';
