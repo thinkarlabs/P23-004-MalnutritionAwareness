@@ -116,7 +116,9 @@ const OTPVerification = ({
             : () => navigation.navigate(LOGIN)
         }
       />
-      <ScrollView style={verifyOTPStyles.scrollView}>
+      <ScrollView
+        style={verifyOTPStyles.scrollView}
+        showsVerticalScrollIndicator={false}>
         <View style={verifyOTPStyles.innerContainer}>
           <OtpIllustrationSVG />
           <View style={verifyOTPStyles.otpHeadingContainer}>

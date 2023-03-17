@@ -6,9 +6,17 @@ import {
 } from '../../../shared/constants/colors';
 
 export const homeCardStyles = StyleSheet.create({
+  scrollView: {
+    height: '80%',
+  },
   container: {
     paddingRight: 20,
     paddingLeft: 20,
+  },
+  swipeContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingBottom: 25,
   },
   titleText: {
     fontWeight: '400',
@@ -22,11 +30,11 @@ export const homeCardStyles = StyleSheet.create({
     borderRadius: 16,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: 14,
-    paddingTop: 8,
-    paddingBottom: 8,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
   },
   tabText: {
+    flex: 1,
     fontWeight: '400',
     fontSize: 18,
     lineHeight: 24,

@@ -19,7 +19,6 @@ export const homeScreenSync = () => async dispatch => {
   fetch(URL_SYNC, reqBody)
     .then(response => response.json())
     .then(responseData => {
-      console.log(responseData, 'responseData');
       dispatch(homeScreenSyncSuccess(responseData));
     })
     .catch(error => {

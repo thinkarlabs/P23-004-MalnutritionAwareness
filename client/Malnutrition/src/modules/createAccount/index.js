@@ -18,7 +18,7 @@ const CreateAccount = ({navigation}) => {
         backArrowValue={true}
         onPress={() => navigation.navigate(LOGIN)}
       />
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={createAccountStyles.screenWrapper}>
           <Text style={createAccountStyles.titleText}>
             {CREATE_ACCOUNT.SELECT_CURRENT_STAGE_TEXT}

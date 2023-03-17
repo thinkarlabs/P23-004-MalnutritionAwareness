@@ -19,7 +19,9 @@ const ChildHomeScreen = ({navigation, data}) => {
 
   return (
     <SafeAreaView style={homeStyles.safeAreaView}>
-      <ScrollView style={homeStyles.scrollView}>
+      <ScrollView
+        style={homeStyles.scrollView}
+        showsVerticalScrollIndicator={false}>
         <View style={homeStyles.container}>
           <View style={homeStyles.headingContainer}>
             <View style={homeStyles.profile}>
@@ -46,6 +48,9 @@ const ChildHomeScreen = ({navigation, data}) => {
                       })
                     }
                     content={item?.content}
+                    warningCardContent1={item?.content1}
+                    warningCardContent2={item?.content2}
+                    warningCardContent3={item?.content3}
                     background={item?.background}
                     image={item?.image}
                     boxText={item?.boxText}

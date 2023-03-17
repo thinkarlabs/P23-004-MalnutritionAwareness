@@ -12,13 +12,14 @@ export const TRACK = 'Track';
 export const ASK = 'Ask';
 export const PROFILE = 'Profile';
 export const TAB = 'Tab';
-export const CARD = 'Card';
+export const CHILD_CARD_CONTENT = 'ChildCardContent';
+export const PREGNANT_WOMAN_CARD_CONTENT = 'PregnantWomanCardContent';
 
 export const HOME_CARD = {
-  CONTENT3: 'WarningCard',
+  WARNING_CARD: 'WarningCard',
 };
 
 export const TRACK_HEALTH = {
-  CONTENT1: 'Track Health',
-  CONTENT2: 'Timeline',
-}
+  TRACK_HEALTH: 'Track Health',
+  TIMELINE: 'Timeline',
+};

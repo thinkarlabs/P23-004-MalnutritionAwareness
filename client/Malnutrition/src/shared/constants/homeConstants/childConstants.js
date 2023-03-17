@@ -7,33 +7,34 @@ import {CARD_BACKGROUND, CARD_BLUE, CARD_RED, LIGHT_YELLOW} from '../colors';
 import {CREATE_ACCOUNT, HOMESCREEN} from '../constants';
 import {createAccountStyles} from '../../../modules/createAccount/styles';
 import WhatShouldIDoIllustration from '../../../../assets/svg/whatShouldIDoSVG';
+import {CHILD_CARD_CONTENT, HOME_CARD, TRACK} from '../navigatorConstants';
+
+export const WHAT_MOST_BABIES_DO_TITLE = `What most babies do at${'\n'}this age? Look at this video`;
+export const WHAT_PARENT_DO_TITLE = `What you should do for your${'\n'}baby? Watch this video to${'\n'}know more.`;
 
 export const WHAT_MOST_BABIES_DO = [
-  {
-    title: `What most babies do at${'\n'}this age? Look at this video`,
-  },
   {
     content: 'Begin to smile at people',
     image: <ChildIcon />,
   },
   {
-    content: `Startle or erupt into cry at loud${'\n'}noise`,
+    content: 'Startle or erupt into cry at loud noise',
     image: <ChildIcon />,
   },
   {
-    content: `Coo make gurgling sounds when${'\n'}happy or after feeding`,
+    content: 'Coo make gurgling sounds when happy or after feeding',
     image: <ChildIcon />,
   },
   {
-    content: `Can hold head up and begin to${'\n'}push up when lying on tummy`,
+    content: 'Can hold head up and begin to push up when lying on tummy',
     image: <ChildIcon />,
   },
   {
-    content: `Make smooth moments with${'\n'}arms and legs`,
+    content: 'Make smooth moments with arms and legs',
     image: <ChildIcon />,
   },
   {
-    content: `Keep hands relaxed and take${'\n'}swipes at dangling objects`,
+    content: 'Keep hands relaxed and take swipes at dangling objects',
     image: <ChildIcon />,
   },
   {
@@ -44,26 +45,27 @@ export const WHAT_MOST_BABIES_DO = [
 
 export const WHAT_PARENT_DO = [
   {
-    title: `What you should do for your${'\n'}baby? Watch this video to${'\n'}know more.`,
-  },
-  {
-    content: `Cuddle, talk and play with your${'\n'}baby during feeding, dressing and${'\n'}bathing`,
+    content:
+      'Cuddle, talk and play with your baby during feeding, dressing and bathing',
     image: <ChildIcon />,
   },
   {
-    content: `Attend to cries immediately and${'\n'}hold the baby close to make her${'\n'}feel secure`,
+    content:
+      'Attend to cries immediately and hold the baby close to make her feel secure',
     image: <ChildIcon />,
   },
   {
-    content: `Help your baby learn to calm her${'\n'}or himself. Its ok for her to suck${'\n'}on her fingers`,
+    content:
+      'Help your baby learn to calm her or himself. Its ok for her to suck on her fingers',
     image: <ChildIcon />,
   },
   {
-    content: `Act excited and smile when your${'\n'}baby makes sounds`,
+    content: 'Act excited and smile when your baby makes sounds',
     image: <ChildIcon />,
   },
   {
-    content: `Pay attention to your baby's${'\n'}different cries so that you learn to${'\n'}know what she wants`,
+    content:
+      "Pay attention to your baby's different cries so that you learn to know what she wants",
     image: <ChildIcon />,
   },
   {
@@ -71,7 +73,8 @@ export const WHAT_PARENT_DO = [
     image: <ChildIcon />,
   },
   {
-    content: `Lay your baby on his tummy${'\n'}when she/he is awake and keep${'\n'}toys near her${'\n'}swipes at dangling objects`,
+    content:
+      'Lay your baby on his tummy when she/he is awake and keep toys near her swipes at dangling objects',
     image: <ChildIcon />,
   },
   {
@@ -81,8 +84,9 @@ export const WHAT_PARENT_DO = [
 ];
 
 export const WARNINGSCREEN_CARD = {
-  title: `Your baby can do any${'\n'}unwanted action to be${'\n'}harmed`,
-  content: `Contact ANM/AWW/${'\n'}Health care provider if${'\n'}you see any of these${'\n'}“Warnings”`,
+  title: 'Your baby can do any unwanted action to be harmed',
+  content:
+    'Contact ANM/AWW/ Health care provider if you see any of these “Warnings”',
 };
 
 export const CHILDSCREEN_CARD = [
@@ -92,7 +96,7 @@ export const CHILDSCREEN_CARD = [
     image: <WhatBabyDoIllustration />,
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
     child: WHAT_MOST_BABIES_DO,
-    onPress: 'Card',
+    onPress: CHILD_CARD_CONTENT,
   },
   {
     content: HOMESCREEN.CARD_CONTENT2,
@@ -101,17 +105,22 @@ export const CHILDSCREEN_CARD = [
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
     style: createAccountStyles.rowReverse,
     child: WHAT_PARENT_DO,
+    onPress: CHILD_CARD_CONTENT,
   },
   {
-    content: HOMESCREEN.CARD_CONTENT3,
+    content1: HOMESCREEN.CARD_CONTENT31,
+    content2: HOMESCREEN.CARD_CONTENT32,
+    content3: HOMESCREEN.CARD_CONTENT33,
     background: CARD_RED,
     image: <WarningDetails />,
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
+    onPress: HOME_CARD.WARNING_CARD,
   },
   {
     content: HOMESCREEN.CARD_CONTENT4,
     background: CARD_BACKGROUND,
     image: <ChildDetails />,
     boxText: CREATE_ACCOUNT.ADD_CHILD_DETAILS,
+    onPress: TRACK,
   },
 ];

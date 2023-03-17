@@ -14,12 +14,13 @@ const PregnantWomenHomeScreen = ({navigation, data}) => {
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    console.log(data, 'dhsjdhak');
     setVideoId(data?.video?.split('https://youtu.be/')?.pop());
   }, [isFocused]);
   return (
     <SafeAreaView style={homeStyles.safeAreaView}>
-      <ScrollView style={homeStyles.scrollView}>
+      <ScrollView
+        style={homeStyles.scrollView}
+        showsVerticalScrollIndicator={false}>
         <View style={homeStyles.container}>
           <View style={homeStyles.headingContainer}>
             <View style={homeStyles.profile}>
@@ -37,16 +38,20 @@ const PregnantWomenHomeScreen = ({navigation, data}) => {
           <FlatList
             data={PREGNANTWOMEN_CARD}
             renderItem={({item}) => {
-              console.log(item);
               return (
                 <View>
                   <AppCard
                     onPress={() =>
                       navigation.navigate(item?.onPress, {
                         data: item?.data,
+                        title: item?.title,
+                        video: videoId,
                       })
                     }
                     content={item?.content}
+                    warningCardContent1={item?.content1}
+                    warningCardContent2={item?.content2}
+                    warningCardContent3={item?.content3}
                     background={item?.background}
                     image={item?.image}
                     boxText={item?.boxText}

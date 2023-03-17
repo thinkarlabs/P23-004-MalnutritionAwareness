@@ -47,7 +47,7 @@ export const CREATE_ACCOUNT = {
 export const CREATE_ACCOUNT_CARD = [
   {
     title: 'Pregnant Woman',
-    content: `A grand and beautiful ${'\n'}adventure is about ${'\n'}to begin.`,
+    content: 'A grand and beautiful adventure is about to begin.',
     background: CARD_BACKGROUND,
     image: <PregnantWomenImage />,
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
@@ -55,7 +55,7 @@ export const CREATE_ACCOUNT_CARD = [
   },
   {
     title: 'Lactating Mother',
-    content: `A mother understands ${'\n'}what a child does ${'\n'}not say.`,
+    content: 'A mother understands what a child does not say.',
     background: CARD_BACKGROUND,
     image: <LactatingMotherImage />,
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
@@ -64,7 +64,7 @@ export const CREATE_ACCOUNT_CARD = [
   },
   {
     title: '6-24 Months',
-    content: `A baby is born with a ${'\n'}need to be loved and ${'\n'}grow with caring.`,
+    content: 'A baby is born with a need to be loved and grow with caring.',
     background: CARD_BACKGROUND,
     image: <Child6MonthImage />,
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
@@ -104,11 +104,14 @@ export const DROPDOWN_BOX = {
 
 export const HOMESCREEN = {
   TITLE: 'Welcome to Poshan!!',
-  CARD_CONTENT1: `See what most babies${'\n'}do at this age?`,
-  CARD_CONTENT2: `What you should do for${'\n'}your baby?`,
-  CARD_CONTENT3: `See what can be the${'\n'}Warning for you`,
-  CARD_CONTENT4: `Your child measurement${'\n'}can tell you how's your${'\n'}childhealth is.`,
-  CARASOUL_INSTRUCTION: 'Scroll right to left to see another instruction',
+  CARD_CONTENT1: 'See what most babies do at this age?',
+  CARD_CONTENT2: 'What you should do for your baby?',
+  CARD_CONTENT31: 'See what can be the ',
+  CARD_CONTENT32: 'Warning ',
+  CARD_CONTENT33: 'for you',
+  CARD_CONTENT4:
+    "Your child measurement can tell you how's your childhealth is.",
+  CARASOUL_INSTRUCTION: 'Swipe right to left to see another instruction',
 };
 
 export const ERROR_MESSAGE = {

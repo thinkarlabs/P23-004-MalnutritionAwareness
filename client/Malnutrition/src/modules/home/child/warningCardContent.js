@@ -18,11 +18,11 @@ const WarningCardContent = ({navigation}) => {
         backArrowValue={true}
         onPress={() => navigation.navigate(TAB)}
       />
-      <ScrollView>
-        <View style={homeCardStyles.container}>
-          <Text style={homeCardStyles.titleText}>
-            {WARNINGSCREEN_CARD.title}
-          </Text>
+      <View style={homeCardStyles.container}>
+        <Text style={homeCardStyles.titleText}>{WARNINGSCREEN_CARD.title}</Text>
+        <ScrollView
+          style={homeCardStyles.scrollView}
+          showsVerticalScrollIndicator={false}>
           <View style={homeCardStyles.cardContainer}>
             <AppCard
               content={WARNINGSCREEN_CARD.content}
@@ -37,8 +37,8 @@ const WarningCardContent = ({navigation}) => {
               {HOMESCREEN.CARASOUL_INSTRUCTION}
             </Text>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
