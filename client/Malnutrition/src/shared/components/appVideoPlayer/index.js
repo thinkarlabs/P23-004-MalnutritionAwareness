@@ -16,7 +16,7 @@ export const AppVideoPlayer = ({videoId}) => {
   return (
     <View style={appVideoPlayerStyles.container}>
       <YoutubePlayer
-        height={196}
+        height={185}
         play={playing}
         videoId={videoId}
         onChangeState={onStateChange}

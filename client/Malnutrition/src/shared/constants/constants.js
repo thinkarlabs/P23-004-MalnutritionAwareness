@@ -1,3 +1,11 @@
+import React from 'react';
+import Child6MonthImage from '../../../assets/svg/6MonthChildSVG';
+import LactatingMotherImage from '../../../assets/svg/lactatingMotherSVG';
+import PregnantWomenImage from '../../../assets/svg/pregnantWomenSVG';
+import {createAccountStyles} from '../../modules/createAccount/styles';
+import {CARD_BACKGROUND} from './colors';
+import {CHILDINFO_SCREEN, PREGNANTWOMAN_SCREEN} from './navigatorConstants';
+
 export const APP_NAME = 'Poshan';
 export const HEADING_TWO = 'Journey of your child';
 export const ONBOARDSCREEN1_TITLE = `Importance of first${'\n'} 1000 days`;
@@ -26,12 +34,6 @@ export const SIGN_UP = 'Sign Up';
 
 export const CREATE_ACCOUNT = {
   SELECT_CURRENT_STAGE_TEXT: "Select beneficiary's current stage to proceed",
-  CATEGORY_1_TITLE: 'Pregnant Woman',
-  CATEGORY_1_DESCRIPTION: `A grand and beautiful ${'\n'}adventure is about ${'\n'}to begin.`,
-  CATEGORY_2_TITLE: 'Lactating Mother',
-  CATEGORY_2_DESCRIPTION: `A mother understands ${'\n'}what a child does ${'\n'}not say.`,
-  CATEGORY_3_TITLE: '6-24 Months',
-  CATEGORY_3_DESCRIPTION: `A baby is born with a ${'\n'}need to be loved and ${'\n'}grow with caring.`,
   BUTTON_DESCRIPTION: 'Fill Your Details',
   OTP_BUTTON: 'Send OTP',
   CHECK_BOX_LABEL: `Are you setting up this app ${'\n'}for someone else?`,
@@ -39,7 +41,37 @@ export const CREATE_ACCOUNT = {
   MOVE_FORWARD_TEXT: 'Tap to select',
   BENEFICIARY_INFO_TITLE: 'Tell us more about the Beneficiary',
   TITLE_SCREEN: 'Create an Account',
+  ADD_CHILD_DETAILS: 'Add your child detail',
 };
+
+export const CREATE_ACCOUNT_CARD = [
+  {
+    title: 'Pregnant Woman',
+    content: 'A grand and beautiful adventure is about to begin.',
+    background: CARD_BACKGROUND,
+    image: <PregnantWomenImage />,
+    boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
+    onPress: PREGNANTWOMAN_SCREEN,
+  },
+  {
+    title: 'Lactating Mother',
+    content: 'A mother understands what a child does not say.',
+    background: CARD_BACKGROUND,
+    image: <LactatingMotherImage />,
+    boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
+    onPress: CHILDINFO_SCREEN,
+    style: createAccountStyles.rowReverse,
+  },
+  {
+    title: '6-24 Months',
+    content: 'A baby is born with a need to be loved and grow with caring.',
+    background: CARD_BACKGROUND,
+    image: <Child6MonthImage />,
+    boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
+    onPress: CHILDINFO_SCREEN,
+  },
+];
+
 export const SET_APP_FOR = [{name: 'An NGO Member', code: 'ngo'}];
 
 export const USER_DETAILS = {
@@ -72,11 +104,14 @@ export const DROPDOWN_BOX = {
 
 export const HOMESCREEN = {
   TITLE: 'Welcome to Poshan!!',
-  CARD_CONTENT1: `See what most babies${'\n'}do at this age?`,
-  CARD_CONTENT2: `What you should do for${'\n'}your baby?`,
-  CARD_CONTENT3: `See what can be the${'\n'}Warning for you`,
-  CARD_CONTENT4: `Your child measurement${'\n'}can tell you how's your${'\n'}childhealth is.`,
-  CARASOUL_INSTRUCTION: 'Scroll right to left to see another instruction',
+  CARD_CONTENT1: 'See what most babies do at this age?',
+  CARD_CONTENT2: 'What you should do for your baby?',
+  CARD_CONTENT31: 'See what can be the ',
+  CARD_CONTENT32: 'Warning ',
+  CARD_CONTENT33: 'for you',
+  CARD_CONTENT4:
+    "Your child measurement can tell you how's your childhealth is.",
+  CARASOUL_INSTRUCTION: 'Swipe right to left to see another instruction',
 };
 
 export const ERROR_MESSAGE = {
@@ -94,35 +129,6 @@ export const GENDER = [
   {label: 'Male', value: 'MALE'},
   {label: 'Female', value: 'Female'},
 ];
-
-export const CHILDSCREEN_CARD = {
-  TITLE: `What most babies do at${'\n'}this age? Look at this video`,
-  CARD_CONTENT1: `Pay close attention to and turn${'\n'}head towards the voice of the${'\n'}mother`,
-  CARD_CONTENT2: 'Begin to smile at people',
-  CARD_CONTENT3: `Startle or erupt into cry at loud${'\n'}noise`,
-  CARD_CONTENT4: `Coo make gurgling sounds when${'\n'}happy or after feeding`,
-  CARD_CONTENT5: `Can hold head up and begin to${'\n'}push up when lying on tummy`,
-  CARD_CONTENT6: `Make smooth moments with${'\n'}arms and legs`,
-  CARD_CONTENT7: `Keep hands relaxed and take${'\n'}swipes at dangling objects`,
-  CARD_CONTENT8: 'Begin to babble',
-};
-
-export const PARENTSCREEN_CARD = {
-  TITLE: `What you should do for your${'\n'}baby? Watch this video to${'\n'}know more.`,
-  CARD_CONTENT1: `Cuddle, talk and play with your${'\n'}baby during feeding, dressing and${'\n'}bathing`,
-  CARD_CONTENT2: `Attend to cries immediately and${'\n'}hold the baby close to make her${'\n'}feel secure`,
-  CARD_CONTENT3: `Help your baby learn to calm her${'\n'}or himself. Its ok for her to suck${'\n'}on her fingers`,
-  CARD_CONTENT4: `Act excited and smile when your${'\n'}baby makes sounds`,
-  CARD_CONTENT5: `Pay attention to your baby's${'\n'}different cries so that you learn to${'\n'}know what she wants`,
-  CARD_CONTENT6: 'Talk, read and sing to your baby',
-  CARD_CONTENT7: `Lay your baby on his tummy${'\n'}when she/he is awake and keep${'\n'}toys near her${'\n'}swipes at dangling objects`,
-  CARD_CONTENT8: 'Begin to babble',
-};
-
-export const WARNINGSCREEN_CARD = {
-  TITLE: `Your baby can do any${'\n'}unwanted action to be${'\n'}harmed`,
-  CARD_CONTENT1: `Contact ANM/AWW/${'\n'}Health care provider if${'\n'}you see any of these${'\n'}“Warnings”`,
-};
 
 export const TRACK_HEALTH = {
   TITLE: 'Enter measurements',

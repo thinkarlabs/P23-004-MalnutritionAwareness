@@ -71,7 +71,9 @@ const Login = ({navigation, login, loginData, errorText, hideError}) => {
   return (
     <SafeAreaView>
       <AppHeader />
-      <ScrollView style={loginStyles.scrollView}>
+      <ScrollView
+        style={loginStyles.scrollView}
+        showsVerticalScrollIndicator={false}>
         <View style={loginStyles.screenWrapper}>
           <Image
             source={{

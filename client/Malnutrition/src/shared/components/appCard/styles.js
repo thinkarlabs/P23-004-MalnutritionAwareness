@@ -1,12 +1,12 @@
 import {StyleSheet} from 'react-native';
-import {BLACK, LIGHT_GREY, WHITE} from '../../constants/colors';
+import {BLACK, LIGHT_GREY, WHITE, RED} from '../../constants/colors';
 
 export const appCardStyles = StyleSheet.create({
   container: {
     borderRadius: 16,
     borderColor: WHITE,
-    paddingHorizontal: 20,
-    paddingVertical: 25,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
     marginBottom: 12,
   },
   cardTitle: {
@@ -23,23 +23,46 @@ export const appCardStyles = StyleSheet.create({
     fontWeight: '400',
     paddingBottom: 18,
   },
-  cardTitleContainer: {
+  textPadding: {
+    paddingBottom: 18,
+  },
+  cardText: {
+    color: LIGHT_GREY,
+    fontSize: 18,
+    lineHeight: 24,
+    fontWeight: '400',
+  },
+  warningText: {
+    color: RED,
+    fontSize: 18,
+    lineHeight: 24,
+    fontWeight: '400',
+  },
+  cardTitleView: {
     backgroundColor: WHITE,
+    borderRadius: 8,
+  },
+  cardTitleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 6,
-    height: 34,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
   },
   cardTitleText: {
     fontWeight: '500',
     fontSize: 16,
     color: BLACK,
-    marginLeft: 12,
-    marginVertical: 4,
-    paddingRight: 8
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+  },
+  imageView: {
+    flex: 0.4,
+    alignItems: 'center',
+    marginRight: 15,
+  },
+  titleView: {
+    flex: 1,
   },
 });
