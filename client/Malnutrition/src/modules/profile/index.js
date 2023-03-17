@@ -1,4 +1,4 @@
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import React from 'react';
 import {Button} from '../../shared/components/button';
 import {buttonStyles} from '../../shared/components/button/styles';
@@ -15,12 +15,14 @@ const Profile = ({navigation}) => {
   return (
     <SafeAreaView style={profileStyles.screenContainer}>
       <AppHeader title={'Aadarshini'} />
-      <Button
-        title={'Logout'}
-        textStyle={buttonStyles.buttonText}
-        buttonStyle={buttonStyles.container}
-        // onPress={onPressLogout}
-      />
+      <View style={{marginHorizontal: 20}}>
+        <Button
+          title={'Logout'}
+          textStyle={buttonStyles.buttonText}
+          buttonStyle={buttonStyles.container}
+          onPress={onPressLogout}
+        />
+      </View>
     </SafeAreaView>
   );
 };

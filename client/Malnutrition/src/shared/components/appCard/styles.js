@@ -38,9 +38,15 @@ export const appCardStyles = StyleSheet.create({
     lineHeight: 24,
     fontWeight: '400',
   },
+  addChildDetailsView: {
+    backgroundColor: WHITE,
+    borderRadius: 8,
+    maxWidth: '95%',
+  },
   cardTitleView: {
     backgroundColor: WHITE,
     borderRadius: 8,
+    maxWidth: '70%',
   },
   cardTitleContainer: {
     flexDirection: 'row',

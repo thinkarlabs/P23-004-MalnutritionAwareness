@@ -2,11 +2,18 @@ import {StyleSheet} from 'react-native';
 import {BLACK, LIGHT_GREY, WHITE} from '../../constants/colors';
 
 export const appDatePickerStyles = StyleSheet.create({
-  titleText: {
+  placeholderText: {
     fontWeight: '400',
     fontSize: 18,
     lineHeight: 22,
     color: LIGHT_GREY,
+    left: 15,
+  },
+  titleText: {
+    fontWeight: '400',
+    fontSize: 18,
+    lineHeight: 22,
+    color: BLACK,
     left: 15,
   },
   inputField: {

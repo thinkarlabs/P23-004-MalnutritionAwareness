@@ -37,6 +37,8 @@ import {connect} from 'react-redux';
 import moment from 'moment';
 import {createAccountStyles} from '../styles';
 import {appDropdownStyles} from '../../../shared/components/appDropdown/styles';
+import Child6MonthImage from '../../../../assets/svg/6MonthChildSVG';
+import LactatingMotherImage from '../../../../assets/svg/lactatingMotherSVG';
 
 const ChildInfo = ({
   route,
@@ -51,7 +53,8 @@ const ChildInfo = ({
   const [todaysDate, setTodaysDate] = useState('');
   const [isValidForm, setIsValidForm] = useState(false);
   const [formValues, setFormValues] = useState({
-    user_type: 'LACTATING',
+    user_type:
+      route?.params?.title === 'Lactating Mother' ? 'LACTATING' : 'CAREGIVER',
     name: '',
     phone_number: '',
     is_created_for_someone_else: false,
@@ -64,7 +67,6 @@ const ChildInfo = ({
       },
     ],
   });
-  const [childDob, setChildDob] = useState('');
 
   useEffect(() => {
     if (todaysDate === '') {
@@ -121,8 +123,6 @@ const ChildInfo = ({
       updatedData.child[0].dob = moment(newVal.timestamp).format('DD/MM/YYYY');
       return updatedData;
     });
-
-    //return updatedData;
   };
 
   const updateMotherName = newVal => {
@@ -209,13 +209,20 @@ const ChildInfo = ({
           </Text>
           <View style={beneficiaryInfoStyles.boxContainer}>
             <View style={[beneficiaryInfoStyles.selectedStageCard]}>
-              <View style={{flexDirection: 'row'}}>
-                <View>
+              <View style={beneficiaryInfoStyles.selectedContainer}>
+                <View style={beneficiaryInfoStyles.imageContainer}>
+                  {route?.params?.title === 'Lactating Mother' ? (
+                    <LactatingMotherImage />
+                  ) : (
+                    <Child6MonthImage />
+                  )}
+                </View>
+                <View style={beneficiaryInfoStyles.textContainer}>
                   <Text style={beneficiaryInfoStyles.selectedStageCardDesc}>
                     You have selected
                   </Text>
                   <Text style={beneficiaryInfoStyles.selectedStageCardTitle}>
-                    {route.params.title}
+                    {route?.params?.title}
                   </Text>
                 </View>
               </View>
