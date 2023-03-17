@@ -1,39 +1,44 @@
-import ChildDetails from "../../../../assets/svg/childDetails";
-import WarningDetails from "../../../../assets/svg/warningDetailSVG";
-import WhatBabyDoIllustration from "../../../../assets/svg/whatBabyDoSVG";
-import WhatShouldIDoIllustration from "../../../../assets/svg/whatShouldIDoSVG";
-import { CARD_BACKGROUND, CARD_BLUE, CARD_RED, LIGHT_YELLOW } from "../colors";
-import { CREATE_ACCOUNT, HOMESCREEN } from "../constants";
+import React from 'react';
+import ChildDetails from '../../../../assets/svg/childDetails';
+import WarningDetails from '../../../../assets/svg/warningDetailSVG';
+import WhatBabyDoIllustration from '../../../../assets/svg/whatBabyDoSVG';
+import WhatShouldIDoIllustration from '../../../../assets/svg/whatShouldIDoSVG';
+import {CARD_BACKGROUND, CARD_BLUE, CARD_RED, LIGHT_YELLOW} from '../colors';
+import {CREATE_ACCOUNT, HOMESCREEN} from '../constants';
 import {createAccountStyles} from '../../../modules/createAccount/styles';
-import { WHAT_MOST_BABIES_DO } from "./childConstants";
+import {WHAT_MOST_BABIES_DO, WHAT_PARENT_DO} from './childConstants';
+import {CARD, HOME_CARD, TRACK} from '../navigatorConstants';
 
 export const PREGNANTWOMEN_CARD = [
-    {
-        CONTENT: HOMESCREEN.CARD_CONTENT1,
-        BACKGROUND: CARD_BLUE,
-        IMAGE: <WhatBabyDoIllustration />,
-        BOX_TEXT: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
-        ONPRESS: ('card', {
-            cardName: WHAT_MOST_BABIES_DO,
-          })
-    },
-    {
-        CONTENT: HOMESCREEN.CARD_CONTENT2,
-        BACKGROUND: LIGHT_YELLOW,
-        IMAGE: <WhatShouldIDoIllustration />,
-        BOX_TEXT: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
-        STYLE: createAccountStyles.rowReverse
-    },
-    {
-        CONTENT: HOMESCREEN.CARD_CONTENT3,
-        BACKGROUND: CARD_RED,
-        IMAGE: <WarningDetails />,
-        BOX_TEXT: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
-    },
-    {
-        CONTENT: HOMESCREEN.CARD_CONTENT4,
-        BACKGROUND: CARD_BACKGROUND,
-        IMAGE: <ChildDetails />,
-        BOX_TEXT: 'Add your child detail',
-    },
-]
+  {
+    content: HOMESCREEN.CARD_CONTENT1,
+    background: CARD_BLUE,
+    image: <WhatBabyDoIllustration />,
+    boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
+    onPress: CARD,
+    data: WHAT_MOST_BABIES_DO,
+  },
+  {
+    content: HOMESCREEN.CARD_CONTENT2,
+    background: LIGHT_YELLOW,
+    image: <WhatShouldIDoIllustration />,
+    boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
+    style: createAccountStyles.rowReverse,
+    onPress: CARD,
+    data: WHAT_PARENT_DO,
+  },
+  {
+    content: HOMESCREEN.CARD_CONTENT3,
+    background: CARD_RED,
+    image: <WarningDetails />,
+    boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
+    onPress: HOME_CARD.CONTENT3,
+  },
+  {
+    content: HOMESCREEN.CARD_CONTENT4,
+    background: CARD_BACKGROUND,
+    image: <ChildDetails />,
+    boxText: CREATE_ACCOUNT.ADD_CHILD_DETAILS,
+    onPress: TRACK,
+  },
+];

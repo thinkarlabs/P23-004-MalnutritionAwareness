@@ -1,3 +1,11 @@
+import React from 'react';
+import Child6MonthImage from '../../../assets/svg/6MonthChildSVG';
+import LactatingMotherImage from '../../../assets/svg/lactatingMotherSVG';
+import PregnantWomenImage from '../../../assets/svg/pregnantWomenSVG';
+import {createAccountStyles} from '../../modules/createAccount/styles';
+import {CARD_BACKGROUND} from './colors';
+import {CHILDINFO_SCREEN, PREGNANTWOMAN_SCREEN} from './navigatorConstants';
+
 export const APP_NAME = 'Poshan';
 export const HEADING_TWO = 'Journey of your child';
 export const ONBOARDSCREEN1_TITLE = `Importance of first${'\n'} 1000 days`;
@@ -26,12 +34,6 @@ export const SIGN_UP = 'Sign Up';
 
 export const CREATE_ACCOUNT = {
   SELECT_CURRENT_STAGE_TEXT: "Select beneficiary's current stage to proceed",
-  CATEGORY_1_TITLE: 'Pregnant Woman',
-  CATEGORY_1_DESCRIPTION: `A grand and beautiful ${'\n'}adventure is about ${'\n'}to begin.`,
-  CATEGORY_2_TITLE: 'Lactating Mother',
-  CATEGORY_2_DESCRIPTION: `A mother understands ${'\n'}what a child does ${'\n'}not say.`,
-  CATEGORY_3_TITLE: '6-24 Months',
-  CATEGORY_3_DESCRIPTION: `A baby is born with a ${'\n'}need to be loved and ${'\n'}grow with caring.`,
   BUTTON_DESCRIPTION: 'Fill Your Details',
   OTP_BUTTON: 'Send OTP',
   CHECK_BOX_LABEL: `Are you setting up this app ${'\n'}for someone else?`,
@@ -39,7 +41,37 @@ export const CREATE_ACCOUNT = {
   MOVE_FORWARD_TEXT: 'Tap to select',
   BENEFICIARY_INFO_TITLE: 'Tell us more about the Beneficiary',
   TITLE_SCREEN: 'Create an Account',
+  ADD_CHILD_DETAILS: 'Add your child detail',
 };
+
+export const CREATE_ACCOUNT_CARD = [
+  {
+    title: 'Pregnant Woman',
+    content: `A grand and beautiful ${'\n'}adventure is about ${'\n'}to begin.`,
+    background: CARD_BACKGROUND,
+    image: <PregnantWomenImage />,
+    boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
+    onPress: PREGNANTWOMAN_SCREEN,
+  },
+  {
+    title: 'Lactating Mother',
+    content: `A mother understands ${'\n'}what a child does ${'\n'}not say.`,
+    background: CARD_BACKGROUND,
+    image: <LactatingMotherImage />,
+    boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
+    onPress: CHILDINFO_SCREEN,
+    style: createAccountStyles.rowReverse,
+  },
+  {
+    title: '6-24 Months',
+    content: `A baby is born with a ${'\n'}need to be loved and ${'\n'}grow with caring.`,
+    background: CARD_BACKGROUND,
+    image: <Child6MonthImage />,
+    boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
+    onPress: CHILDINFO_SCREEN,
+  },
+];
+
 export const SET_APP_FOR = [{name: 'An NGO Member', code: 'ngo'}];
 
 export const USER_DETAILS = {

@@ -1,3 +1,4 @@
+import React from 'react';
 import ChildIcon from '../../../../assets/svg/icons/childIcon';
 import ChildDetails from '../../../../assets/svg/childDetails';
 import WarningDetails from '../../../../assets/svg/warningDetailSVG';
@@ -9,114 +10,108 @@ import WhatShouldIDoIllustration from '../../../../assets/svg/whatShouldIDoSVG';
 
 export const WHAT_MOST_BABIES_DO = [
   {
-    TITLE: `What most babies do at${'\n'}this age? Look at this video`,
+    title: `What most babies do at${'\n'}this age? Look at this video`,
   },
   {
-    CONTENT: 'Begin to smile at people',
-    IMAGE: <ChildIcon />,
+    content: 'Begin to smile at people',
+    image: <ChildIcon />,
   },
   {
-    CONTENT: `Startle or erupt into cry at loud${'\n'}noise`,
-    IMAGE: <ChildIcon />,
+    content: `Startle or erupt into cry at loud${'\n'}noise`,
+    image: <ChildIcon />,
   },
   {
-    CONTENT: `Coo make gurgling sounds when${'\n'}happy or after feeding`,
-    IMAGE: <ChildIcon />,
+    content: `Coo make gurgling sounds when${'\n'}happy or after feeding`,
+    image: <ChildIcon />,
   },
   {
-    CONTENT: `Can hold head up and begin to${'\n'}push up when lying on tummy`,
-    IMAGE: <ChildIcon />,
+    content: `Can hold head up and begin to${'\n'}push up when lying on tummy`,
+    image: <ChildIcon />,
   },
   {
-    CONTENT: `Make smooth moments with${'\n'}arms and legs`,
-    IMAGE: <ChildIcon />,
+    content: `Make smooth moments with${'\n'}arms and legs`,
+    image: <ChildIcon />,
   },
   {
-    CONTENT: `Keep hands relaxed and take${'\n'}swipes at dangling objects`,
-    IMAGE: <ChildIcon />,
+    content: `Keep hands relaxed and take${'\n'}swipes at dangling objects`,
+    image: <ChildIcon />,
   },
   {
-    CONTENT: 'Begin to babble',
-    IMAGE: <ChildIcon />,
+    content: 'Begin to babble',
+    image: <ChildIcon />,
   },
 ];
 
 export const WHAT_PARENT_DO = [
   {
-    TITLE: `What you should do for your${'\n'}baby? Watch this video to${'\n'}know more.`,
+    title: `What you should do for your${'\n'}baby? Watch this video to${'\n'}know more.`,
   },
   {
-    CONTENT: `Cuddle, talk and play with your${'\n'}baby during feeding, dressing and${'\n'}bathing`,
-    IMAGE: <ChildIcon />,
+    content: `Cuddle, talk and play with your${'\n'}baby during feeding, dressing and${'\n'}bathing`,
+    image: <ChildIcon />,
   },
   {
-    CONTENT: `Attend to cries immediately and${'\n'}hold the baby close to make her${'\n'}feel secure`,
-    IMAGE: <ChildIcon />,
+    content: `Attend to cries immediately and${'\n'}hold the baby close to make her${'\n'}feel secure`,
+    image: <ChildIcon />,
   },
   {
-    CONTENT: `Help your baby learn to calm her${'\n'}or himself. Its ok for her to suck${'\n'}on her fingers`,
-    IMAGE: <ChildIcon />,
+    content: `Help your baby learn to calm her${'\n'}or himself. Its ok for her to suck${'\n'}on her fingers`,
+    image: <ChildIcon />,
   },
   {
-    CONTENT: `Act excited and smile when your${'\n'}baby makes sounds`,
-    IMAGE: <ChildIcon />,
+    content: `Act excited and smile when your${'\n'}baby makes sounds`,
+    image: <ChildIcon />,
   },
   {
-    CONTENT: `Pay attention to your baby's${'\n'}different cries so that you learn to${'\n'}know what she wants`,
-    IMAGE: <ChildIcon />,
+    content: `Pay attention to your baby's${'\n'}different cries so that you learn to${'\n'}know what she wants`,
+    image: <ChildIcon />,
   },
   {
-    CONTENT: 'Talk, read and sing to your baby',
-    IMAGE: <ChildIcon />,
+    content: 'Talk, read and sing to your baby',
+    image: <ChildIcon />,
   },
   {
-    CONTENT: `Lay your baby on his tummy${'\n'}when she/he is awake and keep${'\n'}toys near her${'\n'}swipes at dangling objects`,
-    IMAGE: <ChildIcon />,
+    content: `Lay your baby on his tummy${'\n'}when she/he is awake and keep${'\n'}toys near her${'\n'}swipes at dangling objects`,
+    image: <ChildIcon />,
   },
   {
-    CONTENT: 'Begin to babble',
-    IMAGE: <ChildIcon />,
+    content: 'Begin to babble',
+    image: <ChildIcon />,
   },
 ];
 
-export const WARNINGSCREEN_CARD = [
-  {
-    TITLE: `Your baby can do any${'\n'}unwanted action to be${'\n'}harmed`,
-  },
-  {
-    CONTENT: `Contact ANM/AWW/${'\n'}Health care provider if${'\n'}you see any of these${'\n'}“Warnings”`,
-  },
-];
+export const WARNINGSCREEN_CARD = {
+  title: `Your baby can do any${'\n'}unwanted action to be${'\n'}harmed`,
+  content: `Contact ANM/AWW/${'\n'}Health care provider if${'\n'}you see any of these${'\n'}“Warnings”`,
+};
 
 export const CHILDSCREEN_CARD = [
   {
-    CONTENT: HOMESCREEN.CARD_CONTENT1,
-    BACKGROUND: CARD_BLUE,
-    IMAGE: <WhatBabyDoIllustration />,
-    BOX_TEXT: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
-    ONPRESS:
-      ('card',
-      {
-        cardName: WHAT_MOST_BABIES_DO,
-      }),
+    content: HOMESCREEN.CARD_CONTENT1,
+    background: CARD_BLUE,
+    image: <WhatBabyDoIllustration />,
+    boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
+    child: WHAT_MOST_BABIES_DO,
+    onPress: 'Card',
   },
   {
-    CONTENT: HOMESCREEN.CARD_CONTENT2,
-    BACKGROUND: LIGHT_YELLOW,
-    IMAGE: <WhatShouldIDoIllustration />,
-    BOX_TEXT: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
-    STYLE: createAccountStyles.rowReverse,
+    content: HOMESCREEN.CARD_CONTENT2,
+    background: LIGHT_YELLOW,
+    image: <WhatShouldIDoIllustration />,
+    boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
+    style: createAccountStyles.rowReverse,
+    child: WHAT_PARENT_DO,
   },
   {
-    CONTENT: HOMESCREEN.CARD_CONTENT3,
-    BACKGROUND: CARD_RED,
-    IMAGE: <WarningDetails />,
-    BOX_TEXT: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
+    content: HOMESCREEN.CARD_CONTENT3,
+    background: CARD_RED,
+    image: <WarningDetails />,
+    boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
   },
   {
-    CONTENT: HOMESCREEN.CARD_CONTENT4,
-    BACKGROUND: CARD_BACKGROUND,
-    IMAGE: <ChildDetails />,
-    BOX_TEXT: 'Add your child detail',
+    content: HOMESCREEN.CARD_CONTENT4,
+    background: CARD_BACKGROUND,
+    image: <ChildDetails />,
+    boxText: CREATE_ACCOUNT.ADD_CHILD_DETAILS,
   },
 ];

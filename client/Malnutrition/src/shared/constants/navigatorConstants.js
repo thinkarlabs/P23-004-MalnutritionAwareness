@@ -12,6 +12,7 @@ export const TRACK = 'Track';
 export const ASK = 'Ask';
 export const PROFILE = 'Profile';
 export const TAB = 'Tab';
+export const CARD = 'Card';
 
 export const HOME_CARD = {
   CONTENT3: 'WarningCard',

@@ -1,7 +1,14 @@
 import {StyleSheet} from 'react-native';
-import {BLACK, PROFILE} from '../../shared/constants/colors';
+import {BLACK, PROFILE, WHITE} from '../../shared/constants/colors';
 
 export const homeStyles = StyleSheet.create({
+  safeAreaView: {
+    flex: 1,
+    backgroundColor: WHITE,
+  },
+  scrollView: {
+    height: '75%',
+  },
   container: {
     marginHorizontal: 20,
   },

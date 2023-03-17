@@ -19,11 +19,11 @@ export const RootNavigation = () => {
 
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
-      {accessToken == null || accessToken == undefined || accessToken == '' ? (
-        <AppStackNavigator />
-      ) : (
-        <HomeStackNavigator />
-      )}
+      {/* {accessToken == null || accessToken == undefined || accessToken == '' ? ( */}
+      <AppStackNavigator />
+      {/* ) : ( */}
+      {/* <HomeStackNavigator /> */}
+      {/* )} */}
     </View>
   );
 };
