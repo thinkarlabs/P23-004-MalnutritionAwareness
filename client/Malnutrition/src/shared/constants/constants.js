@@ -143,3 +143,7 @@ export const TRACK_HEALTH = {
 export const ASYNC_CONSTANTS = {
   TOKEN: 'TOKEN',
 };
+
+export const COMING_SOON_HEADING = 'This feature is coming soon!!';
+export const COMING_SOON_TEXT =
+  'Our team is working to up this feature live soon. Through this feature, you will see  your baby’s monthly timeline';
