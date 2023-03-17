@@ -20,7 +20,7 @@ const ChildCardContent = ({navigation, route}) => {
         <ScrollView
           style={homeCardStyles.scrollView}
           showsVerticalScrollIndicator={false}>
-          <AppVideoPlayer videoId={route?.params?.videoId} />
+          <AppVideoPlayer videoId={route?.params?.video} />
           <View style={homeCardStyles.swipeContainer}>
             <SwipeRightIcon />
             <Text style={homeCardStyles.carasoulText}>

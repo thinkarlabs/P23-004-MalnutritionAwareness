@@ -94,6 +94,9 @@ export const PLACEHOLDER_DETAILS = {
   SELECT_YOUR_ROLE: 'Select your role',
   PHONE_NUMBER: 'Phone number',
   GENDER: 'Gender',
+  WEIGHT_FOR_AGE: 'Weight for Age',
+  HEIGHT_FOR_AGE: 'Height for Age',
+  WEIGHT_FOR_HEIGHT: 'Weight for Height',
 };
 
 export const DROPDOWN_BOX = {
@@ -128,6 +131,21 @@ export const CAREGIVER_ROLE = [
 export const GENDER = [
   {label: 'Male', value: 'MALE'},
   {label: 'Female', value: 'Female'},
+];
+
+export const WEIGHT_FOR_AGE = [
+  {label: 'Moderately Underweight', value: 'Moderately_Underweight'},
+  {label: 'Underweight', value: 'Underweight'},
+];
+
+export const HEIGHT_FOR_AGE = [
+  {label: 'Severely Stunted', value: 'Severely_Stunted'},
+  {label: 'Stunted', value: 'Stunted'},
+];
+
+export const WEIGHT_FOR_HEIGHT = [
+  {label: 'SAM', value: 'Severely_Wasted'},
+  {label: 'MAM', value: 'Moderately_Wasted'},
 ];
 
 export const TRACK_HEALTH = {

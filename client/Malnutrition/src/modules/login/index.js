@@ -11,7 +11,6 @@ import AppHeader from '../../shared/components/appHeader';
 import {loginStyles} from './styles';
 import {
   CREATEACCOUNT,
-  LOGIN,
   OTPVERIFICATION,
 } from '../../shared/constants/navigatorConstants';
 import AppTextInput from '../../shared/components/appTextInput';
@@ -86,7 +85,7 @@ const Login = ({navigation, login, loginData, errorText, hideError}) => {
           <View style={loginStyles.detailContainer}>
             <Text style={loginStyles.detailText}>
               {LOGIN_DETAILS}
-              <Text style={loginStyles.detailTextBold}> {LOGIN}</Text>
+              <Text style={loginStyles.detailTextBold}>{LOGIN_TEXT}</Text>
             </Text>
             <View style={loginStyles.inputContainer}>
               <PhoneIcon />

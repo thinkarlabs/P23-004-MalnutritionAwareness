@@ -28,9 +28,9 @@ const ChildHomeScreen = ({navigation, data}) => {
               <UserBlackIcon />
             </View>
             <Text style={homeStyles.headingText}>
-              {data?.mother_details?.name} is{' '}
-              {getAgeFromDateOfBirth(data?.child_details?.lmp).months} months
-              and {getAgeFromDateOfBirth(data?.child_details?.lmp).days} days
+              {data?.child_details?.name} is{' '}
+              {getAgeFromDateOfBirth(data?.child_details?.dob).months} months
+              and {getAgeFromDateOfBirth(data?.child_details?.dob).days} days
               old
             </Text>
           </View>
@@ -45,6 +45,8 @@ const ChildHomeScreen = ({navigation, data}) => {
                     onPress={() =>
                       navigation.navigate(item?.onPress, {
                         data: item?.data,
+                        title: item?.title,
+                        video: videoId,
                       })
                     }
                     content={item?.content}
