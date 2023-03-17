@@ -22,7 +22,7 @@ const AppDropdown = ({dropdownValue, data, placeholder, style}) => {
 
   return (
     <View style={appDropdownStyles.container}>
-      {renderLabel()}
+      {/* {renderLabel()} */}
       <Dropdown
         style={[style, isFocus && {borderColor: 'blue'}]}
         placeholderStyle={appDropdownStyles.placeholderStyle}
@@ -33,7 +33,7 @@ const AppDropdown = ({dropdownValue, data, placeholder, style}) => {
         labelField="label"
         valueField="value"
         selectedTextStyle={appDropdownStyles.selectedTextStyle}
-        placeholder={!isFocus ? placeholder : 'I am '}
+        placeholder={!isFocus ? placeholder : ''}
         value={value}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
@@ -43,7 +43,7 @@ const AppDropdown = ({dropdownValue, data, placeholder, style}) => {
           dropdownValue(item.value);
         }}
         renderLeftIcon={() => (
-          <View style={{paddingRight: 10}}>
+          <View style={{paddingRight: 15}}>
             <GroupIcon />
           </View>
         )}

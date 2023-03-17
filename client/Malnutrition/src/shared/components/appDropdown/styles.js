@@ -8,7 +8,7 @@ import {
 export const appDropdownStyles = StyleSheet.create({
   container: {
     paddingHorizontal: 12,
-    paddingVertical: 16,
+    paddingVertical: 12,
     justifyContent: 'center',
     width: '100%',
     borderColor: PLACEHOLDER_BORDER_COLOR,
@@ -17,13 +17,11 @@ export const appDropdownStyles = StyleSheet.create({
     marginBottom: 12,
   },
   roleDropdown: {
-    height: 40,
     borderColor: 'gray',
     borderRadius: 8,
     paddingHorizontal: 8,
   },
   genderDropdown: {
-    height: 40,
     borderColor: 'gray',
     borderRadius: 8,
     paddingHorizontal: 8,
@@ -43,9 +41,8 @@ export const appDropdownStyles = StyleSheet.create({
     fontWeight: '400',
   },
   selectedTextStyle: {
-    fontSize: 16,
+    fontSize: 18,
     color: BLACK,
-    top: 10,
   },
   itemTextStyle: {
     fontSize: 18,

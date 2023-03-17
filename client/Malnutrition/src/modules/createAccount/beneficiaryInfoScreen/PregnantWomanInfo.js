@@ -35,6 +35,7 @@ import PhoneIcon from '../../../../assets/svg/icons/phoneIcon';
 import CalendarIcon from '../../../../assets/svg/icons/calendarIcon';
 import MotherIcon from '../../../../assets/svg/icons/motherIcon';
 import {appDropdownStyles} from '../../../shared/components/appDropdown/styles';
+import PregnantWomenImage from '../../../../assets/svg/pregnantWomenSVG';
 
 const PregnantWomanInfo = ({
   route,
@@ -182,9 +183,11 @@ const PregnantWomanInfo = ({
           </Text>
           <View style={beneficiaryInfoStyles.boxContainer}>
             <View style={[beneficiaryInfoStyles.selectedStageCard]}>
-              <View style={{flexDirection: 'row'}}>
-                {/* <PregnantWomenImage height={56} width={46}/> */}
-                <View>
+              <View style={beneficiaryInfoStyles.selectedContainer}>
+                <View style={beneficiaryInfoStyles.imageContainer}>
+                  <PregnantWomenImage />
+                </View>
+                <View style={beneficiaryInfoStyles.textContainer}>
                   <Text style={beneficiaryInfoStyles.selectedStageCardDesc}>
                     You have selected
                   </Text>

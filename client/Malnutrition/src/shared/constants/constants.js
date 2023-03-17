@@ -94,6 +94,9 @@ export const PLACEHOLDER_DETAILS = {
   SELECT_YOUR_ROLE: 'Select your role',
   PHONE_NUMBER: 'Phone number',
   GENDER: 'Gender',
+  WEIGHT_FOR_AGE: 'Weight for Age',
+  HEIGHT_FOR_AGE: 'Height for Age',
+  WEIGHT_FOR_HEIGHT: 'Weight for Height',
 };
 
 export const DROPDOWN_BOX = {
@@ -130,6 +133,21 @@ export const GENDER = [
   {label: 'Female', value: 'Female'},
 ];
 
+export const WEIGHT_FOR_AGE = [
+  {label: 'Moderately Underweight', value: 'Moderately_Underweight'},
+  {label: 'Underweight', value: 'Underweight'},
+];
+
+export const HEIGHT_FOR_AGE = [
+  {label: 'Severely Stunted', value: 'Severely_Stunted'},
+  {label: 'Stunted', value: 'Stunted'},
+];
+
+export const WEIGHT_FOR_HEIGHT = [
+  {label: 'SAM', value: 'Severely_Wasted'},
+  {label: 'MAM', value: 'Moderately_Wasted'},
+];
+
 export const TRACK_HEALTH = {
   TITLE: 'Enter measurements',
   PLACEHOLDER1: 'Month(s)',
@@ -147,3 +165,6 @@ export const ASYNC_CONSTANTS = {
 export const TAP_TO_CONNECT = 'Tap to Connect';
 export const ASK_QUERIES_TEXT =
   'For any kind of your queries or suggestions, please connect with your Anganwadi Centre via Whatsapp';
+export const COMING_SOON_HEADING = 'This feature is coming soon!!';
+export const COMING_SOON_TEXT =
+  'Our team is working to up this feature live soon. Through this feature, you will see  your baby’s monthly timeline';

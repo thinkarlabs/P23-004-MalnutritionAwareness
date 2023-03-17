@@ -25,11 +25,10 @@ export const beneficiaryInfoStyles = StyleSheet.create({
   selectedStageCard: {
     borderRadius: 20,
     paddingVertical: 12,
-    paddingRight: 18,
-    paddingLeft: 65,
+    paddingLeft: 25,
     marginBottom: 20,
     backgroundColor: LIGHT_BLUE,
-    height: 80,
+    justifyContent: 'center',
   },
   selectedStageCardTitle: {
     fontSize: 18,
@@ -130,6 +129,15 @@ export const beneficiaryInfoStyles = StyleSheet.create({
   paddingHorizontal: {
     paddingHorizontal: 20,
   },
+  selectedContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  imageContainer: {
+    flex: 0.6,
+    marginRight: 16,
+  },
+  textContainer: {
+    flex: 1,
+  },
 });
-
-
