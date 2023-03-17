@@ -12,6 +12,9 @@ export const AppCard = ({
   background,
   boxContainer,
   boxText,
+  warningCardContent1,
+  warningCardContent2,
+  warningCardContent3,
 }) => {
   return (
     <View
@@ -22,20 +25,33 @@ export const AppCard = ({
         },
       ]}>
       <View style={newStyle ? newStyle : appCardStyles.row}>
-        {image}
-        <View>
+        <View style={appCardStyles.imageView}>{image}</View>
+        <View style={appCardStyles.titleView}>
           <Text style={appCardStyles.cardTitle}>{title}</Text>
-          <Text style={appCardStyles.cardDesc}>{content}</Text>
+          {content ? (
+            <Text style={appCardStyles.cardDesc}>{content}</Text>
+          ) : (
+            <Text style={appCardStyles.textPadding}>
+              <Text style={appCardStyles.cardText}>{warningCardContent1}</Text>
+              <Text style={appCardStyles.warningText}>
+                {warningCardContent2}
+              </Text>
+              <Text style={appCardStyles.cardText}>{warningCardContent3}</Text>
+            </Text>
+          )}
           {boxContainer === false ? null : (
-            <TouchableOpacity
-              onPress={onPress}
-              style={appCardStyles.cardTitleContainer}>
-              <Text style={appCardStyles.cardTitleText}>{boxText}</Text>
-              <BackArrowWithCircle />
-            </TouchableOpacity>
+            <View style={appCardStyles.cardTitleView}>
+              <TouchableOpacity
+                onPress={onPress}
+                style={appCardStyles.cardTitleContainer}>
+                <Text style={appCardStyles.cardTitleText}>{boxText}</Text>
+                <BackArrowWithCircle />
+              </TouchableOpacity>
+            </View>
           )}
         </View>
       </View>
+      {/* </View> */}
     </View>
   );
 };

@@ -200,7 +200,9 @@ const ChildInfo = ({
         backArrowValue={true}
         onPress={() => navigation.navigate(CREATEACCOUNT)}
       />
-      <ScrollView style={createAccountStyles.scrollView}>
+      <ScrollView
+        style={createAccountStyles.scrollView}
+        showsVerticalScrollIndicator={false}>
         <View style={beneficiaryInfoStyles.screenWrapper}>
           <Text style={beneficiaryInfoStyles.titleText}>
             {CREATE_ACCOUNT.BENEFICIARY_INFO_TITLE}

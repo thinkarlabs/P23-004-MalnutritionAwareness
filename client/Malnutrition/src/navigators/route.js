@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useEffect, useState} from 'react';
-import {View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import {WHITE} from '../shared/constants/colors';
 import {ASYNC_CONSTANTS} from '../shared/constants/constants';
 import {AppStackNavigator} from './AppStackNavigator';
 import {HomeStackNavigator} from './HomeStackNavigator';
@@ -18,8 +19,10 @@ export const RootNavigation = () => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: 'black'}}>
-      {accessToken == null || accessToken == undefined || accessToken == '' ? (
+    <View style={styles.container}>
+      {accessToken == null ||
+      accessToken === undefined ||
+      accessToken === '' ? (
         <AppStackNavigator />
       ) : (
         <HomeStackNavigator />
@@ -27,3 +30,10 @@ export const RootNavigation = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: WHITE,
+  },
+});

@@ -33,8 +33,8 @@ export const TopTabNavigator = () => {
           );
         },
       })}>
-      <Tab.Screen name={TRACK_HEALTH.CONTENT1} component={TrackHealth} />
-      <Tab.Screen name={TRACK_HEALTH.CONTENT2} component={Timeline} />
+      <Tab.Screen name={TRACK_HEALTH.TRACK_HEALTH} component={TrackHealth} />
+      <Tab.Screen name={TRACK_HEALTH.TIMELINE} component={Timeline} />
     </Tab.Navigator>
   );
 };

@@ -4,6 +4,8 @@ import {Button} from '../../shared/components/button';
 import {buttonStyles} from '../../shared/components/button/styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {LOGIN} from '../../shared/constants/navigatorConstants';
+import AppHeader from '../../shared/components/appHeader';
+import {profileStyles} from './styles';
 
 const Profile = ({navigation}) => {
   const onPressLogout = () => {
@@ -11,7 +13,8 @@ const Profile = ({navigation}) => {
     navigation.navigate(LOGIN);
   };
   return (
-    <SafeAreaView>
+    <SafeAreaView style={profileStyles.screenContainer}>
+      <AppHeader title={'Aadarshini'} />
       <Button
         title={'Logout'}
         textStyle={buttonStyles.buttonText}
