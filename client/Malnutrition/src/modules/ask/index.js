@@ -9,8 +9,18 @@ import {
   ASK_QUERIES_TEXT,
   TAP_TO_CONNECT,
 } from '../../shared/constants/constants';
+import {connect} from 'react-redux';
+import {getAge} from '../../shared/Utils';
 
-const Ask = () => {
+const Ask = ({syncData}) => {
+  const name = syncData?.child_details
+    ? syncData?.child_details?.name
+    : syncData?.mother_details?.name;
+
+  const age = syncData?.child_details
+    ? `${getAge(syncData?.child_details?.dob)} old`
+    : `${getAge(syncData?.mother_details?.lmp)} pregnant`;
+
   const sendWhatsappMessage = () => {
     let msg = 'Hello';
     let phoneWithCountryCode = 'xxxxxxxxxx';
@@ -36,7 +46,7 @@ const Ask = () => {
   };
   return (
     <SafeAreaView style={askStyles.screenContainer}>
-      <AppHeader title={'Aadarshini'} />
+      <AppHeader title={name} subTitle={age} />
       <View style={askStyles.container}>
         <View style={askStyles.innerContainer}>
           <AskSvg />
@@ -56,4 +66,8 @@ const Ask = () => {
   );
 };
 
-export default Ask;
+const mapStateToProps = state => ({
+  syncData: state?.homeScreen?.syncData,
+});
+
+export default connect(mapStateToProps, null)(Ask);

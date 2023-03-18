@@ -190,6 +190,7 @@ const ChildInfo = ({
     if (!isValidForm) {
       return false;
     }
+    console.log(formValues);
     createAccount(formValues);
   };
 

@@ -6,7 +6,7 @@ import {AppCard} from '../../../shared/components/appCard';
 import {AppVideoPlayer} from '../../../shared/components/appVideoPlayer';
 import {HOMESCREEN} from '../../../shared/constants/constants';
 import {CHILDSCREEN_CARD} from '../../../shared/constants/homeConstants/childConstants';
-import {getAgeFromDateOfBirth} from '../../../shared/Utils';
+import {getAge} from '../../../shared/Utils';
 import {homeStyles} from '../styles';
 
 const ChildHomeScreen = ({navigation, data}) => {
@@ -16,6 +16,14 @@ const ChildHomeScreen = ({navigation, data}) => {
   useEffect(() => {
     setVideoId(data?.video?.split('https://youtu.be/')?.pop());
   }, [isFocused]);
+
+  const name = data?.child_details
+    ? data?.child_details?.name
+    : data?.mother_details?.name;
+
+  const age = data?.child_details
+    ? `${getAge(data?.child_details?.dob)} old`
+    : `${getAge(data?.mother_details?.lmp)} pregnant`;
 
   return (
     <SafeAreaView style={homeStyles.safeAreaView}>
@@ -28,10 +36,8 @@ const ChildHomeScreen = ({navigation, data}) => {
               <UserBlackIcon />
             </View>
             <Text style={homeStyles.headingText}>
-              {data?.child_details?.name} is{' '}
-              {getAgeFromDateOfBirth(data?.child_details?.dob).months} months
-              and {getAgeFromDateOfBirth(data?.child_details?.dob).days} days
-              old
+              {name} is {''}
+              {age}
             </Text>
           </View>
           <Text style={homeStyles.homeText}>{HOMESCREEN.TITLE}</Text>

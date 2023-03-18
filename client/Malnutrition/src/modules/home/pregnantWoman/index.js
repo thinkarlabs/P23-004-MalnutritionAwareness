@@ -6,7 +6,7 @@ import {homeStyles} from '../styles';
 import {AppVideoPlayer} from '../../../shared/components/appVideoPlayer';
 import {AppCard} from '../../../shared/components/appCard';
 import {HOMESCREEN} from '../../../shared/constants/constants';
-import {getAgeFromDateOfBirth} from '../../../shared/Utils';
+import {getAge} from '../../../shared/Utils';
 import {PREGNANTWOMEN_CARD} from '../../../shared/constants/homeConstants/parentConstants';
 
 const PregnantWomenHomeScreen = ({navigation, data}) => {
@@ -16,6 +16,15 @@ const PregnantWomenHomeScreen = ({navigation, data}) => {
   useEffect(() => {
     setVideoId(data?.video?.split('https://youtu.be/')?.pop());
   }, [isFocused]);
+
+  const name = data?.child_details
+    ? data?.child_details?.name
+    : data?.mother_details?.name;
+
+  const age = data?.child_details
+    ? `${getAge(data?.child_details?.dob)} old`
+    : `${getAge(data?.mother_details?.lmp)} pregnant`;
+
   return (
     <SafeAreaView style={homeStyles.safeAreaView}>
       <ScrollView
@@ -27,10 +36,8 @@ const PregnantWomenHomeScreen = ({navigation, data}) => {
               <UserBlackIcon />
             </View>
             <Text style={homeStyles.headingText}>
-              {data?.mother_details?.name} is{' '}
-              {getAgeFromDateOfBirth(data?.mother_details?.lmp).months} months
-              and {getAgeFromDateOfBirth(data?.mother_details?.lmp).days} days
-              pregnant
+              {name} is {''}
+              {age}
             </Text>
           </View>
           <Text style={homeStyles.homeText}>{HOMESCREEN.TITLE}</Text>
