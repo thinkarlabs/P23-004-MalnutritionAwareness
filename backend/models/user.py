@@ -1,7 +1,7 @@
 from enum import Enum
 import datetime
 from typing import Optional, List
-from pydantic import BaseModel, validator, constr, PositiveFloat
+from pydantic import BaseModel, validator, constr
 
 
 class UserType(str, Enum):
@@ -19,12 +19,6 @@ class RelationWithChild(str, Enum):
 class GenderType(str, Enum):
     MALE = 'MALE'
     FEMALE = 'FEMALE'
-
-
-class ChildCondition(str, Enum):
-    SAM = 'SAM'
-    MAM = 'MAM'
-    NORMAL = 'NORMAL'
 
 
 class Child(BaseModel):
@@ -87,10 +81,4 @@ class ResendOTPSchema(BaseModel):
     )
 
 
-class TrackHealthSchema(BaseModel):
-    months: int
-    weight: PositiveFloat
-    height: int
-    head_circumference: Optional[PositiveFloat] = None
-    mid_upper_arm_circumference: Optional[PositiveFloat] = None
-    child_condition: ChildCondition
+

@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Body, Depends
-from models.user import CreateUserSchema, VerifyOTPSchema, LoginUserSchema, ResendOTPSchema, TrackHealthSchema
+from models.user import CreateUserSchema, VerifyOTPSchema, LoginUserSchema, ResendOTPSchema
 from fastapi.encoders import jsonable_encoder
 from config.database import db as database
 from config.jwt_handler import JWT_ALGORITHM, JWT_SECRET
@@ -172,25 +172,3 @@ async def sync(token: str = Depends(oauth2_scheme)):
     return JSONResponse(content=response)
 
 
-@router.post("/api/v1/track_health")
-async def track_health(token: str = Depends(oauth2_scheme), user: TrackHealthSchema = Body(...)):
-    try:
-        decoded = jwt.decode(token, JWT_SECRET, algorithms=JWT_ALGORITHM)
-    except jwt.ExpiredSignatureError:
-        return JSONResponse(content={'error': 'JWT Token expired'})
-    except jwt.PyJWTError as e:
-        print(e)
-        return JSONResponse(content={'error': 'Invalid Token'})
-    user_phone_number = decoded['phone_number']
-    user_details = database.user.find_one({'phone_number': user_phone_number})
-    user_dict = jsonable_encoder(user)
-    database.trackhealth.update_one({'months': user_dict['months']},
-                                    {'$set': {'user_id': user_details['_id'],
-                                              'weight': user_dict['height'],
-                                              'height': user_dict['height'],
-                                              'head_circumference': user_dict['head_circumference'],
-                                              'mid_upper_arm_circumference': user_dict[
-                                                  'mid_upper_arm_circumference'],
-                                              'child_condition': user_dict['child_condition']
-                                              }}, upsert=True)
-    return JSONResponse(content={"message": "Details updated successfully"})
