@@ -74,7 +74,7 @@ const ChildInfo = ({
     }
     if (createAccountData && !errorText) {
       navigation.navigate(OTPVERIFICATION, {
-        fromWhere: CREATE_ACCOUNT.CATEGORY_2_TITLE,
+        fromWhere: formValues.user_type,
         phone_number: formValues.phone_number,
         is_creation: true,
       });

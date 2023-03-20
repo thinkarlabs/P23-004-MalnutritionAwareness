@@ -13,8 +13,8 @@ import {
   LOGIN_TEXT,
 } from '../../shared/constants/constants';
 import {
+  CREATEACCOUNT,
   LOGIN,
-  PREGNANTWOMAN_SCREEN,
   TAB,
 } from '../../shared/constants/navigatorConstants';
 import {Button} from '../../shared/components/button';
@@ -41,7 +41,7 @@ const OTPVerification = ({
   const pinCount = 4;
   const [count, setCount] = useState(30);
   const [isValidForm, setIsValidForm] = useState(false);
-
+  const [buttonPress, setButtonPress] = useState(false);
   const [verifyOtpFormValues, setVerifyOtpFormValues] = useState({
     phone_number: route?.params?.phone_number,
     otp: '',
@@ -71,7 +71,7 @@ const OTPVerification = ({
   }, [count]);
 
   useEffect(() => {
-    if (verifyOtpData && !errorText) {
+    if (buttonPress && verifyOtpData && !errorText) {
       navigation.navigate(TAB);
     }
   });
@@ -89,6 +89,7 @@ const OTPVerification = ({
 
   const verifyOtp = () => {
     setCount(0);
+    setButtonPress(true);
     otpVerification(verifyOtpFormValues);
   };
 
@@ -108,12 +109,9 @@ const OTPVerification = ({
         }
         backArrowValue={true}
         onPress={
-          route?.params?.fromWhere === CREATE_ACCOUNT.CATEGORY_1_TITLE
-            ? () =>
-                navigation.navigate(PREGNANTWOMAN_SCREEN, {
-                  title: CREATE_ACCOUNT.CATEGORY_1_TITLE,
-                })
-            : () => navigation.navigate(LOGIN)
+          route?.params?.fromWhere === LOGIN_TEXT
+            ? () => navigation.navigate(LOGIN)
+            : () => navigation.navigate(CREATEACCOUNT)
         }
       />
       <ScrollView
