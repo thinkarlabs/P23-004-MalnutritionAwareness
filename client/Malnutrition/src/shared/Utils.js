@@ -23,3 +23,10 @@ export const getAgeFromDateOfBirth = date => {
   };
   return age;
 };
+
+export const getAge = date => {
+  const age = `${getAgeFromDateOfBirth(date).months} months and ${
+    getAgeFromDateOfBirth(date).days
+  } days`;
+  return age;
+};

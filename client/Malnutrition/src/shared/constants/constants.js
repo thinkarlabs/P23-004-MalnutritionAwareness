@@ -28,7 +28,7 @@ export const CONFIRM = 'Confirm';
 export const LOGIN_TEXT = 'Login';
 export const LOGIN_TITLE = 'Welcome to Udaan!!';
 export const LOGIN_CONTENT = `There can be no real growth without${'\n'} healthy population. No sustainable${'\n'} development without tackling disease${'\n'} and malnutrition.`;
-export const LOGIN_DETAILS = 'Enter you number to';
+export const LOGIN_DETAILS = 'Enter your number to ';
 export const LOGIN_BOTTOM = "Don't have an account?";
 export const SIGN_UP = 'Sign Up';
 
@@ -130,7 +130,7 @@ export const CAREGIVER_ROLE = [
 
 export const GENDER = [
   {label: 'Male', value: 'MALE'},
-  {label: 'Female', value: 'Female'},
+  {label: 'Female', value: 'FEMALE'},
 ];
 
 export const WEIGHT_FOR_AGE = [
@@ -162,6 +162,9 @@ export const ASYNC_CONSTANTS = {
   TOKEN: 'TOKEN',
 };
 
+export const TAP_TO_CONNECT = 'Tap to Connect';
+export const ASK_QUERIES_TEXT =
+  'For any kind of your queries or suggestions, please connect with your Anganwadi Centre via Whatsapp';
 export const COMING_SOON_HEADING = 'This feature is coming soon!!';
 export const COMING_SOON_TEXT =
   'Our team is working to up this feature live soon. Through this feature, you will see  your baby’s monthly timeline';
