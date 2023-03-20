@@ -19,7 +19,12 @@ const AppDatePicker = ({
       <TouchableOpacity
         onPress={() => setShowModal(true)}
         style={appDatePickerStyles.inputField}>
-        <Text style={appDatePickerStyles.titleText}>
+        <Text
+          style={
+            showDate == null
+              ? appDatePickerStyles.placeholderText
+              : appDatePickerStyles.titleText
+          }>
           {showDate == null
             ? titleName
             : moment(showDate.dateString).format('DD MMM YYYY')}

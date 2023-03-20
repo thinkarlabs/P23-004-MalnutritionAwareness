@@ -1,6 +1,8 @@
 import {StyleSheet} from 'react-native';
 import {
+  BLACK,
   BUTTON,
+  LIGHT_GREY,
   PLACEHOLDER_BORDER_COLOR,
   WHITE,
 } from '../../../shared/constants/colors';
@@ -37,13 +39,28 @@ export const trackHealthContainerStyles = StyleSheet.create({
 });
 
 export const timelineStyles = StyleSheet.create({
-  screenContainer: {
+  container: {
     flex: 1,
-    backgroundColor: WHITE,
-    padding: 20,
-  },
-  contentContainer: {
-    justifyContent: 'center',
+    paddingHorizontal: 35,
     alignItems: 'center',
+    justifyContent: 'center',
+  },
+  innerContainer: {
+    paddingBottom: 30,
+  },
+  heading: {
+    fontWeight: '400',
+    fontSize: 22,
+    lineHeight: 30,
+    color: BLACK,
+    textAlign: 'center',
+    paddingBottom: 8,
+  },
+  text: {
+    fontWeight: '400',
+    fontSize: 18,
+    lineHeight: 24,
+    color: LIGHT_GREY,
+    textAlign: 'center',
   },
 });

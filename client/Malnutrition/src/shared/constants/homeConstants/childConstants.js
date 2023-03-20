@@ -91,20 +91,22 @@ export const WARNINGSCREEN_CARD = {
 
 export const CHILDSCREEN_CARD = [
   {
+    title: WHAT_MOST_BABIES_DO_TITLE,
     content: HOMESCREEN.CARD_CONTENT1,
     background: CARD_BLUE,
     image: <WhatBabyDoIllustration />,
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
-    child: WHAT_MOST_BABIES_DO,
+    data: WHAT_MOST_BABIES_DO,
     onPress: CHILD_CARD_CONTENT,
   },
   {
+    title: WHAT_PARENT_DO_TITLE,
     content: HOMESCREEN.CARD_CONTENT2,
     background: LIGHT_YELLOW,
     image: <WhatShouldIDoIllustration />,
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
     style: createAccountStyles.rowReverse,
-    child: WHAT_PARENT_DO,
+    data: WHAT_PARENT_DO,
     onPress: CHILD_CARD_CONTENT,
   },
   {

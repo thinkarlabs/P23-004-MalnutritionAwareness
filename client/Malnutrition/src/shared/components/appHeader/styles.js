@@ -45,5 +45,9 @@ export const appHeaderStyles = StyleSheet.create({
     fontWeight: '400',
     fontSize: 14,
     lineHeight: 22,
-  }
+    color: BLACK,
+  },
+  textContainer: {
+    flexDirection: 'column',
+  },
 });

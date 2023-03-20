@@ -25,8 +25,12 @@ const AppHeader = ({
             <BackArrow />
           </TouchableOpacity>
         ) : null}
-        <Text style={appHeaderStyles.headerText}>{title}</Text>
-        <Text style={appHeaderStyles.headerSubText}>{subTitle}</Text>
+        <View style={appHeaderStyles.textContainer}>
+          <Text style={appHeaderStyles.headerText}>{title}</Text>
+          {subTitle && (
+            <Text style={appHeaderStyles.headerSubText}>{subTitle}</Text>
+          )}
+        </View>
       </View>
       <View
         style={

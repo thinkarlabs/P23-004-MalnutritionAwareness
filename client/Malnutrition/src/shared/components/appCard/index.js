@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
 import BackArrowWithCircle from '../../../../assets/svg/backArrowWithCircleSVG';
+import {CREATE_ACCOUNT} from '../../constants/constants';
 import {appCardStyles} from './styles';
 
 export const AppCard = ({
@@ -40,7 +41,12 @@ export const AppCard = ({
             </Text>
           )}
           {boxContainer === false ? null : (
-            <View style={appCardStyles.cardTitleView}>
+            <View
+              style={
+                boxText === CREATE_ACCOUNT.ADD_CHILD_DETAILS
+                  ? appCardStyles.addChildDetailsView
+                  : appCardStyles.cardTitleView
+              }>
               <TouchableOpacity
                 onPress={onPress}
                 style={appCardStyles.cardTitleContainer}>
