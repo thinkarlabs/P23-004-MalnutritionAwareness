@@ -31,6 +31,7 @@ export const LOGIN_CONTENT = `There can be no real growth without${'\n'} healthy
 export const LOGIN_DETAILS = 'Enter your number to ';
 export const LOGIN_BOTTOM = "Don't have an account?";
 export const SIGN_UP = 'Sign Up';
+export const WELCOME = `Welcome`;
 
 export const CREATE_ACCOUNT = {
   SELECT_CURRENT_STAGE_TEXT: "Select beneficiary's current stage to proceed",
@@ -115,6 +116,7 @@ export const HOMESCREEN = {
   CARD_CONTENT4:
     "Your child measurement can tell you how's your childhealth is.",
   CARASOUL_INSTRUCTION: 'Swipe right to left to see another instruction',
+  VIDEO_INSTRUCTION: `Watch the video to know what should be${'\n'}the first step in your pregnancy journey`,
 };
 
 export const ERROR_MESSAGE = {

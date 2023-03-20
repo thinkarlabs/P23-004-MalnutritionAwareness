@@ -7,8 +7,10 @@ import SwipeRightIcon from '../../../../assets/svg/icons/swipeRightIcon';
 import {HOMESCREEN} from '../../../shared/constants/constants';
 import {homeCardStyles} from '../child/styles';
 import {homeStyles} from '../styles';
+import {EAT_HEALTH_FOOD_CONTENT} from '../../../shared/constants/homeConstants/parentConstants';
 
 const PregnantWomanCardContent = ({navigation, route}) => {
+  console.log(route?.params);
   return (
     <SafeAreaView style={homeStyles.safeAreaView}>
       <AppHeader
@@ -21,12 +23,17 @@ const PregnantWomanCardContent = ({navigation, route}) => {
           style={homeCardStyles.scrollView}
           showsVerticalScrollIndicator={false}>
           <AppVideoPlayer videoId={route?.params?.video} />
-          <View style={homeCardStyles.swipeContainer}>
-            <SwipeRightIcon />
-            <Text style={homeCardStyles.carasoulText}>
-              {HOMESCREEN.CARASOUL_INSTRUCTION}
+          <Text style={homeCardStyles.contentText}>
+            {EAT_HEALTH_FOOD_CONTENT.CONTENT1}
+          </Text>
+          <View style={homeCardStyles.detailCard}>
+            <Text
+              style={homeCardStyles.detailCardText}>
+              {EAT_HEALTH_FOOD_CONTENT.CARD_CONTENT}
             </Text>
           </View>
+          <Text style={homeCardStyles.cardInstructionText}>{EAT_HEALTH_FOOD_CONTENT.CARD_INSTRUCTION}</Text>
+          <View style={{paddingTop: 12}}>
           <FlatList
             scrollEnabled={false}
             data={route?.params?.data}
@@ -41,6 +48,7 @@ const PregnantWomanCardContent = ({navigation, route}) => {
               );
             }}
           />
+          </View>
         </ScrollView>
       </View>
     </SafeAreaView>
