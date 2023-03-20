@@ -48,6 +48,8 @@ const PregnantWomanInfo = ({
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [todaysDate, setTodaysDate] = useState('');
   const [isValidForm, setIsValidForm] = useState(false);
+  const [isCreteAccountButtonClicked, setCreteAccountButtonClicked] =
+    useState(false);
   const [formValues, setFormValues] = useState({
     user_type: 'PREGNANT',
     name: '',
@@ -62,7 +64,7 @@ const PregnantWomanInfo = ({
     if (todaysDate === '') {
       getTodaysDate();
     }
-    if (createAccountData && !errorText) {
+    if (isCreteAccountButtonClicked && createAccountData && !errorText) {
       navigation.navigate(OTPVERIFICATION, {
         fromWhere: CREATE_ACCOUNT.CATEGORY_1_TITLE,
         phone_number: formValues.phone_number,
@@ -126,6 +128,7 @@ const PregnantWomanInfo = ({
     }
   };
   const onPressCreateAccount = () => {
+    setCreteAccountButtonClicked(true);
     if (!isValidForm) {
       return false;
     }

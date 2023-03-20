@@ -50,6 +50,8 @@ const ChildInfo = ({
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [todaysDate, setTodaysDate] = useState('');
   const [isValidForm, setIsValidForm] = useState(false);
+  const [isCreteAccountButtonClicked, setCreteAccountButtonClicked] =
+    useState(false);
   const [formValues, setFormValues] = useState({
     user_type: 'LACTATING',
     name: '',
@@ -70,7 +72,7 @@ const ChildInfo = ({
     if (todaysDate === '') {
       getTodaysDate();
     }
-    if (createAccountData && !errorText) {
+    if (isCreteAccountButtonClicked && createAccountData && !errorText) {
       navigation.navigate(OTPVERIFICATION, {
         fromWhere: CREATE_ACCOUNT.CATEGORY_2_TITLE,
         phone_number: formValues.phone_number,
@@ -187,6 +189,8 @@ const ChildInfo = ({
   ]);
 
   const onPressCreateAccount = () => {
+    setCreteAccountButtonClicked(true);
+
     if (!isValidForm) {
       return false;
     }
