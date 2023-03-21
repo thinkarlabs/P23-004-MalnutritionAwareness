@@ -49,6 +49,7 @@ const PregnantWomanInfo = ({
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [todaysDate, setTodaysDate] = useState('');
   const [isValidForm, setIsValidForm] = useState(false);
+  const [buttonPress, setButtonPress] = useState(false);
   const [formValues, setFormValues] = useState({
     user_type: 'PREGNANT',
     name: '',
@@ -63,9 +64,9 @@ const PregnantWomanInfo = ({
     if (todaysDate === '') {
       getTodaysDate();
     }
-    if (createAccountData && !errorText) {
+    if (buttonPress && createAccountData && !errorText) {
       navigation.navigate(OTPVERIFICATION, {
-        fromWhere: CREATE_ACCOUNT.CATEGORY_1_TITLE,
+        fromWhere: formValues.user_type,
         phone_number: formValues.phone_number,
         is_creation: true,
       });
@@ -80,6 +81,7 @@ const PregnantWomanInfo = ({
     errorText,
     navigation,
     hideError,
+    buttonPress,
   ]);
 
   const updatename = newVal => {
@@ -130,6 +132,7 @@ const PregnantWomanInfo = ({
     if (!isValidForm) {
       return false;
     }
+    setButtonPress(true);
     createAccount(formValues);
   };
 

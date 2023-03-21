@@ -32,19 +32,20 @@ import {login as loginAction, hideError as hideErrorAction} from './Actions';
 
 const Login = ({navigation, login, loginData, errorText, hideError}) => {
   const [isValidForm, setIsValidForm] = useState(false);
+  const [buttonPress, setButtonPress] = useState(false);
   const [formValues, setFormValues] = useState({
     phone_number: '',
     is_creation: false,
   });
 
   useEffect(() => {
-    if (loginData && !errorText) {
+    if (buttonPress && loginData && !errorText) {
       navigation.navigate(OTPVERIFICATION, {
         phone_number: formValues?.phone_number,
         fromWhere: LOGIN_TEXT,
       });
     }
-  }, [loginData, errorText, navigation, formValues.phone_number]);
+  }, [loginData, errorText, navigation, formValues?.phone_number, buttonPress]);
 
   const updatePhoneNumber = newVal => {
     hideError();
@@ -64,6 +65,7 @@ const Login = ({navigation, login, loginData, errorText, hideError}) => {
     if (!isValidForm) {
       return false;
     }
+    setButtonPress(true);
     login(formValues);
   };
 

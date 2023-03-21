@@ -52,6 +52,7 @@ const ChildInfo = ({
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [todaysDate, setTodaysDate] = useState('');
   const [isValidForm, setIsValidForm] = useState(false);
+  const [buttonPress, setButtonPress] = useState(false);
   const [formValues, setFormValues] = useState({
     user_type:
       route?.params?.title === 'Lactating Mother' ? 'LACTATING' : 'CAREGIVER',
@@ -72,9 +73,9 @@ const ChildInfo = ({
     if (todaysDate === '') {
       getTodaysDate();
     }
-    if (createAccountData && !errorText) {
+    if (buttonPress && createAccountData && !errorText) {
       navigation.navigate(OTPVERIFICATION, {
-        fromWhere: CREATE_ACCOUNT.CATEGORY_2_TITLE,
+        fromWhere: formValues.user_type,
         phone_number: formValues.phone_number,
         is_creation: true,
       });
@@ -88,6 +89,7 @@ const ChildInfo = ({
     createAccountData,
     errorText,
     navigation,
+    buttonPress,
   ]);
 
   const getTodaysDate = () => {
@@ -190,7 +192,7 @@ const ChildInfo = ({
     if (!isValidForm) {
       return false;
     }
-    console.log(formValues);
+    setButtonPress(true);
     createAccount(formValues);
   };
 
