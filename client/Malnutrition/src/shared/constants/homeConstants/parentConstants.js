@@ -1,30 +1,16 @@
 import React from 'react';
-import ChildDetails from '../../../../assets/svg/childDetails';
-import WarningDetails from '../../../../assets/svg/warningDetailSVG';
 import WhatBabyDoIllustration from '../../../../assets/svg/whatBabyDoSVG';
 import WhatShouldIDoIllustration from '../../../../assets/svg/whatShouldIDoSVG';
 import {
-  CARD_BACKGROUND,
   CARD_BLUE,
   CARD_GREEN,
   CARD_PINK,
   CARD_PURPLE,
-  CARD_RED,
   LIGHT_YELLOW,
 } from '../colors';
-import {CREATE_ACCOUNT, HOMESCREEN} from '../constants';
+import {CREATE_ACCOUNT} from '../constants';
 import {createAccountStyles} from '../../../modules/createAccount/styles';
-import {
-  WHAT_MOST_BABIES_DO,
-  WHAT_MOST_BABIES_DO_TITLE,
-  WHAT_PARENT_DO,
-  WHAT_PARENT_DO_TITLE,
-} from './childConstants';
-import {
-  PREGNANT_WOMAN_CARD_CONTENT,
-  HOME_CARD,
-  TRACK,
-} from '../navigatorConstants';
+import {PREGNANT_WOMAN_CARD_CONTENT} from '../navigatorConstants';
 import ChildIcon from '../../../../assets/svg/icons/childIcon';
 
 //CARD CONTENT
@@ -38,35 +24,35 @@ export const KNOW_ABOUT_MYTHS = `Know about myths${'\n'}around conception and${'
 export const EAT_HEALTHY_FOOD = `Eating healthy food fills your${'\n'}body with energy and${'\n'}nutrients.`;
 
 //HEADER TITLE
-export const HEADER_TITLE = {
-  TITLE3: `Eat healthy food`,
-};
+// export const HEADER_TITLE = {
+//   TITLE3: 'Eat healthy food',
+// };
 
 export const EAT_HEALTH_FOOD_CONTENT = {
+  HEADER_TITLE: 'Eat healthy food',
   CONTENT1: `Food choices can prepare you for a${'\n'}healthy pregnancy. The baby in the womb${'\n'}is dependent physically, mentally and${'\n'}emotionally on the mother.${'\n'}${'\n'}Thus, the nutritional status of the mother,${'\n'}even before becoming pregnant, is${'\n'}critical to the early development of the${'\n'}baby.`,
   CARD_CONTENT: `Prefer using variety of local${'\n'}seasonal foods, vegetables${'\n'}and fruits being grown in and${'\n'}around your area.`,
-  CARD_INSTRUCTION: `Make sure mother's diet includes one${'\n'}from each group -`
+  CARD_INSTRUCTION: `Make sure mother's diet includes one${'\n'}from each group -`,
 };
 
 export const PREGNANTWOMEN_CARD = [
   {
-    title: WHAT_MOST_BABIES_DO_TITLE,
+    title: WHAT_YOU_NEED_TO_TAKE_CARE,
     content: WHAT_YOU_NEED_TO_TAKE_CARE,
     background: CARD_PINK,
     image: <WhatBabyDoIllustration />,
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
     onPress: PREGNANT_WOMAN_CARD_CONTENT,
-    data: WHAT_MOST_BABIES_DO,
+    // data: WHAT_MOST_BABIES_DO,
   },
   {
-    title: WHAT_PARENT_DO_TITLE,
+    title: HOW_TO_STAY_ACTIVE_OR_HEALTHY,
     content: HOW_TO_STAY_ACTIVE_OR_HEALTHY,
     background: CARD_BLUE,
     image: <WhatShouldIDoIllustration />,
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
     onPress: PREGNANT_WOMAN_CARD_CONTENT,
-    data: WHAT_PARENT_DO,
-    headerTitle: HEADER_TITLE.TITLE3,
+    // data: WHAT_MOST_BABIES_DO,
   },
   {
     title: EAT_HEALTHY_FOOD,
@@ -77,31 +63,33 @@ export const PREGNANTWOMEN_CARD = [
     style: createAccountStyles.rowReverse,
     onPress: PREGNANT_WOMAN_CARD_CONTENT,
     data: EAT_HEALTHY_FOOD_CARD,
+    headerTitle: EAT_HEALTH_FOOD_CONTENT.HEADER_TITLE,
   },
   {
-    title: WHAT_PARENT_DO_TITLE,
+    title: TAKE_CARE_OF_EMOTIONAL_HEALTH,
     content: TAKE_CARE_OF_EMOTIONAL_HEALTH,
     background: CARD_PURPLE,
     image: <WhatShouldIDoIllustration />,
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
     onPress: PREGNANT_WOMAN_CARD_CONTENT,
-    data: WHAT_PARENT_DO,
+    // data: WHAT_MOST_BABIES_DO,
   },
   {
-    title: WHAT_PARENT_DO_TITLE,
+    title: KNOW_ABOUT_MYTHS,
     content: KNOW_ABOUT_MYTHS,
     background: CARD_GREEN,
     image: <WhatShouldIDoIllustration />,
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
     onPress: PREGNANT_WOMAN_CARD_CONTENT,
-    data: WHAT_PARENT_DO,
+    // data: WHAT_MOST_BABIES_DO,
   },
 ];
 
 export const EAT_HEALTHY_FOOD_CARD = [
   {
     // title: `Cereals - `,
-    content: 'Rice, Wheat, Ragi, Bajra, Jowar in form of chapati, halua, idli, dosa, upma, poha etc. Avoid white bread, biscuits and other foods made with refined flour (Maida).',
+    content:
+      'Rice, Wheat, Ragi, Bajra, Jowar in form of chapati, halua, idli, dosa, upma, poha etc. Avoid white bread, biscuits and other foods made with refined flour (Maida).',
     image: <ChildIcon />,
   },
   {

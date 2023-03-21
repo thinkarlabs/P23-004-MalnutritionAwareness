@@ -40,8 +40,12 @@ const PregnantWomenHomeScreen = ({navigation, data}) => {
               {age}
             </Text>
           </View>
-          <Text style={homeStyles.homeText}>{WELCOME} {name}!!</Text>
-          <Text style={homeStyles.videoInstructionText}>{HOMESCREEN.VIDEO_INSTRUCTION}</Text>
+          <Text style={homeStyles.homeText}>
+            {WELCOME} {name}!!
+          </Text>
+          <Text style={homeStyles.videoInstructionText}>
+            {HOMESCREEN.VIDEO_INSTRUCTION}
+          </Text>
           <AppVideoPlayer videoId={videoId} />
           <FlatList
             data={PREGNANTWOMEN_CARD}
