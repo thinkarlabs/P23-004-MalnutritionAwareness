@@ -7,7 +7,10 @@ import SwipeRightIcon from '../../../../assets/svg/icons/swipeRightIcon';
 import {HOMESCREEN} from '../../../shared/constants/constants';
 import {homeCardStyles} from '../child/styles';
 import {homeStyles} from '../styles';
-import {EAT_HEALTH_FOOD_CONTENT} from '../../../shared/constants/homeConstants/parentConstants';
+import {
+  EAT_HEALTHY_FOOD_CARD,
+  EAT_HEALTH_FOOD_CONTENT,
+} from '../../../shared/constants/homeConstants/parentConstants';
 
 const PregnantWomanCardContent = ({navigation, route}) => {
   console.log('DEHJKHG',route?.params);
@@ -15,6 +18,7 @@ const PregnantWomanCardContent = ({navigation, route}) => {
     <SafeAreaView style={homeStyles.safeAreaView}>
       <AppHeader
         backArrowValue={true}
+        title={EAT_HEALTH_FOOD_CONTENT.HEADER_TITLE}
         onPress={() => navigation.navigate(TAB)}
       />
       <View style={homeCardStyles.container}>
@@ -27,28 +31,41 @@ const PregnantWomanCardContent = ({navigation, route}) => {
             {EAT_HEALTH_FOOD_CONTENT.CONTENT1}
           </Text>
           <View style={homeCardStyles.detailCard}>
-            <Text
-              style={homeCardStyles.detailCardText}>
+            <Text style={homeCardStyles.detailCardText}>
               {EAT_HEALTH_FOOD_CONTENT.CARD_CONTENT}
             </Text>
           </View>
-          <Text style={homeCardStyles.cardInstructionText}>{EAT_HEALTH_FOOD_CONTENT.CARD_INSTRUCTION}</Text>
-          <View style={{paddingTop: 12}}>
-          <FlatList
-            scrollEnabled={false}
-            data={route?.params?.data}
-            renderItem={({item}) => {
-              return (
-                <View style={homeCardStyles.tabCardContainer}>
-                  <View style={homeCardStyles.tabContainer}>
-                    {item?.image}
-                    <Text style={homeCardStyles.tabText}>{item?.content}</Text>
-                  </View>
+          <Text style={homeCardStyles.cardInstructionText}>
+            {EAT_HEALTH_FOOD_CONTENT.CARD_INSTRUCTION}
+          </Text>
+          {EAT_HEALTHY_FOOD_CARD.map(data => {
+            return (
+              <View style={homeCardStyles.tabCardContainer}>
+                <View style={homeCardStyles.tabContainer}>
+                  {data?.image}
+                  <Text style={homeCardStyles.tabText}>{data?.content}</Text>
                 </View>
-              );
-            }}
-          />
-          </View>
+              </View>
+            );
+          })}
+          {/* <View style={{paddingTop: 12}}>
+            <FlatList
+              scrollEnabled={false}
+              data={EAT_HEALTH_FOOD_CONTENT.LIST_DATA}
+              renderItem={({item}) => {
+                return (
+                  <View style={homeCardStyles.tabCardContainer}>
+                    <View style={homeCardStyles.tabContainer}>
+                      {item?.image}
+                      <Text style={homeCardStyles.tabText}>
+                        {item?.content}
+                      </Text>
+                    </View>
+                  </View>
+                );
+              }}
+            />
+          </View> */}
         </ScrollView>
       </View>
     </SafeAreaView>

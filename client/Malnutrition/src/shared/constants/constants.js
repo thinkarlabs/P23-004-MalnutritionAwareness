@@ -31,7 +31,7 @@ export const LOGIN_CONTENT = `There can be no real growth without${'\n'} healthy
 export const LOGIN_DETAILS = 'Enter your number to ';
 export const LOGIN_BOTTOM = "Don't have an account?";
 export const SIGN_UP = 'Sign Up';
-export const WELCOME = `Welcome`;
+export const WELCOME = 'Welcome';
 
 export const CREATE_ACCOUNT = {
   SELECT_CURRENT_STAGE_TEXT: "Select beneficiary's current stage to proceed",
