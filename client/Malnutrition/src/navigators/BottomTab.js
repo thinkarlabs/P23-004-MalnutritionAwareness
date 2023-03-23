@@ -30,6 +30,8 @@ const Tab = createBottomTabNavigator();
 const BottomTab = () => {
   return (
     <Tab.Navigator
+      initialRouteName={HOME}
+      backBehavior='initialRoute'
       screenOptions={{
         headerShown: false,
         tabBarStyle: {

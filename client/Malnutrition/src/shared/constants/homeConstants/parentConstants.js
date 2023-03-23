@@ -26,6 +26,11 @@ import {
   TRACK,
 } from '../navigatorConstants';
 import ChildIcon from '../../../../assets/svg/icons/childIcon';
+import CurrentMonthImage from '../../../../assets/svg/currentMonthSVG';
+import EatMealImage from '../../../../assets/svg/eatMealSVG';
+import StayActiveImage from '../../../../assets/svg/stayActiveSVG';
+import EmotionalHealthImage from '../../../../assets/svg/emotionalHealthSVG';
+import MythsIllustration from '../../../../assets/svg/mythsSVG';
 
 //CARD CONTENT
 export const WHAT_YOU_NEED_TO_TAKE_CARE = `What you need to take${'\n'}care in the 2nd month?`;
@@ -53,7 +58,7 @@ export const PREGNANTWOMEN_CARD = [
     title: WHAT_MOST_BABIES_DO_TITLE,
     content: WHAT_YOU_NEED_TO_TAKE_CARE,
     background: CARD_PINK,
-    image: <WhatBabyDoIllustration />,
+    image: <CurrentMonthImage />,
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
     onPress: PREGNANT_WOMAN_CARD_CONTENT,
     data: WHAT_MOST_BABIES_DO,
@@ -62,7 +67,7 @@ export const PREGNANTWOMEN_CARD = [
     title: WHAT_PARENT_DO_TITLE,
     content: HOW_TO_STAY_ACTIVE_OR_HEALTHY,
     background: CARD_BLUE,
-    image: <WhatShouldIDoIllustration />,
+    image: <StayActiveImage />,
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
     onPress: PREGNANT_WOMAN_CARD_CONTENT,
     data: WHAT_PARENT_DO,
@@ -72,7 +77,7 @@ export const PREGNANTWOMEN_CARD = [
     title: EAT_HEALTHY_FOOD,
     content: WHAT_TO_EAT_DURING_PREGNANCY,
     background: LIGHT_YELLOW,
-    image: <WhatShouldIDoIllustration />,
+    image: <EatMealImage />,
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
     style: createAccountStyles.rowReverse,
     onPress: PREGNANT_WOMAN_CARD_CONTENT,
@@ -82,7 +87,7 @@ export const PREGNANTWOMEN_CARD = [
     title: WHAT_PARENT_DO_TITLE,
     content: TAKE_CARE_OF_EMOTIONAL_HEALTH,
     background: CARD_PURPLE,
-    image: <WhatShouldIDoIllustration />,
+    image: <EmotionalHealthImage />,
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
     onPress: PREGNANT_WOMAN_CARD_CONTENT,
     data: WHAT_PARENT_DO,
@@ -91,7 +96,7 @@ export const PREGNANTWOMEN_CARD = [
     title: WHAT_PARENT_DO_TITLE,
     content: KNOW_ABOUT_MYTHS,
     background: CARD_GREEN,
-    image: <WhatShouldIDoIllustration />,
+    image: <MythsIllustration />,
     boxText: CREATE_ACCOUNT.MOVE_FORWARD_TEXT,
     onPress: PREGNANT_WOMAN_CARD_CONTENT,
     data: WHAT_PARENT_DO,
@@ -100,18 +105,15 @@ export const PREGNANTWOMEN_CARD = [
 
 export const EAT_HEALTHY_FOOD_CARD = [
   {
-    // title: `Cereals - `,
     content: 'Rice, Wheat, Ragi, Bajra, Jowar in form of chapati, halua, idli, dosa, upma, poha etc. Avoid white bread, biscuits and other foods made with refined flour (Maida).',
     image: <ChildIcon />,
   },
   {
-    content:
-      'Attend to cries immediately and hold the baby close to make her feel secure',
+    content: 'Attend to cries immediately and hold the baby close to make her feel secure',
     image: <ChildIcon />,
   },
   {
-    content:
-      'Help your baby learn to calm her or himself. Its ok for her to suck on her fingers',
+    content:'Help your baby learn to calm her or himself. Its ok for her to suck on her fingers',
     image: <ChildIcon />,
   },
   {
@@ -119,8 +121,7 @@ export const EAT_HEALTHY_FOOD_CARD = [
     image: <ChildIcon />,
   },
   {
-    content:
-      "Pay attention to your baby's different cries so that you learn to know what she wants",
+    content:"Pay attention to your baby's different cries so that you learn to know what she wants",
     image: <ChildIcon />,
   },
   {
@@ -128,8 +129,7 @@ export const EAT_HEALTHY_FOOD_CARD = [
     image: <ChildIcon />,
   },
   {
-    content:
-      'Lay your baby on his tummy when she/he is awake and keep toys near her swipes at dangling objects',
+    content:'Lay your baby on his tummy when she/he is awake and keep toys near her swipes at dangling objects',
     image: <ChildIcon />,
   },
   {

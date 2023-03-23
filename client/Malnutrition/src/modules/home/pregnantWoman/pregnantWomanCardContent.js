@@ -10,7 +10,7 @@ import {homeStyles} from '../styles';
 import {EAT_HEALTH_FOOD_CONTENT} from '../../../shared/constants/homeConstants/parentConstants';
 
 const PregnantWomanCardContent = ({navigation, route}) => {
-  console.log(route?.params);
+  console.log('DEHJKHG',route?.params);
   return (
     <SafeAreaView style={homeStyles.safeAreaView}>
       <AppHeader

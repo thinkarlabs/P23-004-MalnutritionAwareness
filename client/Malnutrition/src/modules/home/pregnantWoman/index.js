@@ -8,6 +8,7 @@ import {AppCard} from '../../../shared/components/appCard';
 import {HOMESCREEN, WELCOME} from '../../../shared/constants/constants';
 import {getAge} from '../../../shared/Utils';
 import {PREGNANTWOMEN_CARD} from '../../../shared/constants/homeConstants/parentConstants';
+import { CHILDSCREEN_CARD } from '../../../shared/constants/homeConstants/childConstants';
 
 const PregnantWomenHomeScreen = ({navigation, data}) => {
   const [videoId, setVideoId] = useState(false);
@@ -24,6 +25,8 @@ const PregnantWomenHomeScreen = ({navigation, data}) => {
   const age = data?.child_details
     ? `${getAge(data?.child_details?.dob)} old`
     : `${getAge(data?.mother_details?.lmp)} pregnant`;
+
+    console.log('DETAIL', PREGNANTWOMEN_CARD);
 
   return (
     <SafeAreaView style={homeStyles.safeAreaView}>
