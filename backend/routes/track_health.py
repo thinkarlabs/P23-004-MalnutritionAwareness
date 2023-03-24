@@ -34,7 +34,7 @@ class HeightForAge(str, Enum):
 
 
 class TrackHealthSchema(BaseModel):
-    months: int
+    weeks: int
     weight: PositiveFloat
     height: int
     head_circumference: Optional[PositiveFloat] = None
@@ -56,7 +56,7 @@ async def track_health(token: str = Depends(oauth2_scheme), user: TrackHealthSch
     user_phone_number = decoded['phone_number']
     user_details = database.user.find_one({'phone_number': user_phone_number})
     user_dict = jsonable_encoder(user)
-    database.trackhealth.update_one({'months': user_dict['months']},
+    database.trackhealth.update_one({'weeks': user_dict['weeks']},
                                     {'$set': {'user_id': user_details['_id'],
                                               'weight': user_dict['height'],
                                               'height': user_dict['height'],
