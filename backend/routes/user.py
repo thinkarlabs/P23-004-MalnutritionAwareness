@@ -83,9 +83,8 @@ async def resend_otp(phone_number: ResendOTPSchema = Body(...)):
     return JSONResponse(status_code=200, content={'message': 'OTP sent successfully'})
 
 
-
 @router.post("/api/v1/login")
-async def login_account(user:LoginUserSchema= Body(...)):
+async def login_account(user: LoginUserSchema = Body(...)):
     user_dict = jsonable_encoder(user)
     # check if same record exists
     if database.user.find_one({'phone_number': user.phone_number}):
@@ -98,7 +97,8 @@ async def login_account(user:LoginUserSchema= Body(...)):
 
             return JSONResponse(status_code=200, content={"message": "OTP sent successfully"})
         else:
-            return JSONResponse(status_code=404, content={"error": " Account exists but not verified. Please sign up again !"})
+            return JSONResponse(status_code=404,
+                                content={"error": " Account exists but not verified. Please sign up again !"})
 
     else:
         return JSONResponse(status_code=409, content={"error": "Phone number does not exists !"})
@@ -161,7 +161,7 @@ async def sync(token: str = Depends(oauth2_scheme)):
         response["video"] = video_link['video_link']
     else:
         days_from_dob = (
-                    datetime.datetime.today() - datetime.datetime.strptime(child_details[0]['dob'], '%Y-%m-%d')).days
+                datetime.datetime.today() - datetime.datetime.strptime(child_details[0]['dob'], '%Y-%m-%d')).days
         video_link = database.home_video.find_one({'$and': [{"persona_type": {"$in": ["lactating", "caregiver"]}},
                                                             {'from_days': {'$lte': days_from_dob}},
                                                             {'upto_days': {'$gte': days_from_dob}}]},
@@ -170,3 +170,5 @@ async def sync(token: str = Depends(oauth2_scheme)):
         response["video"] = video_link['video_link']
 
     return JSONResponse(content=response)
+
+
