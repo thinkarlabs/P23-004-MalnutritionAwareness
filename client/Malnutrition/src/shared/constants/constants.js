@@ -136,18 +136,21 @@ export const GENDER = [
 ];
 
 export const WEIGHT_FOR_AGE = [
-  {label: 'Moderately Underweight', value: 'Moderately_Underweight'},
-  {label: 'Underweight', value: 'Underweight'},
+  {label: 'Moderately Underweight', value: 'MODERATELY_UNDERWEIGHT'},
+  {label: 'Severely Underweight', value: 'SEVERELY_UNDERWEIGHT'},
+  {label: 'Normal', value: 'NORMAL'}
 ];
 
 export const HEIGHT_FOR_AGE = [
-  {label: 'Severely Stunted', value: 'Severely_Stunted'},
-  {label: 'Stunted', value: 'Stunted'},
+  {label: 'Severely Stunted', value: 'SEVERELY_STUNTED'},
+  {label: 'Moderately Stunted', value: 'MODERATELY_STUNTED'},
+  {label: 'Normal', value: 'NORMAL'}
 ];
 
 export const WEIGHT_FOR_HEIGHT = [
-  {label: 'SAM', value: 'Severely_Wasted'},
-  {label: 'MAM', value: 'Moderately_Wasted'},
+  {label: 'SAM', value: 'SAM'},
+  {label: 'MAM', value: 'MAM'},
+  {label: 'Normal', value: 'NORMAL'}
 ];
 
 export const TRACK_HEALTH = {

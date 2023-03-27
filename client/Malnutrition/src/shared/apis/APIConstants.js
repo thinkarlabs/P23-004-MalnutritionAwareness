@@ -5,3 +5,4 @@ export const URL_OTP_VERIFICATION = BASE_URL + 'verify_otp';
 export const URL_RESEND_OTP = BASE_URL + 'resend_otp';
 export const URL_LOGIN = BASE_URL + 'login';
 export const URL_SYNC = BASE_URL + 'sync';
+export const URL_TRACK_HEALTH = BASE_URL + 'track_health';

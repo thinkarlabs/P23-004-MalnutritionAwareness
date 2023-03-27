@@ -16,8 +16,10 @@ import {Button} from '../../../shared/components/button';
 import {buttonStyles} from '../../../shared/components/button/styles';
 import AppDropdown from '../../../shared/components/appDropdown';
 import {appDropdownStyles} from '../../../shared/components/appDropdown/styles';
+import { trackHealth as trackHealthAction } from '../Actions';
+import { connect } from 'react-redux';
 
-const TrackHealth = () => {
+const TrackHealth = ({trackHealthData, errorText, trackHealth}) => {
   const [isValidForm, setIsValidForm] = useState(false);
   const [formValues, setFormValues] = useState({
     month: '',
@@ -114,8 +116,9 @@ const TrackHealth = () => {
     if (!isValidForm) {
       return false;
     }
-    console.log(formValues);
+    trackHealth(formValues);
   };
+
 
   return (
     <View style={trackHealthContainerStyles.screenContainer}>
@@ -227,4 +230,13 @@ const TrackHealth = () => {
   );
 };
 
-export default TrackHealth;
+const mapDispatchToProps = dispatch => ({
+  trackHealth: formValues => dispatch(trackHealthAction(formValues)),
+});
+
+const mapStateToProps = state => ({
+  trackHealthData: state?.trackHealth?.trackHealthData,
+  errorText: state?.trackHealth?.errorText
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrackHealth);

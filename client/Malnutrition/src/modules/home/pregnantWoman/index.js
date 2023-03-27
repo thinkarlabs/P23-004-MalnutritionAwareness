@@ -26,8 +26,6 @@ const PregnantWomenHomeScreen = ({navigation, data}) => {
     ? `${getAge(data?.child_details?.dob)} old`
     : `${getAge(data?.mother_details?.lmp)} pregnant`;
 
-    console.log('DETAIL', PREGNANTWOMEN_CARD);
-
   return (
     <SafeAreaView style={homeStyles.safeAreaView}>
       <ScrollView
