@@ -16,26 +16,26 @@ import {Button} from '../../../shared/components/button';
 import {buttonStyles} from '../../../shared/components/button/styles';
 import AppDropdown from '../../../shared/components/appDropdown';
 import {appDropdownStyles} from '../../../shared/components/appDropdown/styles';
-import { trackHealth as trackHealthAction } from '../Actions';
-import { connect } from 'react-redux';
+import {trackHealth as trackHealthAction} from '../Actions';
+import {connect} from 'react-redux';
 
 const TrackHealth = ({trackHealthData, errorText, trackHealth}) => {
   const [isValidForm, setIsValidForm] = useState(false);
   const [formValues, setFormValues] = useState({
-    month: '',
+    weeks: '',
     weight: '',
     height: '',
-    headCircumference: '',
-    midUpperArmCircumference: '',
-    weightForAge: '',
-    heightForAge: '',
-    weightForHeight: '',
+    head_circumference: '',
+    mid_upper_arm_circumference: '',
+    weight_for_age: '',
+    height_for_age: '',
+    weight_for_height: '',
   });
 
-  const updateMonth = val => {
+  const updateWeeks = val => {
     setFormValues({
       ...formValues,
-      month: val,
+      weeks: val,
     });
   };
 
@@ -56,69 +56,69 @@ const TrackHealth = ({trackHealthData, errorText, trackHealth}) => {
   const updateHeadCircumference = val => {
     setFormValues({
       ...formValues,
-      headCircumference: val,
+      head_circumference: val,
     });
   };
 
   const updateMidUpperArmCircumference = val => {
     setFormValues({
       ...formValues,
-      midUpperArmCircumference: val,
+      mid_upper_arm_circumference: val,
     });
   };
 
   const updateWeightForAge = val => {
     setFormValues({
       ...formValues,
-      weightForAge: val,
+      weight_for_age: val,
     });
   };
 
   const updateHeightForAge = val => {
     setFormValues({
       ...formValues,
-      heightForAge: val,
+      height_for_age: val,
     });
   };
 
   const updateWeightForHeight = val => {
     setFormValues({
       ...formValues,
-      weightForHeight: val,
+      weight_for_height: val,
     });
   };
 
   useMemo(() => {
     if (
-      formValues.month &&
+      formValues.weeks &&
       formValues.weight &&
       formValues.height &&
-      formValues.headCircumference &&
-      formValues.midUpperArmCircumference &&
-      formValues.weightForAge &&
-      formValues.heightForAge &&
-      formValues.weightForHeight
+      formValues.head_circumference &&
+      formValues.mid_upper_arm_circumference &&
+      formValues.weight_for_age &&
+      formValues.height_for_age &&
+      formValues.weight_for_height
     ) {
       setIsValidForm(true);
     }
   }, [
-    formValues.month,
+    formValues.weeks,
     formValues.weight,
     formValues.height,
-    formValues.headCircumference,
-    formValues.midUpperArmCircumference,
-    formValues.weightForAge,
-    formValues.heightForAge,
-    formValues.weightForHeight,
+    formValues.head_circumference,
+    formValues.mid_upper_arm_circumference,
+    formValues.weight_for_age,
+    formValues.height_for_age,
+    formValues.weight_for_height,
   ]);
 
   const onPressShowResult = () => {
     if (!isValidForm) {
       return false;
     }
+    // console.log(formValues);
     trackHealth(formValues);
   };
-
 
   return (
     <View style={trackHealthContainerStyles.screenContainer}>
@@ -136,8 +136,8 @@ const TrackHealth = ({trackHealthData, errorText, trackHealth}) => {
               placeholderTextColor={PLACEHOLDER_COLOR}
               newStyles={beneficiaryInfoStyles.inputField}
               keyboardType="numeric"
-              name="month"
-              changeText={updateMonth}
+              name="weeks"
+              changeText={updateWeeks}
             />
           </View>
           <View style={beneficiaryInfoStyles.inputContainer}>
@@ -236,7 +236,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   trackHealthData: state?.trackHealth?.trackHealthData,
-  errorText: state?.trackHealth?.errorText
-})
+  errorText: state?.trackHealth?.errorText,
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrackHealth);

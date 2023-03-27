@@ -1,6 +1,4 @@
 import React from 'react';
-import WhatBabyDoIllustration from '../../../../assets/svg/whatBabyDoSVG';
-import WhatShouldIDoIllustration from '../../../../assets/svg/whatShouldIDoSVG';
 import {
   CARD_BLUE,
   CARD_GREEN,
@@ -27,11 +25,6 @@ export const KNOW_ABOUT_MYTHS = `Know about myths${'\n'}around conception and${'
 
 //CARD TITLE
 export const EAT_HEALTHY_FOOD = `Eating healthy food fills your${'\n'}body with energy and${'\n'}nutrients.`;
-
-//HEADER TITLE
-// export const HEADER_TITLE = {
-//   TITLE3: 'Eat healthy food',
-// };
 
 export const EAT_HEALTH_FOOD_CONTENT = {
   HEADER_TITLE: 'Eat healthy food',

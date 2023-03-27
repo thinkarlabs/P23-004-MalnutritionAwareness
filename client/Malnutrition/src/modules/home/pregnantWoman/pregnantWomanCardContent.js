@@ -1,10 +1,8 @@
-import {View, Text, FlatList, SafeAreaView, ScrollView} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {TAB} from '../../../shared/constants/navigatorConstants';
 import {AppVideoPlayer} from '../../../shared/components/appVideoPlayer';
-import SwipeRightIcon from '../../../../assets/svg/icons/swipeRightIcon';
-import {HOMESCREEN} from '../../../shared/constants/constants';
 import {homeCardStyles} from '../child/styles';
 import {homeStyles} from '../styles';
 import {
@@ -13,7 +11,6 @@ import {
 } from '../../../shared/constants/homeConstants/parentConstants';
 
 const PregnantWomanCardContent = ({navigation, route}) => {
-  console.log('DEHJKHG',route?.params);
   return (
     <SafeAreaView style={homeStyles.safeAreaView}>
       <AppHeader
@@ -48,24 +45,6 @@ const PregnantWomanCardContent = ({navigation, route}) => {
               </View>
             );
           })}
-          {/* <View style={{paddingTop: 12}}>
-            <FlatList
-              scrollEnabled={false}
-              data={EAT_HEALTH_FOOD_CONTENT.LIST_DATA}
-              renderItem={({item}) => {
-                return (
-                  <View style={homeCardStyles.tabCardContainer}>
-                    <View style={homeCardStyles.tabContainer}>
-                      {item?.image}
-                      <Text style={homeCardStyles.tabText}>
-                        {item?.content}
-                      </Text>
-                    </View>
-                  </View>
-                );
-              }}
-            />
-          </View> */}
         </ScrollView>
       </View>
     </SafeAreaView>
