@@ -1,4 +1,4 @@
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, Dimensions} from 'react-native';
 import React, {useMemo, useState} from 'react';
 import {trackHealthContainerStyles} from './styles';
 import {
@@ -20,6 +20,7 @@ import {appDropdownStyles} from '../../../shared/components/appDropdown/styles';
 import {trackHealth as trackHealthAction} from '../Actions';
 import {connect} from 'react-redux';
 import {useSelector} from 'react-redux';
+import WhatsappIcon from '../../../../assets/svg/icons/whatsappIcon';
 
 const TrackHealth = ({trackHealthData, errorText, trackHealth}) => {
   const [isValidForm, setIsValidForm] = useState(false);
@@ -124,7 +125,7 @@ const TrackHealth = ({trackHealthData, errorText, trackHealth}) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={{height: '100%'}}>
       <View style={trackHealthContainerStyles.screenContainer}>
         <View style={trackHealthContainerStyles.inputContainer}>
           <Text style={trackHealthContainerStyles.inputTitle}>
@@ -232,8 +233,10 @@ const TrackHealth = ({trackHealthData, errorText, trackHealth}) => {
         </View>
         <View style={{paddingTop: 20}}>
           {showText && (
-            <View
-              style={trackHealthContainerStyles.helpMessageContainer}>
+            <View style={trackHealthContainerStyles.helpMessageContainer}>
+              <View style={{justifyContent: 'center', paddingRight: 12}}>
+              <WhatsappIcon />
+              </View>
               <Text style={trackHealthContainerStyles.helpMessageText}>
                 {WHATSAPP_MESSAGE}
               </Text>
