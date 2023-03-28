@@ -8,8 +8,10 @@ export const trackHealth = data => async dispatch => {
   console.log(jwtToken, 'jwtToken');
   const reqBody = {
     method: 'POST',
-    Authorization: `Bearer ${jwtToken}`,
+    headers: {
+      Authorization: `Bearer ${jwtToken}`,
     'Content-Type': 'application/json',
+    },
     body: JSON.stringify(data),
   };
 
@@ -18,7 +20,7 @@ export const trackHealth = data => async dispatch => {
     .then(responseData => {
       console.log(responseData, 'responseData');
       if (responseData?.message) {
-        dispatch(trackHealthSuccess(responseData?.message));
+        dispatch(trackHealthSuccess(responseData));
       } else {
         dispatch(trackHealthError(responseData?.error));
       }
