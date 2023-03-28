@@ -11,6 +11,7 @@ const Tab = createMaterialTopTabNavigator();
 export const TopTabNavigator = () => {
   return (
     <Tab.Navigator
+    sceneContainerStyle={{backgroundColor: 'white'}}
       screenOptions={({route}) => ({
         tabBarInactiveTintColor: '#616568',
         tabBarActiveTintColor: '#111112',
@@ -32,7 +33,8 @@ export const TopTabNavigator = () => {
             </View>
           );
         },
-      })}>
+      })}
+      >
       <Tab.Screen name={TRACK_HEALTH.TRACK_HEALTH} component={TrackHealth} />
       <Tab.Screen name={TRACK_HEALTH.TIMELINE} component={Timeline} />
     </Tab.Navigator>
