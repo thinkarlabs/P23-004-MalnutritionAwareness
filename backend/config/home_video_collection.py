@@ -1,7 +1,7 @@
 from database import db as database
 from bson.objectid import ObjectId
 
-home_video = database.create_collection("home_video")
+#home_video = database.create_collection("home_video")
 home_video_collection = database["home_video"]
 
 # Define the video data
