@@ -3,13 +3,16 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Splash from '../modules/splash';
 import {
   CHILDINFO_SCREEN,
+  CHILD_CARD_CONTENT,
   CREATEACCOUNT,
+  HOME_CARD,
   LOGIN,
   ONBOARDINGSLIDER1,
   ONBOARDINGSLIDER2,
   ONBOARDINGSLIDER3,
   OTPVERIFICATION,
   PREGNANTWOMAN_SCREEN,
+  PREGNANT_WOMAN_CARD_CONTENT,
   SPLASH,
   TAB,
 } from '../shared/constants/navigatorConstants';
@@ -23,6 +26,9 @@ import OnBoardingSlider3 from '../modules/onboarding/OnBoardingSlider3';
 import Login from '../modules/login';
 import BottomTab from './BottomTab';
 import ChildInfo from '../modules/createAccount/beneficiaryInfoScreen/ChildInfo';
+import PregnantWomanCardContent from '../modules/home/pregnantWoman/pregnantWomanCardContent';
+import ChildCardContent from '../modules/home/child/childCardContent';
+import WarningCardContent from '../modules/home/child/warningCardContent';
 
 const Stack = createStackNavigator();
 
@@ -54,6 +60,12 @@ export function AppStackNavigator() {
       <Stack.Screen name={LOGIN} component={Login} />
       <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
       <Stack.Screen name={TAB} component={BottomTab} />
+      <Stack.Screen name={PREGNANT_WOMAN_CARD_CONTENT} component={PregnantWomanCardContent}/>
+      <Stack.Screen name={CHILD_CARD_CONTENT} component={ChildCardContent} />
+      <Stack.Screen
+        name={HOME_CARD.WARNING_CARD}
+        component={WarningCardContent}
+      />
     </Stack.Navigator>
   );
 }
