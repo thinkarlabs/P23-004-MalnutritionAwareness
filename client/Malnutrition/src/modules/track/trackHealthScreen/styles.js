@@ -4,6 +4,7 @@ import {
   BUTTON,
   LIGHT_GREY,
   PLACEHOLDER_BORDER_COLOR,
+  PLACEHOLDER_COLOR,
   WHITE,
 } from '../../../shared/constants/colors';
 
@@ -35,6 +36,20 @@ export const trackHealthContainerStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 15,
+  },
+  helpMessageContainer: {
+    borderWidth: 1,
+    borderRadius: 16,
+    padding: 16,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    borderColor: PLACEHOLDER_BORDER_COLOR
+  },
+  helpMessageText: {
+    fontWeight: '400',
+    fontSize: 16,
+    lineHeight: 22,
+    color: PLACEHOLDER_COLOR
   },
 });
 

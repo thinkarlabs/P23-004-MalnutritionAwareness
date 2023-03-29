@@ -1,18 +1,21 @@
-import {View, Text, FlatList, SafeAreaView, ScrollView} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {TAB} from '../../../shared/constants/navigatorConstants';
 import {AppVideoPlayer} from '../../../shared/components/appVideoPlayer';
-import SwipeRightIcon from '../../../../assets/svg/icons/swipeRightIcon';
-import {HOMESCREEN} from '../../../shared/constants/constants';
 import {homeCardStyles} from '../child/styles';
 import {homeStyles} from '../styles';
+import {
+  EAT_HEALTHY_FOOD_CARD,
+  EAT_HEALTH_FOOD_CONTENT,
+} from '../../../shared/constants/homeConstants/parentConstants';
 
 const PregnantWomanCardContent = ({navigation, route}) => {
   return (
     <SafeAreaView style={homeStyles.safeAreaView}>
       <AppHeader
         backArrowValue={true}
+        title={EAT_HEALTH_FOOD_CONTENT.HEADER_TITLE}
         onPress={() => navigation.navigate(TAB)}
       />
       <View style={homeCardStyles.container}>
@@ -21,26 +24,27 @@ const PregnantWomanCardContent = ({navigation, route}) => {
           style={homeCardStyles.scrollView}
           showsVerticalScrollIndicator={false}>
           <AppVideoPlayer videoId={route?.params?.video} />
-          <View style={homeCardStyles.swipeContainer}>
-            <SwipeRightIcon />
-            <Text style={homeCardStyles.carasoulText}>
-              {HOMESCREEN.CARASOUL_INSTRUCTION}
+          <Text style={homeCardStyles.contentText}>
+            {EAT_HEALTH_FOOD_CONTENT.CONTENT1}
+          </Text>
+          <View style={homeCardStyles.detailCard}>
+            <Text style={homeCardStyles.detailCardText}>
+              {EAT_HEALTH_FOOD_CONTENT.CARD_CONTENT}
             </Text>
           </View>
-          <FlatList
-            scrollEnabled={false}
-            data={route?.params?.data}
-            renderItem={({item}) => {
-              return (
-                <View style={homeCardStyles.tabCardContainer}>
-                  <View style={homeCardStyles.tabContainer}>
-                    {item?.image}
-                    <Text style={homeCardStyles.tabText}>{item?.content}</Text>
-                  </View>
+          <Text style={homeCardStyles.cardInstructionText}>
+            {EAT_HEALTH_FOOD_CONTENT.CARD_INSTRUCTION}
+          </Text>
+          {EAT_HEALTHY_FOOD_CARD.map(data => {
+            return (
+              <View style={homeCardStyles.tabCardContainer}>
+                <View style={homeCardStyles.tabContainer}>
+                  {data?.image}
+                  <Text style={homeCardStyles.tabText}>{data?.content}</Text>
                 </View>
-              );
-            }}
-          />
+              </View>
+            );
+          })}
         </ScrollView>
       </View>
     </SafeAreaView>

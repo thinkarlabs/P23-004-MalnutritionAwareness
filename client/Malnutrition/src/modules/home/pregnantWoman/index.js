@@ -5,9 +5,10 @@ import {useIsFocused} from '@react-navigation/native';
 import {homeStyles} from '../styles';
 import {AppVideoPlayer} from '../../../shared/components/appVideoPlayer';
 import {AppCard} from '../../../shared/components/appCard';
-import {HOMESCREEN} from '../../../shared/constants/constants';
+import {HOMESCREEN, WELCOME} from '../../../shared/constants/constants';
 import {getAge} from '../../../shared/Utils';
 import {PREGNANTWOMEN_CARD} from '../../../shared/constants/homeConstants/parentConstants';
+import { CHILDSCREEN_CARD } from '../../../shared/constants/homeConstants/childConstants';
 
 const PregnantWomenHomeScreen = ({navigation, data}) => {
   const [videoId, setVideoId] = useState(false);
@@ -40,7 +41,12 @@ const PregnantWomenHomeScreen = ({navigation, data}) => {
               {age}
             </Text>
           </View>
-          <Text style={homeStyles.homeText}>{HOMESCREEN.TITLE}</Text>
+          <Text style={homeStyles.homeText}>
+            {WELCOME} {name}!!
+          </Text>
+          <Text style={homeStyles.videoInstructionText}>
+            {HOMESCREEN.VIDEO_INSTRUCTION}
+          </Text>
           <AppVideoPlayer videoId={videoId} />
           <FlatList
             data={PREGNANTWOMEN_CARD}
@@ -53,12 +59,10 @@ const PregnantWomenHomeScreen = ({navigation, data}) => {
                         data: item?.data,
                         title: item?.title,
                         video: videoId,
+                        headerTitle: item?.headerTitle,
                       })
                     }
                     content={item?.content}
-                    warningCardContent1={item?.content1}
-                    warningCardContent2={item?.content2}
-                    warningCardContent3={item?.content3}
                     background={item?.background}
                     image={item?.image}
                     boxText={item?.boxText}

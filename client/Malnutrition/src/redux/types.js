@@ -9,3 +9,5 @@ export const LOGIN_SUCCESS = 'login_success';
 export const LOGIN_ERROR = 'login_error';
 export const HOMESCREEN_SYNC_SUCCESS = 'homescreen_sync_success';
 export const HOMESCREEN_SYNC_ERROR = 'homescreen_sync_error';
+export const TRACK_HEALTH_SUCCESS = 'track_health_success';
+export const TRACK_HEALTH_ERROR = 'track_health_error';

@@ -31,6 +31,7 @@ export const LOGIN_CONTENT = `There can be no real growth without${'\n'} healthy
 export const LOGIN_DETAILS = 'Enter your number to ';
 export const LOGIN_BOTTOM = "Don't have an account?";
 export const SIGN_UP = 'Sign Up';
+export const WELCOME = 'Welcome';
 
 export const CREATE_ACCOUNT = {
   SELECT_CURRENT_STAGE_TEXT: "Select beneficiary's current stage to proceed",
@@ -115,6 +116,7 @@ export const HOMESCREEN = {
   CARD_CONTENT4:
     "Your child measurement can tell you how's your childhealth is.",
   CARASOUL_INSTRUCTION: 'Swipe right to left to see another instruction',
+  VIDEO_INSTRUCTION: `Watch the video to know what should be${'\n'}the first step in your pregnancy journey`,
 };
 
 export const ERROR_MESSAGE = {
@@ -134,23 +136,26 @@ export const GENDER = [
 ];
 
 export const WEIGHT_FOR_AGE = [
-  {label: 'Moderately Underweight', value: 'Moderately_Underweight'},
-  {label: 'Underweight', value: 'Underweight'},
+  {label: 'Moderately Underweight', value: 'MODERATELY_UNDERWEIGHT'},
+  {label: 'Severely Underweight', value: 'SEVERELY_UNDERWEIGHT'},
+  {label: 'Normal', value: 'NORMAL'},
 ];
 
 export const HEIGHT_FOR_AGE = [
-  {label: 'Severely Stunted', value: 'Severely_Stunted'},
-  {label: 'Stunted', value: 'Stunted'},
+  {label: 'Severely Stunted', value: 'SEVERELY_STUNTED'},
+  {label: 'Moderately Stunted', value: 'MODERATELY_STUNTED'},
+  {label: 'Normal', value: 'NORMAL'},
 ];
 
 export const WEIGHT_FOR_HEIGHT = [
-  {label: 'SAM', value: 'Severely_Wasted'},
-  {label: 'MAM', value: 'Moderately_Wasted'},
+  {label: 'SAM', value: 'SAM'},
+  {label: 'MAM', value: 'MAM'},
+  {label: 'Normal', value: 'NORMAL'},
 ];
 
 export const TRACK_HEALTH = {
   TITLE: 'Enter measurements',
-  PLACEHOLDER1: 'Month(s)',
+  PLACEHOLDER1: 'Week(s)',
   PLACEHOLDER2: 'Weight (KG)',
   PLACEHOLDER3: 'Height (CM)',
   PLACEHOLDER4: 'Head Circumference (CM)',
@@ -168,3 +173,5 @@ export const ASK_QUERIES_TEXT =
 export const COMING_SOON_HEADING = 'This feature is coming soon!!';
 export const COMING_SOON_TEXT =
   'Our team is working to up this feature live soon. Through this feature, you will see  your baby’s monthly timeline';
+
+export const WHATSAPP_MESSAGE = `Please whatsapp your Anganwadi${'\n'}Centre immediately by tapping here`

@@ -45,18 +45,15 @@ export const WHAT_MOST_BABIES_DO = [
 
 export const WHAT_PARENT_DO = [
   {
-    content:
-      'Cuddle, talk and play with your baby during feeding, dressing and bathing',
+    content: 'Cuddle, talk and play with your baby during feeding, dressing and bathing',
     image: <ChildIcon />,
   },
   {
-    content:
-      'Attend to cries immediately and hold the baby close to make her feel secure',
+    content: 'Attend to cries immediately and hold the baby close to make her feel secure',
     image: <ChildIcon />,
   },
   {
-    content:
-      'Help your baby learn to calm her or himself. Its ok for her to suck on her fingers',
+    content: 'Help your baby learn to calm her or himself. Its ok for her to suck on her fingers',
     image: <ChildIcon />,
   },
   {
@@ -64,8 +61,7 @@ export const WHAT_PARENT_DO = [
     image: <ChildIcon />,
   },
   {
-    content:
-      "Pay attention to your baby's different cries so that you learn to know what she wants",
+    content: "Pay attention to your baby's different cries so that you learn to know what she wants",
     image: <ChildIcon />,
   },
   {
@@ -73,8 +69,7 @@ export const WHAT_PARENT_DO = [
     image: <ChildIcon />,
   },
   {
-    content:
-      'Lay your baby on his tummy when she/he is awake and keep toys near her swipes at dangling objects',
+    content: 'Lay your baby on his tummy when she/he is awake and keep toys near her swipes at dangling objects',
     image: <ChildIcon />,
   },
   {

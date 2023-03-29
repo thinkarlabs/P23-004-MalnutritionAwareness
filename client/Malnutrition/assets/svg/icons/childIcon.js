@@ -1,14 +1,13 @@
-import * as React from "react"
-import Svg, { G, Circle, Path, Defs, ClipPath } from "react-native-svg"
+import * as React from 'react';
+import Svg, {G, Circle, Path, Defs, ClipPath} from 'react-native-svg';
 
-const ChildIcon = (props) => (
+const ChildIcon = props => (
   <Svg
     width={28}
     height={28}
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+    {...props}>
     <G clipPath="url(#a)">
       <Circle cx={14} cy={14} r={14} fill="#E9EAF3" />
       <Path
@@ -24,6 +23,6 @@ const ChildIcon = (props) => (
       </ClipPath>
     </Defs>
   </Svg>
-)
+);
 
 export default ChildIcon;

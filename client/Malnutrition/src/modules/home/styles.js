@@ -29,6 +29,7 @@ export const homeStyles = StyleSheet.create({
     fontSize: 26,
     lineHeight: 31,
     color: BLACK,
+    paddingTop: 24
   },
   rowReverse: {},
   profile: {
@@ -39,4 +40,11 @@ export const homeStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  videoInstructionText: {
+    fontWeight: '400',
+    fontSize: 18,
+    lineHeight: 24,
+    color: BLACK,
+    paddingTop: 6
+  }
 });
