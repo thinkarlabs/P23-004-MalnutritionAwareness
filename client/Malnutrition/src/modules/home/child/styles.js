@@ -68,7 +68,7 @@ export const homeCardStyles = StyleSheet.create({
   detailCard: {
     backgroundColor: '#F1E99E',
     height: 140,
-    borderRadius: 12
+    borderRadius: 12,
   },
   detailCardText: {
     fontWeight: '400',
@@ -83,6 +83,6 @@ export const homeCardStyles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 18,
     lineHeight: 24,
-    color: BLACK
-  }
+    color: BLACK,
+  },
 });

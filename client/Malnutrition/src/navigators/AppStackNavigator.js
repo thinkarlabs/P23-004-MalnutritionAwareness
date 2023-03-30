@@ -15,6 +15,7 @@ import {
   PREGNANT_WOMAN_CARD_CONTENT,
   SPLASH,
   TAB,
+  TRACK_HEALTH,
 } from '../shared/constants/navigatorConstants';
 import {WHITE} from '../shared/constants/colors';
 import CreateAccount from '../modules/createAccount';
@@ -29,6 +30,7 @@ import ChildInfo from '../modules/createAccount/beneficiaryInfoScreen/ChildInfo'
 import PregnantWomanCardContent from '../modules/home/pregnantWoman/pregnantWomanCardContent';
 import ChildCardContent from '../modules/home/child/childCardContent';
 import WarningCardContent from '../modules/home/child/warningCardContent';
+import TrackHealth from '../modules/track/trackHealthScreen/trackHealth';
 
 const Stack = createStackNavigator();
 
@@ -60,12 +62,16 @@ export function AppStackNavigator() {
       <Stack.Screen name={LOGIN} component={Login} />
       <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
       <Stack.Screen name={TAB} component={BottomTab} />
-      <Stack.Screen name={PREGNANT_WOMAN_CARD_CONTENT} component={PregnantWomanCardContent}/>
+      <Stack.Screen
+        name={PREGNANT_WOMAN_CARD_CONTENT}
+        component={PregnantWomanCardContent}
+      />
       <Stack.Screen name={CHILD_CARD_CONTENT} component={ChildCardContent} />
       <Stack.Screen
         name={HOME_CARD.WARNING_CARD}
         component={WarningCardContent}
       />
+      <Stack.Screen name={TRACK_HEALTH.TRACK_HEALTH} component={TrackHealth} />
     </Stack.Navigator>
   );
 }

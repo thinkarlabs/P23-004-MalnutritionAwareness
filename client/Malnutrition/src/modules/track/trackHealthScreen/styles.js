@@ -15,7 +15,7 @@ export const trackHealthContainerStyles = StyleSheet.create({
     padding: 20,
   },
   inputContainer: {
-    height: 500,
+    height: 550,
     borderWidth: 1,
     borderColor: PLACEHOLDER_BORDER_COLOR,
     borderRadius: 16,
@@ -43,13 +43,19 @@ export const trackHealthContainerStyles = StyleSheet.create({
     padding: 16,
     flexDirection: 'row',
     justifyContent: 'center',
-    borderColor: PLACEHOLDER_BORDER_COLOR
+    borderColor: PLACEHOLDER_BORDER_COLOR,
   },
   helpMessageText: {
     fontWeight: '400',
     fontSize: 16,
     lineHeight: 22,
-    color: PLACEHOLDER_COLOR
+    color: PLACEHOLDER_COLOR,
+  },
+  successText: {
+    fontWeight: '400',
+    fontSize: 16,
+    lineHeight: 22,
+    color: 'green',
   },
 });
 

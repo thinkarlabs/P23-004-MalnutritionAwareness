@@ -8,7 +8,6 @@ import {AppCard} from '../../../shared/components/appCard';
 import {HOMESCREEN, WELCOME} from '../../../shared/constants/constants';
 import {getAge} from '../../../shared/Utils';
 import {PREGNANTWOMEN_CARD} from '../../../shared/constants/homeConstants/parentConstants';
-import { CHILDSCREEN_CARD } from '../../../shared/constants/homeConstants/childConstants';
 
 const PregnantWomenHomeScreen = ({navigation, data}) => {
   const [videoId, setVideoId] = useState(false);

@@ -29,7 +29,7 @@ export const createAccountStyles = StyleSheet.create({
   rowReverse: {
     flexDirection: 'row-reverse',
     justifyContent: 'space-around',
-    paddingLeft: 17
+    paddingLeft: 17,
   },
   Button: {
     backgroundColor: BLUE,

@@ -1,28 +1,15 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';
 import GroupIcon from '../../../../assets/svg/icons/groupIcon';
-import {LIGHT_GREY} from '../../constants/colors';
 import {appDropdownStyles} from './styles';
 
 const AppDropdown = ({dropdownValue, data, placeholder, style}) => {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
 
-  const renderLabel = () => {
-    if (value || isFocus) {
-      return (
-        <Text style={[appDropdownStyles.label, isFocus && {color: LIGHT_GREY}]}>
-          {placeholder}
-        </Text>
-      );
-    }
-    return null;
-  };
-
   return (
     <View style={appDropdownStyles.container}>
-      {/* {renderLabel()} */}
       <Dropdown
         style={[style, isFocus && {borderColor: 'blue'}]}
         placeholderStyle={appDropdownStyles.placeholderStyle}

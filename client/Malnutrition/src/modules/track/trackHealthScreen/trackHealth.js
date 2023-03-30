@@ -1,5 +1,5 @@
-import {View, Text, ScrollView, Dimensions} from 'react-native';
-import React, {useMemo, useState} from 'react';
+import {View, Text, ScrollView} from 'react-native';
+import React, {useEffect, useMemo, useState} from 'react';
 import {trackHealthContainerStyles} from './styles';
 import {
   HEIGHT_FOR_AGE,
@@ -19,12 +19,12 @@ import AppDropdown from '../../../shared/components/appDropdown';
 import {appDropdownStyles} from '../../../shared/components/appDropdown/styles';
 import {trackHealth as trackHealthAction} from '../Actions';
 import {connect} from 'react-redux';
-import {useSelector} from 'react-redux';
 import WhatsappIcon from '../../../../assets/svg/icons/whatsappIcon';
 
 const TrackHealth = ({trackHealthData, errorText, trackHealth}) => {
   const [isValidForm, setIsValidForm] = useState(false);
   const [showText, setShowText] = useState(false);
+  const [buttonPress, setButtonPress] = useState(false);
   const [formValues, setFormValues] = useState({
     weeks: '',
     weight: '',
@@ -35,6 +35,12 @@ const TrackHealth = ({trackHealthData, errorText, trackHealth}) => {
     height_for_age: '',
     weight_for_height: '',
   });
+
+  useEffect(() => {
+    if (buttonPress && trackHealthData && !errorText) {
+      setShowText(true);
+    }
+  }, []);
 
   const updateWeeks = val => {
     setFormValues({
@@ -120,8 +126,9 @@ const TrackHealth = ({trackHealthData, errorText, trackHealth}) => {
     if (!isValidForm) {
       return false;
     }
-    setShowText(true);
+    setButtonPress(true);
     trackHealth(formValues);
+    setShowText(true);
   };
 
   return (
@@ -131,7 +138,7 @@ const TrackHealth = ({trackHealthData, errorText, trackHealth}) => {
           <Text style={trackHealthContainerStyles.inputTitle}>
             {TRACK_HEALTH.TITLE}
           </Text>
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollView>
             <View style={beneficiaryInfoStyles.inputContainer}>
               <View style={beneficiaryInfoStyles.iconTextInput}>
                 <CalendarIcon />
@@ -230,12 +237,19 @@ const TrackHealth = ({trackHealthData, errorText, trackHealth}) => {
             disabled={!isValidForm}
             onPress={onPressShowResult}
           />
+          {showText && (
+            <View style={{marginTop: 20}}>
+              <Text style={trackHealthContainerStyles.successText}>
+                Health details have been submitted successfully
+              </Text>
+            </View>
+          )}
         </View>
         <View style={{paddingTop: 20}}>
           {showText && (
             <View style={trackHealthContainerStyles.helpMessageContainer}>
               <View style={{justifyContent: 'center', paddingRight: 12}}>
-              <WhatsappIcon />
+                <WhatsappIcon />
               </View>
               <Text style={trackHealthContainerStyles.helpMessageText}>
                 {WHATSAPP_MESSAGE}

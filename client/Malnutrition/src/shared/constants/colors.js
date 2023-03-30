@@ -33,4 +33,3 @@ export const PROFILE = '#F7D2BD';
 export const CARD_PINK = '#F7CEE4';
 export const CARD_PURPLE = '#D3CDED';
 export const CARD_GREEN = '#CDE8BF';
-

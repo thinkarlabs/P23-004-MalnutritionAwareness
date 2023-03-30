@@ -10,7 +10,7 @@ export const trackHealth = data => async dispatch => {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${jwtToken}`,
-    'Content-Type': 'application/json',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
   };
