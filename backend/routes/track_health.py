@@ -70,3 +70,22 @@ async def track_health(token: str = Depends(oauth2_scheme), user: TrackHealthSch
     return JSONResponse(content={"weight_for_height": user_dict['weight_for_height'],
                                  "weight_for_age": user_dict['weight_for_age'],
                                  "height_for_age": user_dict['height_for_age']})
+
+
+@router.get("/api/v1/timeline")
+async def timeline(token: str = Depends(oauth2_scheme)):
+    try:
+        decoded = jwt.decode(token, JWT_SECRET, algorithms=JWT_ALGORITHM)
+    except jwt.ExpiredSignatureError:
+        return JSONResponse(content={'error': 'JWT Token expired'})
+    except jwt.PyJWTError as e:
+        print(e)
+        return JSONResponse(content={'error': 'Invalid Token'})
+    user_phone_number = decoded['phone_number']
+    user_details = database.user.find_one({'phone_number': user_phone_number})
+    track_health_details = []
+    for x in database.trackhealth.find({"user_id": user_details['_id']},
+                                       {"_id": 0, "weeks": 1, "weight": 1, "height": 1, "weight_for_height": 1}):
+        track_health_details.append(x)
+
+    return track_health_details
