@@ -88,4 +88,4 @@ async def timeline(token: str = Depends(oauth2_scheme)):
                                        {"_id": 0, "weeks": 1, "weight": 1, "height": 1, "weight_for_height": 1}):
         track_health_details.append(x)
 
-    return track_health_details
+    return sorted(track_health_details, key=lambda d: d['weeks'])
