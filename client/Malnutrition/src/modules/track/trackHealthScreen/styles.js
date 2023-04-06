@@ -62,9 +62,7 @@ export const trackHealthContainerStyles = StyleSheet.create({
 export const timelineStyles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 35,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 20
   },
   innerContainer: {
     paddingBottom: 30,
@@ -84,4 +82,45 @@ export const timelineStyles = StyleSheet.create({
     color: LIGHT_GREY,
     textAlign: 'center',
   },
+  topContainer: {
+    flexDirection: 'row',
+  },
+  boxContainer: {
+    borderWidth: 1,
+    borderRadius: 16,
+    borderColor: PLACEHOLDER_BORDER_COLOR,
+    padding: 16
+  },
+  boxTitleContainer: {
+    fontWeight: '700',
+    fontSize: 18,
+    lineHeight: 25,
+    color: BLACK,
+    paddingLeft: 5,
+  },
+  errorContainer: {
+    backgroundColor: '#F5A300',
+    borderRadius:7,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '70%',
+    height: '20%'
+  },
+  errorTitle: {
+    color: WHITE,
+    fontWeight: '600',
+    fontSize: 14,
+    lineHeight: 16,
+  },
+  navigationContainer: {
+    flexDirection: 'row-reverse',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-end'
+  },
+  navigationText: {
+    fontWeight: '700',
+    fontSize: 16,
+    lineHeight: 26,
+    color: '#6667FF'
+  }
 });
