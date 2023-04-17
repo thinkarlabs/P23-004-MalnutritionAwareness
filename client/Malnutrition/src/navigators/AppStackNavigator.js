@@ -53,14 +53,14 @@ export function AppStackNavigator() {
       {showSplashScreen ? (
         <Stack.Screen name={SPLASH} component={Splash} />
       ) : null}
-      <Stack.Screen name={ONBOARDINGSLIDER1} component={OnBoardingSlider1} />
+      {/* <Stack.Screen name={ONBOARDINGSLIDER1} component={OnBoardingSlider1} />
       <Stack.Screen name={ONBOARDINGSLIDER2} component={OnBoardingSlider2} />
       <Stack.Screen name={ONBOARDINGSLIDER3} component={OnBoardingSlider3} />
       <Stack.Screen name={CREATEACCOUNT} component={CreateAccount} />
       <Stack.Screen name={PREGNANTWOMAN_SCREEN} component={PregnantWomanInfo} />
       <Stack.Screen name={CHILDINFO_SCREEN} component={ChildInfo} />
       <Stack.Screen name={LOGIN} component={Login} />
-      <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} />
+      <Stack.Screen name={OTPVERIFICATION} component={OTPVerification} /> */}
       <Stack.Screen name={TAB} component={BottomTab} />
       <Stack.Screen
         name={PREGNANT_WOMAN_CARD_CONTENT}

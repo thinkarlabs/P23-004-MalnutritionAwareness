@@ -29,7 +29,6 @@ export const homeCardStyles = StyleSheet.create({
     borderColor: PLACEHOLDER_BORDER_COLOR,
     borderRadius: 16,
     flexDirection: 'row',
-    alignItems: 'center',
     paddingHorizontal: 14,
     paddingVertical: 8,
   },

@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView, Image} from 'react-native';
 import React from 'react';
 import AppHeader from '../../../shared/components/appHeader';
 import {TAB} from '../../../shared/constants/navigatorConstants';
@@ -9,6 +9,7 @@ import {
   EAT_HEALTHY_FOOD_CARD,
   EAT_HEALTH_FOOD_CONTENT,
 } from '../../../shared/constants/homeConstants/parentConstants';
+import FruitImage from '../../../../assets/svg/foods/fruitImage';
 
 const PregnantWomanCardContent = ({navigation, route}) => {
   return (
