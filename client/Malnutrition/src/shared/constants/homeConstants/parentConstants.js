@@ -98,34 +98,34 @@ export const EAT_HEALTHY_FOOD_CARD = [
     content:
       'Cereals – Rice, Wheat, Ragi, Bajra, Jowar in form of chapati, halua, idli, dosa, upma, poha etc. Avoid white bread, biscuits and other foods made with refined flour (Maida).',
     image: <CerealIcon />,
-    photo: {},
+    picture: <FruitImage />
   },
   {
     content:
       'Fruits and vegetables – Eat seasonal fruits and vegetables liberally. Your diet must include 2 katoris green leafy vegetables, 1 katori of starchy vegetables like potato, beet, carrot and 1 katori of other vegetables, like lady’s finger, brinjal, tomato, beans etc. The more colorful the fruit or vegetable, the more nutritious it is.',
     image: <FruitIcon />,
-    photo: <FruitImage />
+    picture: <FruitImage />
   },
   {
     content:
       'Protein – If you are a non-vegetarian, choose fish, full boiled eggs, and cooked meat. If you are a vegetarian, choose any pulses like moong, masoor, tuvar, rajma, at least 2 katoris a day.',
     image: <ProteinIcon />,
-    photo: <ProteinImage />
+    picture: <ProteinImage />
   },
   {
     content: 'Milk and milk products – You can choose between 2 glasses of milk, or 2 katoris of curd or 60 gm paneer.',
     image: <MilkProductIcon />,
-    photo: <MilkProductImage />
+    picture: <MilkProductImage />
   },
   {
     content:
       "Fat – Try to get your fat intake from vegetable sources like mustard oil and rice bran oil. Use a mixture of mustard oil and rice bran oil or mustard oil and groundnut oil, to ensure adequate quantities of Omega 3 and Omega 6 fatty acids in your diet. You can also consume flax seeds (Alsi) to get enough Omega 3 fatty acids in your diet.",
     image: <FatIcon />,
-    photo: <FruitImage />
+    picture: <FruitImage />
   },
   {
     content: 'Water – Drink at least 10 - 12 glasses of water every day',
     image: <WaterIcon />,
-    photo: <WaterTypeImage />
+    picture: <WaterTypeImage />
   },
 ];

@@ -38,10 +38,13 @@ const PregnantWomanCardContent = ({navigation, route}) => {
           </Text>
           {EAT_HEALTHY_FOOD_CARD.map(data => {
             return (
-              <View style={homeCardStyles.tabCardContainer}>
-                <View style={homeCardStyles.tabContainer}>
-                  {data?.image}
-                  <Text style={homeCardStyles.tabText}>{data?.content}</Text>
+              <View style = {{paddingTop: 12}}>
+                <View style={homeCardStyles.tabCardContainer}>
+                  <View style={homeCardStyles.tabContainer}>
+                    {data?.image}
+                    <Text style={homeCardStyles.tabText}>{data?.content}</Text>
+                  </View>
+                  <View style={{padding: 12}}>{data?.picture}</View>
                 </View>
               </View>
             );

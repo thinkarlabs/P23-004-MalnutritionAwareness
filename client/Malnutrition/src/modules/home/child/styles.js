@@ -23,14 +23,10 @@ export const homeCardStyles = StyleSheet.create({
     lineHeight: 31,
     fontSize: 26,
     color: BLACK,
+    paddingBottom: 12
   },
   tabContainer: {
-    borderWidth: 1,
-    borderColor: PLACEHOLDER_BORDER_COLOR,
-    borderRadius: 16,
     flexDirection: 'row',
-    paddingHorizontal: 14,
-    paddingVertical: 8,
   },
   tabText: {
     flex: 1,
@@ -41,7 +37,11 @@ export const homeCardStyles = StyleSheet.create({
     paddingLeft: 16,
   },
   tabCardContainer: {
-    paddingBottom: 8,
+    borderWidth: 1,
+    borderColor: PLACEHOLDER_BORDER_COLOR,
+    borderRadius: 16,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
   },
   cardContainer: {
     paddingTop: 12,
