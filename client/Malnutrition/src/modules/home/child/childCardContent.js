@@ -32,11 +32,13 @@ const ChildCardContent = ({navigation, route}) => {
             data={route?.params?.data}
             renderItem={({item}) => {
               return (
+                <View style={{paddingBottom: 8}}>
                 <View style={homeCardStyles.tabCardContainer}>
                   <View style={homeCardStyles.tabContainer}>
                     {item?.image}
                     <Text style={homeCardStyles.tabText}>{item?.content}</Text>
                   </View>
+                </View>
                 </View>
               );
             }}
