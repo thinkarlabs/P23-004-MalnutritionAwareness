@@ -98,7 +98,6 @@ export const EAT_HEALTHY_FOOD_CARD = [
     content:
       'Cereals – Rice, Wheat, Ragi, Bajra, Jowar in form of chapati, halua, idli, dosa, upma, poha etc. Avoid white bread, biscuits and other foods made with refined flour (Maida).',
     image: <CerealIcon />,
-    picture: <FruitImage />
   },
   {
     content:
@@ -121,7 +120,6 @@ export const EAT_HEALTHY_FOOD_CARD = [
     content:
       "Fat – Try to get your fat intake from vegetable sources like mustard oil and rice bran oil. Use a mixture of mustard oil and rice bran oil or mustard oil and groundnut oil, to ensure adequate quantities of Omega 3 and Omega 6 fatty acids in your diet. You can also consume flax seeds (Alsi) to get enough Omega 3 fatty acids in your diet.",
     image: <FatIcon />,
-    picture: <FruitImage />
   },
   {
     content: 'Water – Drink at least 10 - 12 glasses of water every day',
@@ -129,3 +127,4 @@ export const EAT_HEALTHY_FOOD_CARD = [
     picture: <WaterTypeImage />
   },
 ];
+
