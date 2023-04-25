@@ -5,8 +5,8 @@ import UserBlackIcon from '../../../../assets/svg/icons/userBlackIcon';
 import {AppCard} from '../../../shared/components/appCard';
 import {AppVideoPlayer} from '../../../shared/components/appVideoPlayer';
 import {HOMESCREEN} from '../../../shared/constants/constants';
-import {CHILDSCREEN_CARD} from '../../../shared/constants/homeConstants/childConstants';
-import {getAge} from '../../../shared/Utils';
+import {getChildScreenCards} from '../../../shared/constants/homeConstants/childConstants';
+import {getAge, getAgeFromDateOfBirth} from '../../../shared/Utils';
 import {homeStyles} from '../styles';
 
 const ChildHomeScreen = ({navigation, data}) => {
@@ -43,7 +43,9 @@ const ChildHomeScreen = ({navigation, data}) => {
           <Text style={homeStyles.homeText}>{HOMESCREEN.TITLE}</Text>
           <AppVideoPlayer videoId={videoId} />
           <FlatList
-            data={CHILDSCREEN_CARD}
+            data={getChildScreenCards(
+              getAgeFromDateOfBirth(data?.child_details?.dob).months,
+            )}
             renderItem={({item}) => {
               return (
                 <View>
@@ -53,6 +55,7 @@ const ChildHomeScreen = ({navigation, data}) => {
                         data: item?.data,
                         title: item?.title,
                         video: videoId,
+                        isParentscreen: item?.isParentScreen,
                       })
                     }
                     content={item?.content}

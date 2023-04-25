@@ -16,7 +16,8 @@ export const homeCardStyles = StyleSheet.create({
   swipeContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingBottom: 25,
+    paddingBottom: 16,
+    paddingTop: 8,
   },
   titleText: {
     fontWeight: '400',

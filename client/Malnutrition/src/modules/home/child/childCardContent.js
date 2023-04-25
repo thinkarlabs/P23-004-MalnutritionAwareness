@@ -7,6 +7,7 @@ import {homeStyles} from '../styles';
 import {AppVideoPlayer} from '../../../shared/components/appVideoPlayer';
 import SwipeRightIcon from '../../../../assets/svg/icons/swipeRightIcon';
 import {HOMESCREEN} from '../../../shared/constants/constants';
+import CarouselComponent from '../../../shared/components/CarouselComponent';
 
 const ChildCardContent = ({navigation, route}) => {
   return (
@@ -21,6 +22,14 @@ const ChildCardContent = ({navigation, route}) => {
           style={homeCardStyles.scrollView}
           showsVerticalScrollIndicator={false}>
           <AppVideoPlayer videoId={route?.params?.video} />
+          <Text
+            style={[
+              homeCardStyles.titleText,
+              {paddingBottom: 10, fontSize: 24},
+            ]}>
+            You can also read this here
+          </Text>
+          <CarouselComponent data={route?.params?.data.carouselItems} />
           <View style={homeCardStyles.swipeContainer}>
             <SwipeRightIcon />
             <Text style={homeCardStyles.carasoulText}>
@@ -29,7 +38,7 @@ const ChildCardContent = ({navigation, route}) => {
           </View>
           <FlatList
             scrollEnabled={false}
-            data={route?.params?.data}
+            data={route?.params?.data.actionList}
             renderItem={({item}) => {
               return (
                 <View style={homeCardStyles.tabCardContainer}>
