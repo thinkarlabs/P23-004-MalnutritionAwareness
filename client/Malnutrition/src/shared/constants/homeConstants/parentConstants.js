@@ -15,6 +15,16 @@ import EatMealImage from '../../../../assets/svg/eatMealSVG';
 import StayActiveImage from '../../../../assets/svg/stayActiveSVG';
 import EmotionalHealthImage from '../../../../assets/svg/emotionalHealthSVG';
 import MythsIllustration from '../../../../assets/svg/mythsSVG';
+import CerealIcon from '../../../../assets/svg/foods/cerealIcon';
+import FruitIcon from '../../../../assets/svg/foods/fruitIcon';
+import ProteinIcon from '../../../../assets/svg/foods/proteinIcon';
+import MilkProductIcon from '../../../../assets/svg/foods/milkProductIcon';
+import FatIcon from '../../../../assets/svg/foods/fatIcon';
+import WaterIcon from '../../../../assets/svg/foods/waterIcon';
+import FruitImage from '../../../../assets/svg/foods/fruitImage';
+import ProteinImage from '../../../../assets/svg/foods/proteinImageSVG';
+import MilkProductImage from '../../../../assets/svg/foods/milkProductImage';
+import WaterTypeImage from '../../../../assets/svg/foods/waterTypeImage';
 
 //CARD CONTENT
 export const WHAT_YOU_NEED_TO_TAKE_CARE = `What you need to take${'\n'}care in the 2nd month?`;
@@ -85,41 +95,36 @@ export const PREGNANTWOMEN_CARD = [
 
 export const EAT_HEALTHY_FOOD_CARD = [
   {
-    // title: `Cereals - `,
     content:
-      'Rice, Wheat, Ragi, Bajra, Jowar in form of chapati, halua, idli, dosa, upma, poha etc. Avoid white bread, biscuits and other foods made with refined flour (Maida).',
-    image: <ChildIcon />,
-  },
-  {
-    content:
-      'Attend to cries immediately and hold the baby close to make her feel secure',
-    image: <ChildIcon />,
+      'Cereals – Rice, Wheat, Ragi, Bajra, Jowar in form of chapati, halua, idli, dosa, upma, poha etc. Avoid white bread, biscuits and other foods made with refined flour (Maida).',
+    image: <CerealIcon />,
   },
   {
     content:
-      'Help your baby learn to calm her or himself. Its ok for her to suck on her fingers',
-    image: <ChildIcon />,
-  },
-  {
-    content: 'Act excited and smile when your baby makes sounds',
-    image: <ChildIcon />,
+      'Fruits and vegetables – Eat seasonal fruits and vegetables liberally. Your diet must include 2 katoris green leafy vegetables, 1 katori of starchy vegetables like potato, beet, carrot and 1 katori of other vegetables, like lady’s finger, brinjal, tomato, beans etc. The more colorful the fruit or vegetable, the more nutritious it is.',
+    image: <FruitIcon />,
+    picture: <FruitImage />
   },
   {
     content:
-      "Pay attention to your baby's different cries so that you learn to know what she wants",
-    image: <ChildIcon />,
+      'Protein – If you are a non-vegetarian, choose fish, full boiled eggs, and cooked meat. If you are a vegetarian, choose any pulses like moong, masoor, tuvar, rajma, at least 2 katoris a day.',
+    image: <ProteinIcon />,
+    picture: <ProteinImage />
   },
   {
-    content: 'Talk, read and sing to your baby',
-    image: <ChildIcon />,
+    content: 'Milk and milk products – You can choose between 2 glasses of milk, or 2 katoris of curd or 60 gm paneer.',
+    image: <MilkProductIcon />,
+    picture: <MilkProductImage />
   },
   {
     content:
-      'Lay your baby on his tummy when she/he is awake and keep toys near her swipes at dangling objects',
-    image: <ChildIcon />,
+      "Fat – Try to get your fat intake from vegetable sources like mustard oil and rice bran oil. Use a mixture of mustard oil and rice bran oil or mustard oil and groundnut oil, to ensure adequate quantities of Omega 3 and Omega 6 fatty acids in your diet. You can also consume flax seeds (Alsi) to get enough Omega 3 fatty acids in your diet.",
+    image: <FatIcon />,
   },
   {
-    content: 'Begin to babble',
-    image: <ChildIcon />,
+    content: 'Water – Drink at least 10 - 12 glasses of water every day',
+    image: <WaterIcon />,
+    picture: <WaterTypeImage />
   },
 ];
+
