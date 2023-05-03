@@ -29,7 +29,7 @@ const ChildCardContent = ({navigation, route}) => {
             ]}>
             You can also read this here
           </Text>
-          <CarouselComponent data={route?.params?.data.carouselItems} />
+          <CarouselComponent data={route?.params?.data?.carouselItems} />
           <View style={homeCardStyles.swipeContainer}>
             <SwipeRightIcon />
             <Text style={homeCardStyles.carasoulText}>
@@ -38,7 +38,7 @@ const ChildCardContent = ({navigation, route}) => {
           </View>
           <FlatList
             scrollEnabled={false}
-            data={route?.params?.data.actionList}
+            data={route?.params?.data?.actionList}
             renderItem={({item}) => {
               return (
                 <View style={homeCardStyles.tabCardContainer}>

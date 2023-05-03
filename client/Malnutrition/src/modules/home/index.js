@@ -16,7 +16,7 @@ const Home = ({navigation, homeScreenSync, syncData}) => {
   return (
     <SafeAreaView style={homeStyles.safeAreaView}>
       <AppHeader title={APP_NAME} />
-      {syncData?.child_details == null ? (
+      {syncData?.mother_details == null ? (
         <PregnantWomenHomeScreen data={syncData} navigation={navigation} />
       ) : (
         <ChildHomeScreen data={syncData} navigation={navigation} />
