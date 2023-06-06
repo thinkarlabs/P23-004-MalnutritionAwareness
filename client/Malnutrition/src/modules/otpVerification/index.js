@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {SafeAreaView, ScrollView, Text, View} from 'react-native';
 import AppHeader from '../../shared/components/appHeader';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
@@ -42,12 +42,20 @@ const OTPVerification = ({
   const [count, setCount] = useState(30);
   const [isValidForm, setIsValidForm] = useState(false);
   const [buttonPress, setButtonPress] = useState(false);
+  const inputRef = useRef(null);
   const [verifyOtpFormValues, setVerifyOtpFormValues] = useState({
     phone_number: route?.params?.phone_number,
     otp: '',
     is_creation: route?.params?.is_creation,
   });
 
+  // useEffect(() => {
+  //   if (inputRef.current) inputRef?.current?.focusField(0);
+  // }, []);
+
+  useEffect(() => {
+    setTimeout(() => inputRef.current.focusField(0), 500);
+  }, []);
   const [resendOtpFormValues, setResendOtpFormValues] = useState({
     phone_number: route?.params?.phone_number,
   });
@@ -135,6 +143,7 @@ const OTPVerification = ({
         </View>
         <View style={verifyOTPStyles.otpInputContainer}>
           <OTPInputView
+            ref={inputRef}
             pinCount={pinCount}
             autoFocusOnLoad={false}
             codeInputFieldStyle={
