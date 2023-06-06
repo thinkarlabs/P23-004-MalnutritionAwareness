@@ -10,8 +10,10 @@ import WarningScreenCard from '../../../../assets/svg/warningScreenCardSVG';
 import SwipeRightIcon from '../../../../assets/svg/icons/swipeRightIcon';
 import {WARNINGSCREEN_CARD} from '../../../shared/constants/homeConstants/childConstants';
 import {homeStyles} from '../styles';
+import CarouselComponent from '../../../shared/components/CarouselComponent';
 
-const WarningCardContent = ({navigation}) => {
+const WarningCardContent = ({navigation, route}) => {
+  console.log('daaaaa', route?.params?.data);
   return (
     <SafeAreaView style={homeStyles.safeAreaView}>
       <AppHeader
@@ -31,6 +33,7 @@ const WarningCardContent = ({navigation}) => {
               boxContainer={false}
             />
           </View>
+          <CarouselComponent data={route?.params?.data} />
           <View style={homeCardStyles.carasoulContainer}>
             <SwipeRightIcon />
             <Text style={homeCardStyles.carasoulText}>

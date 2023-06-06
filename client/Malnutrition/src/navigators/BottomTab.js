@@ -1,6 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Platform} from 'react-native';
 import Home from '../modules/home';
 import Profile from '../modules/profile';
 import Track from '../modules/track';
@@ -24,10 +24,14 @@ import HomeActive from '../../assets/svg/icons/homeActive';
 import TrackDefault from '../../assets/svg/icons/trackDefaultIcon';
 import TrackActive from '../../assets/svg/icons/trackActiveIcon';
 import UserDefault from '../../assets/svg/icons/userDefaultIcon';
+import { Dimensions } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
 const BottomTab = () => {
+  const { height: screenHeight } = Dimensions.get('window');
+  const tabBarHeight = screenHeight * 0.1;
+
   return (
     <Tab.Navigator
       initialRouteName={HOME}
@@ -37,6 +41,7 @@ const BottomTab = () => {
         tabBarStyle: {
           borderTopWidth: 1,
           borderTopColor: PLACEHOLDER_BORDER_COLOR,
+          height: tabBarHeight
         },
         tabBarShowLabel: false,
       }}>

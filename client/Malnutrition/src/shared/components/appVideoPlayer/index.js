@@ -21,6 +21,13 @@ export const AppVideoPlayer = ({videoId}) => {
         videoId={videoId}
         onChangeState={onStateChange}
         webViewStyle={appVideoPlayerStyles.viewStyle}
+        webViewProps={{
+          renderToHardwareTextureAndroid: true,
+          androidLayerType:
+            Platform.OS === 'android' && Platform.Version <= 22
+              ? 'hardware'
+              : 'none',
+        }}
       />
     </View>
   );

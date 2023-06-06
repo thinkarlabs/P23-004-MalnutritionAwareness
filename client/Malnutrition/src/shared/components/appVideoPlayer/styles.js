@@ -7,5 +7,6 @@ export const appVideoPlayerStyles = StyleSheet.create({
   },
   viewStyle: {
     borderRadius: 12,
+    opacity: 0.99,
   },
 });
